@@ -1,11 +1,3 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
 # Dependencies
 node_modules
 
@@ -13,19 +5,8 @@ node_modules
 dist
 dist-ssr
 
-# Environment variables (SENSITIVE — never commit)
-.env
-.env.*
-!.env.example
-
 # WhatsApp session (contains auth tokens)
 .whatsapp-session/
-
-# MongoDB local data
-data/
-
-# Local run logs
-local.log
 
 # Editor
 .vscode/*
@@ -37,9 +18,3 @@ local.log
 *.njsproj
 *.sln
 *.sw?
-
-# Temporary / lock files
-*.local
-uploads/
-credentials.txt
-all_reports.txt

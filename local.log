@@ -1,0 +1,52 @@
+🚀 Starting BioXtenshi Local Environment...
+✅ Local MongoDB running at: mongodb://127.0.0.1:34523/
+📂 Data stored in: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/data/db
+🌱 Seeding database...
+[dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+✅ Connected to MongoDB
+📊 Detected Feriel S1.xlsx, starting import for feriel...
+✅ Automated: Cycle updated for feriel. Week 1 has 53 doctors.
+✅ Data already exists. Skipping seed/wipe to preserve data.
+ℹ️  Run with --force to overwrite.
+💊 Seeding Stock...
+[dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  override existing env vars with { override: true }
+MongoDB Connected
+Starting to seed 28 products...
+Skipping CELEBREX 200 MG CAP X 10 TUN (already exists with this batch)
+Skipping CELEBREX 200 MG CAP X 20 TUN (already exists with this batch)
+Skipping CELEBREX 200MG BT 30 TUN (already exists with this batch)
+Skipping TAHOR 10 MG X 91 TUN (already exists with this batch)
+Skipping TAHOR 10 MG X 28 TUN (already exists with this batch)
+Skipping TAHOR 20 MG X 91 TUN (already exists with this batch)
+Skipping TAHOR 20MG X 28 (already exists with this batch)
+Skipping TAHOR 40MG X 28 TUN (already exists with this batch)
+Skipping TAHOR 40MG BT 91 TUN (already exists with this batch)
+Skipping ZOLOFT 50 B30 (already exists with this batch)
+Skipping ZOLOFT CP 50 MG X 15 TUN (already exists with this batch)
+Skipping LYRICA CAP 150MG 56BL TN PZR (already exists with this batch)
+Skipping LYRICA CAP 75MG 14BL TN PZR (already exists with this batch)
+Skipping LYRICA CAP 75MG 56BL TN PZR (already exists with this batch)
+Skipping EFFEXOR LP 37.5mg CAP 3x10 BLS TN/MA (already exists with this batch)
+Skipping XALACOM ED 50MCG/5MG/ML 2.5ML 1BT TN PZR (already exists with this batch)
+Skipping XALATAN ED 50MCG/ML 1X2.5MLBT TN PZR (already exists with this batch)
+Skipping VIAGRA TAB 100MG 4BL TN PZR (already exists with this batch)
+Skipping VIAGRA TAB 25MG 4BL TN PZR (already exists with this batch)
+Skipping VIAGRA TAB 50MG 4BL TN PZR (already exists with this batch)
+Skipping FLECAINE 100mg (already exists with this batch)
+Skipping FLECAINE LP 200mg (already exists with this batch)
+Skipping FLECAINE LP 50mg (already exists with this batch)
+Skipping FLECAINE LP 100mg (already exists with this batch)
+Skipping SOTALOL (already exists with this batch)
+Skipping VALPROATE Officine (already exists with this batch)
+Skipping Detrusitol Retard 2MG (already exists with this batch)
+Skipping Detrusitol Retard 4MG (already exists with this batch)
+Stock seeding completed successfully.
+✅ Seeding finished.
+🔌 Starting Backend Server...
+📡 Backend process spawned with PID: 7170
+[dotenv@17.2.3] injecting env (4) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+🚀 Expiry Job Scheduled (Daily at Midnight)
+Server is running on port 5000
+Connected to MongoDB
+⚠️  Backend process exited (code=null, signal=SIGKILL). Restarting in 3s...
