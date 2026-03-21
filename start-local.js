@@ -78,10 +78,29 @@ async function start() {
             }, 3000);
         });
 
-        // Handle cleanup on exit
+        // 4. Start Frontend (Vite dev server)
+        console.log('🎨 Starting Frontend (Vite)...');
+        const frontProcess = spawn('npx', ['vite', '--port', '5173'], {
+            env,
+            stdio: 'inherit',
+            cwd: __dirname,
+            shell: true
+        });
+
+        console.log(`🌐 Frontend process spawned with PID: ${frontProcess.pid}`);
+        console.log(`\n✅ App ready!`);
+        console.log(`   Frontend → http://localhost:5173`);
+        console.log(`   Backend  → http://localhost:5000\n`);
+
+        frontProcess.on('error', (err) => {
+            console.error('❌ Failed to start frontend:', err);
+        });
+
+        // Handle cleanup on exit (Ctrl+C)
         process.on('SIGINT', async () => {
             console.log('\n🛑 Shutting down...');
             serverProcess.kill();
+            frontProcess.kill();
             await mongod.stop();
             process.exit();
         });
