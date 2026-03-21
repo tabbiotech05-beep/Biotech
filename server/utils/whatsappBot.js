@@ -16,8 +16,8 @@ const require = createRequire(import.meta.url);
 
 // Bot is connected as +216 56 129 196
 // Admin who receives notifications and can reply OUI/NON
-const ADMIN_PHONE = '21692568518@s.whatsapp.net';
-const ADMIN_BARE = '21692568518';
+const ADMIN_PHONE = '21656129196@s.whatsapp.net';
+const ADMIN_BARE = '21656129196';
 
 let sock = null;
 let isReady = false;
