@@ -141,12 +141,11 @@ export const initWhatsAppBot = async () => {
             version,
             auth: state,
             logger: { level: 'silent', trace: () => { }, debug: () => { }, info: () => { }, warn: () => { }, error: () => { }, fatal: () => { }, child: function () { return this; } },
-            printQRInTerminal: true,
         });
 
         sock.ev.on('connection.update', async ({ connection, lastDisconnect, qr }) => {
             if (qr) {
-                console.log('\n📱 WHATSAPP BOT — Scannez ce QR code avec +216 92 568 518 :');
+                console.log('\n📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :');
                 console.log('(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)\n');
                 qrcode.generate(qr, { small: true });
             }
