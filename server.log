@@ -1,15 +1,15 @@
 🚀 Starting BioXtenshi Local Environment...
-✅ Local MongoDB running at: mongodb://127.0.0.1:39367/
+✅ Local MongoDB running at: mongodb://127.0.0.1:37399/
 📂 Data stored in: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/data/db
 🌱 Seeding database...
-[dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+[dotenv@17.2.3] injecting env (4) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
 ✅ Connected to MongoDB
 📊 Detected Feriel S1.xlsx, starting import for feriel...
 ✅ Automated: Cycle updated for feriel. Week 1 has 53 doctors.
 ✅ Data already exists. Checking for missing users...
 ℹ️  Skipping full seed to preserve existing data.
 💊 Seeding Stock...
-[dotenv@17.2.3] injecting env (4) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+[dotenv@17.2.3] injecting env (4) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
 MongoDB Connected
 Starting to seed 28 products...
 Skipping CELEBREX 200 MG CAP X 10 TUN (already exists with this batch)
@@ -43,21 +43,36 @@ Skipping Detrusitol Retard 4MG (already exists with this batch)
 Stock seeding completed successfully.
 ✅ Seeding finished.
 🔌 Starting Backend Server...
-📡 Backend process spawned with PID: 94851
+📡 Backend process spawned with PID: 34888
 🎨 Starting Frontend (Vite)...
-🌐 Frontend process spawned with PID: 94852
+🌐 Frontend process spawned with PID: 34889
 
 ✅ App ready!
    Frontend → http://localhost:5173
    Backend  → http://localhost:5000
 
-[dotenv@17.2.3] injecting env (4) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
-[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+[dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
 🚀 Expiry Job Scheduled (Daily at Midnight)
-Server is running on port 5000
-Connected to MongoDB
 
-  VITE v7.2.7  ready in 614 ms
+  VITE v7.2.7  ready in 1244 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: http://192.168.0.219:5173/
+Server is running on port 5000
+Connected to MongoDB
+06:40:26 [vite] (client) hmr update /src/index.css
+06:40:26 [vite] (client) hmr update /src/index.css
+06:40:26 [vite] (client) hmr update /src/index.css
+06:40:26 [vite] (client) hmr update /src/index.css
+06:40:26 [vite] (client) hmr update /src/index.css
+06:40:26 [vite] (client) hmr update /src/index.css
+06:40:26 [vite] (client) hmr update /src/index.css
+06:40:26 [vite] (client) hmr update /src/index.css
+06:40:26 [vite] (client) hmr update /src/index.css
+06:40:26 [vite] (client) hmr update /src/index.css
+06:40:31 [vite] (client) hmr update /src/index.css
+06:40:39 [vite] (client) hmr update /src/index.css
+06:40:49 [vite] (client) hmr update /src/index.css
+06:40:59 [vite] (client) hmr update /src/index.css
+06:41:00 [vite] (client) hmr update /src/index.css
