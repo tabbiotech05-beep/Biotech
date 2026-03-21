@@ -131,7 +131,7 @@ export const initWhatsAppBot = async () => {
             fetchLatestBaileysVersion
         } = await import('@whiskeysockets/baileys');
 
-        const Pino = (await import('pino')).default;
+        // Inline silent logger — removes pino dependency
         const qrcode = require('qrcode-terminal');
 
         const { state, saveCreds } = await useMultiFileAuthState('.whatsapp-session');
@@ -140,7 +140,7 @@ export const initWhatsAppBot = async () => {
         sock = makeWASocket({
             version,
             auth: state,
-            logger: Pino({ level: 'silent' }),
+            logger: { level:'silent', trace:()=>{}, debug:()=>{}, info:()=>{}, warn:()=>{}, error:()=>{}, fatal:()=>{}, child:function(){return this;} },
             printQRInTerminal: false,
         });
 
