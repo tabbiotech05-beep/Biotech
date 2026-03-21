@@ -141,7 +141,7 @@ export const initWhatsAppBot = async () => {
             version,
             auth: state,
             logger: { level: 'silent', trace: () => { }, debug: () => { }, info: () => { }, warn: () => { }, error: () => { }, fatal: () => { }, child: function () { return this; } },
-            printQRInTerminal: false,
+            printQRInTerminal: true,
         });
 
         sock.ev.on('connection.update', async ({ connection, lastDisconnect, qr }) => {
