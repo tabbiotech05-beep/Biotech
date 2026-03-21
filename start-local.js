@@ -96,14 +96,18 @@ async function start() {
             console.error('❌ Failed to start frontend:', err);
         });
 
-        // Handle cleanup on exit (Ctrl+C)
-        process.on('SIGINT', async () => {
-            console.log('\n🛑 Shutting down...');
-            serverProcess.kill();
-            frontProcess.kill();
+        // Graceful shutdown on SIGINT (Ctrl+C) or SIGTERM (./arreter.sh)
+        const shutdown = async (signal) => {
+            console.log(`\n🛑 Signal ${signal} reçu — arrêt propre en cours...`);
+            frontProcess.kill('SIGTERM');
+            serverProcess.kill('SIGTERM');
             await mongod.stop();
-            process.exit();
-        });
+            console.log('✅ MongoDB arrêté proprement.');
+            process.exit(0);
+        };
+
+        process.on('SIGINT', () => shutdown('SIGINT'));
+        process.on('SIGTERM', () => shutdown('SIGTERM'));
 
     } catch (error) {
         console.error('❌ Error during startup:', error);

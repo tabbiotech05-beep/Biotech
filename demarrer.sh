@@ -18,8 +18,8 @@ pkill -9 -f "node start-local.js" 2>/dev/null || true
 sleep 2
 
 # ─── Clean MongoDB locks ─────────────────────────────────────────────────────
-echo "🔓 Suppression des fichiers de verrou MongoDB..."
-rm -f data/db/mongod.lock data/db/WiredTiger.lock 2>/dev/null || true
+echo "🔓 Suppression du verrou mongod (si présent)..."
+rm -f data/db/mongod.lock 2>/dev/null || true
 
 # ─── Install dependencies if needed ─────────────────────────────────────────
 if [ ! -d "node_modules" ] || [ ! -d "node_modules/@whiskeysockets" ]; then
