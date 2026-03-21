@@ -135,18 +135,7 @@ export const initWhatsAppBot = async () => {
         const qrcode = require('qrcode-terminal');
 
         const { state, saveCreds } = await useMultiFileAuthState('.whatsapp-session');
-
-        // Fetch latest version with timeout or fallback to a hardcoded one
-        let version = [2, 3000, 1015901307]; // Default fallback
-        try {
-            const latest = await Promise.race([
-                fetchLatestBaileysVersion(),
-                new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout')), 10000))
-            ]);
-            version = latest.version;
-        } catch (err) {
-            console.warn('⚠️ Impossible de récupérer la version de Baileys, utilisation du fallback:', err.message);
-        }
+        const { version } = await fetchLatestBaileysVersion();
 
         sock = makeWASocket({
             version,

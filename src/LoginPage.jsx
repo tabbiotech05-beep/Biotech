@@ -16,29 +16,16 @@ export default function LoginPage() {
         setError('');
         setIsLoading(true);
 
-        // Timeout de 15 secondes — évite de rester bloqué si le backend ne répond pas
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 15000);
-
         try {
             const response = await fetch('/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData),
-                signal: controller.signal
+                body: JSON.stringify(formData)
             });
-
-            clearTimeout(timeout);
-
-            // Handle non-JSON response (e.g. 502 Bad Gateway from Vite proxy)
-            const contentType = response.headers.get('content-type') || '';
-            if (!contentType.includes('application/json')) {
-                throw new Error('Le serveur backend ne répond pas. Vérifiez les logs avec ./logs.sh');
-            }
 
             const data = await response.json();
 
-            if (!response.ok) throw new Error(data.msg || data.message || 'Identifiants incorrects');
+            if (!response.ok) throw new Error(data.message || 'Login failed');
 
             localStorage.setItem('token', data.token);
             localStorage.setItem('username', data.username);
@@ -54,12 +41,7 @@ export default function LoginPage() {
                 navigate(`/dashboard/${data.allowedDashboards[0]}`);
             }
         } catch (err) {
-            clearTimeout(timeout);
-            if (err.name === 'AbortError') {
-                setError('⏱️ Le serveur met trop de temps à répondre. Il est peut-être encore en cours de démarrage — attendez 30 secondes et réessayez.');
-            } else {
-                setError(err.message);
-            }
+            setError(err.message);
         } finally {
             setIsLoading(false);
         }

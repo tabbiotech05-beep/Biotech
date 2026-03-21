@@ -14,6 +14,38 @@ const admins = ['mahmoud', 'slim', 'ouanes', 'malek'];
 const biotechUsers = ['seif', 'ines', 'cherifa', 'syrine', 'soufiene'];
 const tenshiUsers = ['wiem', 'feriel', 'rahma', 'rania', 'yosra', 'farah', 'saoussen', 'dorra', 'rahma.b', 'fatma', 'nessrine', 'nafissa', 'amal', 'maha'];
 
+const passwords = {
+    'mahmoud': 'R8D7pVOOnV',
+    'slim': 'LWevHH56o7',
+    'ouanes': 'lVgWdbbWrr',
+    'malek': 'v63vAyEtyc',
+    'seif': 'nfgkcGKBTY',
+    'ines': '82YUbSzBcg',
+    'cherifa': 'cVDwc1NvCK',
+    'syrine': '4r4a5yFr4v',
+    'soufiene': 'GDUIm2uBKH',
+    'wiem': 'vxDGUS32me',
+    'feriel': 'oJDPIAp1I8',
+    'rahma': '6zUdZAm6mN',
+    'rania': '6OouDNkEyL',
+    'yosra': 'rdTQ8CMaYN',
+    'farah': 'gsEiMIWZgs',
+    'saoussen': 'IG7ZPUHP4L',
+    'dorra': 'ArazTk7Hdw',
+    'rahma.b': 'ariUWShIgZ',
+    'fatma': 'Z1p2m86bir',
+    'nessrine': 'EhYtdc0ZBv',
+    'nafissa': 'szNiLavQRk',
+    'asma': 'n2kNPd0e5Y',
+    'amal': '0Acn4a3jiRdFnA',
+    'maha': 'PJIAphUvW2yteA'
+};
+
+const getHash = async (pwd) => {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(pwd, salt);
+};
+
 const seedOfficialUsers = async () => {
     try {
         await mongoose.connect(process.env.MONGODB_URI);
@@ -68,105 +100,50 @@ const seedOfficialUsers = async () => {
             }
         }
 
-        // Check if data exists — but still ensure all Tenshi users exist
-        const userCount = await User.countDocuments();
-        if (userCount > 0) {
-            console.log('✅ Data already exists. Checking for missing users...');
-            const salt2 = await bcrypt.genSalt(10);
-            const password2 = await bcrypt.hash('123456', salt2);
-            // Ensure all Tenshi delegates exist (handles newly added users)
-            for (const username of tenshiUsers) {
-                const exists = await User.findOne({ username });
-                if (!exists) {
-                    const newUser = new User({
-                        username,
-                        email: `${username}@bioxtenshi.com`,
-                        password: password2,
-                        role: 'delegue',
-                        allowedDashboards: ['dashboard2']
-                    });
-                    await newUser.save();
-                    console.log(`✅ Added missing Tenshi user: ${username}`);
+        const allUsersList = [...admins, ...biotechUsers, ...tenshiUsers, 'asma'];
+
+        for (const username of allUsersList) {
+            const rawPwd = passwords[username] || '123456';
+            const user = await User.findOne({ username });
+            
+            if (!user) {
+                const newUser = new User({
+                    username,
+                    email: `${username}@bioxtenshi.com`,
+                    password: await getHash(rawPwd),
+                    role: admins.includes(username) ? 'admin' : (username === 'asma' ? 'pharmacienne' : 'delegue'),
+                    allowedDashboards: admins.includes(username) ? ['dashboard1', 'dashboard2'] : (biotechUsers.includes(username) || username === 'asma' ? ['dashboard1'] : ['dashboard2'])
+                });
+                await newUser.save();
+                console.log(`✅ Created User: ${username} with official password`);
+            } else {
+                // Check if password is "123456" and update it to official if needed
+                const isDefault = await bcrypt.compare('123456', user.password);
+                if (isDefault && rawPwd !== '123456') {
+                    user.password = await getHash(rawPwd);
+                    await user.save();
+                    console.log(`🔄 Updated password for ${username} to official one`);
                 }
             }
-            console.log('ℹ️  Skipping full seed to preserve existing data.');
-            return;
         }
 
-        // Clear all users & stock (Only if empty, but we returned above)
-        // await User.deleteMany({}); 
-        // await Stock.deleteMany({});
-        // console.log('🗑️  All existing users and stock deleted.');
+        // Create Initial Stock if empty
+        const stockCount = await Stock.countDocuments();
+        if (stockCount === 0) {
+            const stocks = [
+                { name: 'Doliprane', quantity: 100, expiryDate: new Date('2025-12-31') },
+                { name: 'Advil', quantity: 50, expiryDate: new Date('2024-06-30') },
+                { name: 'Fervex', quantity: 75, expiryDate: new Date('2025-01-01') }
+            ];
 
-        const salt = await bcrypt.genSalt(10);
-        const password = await bcrypt.hash('123456', salt);
-
-        // ... (User creation code remains same) ...
-
-        // Create Admins
-        for (const username of admins) {
-            const user = new User({
-                username,
-                email: `${username}@bioxtenshi.com`,
-                password,
-                role: 'admin',
-                allowedDashboards: ['dashboard1', 'dashboard2']
-            });
-            await user.save();
-            console.log(`👑 Created Admin: ${username}`);
+            for (const s of stocks) {
+                const stock = new Stock(s);
+                await stock.save();
+                console.log(`📦 Added Stock: ${s.name} (${s.quantity})`);
+            }
         }
 
-        // Create BioTechPharmaMD Users
-        for (const username of biotechUsers) {
-            const user = new User({
-                username,
-                email: `${username}@bioxtenshi.com`,
-                password,
-                role: 'delegue',
-                allowedDashboards: ['dashboard1']
-            });
-            await user.save();
-            console.log(`🌿 Created BioTech User: ${username}`);
-        }
-
-        // Create Tenshi Users
-        for (const username of tenshiUsers) {
-            const user = new User({
-                username,
-                email: `${username}@bioxtenshi.com`,
-                password,
-                role: 'delegue',
-                allowedDashboards: ['dashboard2']
-            });
-            await user.save();
-            console.log(`🔵 Created Tenshi User: ${username}`);
-        }
-
-        // Create Pharmacienne User
-        const pharmacienne = new User({
-            username: 'asma',
-            email: 'asma@bioxtenshi.com',
-            password,
-            role: 'pharmacienne',
-            allowedDashboards: ['dashboard1']
-        });
-        await pharmacienne.save();
-        console.log('💊 Created Pharmacienne: asma');
-
-        // Create Initial Stock
-        const stocks = [
-            { name: 'Doliprane', quantity: 100, expiryDate: new Date('2025-12-31') },
-            { name: 'Advil', quantity: 50, expiryDate: new Date('2024-06-30') },
-            { name: 'Fervex', quantity: 75, expiryDate: new Date('2025-01-01') }
-        ];
-
-        for (const s of stocks) {
-            const stock = new Stock(s);
-            await stock.save();
-            console.log(`📦 Added Stock: ${s.name} (${s.quantity})`);
-        }
-
-        console.log('\n✅ Official Seeding Complete!');
+        console.log('\n✅ Official Seeding/Update Complete!');
 
     } catch (err) {
         console.error('Error seeding users:', err);
