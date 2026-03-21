@@ -21,6 +21,13 @@ sleep 2
 echo "🔓 Suppression des fichiers de verrou MongoDB..."
 rm -f data/db/mongod.lock data/db/WiredTiger.lock 2>/dev/null || true
 
+# ─── Install dependencies if needed ─────────────────────────────────────────
+if [ ! -d "node_modules" ] || [ ! -d "node_modules/@whiskeysockets" ]; then
+    echo "📦 Installation des dépendances (npm install)..."
+    npm install
+    echo "✅ Dépendances installées."
+fi
+
 # ─── Start in background ─────────────────────────────────────────────────────
 echo "🚀 Démarrage de BIOTECH en arrière-plan..."
 nohup node start-local.js > "$LOG_FILE" 2>&1 &
