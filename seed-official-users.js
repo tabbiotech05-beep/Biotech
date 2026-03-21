@@ -92,7 +92,7 @@ const seedOfficialUsers = async () => {
                         weeks: [[], [], [], [], [], []]
                     });
                 }
-                cycle.weeks[0] = doctorIds;
+                cycle.weeks[0] = doctorIds.map(id => ({ id, type: 'Doctor' }));
                 await cycle.save();
                 console.log(`✅ Automated: Cycle updated for feriel. Week 1 has ${doctorIds.length} doctors.`);
             } catch (err) {
@@ -105,7 +105,7 @@ const seedOfficialUsers = async () => {
         for (const username of allUsersList) {
             const rawPwd = passwords[username] || '123456';
             const user = await User.findOne({ username });
-            
+
             if (!user) {
                 const newUser = new User({
                     username,

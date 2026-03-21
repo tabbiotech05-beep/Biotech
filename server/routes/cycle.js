@@ -17,7 +17,7 @@ router.get('/', auth, async (req, res) => {
             targetUserId = user._id;
         }
 
-        let cycle = await Cycle.findOne({ user: targetUserId }).populate('weeks');
+        let cycle = await Cycle.findOne({ user: targetUserId });
         if (!cycle) {
             // Create empty cycle if one doesn't exist
             cycle = new Cycle({

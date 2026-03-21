@@ -1,15 +1,15 @@
 🚀 Starting BioXtenshi Local Environment...
-✅ Local MongoDB running at: mongodb://127.0.0.1:37399/
+✅ Local MongoDB running at: mongodb://127.0.0.1:46225/
 📂 Data stored in: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/data/db
 🌱 Seeding database...
-[dotenv@17.2.3] injecting env (4) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
+[dotenv@17.2.3] injecting env (4) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
 ✅ Connected to MongoDB
 📊 Detected Feriel S1.xlsx, starting import for feriel...
 ✅ Automated: Cycle updated for feriel. Week 1 has 53 doctors.
-✅ Data already exists. Checking for missing users...
-ℹ️  Skipping full seed to preserve existing data.
+
+✅ Official Seeding/Update Complete!
 💊 Seeding Stock...
-[dotenv@17.2.3] injecting env (4) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+[dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
 MongoDB Connected
 Starting to seed 28 products...
 Skipping CELEBREX 200 MG CAP X 10 TUN (already exists with this batch)
@@ -43,36 +43,180 @@ Skipping Detrusitol Retard 4MG (already exists with this batch)
 Stock seeding completed successfully.
 ✅ Seeding finished.
 🔌 Starting Backend Server...
-📡 Backend process spawned with PID: 34888
+📡 Backend process spawned with PID: 96449
 🎨 Starting Frontend (Vite)...
-🌐 Frontend process spawned with PID: 34889
+🌐 Frontend process spawned with PID: 96451
 
 ✅ App ready!
    Frontend → http://localhost:5173
    Backend  → http://localhost:5000
 
-[dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  override existing env vars with { override: true }
-[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+[dotenv@17.2.3] injecting env (4) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
 🚀 Expiry Job Scheduled (Daily at Midnight)
+Server is running on port 5000
+Connected to MongoDB
 
-  VITE v7.2.7  ready in 1244 ms
+  VITE v7.2.7  ready in 1221 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: http://192.168.0.219:5173/
-Server is running on port 5000
-Connected to MongoDB
-06:40:26 [vite] (client) hmr update /src/index.css
-06:40:26 [vite] (client) hmr update /src/index.css
-06:40:26 [vite] (client) hmr update /src/index.css
-06:40:26 [vite] (client) hmr update /src/index.css
-06:40:26 [vite] (client) hmr update /src/index.css
-06:40:26 [vite] (client) hmr update /src/index.css
-06:40:26 [vite] (client) hmr update /src/index.css
-06:40:26 [vite] (client) hmr update /src/index.css
-06:40:26 [vite] (client) hmr update /src/index.css
-06:40:26 [vite] (client) hmr update /src/index.css
-06:40:31 [vite] (client) hmr update /src/index.css
-06:40:39 [vite] (client) hmr update /src/index.css
-06:40:49 [vite] (client) hmr update /src/index.css
-06:40:59 [vite] (client) hmr update /src/index.css
-06:41:00 [vite] (client) hmr update /src/index.css
+08:27:34 [vite] (client) hmr update /src/index.css
+08:27:43 [vite] (client) hmr update /src/index.css
+08:27:53 [vite] (client) hmr update /src/index.css
+08:27:54 [vite] (client) hmr update /src/index.css
+08:27:57 [vite] (client) hmr update /src/index.css
+08:27:57 [vite] (client) hmr update /src/index.css
+08:27:57 [vite] (client) hmr update /src/index.css
+08:27:57 [vite] (client) hmr update /src/index.css
+08:27:57 [vite] (client) hmr update /src/index.css
+08:27:57 [vite] (client) hmr update /src/index.css
+08:27:57 [vite] (client) hmr update /src/index.css
+08:27:57 [vite] (client) hmr update /src/index.css
+08:27:57 [vite] (client) hmr update /src/index.css
+08:27:57 [vite] (client) hmr update /src/index.css
+08:27:57 [vite] (client) hmr update /src/index.css
+08:28:00 [vite] (client) hmr update /src/index.css
+08:28:00 [vite] (client) hmr update /src/index.css
+08:28:03 [vite] (client) hmr update /src/index.css
+08:28:13 [vite] (client) hmr update /src/index.css
+08:28:23 [vite] (client) hmr update /src/index.css
+08:28:33 [vite] (client) hmr update /src/index.css
+08:28:43 [vite] (client) hmr update /src/index.css
+08:28:53 [vite] (client) hmr update /src/index.css
+08:28:54 [vite] (client) hmr update /src/index.css
+08:28:57 [vite] (client) hmr update /src/index.css
+08:28:57 [vite] (client) hmr update /src/index.css
+08:28:57 [vite] (client) hmr update /src/index.css
+08:28:57 [vite] (client) hmr update /src/index.css
+08:28:57 [vite] (client) hmr update /src/index.css
+08:28:57 [vite] (client) hmr update /src/index.css
+08:28:57 [vite] (client) hmr update /src/index.css
+08:28:57 [vite] (client) hmr update /src/index.css
+08:28:58 [vite] (client) hmr update /src/index.css
+08:29:03 [vite] (client) hmr update /src/index.css
+08:29:13 [vite] (client) hmr update /src/index.css
+08:29:23 [vite] (client) hmr update /src/index.css
+08:29:33 [vite] (client) hmr update /src/index.css
+08:29:45 [vite] (client) hmr update /src/index.css
+08:29:54 [vite] (client) hmr update /src/index.css
+08:29:58 [vite] (client) hmr update /src/index.css
+08:29:58 [vite] (client) hmr update /src/index.css
+08:29:58 [vite] (client) hmr update /src/index.css
+08:29:58 [vite] (client) hmr update /src/index.css
+08:29:58 [vite] (client) hmr update /src/index.css
+08:30:04 [vite] (client) hmr update /src/index.css
+08:30:14 [vite] (client) hmr update /src/index.css
+08:30:24 [vite] (client) hmr update /src/index.css
+08:30:34 [vite] (client) hmr update /src/index.css
+08:30:44 [vite] (client) hmr update /src/index.css
+08:30:54 [vite] (client) hmr update /src/index.css
+08:30:59 [vite] (client) hmr update /src/index.css
+08:30:59 [vite] (client) hmr update /src/index.css
+08:30:59 [vite] (client) hmr update /src/index.css
+08:30:59 [vite] (client) hmr update /src/index.css
+08:31:05 [vite] (client) hmr update /src/index.css
+08:31:15 [vite] (client) hmr update /src/index.css
+08:31:25 [vite] (client) hmr update /src/index.css
+08:31:35 [vite] (client) hmr update /src/index.css
+08:31:45 [vite] (client) hmr update /src/index.css
+08:31:55 [vite] (client) hmr update /src/index.css
+08:31:59 [vite] (client) hmr update /src/index.css
+08:31:59 [vite] (client) hmr update /src/index.css
+08:32:00 [vite] (client) hmr update /src/index.css
+08:32:00 [vite] (client) hmr update /src/index.css
+08:32:01 [vite] (client) hmr update /src/index.css
+08:32:01 [vite] (client) hmr update /src/index.css
+08:32:04 [vite] (client) hmr update /src/index.css
+08:32:04 [vite] (client) hmr update /src/index.css
+08:32:16 [vite] (client) hmr update /src/index.css
+08:32:26 [vite] (client) hmr update /src/index.css
+08:32:36 [vite] (client) hmr update /src/index.css
+08:32:46 [vite] (client) hmr update /src/index.css
+08:32:56 [vite] (client) hmr update /src/index.css
+08:32:57 [vite] (client) hmr update /src/index.css
+08:33:00 [vite] (client) hmr update /src/index.css
+08:33:00 [vite] (client) hmr update /src/index.css
+08:33:00 [vite] (client) hmr update /src/index.css
+08:33:00 [vite] (client) hmr update /src/index.css
+08:33:00 [vite] (client) hmr update /src/index.css
+08:33:00 [vite] (client) hmr update /src/index.css
+08:33:01 [vite] (client) hmr update /src/index.css
+08:33:01 [vite] (client) hmr update /src/index.css
+08:33:01 [vite] (client) hmr update /src/index.css
+08:33:06 [vite] (client) hmr update /src/index.css
+08:33:16 [vite] (client) hmr update /src/index.css
+08:33:26 [vite] (client) hmr update /src/index.css
+08:33:36 [vite] (client) hmr update /src/index.css
+08:33:47 [vite] (client) hmr update /src/index.css
+08:33:56 [vite] (client) hmr update /src/index.css
+08:34:01 [vite] (client) hmr update /src/index.css
+08:34:01 [vite] (client) hmr update /src/index.css
+08:34:02 [vite] (client) hmr update /src/index.css
+08:34:02 [vite] (client) hmr update /src/index.css
+08:34:02 [vite] (client) hmr update /src/index.css
+08:34:06 [vite] (client) hmr update /src/index.css
+08:34:16 [vite] (client) hmr update /src/index.css
+08:34:26 [vite] (client) hmr update /src/index.css
+08:34:36 [vite] (client) hmr update /src/index.css
+08:34:47 [vite] (client) hmr update /src/index.css
+08:34:56 [vite] (client) hmr update /src/index.css
+08:35:03 [vite] (client) hmr update /src/index.css
+08:35:03 [vite] (client) hmr update /src/index.css
+08:35:04 [vite] (client) hmr update /src/index.css
+08:35:04 [vite] (client) hmr update /src/index.css
+08:35:05 [vite] (client) hmr update /src/index.css
+08:35:06 [vite] (client) hmr update /src/index.css
+08:35:16 [vite] (client) hmr update /src/index.css
+08:35:27 [vite] (client) hmr update /src/index.css
+08:35:37 [vite] (client) hmr update /src/index.css
+08:35:47 [vite] (client) hmr update /src/index.css
+08:35:57 [vite] (client) hmr update /src/index.css
+08:36:04 [vite] (client) hmr update /src/index.css
+08:36:04 [vite] (client) hmr update /src/index.css
+08:36:04 [vite] (client) hmr update /src/index.css
+08:36:04 [vite] (client) hmr update /src/index.css
+08:36:09 [vite] (client) hmr update /src/index.css
+08:36:17 [vite] (client) hmr update /src/index.css
+08:36:27 [vite] (client) hmr update /src/index.css
+08:36:37 [vite] (client) hmr update /src/index.css
+08:36:47 [vite] (client) hmr update /src/index.css
+08:36:59 [vite] (client) hmr update /src/index.css
+08:37:04 [vite] (client) hmr update /src/index.css
+08:37:05 [vite] (client) hmr update /src/index.css
+08:37:05 [vite] (client) hmr update /src/index.css
+08:37:05 [vite] (client) hmr update /src/index.css
+08:37:07 [vite] (client) hmr update /src/index.css
+08:37:07 [vite] (client) hmr update /src/index.css
+08:37:18 [vite] (client) hmr update /src/index.css
+08:37:28 [vite] (client) hmr update /src/index.css
+08:37:38 [vite] (client) hmr update /src/index.css
+08:37:48 [vite] (client) hmr update /src/index.css
+08:37:58 [vite] (client) hmr update /src/index.css
+08:38:05 [vite] (client) hmr update /src/index.css
+08:38:05 [vite] (client) hmr update /src/index.css
+08:38:05 [vite] (client) hmr update /src/index.css
+08:38:05 [vite] (client) hmr update /src/index.css
+08:38:08 [vite] (client) hmr update /src/index.css
+08:38:18 [vite] (client) hmr update /src/index.css
+08:38:28 [vite] (client) hmr update /src/index.css
+08:38:38 [vite] (client) hmr update /src/index.css
+08:38:48 [vite] (client) hmr update /src/index.css
+08:38:58 [vite] (client) hmr update /src/index.css
+08:39:05 [vite] (client) hmr update /src/index.css
+08:39:05 [vite] (client) hmr update /src/index.css
+08:39:05 [vite] (client) hmr update /src/index.css
+08:39:05 [vite] (client) hmr update /src/index.css
+08:39:08 [vite] (client) hmr update /src/index.css
+08:39:18 [vite] (client) hmr update /src/index.css
+08:39:28 [vite] (client) hmr update /src/index.css
+08:39:38 [vite] (client) hmr update /src/index.css
+08:39:48 [vite] (client) hmr update /src/index.css
+08:39:58 [vite] (client) hmr update /src/index.css
+08:40:05 [vite] (client) hmr update /src/index.css
+08:40:05 [vite] (client) hmr update /src/index.css
+08:40:05 [vite] (client) hmr update /src/index.css
+08:40:05 [vite] (client) hmr update /src/index.css
+08:40:08 [vite] (client) hmr update /src/index.css
+08:40:18 [vite] (client) hmr update /src/index.css
+                                                   

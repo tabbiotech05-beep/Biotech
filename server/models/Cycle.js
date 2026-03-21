@@ -7,10 +7,18 @@ const CycleSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    // weeks will be an array of 6 arrays, each containing IDs of Doctors
+    // weeks will be an array of 6 arrays, each containing items
+    // item can be a Doctor ID or a Visit ID
     weeks: [[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Doctor'
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true
+        },
+        type: {
+            type: String,
+            enum: ['Doctor', 'Visit'],
+            default: 'Doctor'
+        }
     }]]
 }, { timestamps: true });
 

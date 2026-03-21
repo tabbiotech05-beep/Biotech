@@ -58,10 +58,18 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
 
             if (cycleRes.data && cycleRes.data.weeks) {
                 const populatedWeeks = cycleRes.data.weeks.map(week => {
-                    return week.map(d => {
-                        if (d && typeof d === 'object' && d.name) return d;
-                        const id = typeof d === 'string' ? d : d?._id;
-                        return doctors.find(doc => doc._id === id) || { _id: id, name: 'Inconnu', specialty: 'N/A' };
+                    return week.map(item => {
+                        // Handle old format (just ID strings) and new format ({id, type})
+                        const id = item.id || (typeof item === 'string' ? item : item?._id);
+                        const type = item.type || 'Doctor';
+
+                        if (type === 'Visit') {
+                            const visit = visitsRes.data?.find(v => v._id === id);
+                            return visit ? { ...visit, __type: 'Visit' } : { _id: id, name: 'Visite Introuvable', __type: 'Visit' };
+                        } else {
+                            const doc = doctors.find(d => d._id === id);
+                            return doc ? { ...doc, __type: 'Doctor' } : { _id: id, name: 'Médecin Introuvable', specialty: 'N/A', __type: 'Doctor' };
+                        }
                     });
                 });
                 setWeeks(populatedWeeks);
@@ -139,7 +147,10 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
         setIsSaving(true);
         try {
             const token = localStorage.getItem('token');
-            const weeksToSave = weeks.map(week => week.map(d => d._id));
+            const weeksToSave = weeks.map(week => week.map(item => ({
+                id: item._id,
+                type: item.__type || (item.targetType ? 'Visit' : 'Doctor')
+            })));
             await axios.post('/api/cycle', { weeks: weeksToSave }, {
                 headers: { 'x-auth-token': token }
             });
@@ -151,15 +162,14 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
         }
     };
 
-    const moveDoctorToWeek = (doctor, weekIndex) => {
+    const moveItemToWeek = (item, weekIndex, type) => {
         const newWeeks = [...weeks];
-        if (newWeeks[weekIndex].some(d => d._id === doctor._id)) {
-            alert("Ce médecin est déjà dans cette semaine.");
+        if (newWeeks[weekIndex].some(i => i._id === item._id)) {
+            alert("Cet élément est déjà dans cette semaine.");
             return;
         }
-        newWeeks[weekIndex] = [...newWeeks[weekIndex], doctor];
+        newWeeks[weekIndex] = [...newWeeks[weekIndex], { ...item, __type: type }];
         setWeeks(newWeeks);
-        // We don't save automatically here, but the UI should show it.
     };
 
     const removeFromWeek = (weekIndex, doctorId) => {
@@ -252,7 +262,7 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                     <button
                                         key={doctor._id}
                                         onClick={() => {
-                                            if (!isDelegue && !isReadOnly) moveDoctorToWeek(doctor, activeWeek);
+                                            if (!isDelegue && !isReadOnly) moveItemToWeek(doctor, activeWeek, 'Doctor');
                                             setSelectedItemForDetails({ type: 'doctor', data: doctor });
                                         }}
                                         className={`w-full text-left p-3 rounded-xl border transition-all group relative ${isSelected ? 'border-blue-500 bg-blue-50 ring-1 ring-blue-500' :
@@ -292,8 +302,11 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                 .map(visit => (
                                     <button
                                         key={visit._id}
-                                        onClick={() => setSelectedItemForDetails({ type: 'task', data: visit })}
-                                        className="w-full text-left p-3 bg-gray-50 rounded-xl border border-transparent hover:border-blue-200 hover:bg-blue-50/50 transition-all group"
+                                        onClick={() => {
+                                            if (!isDelegue && !isReadOnly) moveItemToWeek(visit, activeWeek, 'Visit');
+                                            setSelectedItemForDetails({ type: 'task', data: visit });
+                                        }}
+                                        className="w-full text-left p-3 bg-gray-50 rounded-xl border border-transparent hover:border-blue-200 hover:bg-blue-50/50 transition-all group relative"
                                     >
                                         <div className="flex justify-between items-start">
                                             <div>
@@ -386,44 +399,50 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                         </tr>
                                     </thead>
                                     <tbody className="text-sm">
-                                        {weeks[activeWeek].map((doctor, idx) => {
-                                            const doctorVisits = visits.filter(v => v.doctorName === doctor.name);
-                                            const isVisited = doctorVisits.length > 0;
-                                            const isSelected = selectedItemForDetails?.type === 'doctor' && selectedItemForDetails.data._id === doctor._id;
+                                        {weeks[activeWeek].map((item, idx) => {
+                                            const isDoctor = item.__type === 'Doctor';
+                                            const doctorVisits = isDoctor ? visits.filter(v => v.doctorName === item.name) : [];
+                                            const isVisited = isDoctor ? doctorVisits.length > 0 : true; // Visits are already "visited" in a way, or we can just say true
+                                            const isSelected = selectedItemForDetails?.data?._id === item._id;
 
                                             return (
-                                                <tr key={`${doctor._id}-${idx}`} className={`hover:bg-gray-50 transition-colors group ${isSelected ? 'ring-2 ring-blue-500 ring-inset bg-blue-50/50' : isVisited ? 'bg-green-50/70' : 'bg-white'}`}>
-                                                    <td className="px-4 py-4 first:rounded-l-2xl border-y border-l border-gray-100 font-bold text-gray-900 cursor-pointer hover:text-blue-600" onClick={() => setSelectedItemForDetails({ type: 'doctor', data: doctor })}>
+                                                <tr key={`${item._id}-${idx}`} className={`hover:bg-gray-50 transition-colors group ${isSelected ? 'ring-2 ring-blue-500 ring-inset bg-blue-50/50' : isVisited && isDoctor ? 'bg-green-50/70' : 'bg-white'}`}>
+                                                    <td className="px-4 py-4 first:rounded-l-2xl border-y border-l border-gray-100 font-bold text-gray-900 cursor-pointer hover:text-blue-600" onClick={() => setSelectedItemForDetails({ type: isDoctor ? 'doctor' : 'task', data: item })}>
                                                         <div className="flex items-center gap-3">
-                                                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-xs ${isVisited ? 'bg-green-500' : theme.bg}`}>
-                                                                {doctor.name.charAt(0)}
+                                                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-xs ${isVisited && isDoctor ? 'bg-green-500' : isDoctor ? theme.bg : 'bg-purple-500'}`}>
+                                                                {isDoctor ? item.name.charAt(0) : 'T'}
                                                             </div>
                                                             <div className="flex flex-col">
                                                                 <div className="flex items-center gap-2">
-                                                                    {doctor.name}
-                                                                    {isVisited && (
+                                                                    {isDoctor ? item.name : (item.pharmacyName || item.wholesalerName || item.visitName || 'Tâche')}
+                                                                    {isVisited && isDoctor && (
                                                                         <span className="text-[10px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full border border-green-200 uppercase tracking-tighter">Visité</span>
+                                                                    )}
+                                                                    {!isDoctor && (
+                                                                        <span className="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full border border-purple-200 uppercase tracking-tighter">
+                                                                            {item.targetType === 'pharmacie' ? 'Pharmacie' : 'Grossiste'}
+                                                                        </span>
                                                                     )}
                                                                 </div>
                                                                 <span className="text-[10px] text-blue-500 font-medium whitespace-nowrap">
-                                                                    {`${doctorVisits.length} visite(s) - Cliquer pour historique`}
+                                                                    {isDoctor ? `${doctorVisits.length} visite(s) - Cliquer pour historique` : (item.details || 'Voir détails')}
                                                                 </span>
                                                             </div>
                                                         </div>
                                                     </td>
                                                     <td className="px-4 py-4 border-y border-gray-100 text-gray-600">
-                                                        {doctor.specialty}
+                                                        {isDoctor ? item.specialty : (item.visitName || 'Tâche')}
                                                     </td>
                                                     <td className="px-4 py-4 border-y border-gray-100 text-gray-600">
-                                                        {doctor.governorate}
+                                                        {isDoctor ? item.governorate : (item.pharmacyName || item.wholesalerName || '-')}
                                                     </td>
                                                     <td className="px-4 py-4 border-y border-gray-100 text-gray-500 text-xs max-w-[200px] truncate">
-                                                        {doctor.address || '-'}
+                                                        {isDoctor ? (item.address || '-') : (item.details || '-')}
                                                     </td>
                                                     {!isDelegue && !isReadOnly && (
                                                         <td className="px-4 py-4 last:rounded-r-2xl border-y border-r border-gray-100 text-right">
                                                             <button
-                                                                onClick={() => removeFromWeek(activeWeek, doctor._id)}
+                                                                onClick={() => removeFromWeek(activeWeek, item._id)}
                                                                 className="p-2 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
                                                                 title="Retirer du cycle"
                                                             >
