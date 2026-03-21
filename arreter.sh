@@ -5,39 +5,33 @@ PID_FILE="$SCRIPT_DIR/app.pid"
 
 echo "🛑 Arrêt de BIOTECH..."
 
+# Send SIGTERM to the main process (triggers clean MongoDB shutdown)
 if [ -f "$PID_FILE" ]; then
     PID=$(cat "$PID_FILE")
     if kill -0 "$PID" 2>/dev/null; then
-        echo "   Envoi SIGTERM au processus $PID (arrêt propre de MongoDB)..."
+        echo "   Envoi SIGTERM au processus $PID..."
         kill -TERM "$PID" 2>/dev/null
-
-        # Wait up to 15 seconds for clean shutdown
-        for i in $(seq 1 15); do
-            if ! kill -0 "$PID" 2>/dev/null; then
-                echo "   ✅ Processus arrêté proprement."
-                break
-            fi
+        for i in $(seq 1 10); do
+            kill -0 "$PID" 2>/dev/null || break
             sleep 1
         done
-
-        # Force kill only if still running after timeout
-        if kill -0 "$PID" 2>/dev/null; then
-            echo "   ⚠️  Timeout — force kill du processus..."
-            kill -9 "$PID" 2>/dev/null
-            sleep 2
-        fi
-    else
-        echo "   Processus $PID déjà arrêté."
     fi
     rm -f "$PID_FILE"
 fi
 
-# Clean up any orphan processes (but NOT with -9 to avoid data corruption)
-pkill -TERM -f "node start-local.js" 2>/dev/null || true
+# Kill ALL child processes by name (including orphans)
+pkill -TERM -f "node start-local.js"  2>/dev/null || true
+pkill -TERM -f "node server/index.js" 2>/dev/null || true
+pkill -TERM -f "mongod-x64-kali"      2>/dev/null || true
+pkill -TERM -f "vite"                  2>/dev/null || true
 sleep 3
-# Final force-kill only if still running
-pkill -9 -f "node start-local.js" 2>/dev/null || true
-pkill -9 -f "mongod-x64-kali" 2>/dev/null || true
-pkill -9 -f "vite" 2>/dev/null || true
+
+# Free ports explicitly
+fuser -k 5000/tcp 2>/dev/null || true
+fuser -k 5173/tcp 2>/dev/null || true
+
+# Hard kill any survivors
+pkill -9 -f "node server/index.js" 2>/dev/null || true
+pkill -9 -f "mongod-x64-kali"      2>/dev/null || true
 
 echo "✅ BIOTECH arrêté."

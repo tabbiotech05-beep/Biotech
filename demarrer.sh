@@ -6,22 +6,38 @@ cd "$SCRIPT_DIR"
 PID_FILE="$SCRIPT_DIR/app.pid"
 LOG_FILE="$SCRIPT_DIR/server.log"
 
-# ─── Stop old processes ──────────────────────────────────────────────────────
-echo "🛑 Arrêt des anciens processus..."
+# ─── Kill ALL related processes (including orphan children) ──────────────────
+echo "🛑 Arrêt complet des anciens processus..."
+
+# Kill by saved PID
 if [ -f "$PID_FILE" ]; then
     OLD_PID=$(cat "$PID_FILE")
-    kill "$OLD_PID" 2>/dev/null && echo "   Ancien processus ($OLD_PID) arrêté."
+    kill -TERM "$OLD_PID" 2>/dev/null || true
     rm -f "$PID_FILE"
 fi
-pkill -9 -f "mongod-x64-kali" 2>/dev/null || true
-pkill -9 -f "node start-local.js" 2>/dev/null || true
+
+# Kill all related node/vite processes by name
+pkill -TERM -f "node start-local.js"  2>/dev/null || true
+pkill -TERM -f "node server/index.js" 2>/dev/null || true
+pkill -TERM -f "mongod-x64-kali"      2>/dev/null || true
+pkill -TERM -f "vite"                  2>/dev/null || true
+sleep 3
+
+# Force-kill anything still on ports 5000 / 5173
+fuser -k 5000/tcp 2>/dev/null || true
+fuser -k 5173/tcp 2>/dev/null || true
+
+# Hard kill any survivors
+pkill -9 -f "node start-local.js"  2>/dev/null || true
+pkill -9 -f "node server/index.js" 2>/dev/null || true
+pkill -9 -f "mongod-x64-kali"      2>/dev/null || true
 sleep 2
 
-# ─── Clean MongoDB locks ─────────────────────────────────────────────────────
+# ─── Clean MongoDB lock ───────────────────────────────────────────────────────
 echo "🔓 Suppression du verrou mongod (si présent)..."
 rm -f data/db/mongod.lock 2>/dev/null || true
 
-# ─── Install dependencies if needed ─────────────────────────────────────────
+# ─── Install dependencies if needed ──────────────────────────────────────────
 if [ ! -d "node_modules" ] || [ ! -d "node_modules/@whiskeysockets" ]; then
     echo "📦 Installation des dépendances (npm install)..."
     npm install
@@ -37,7 +53,6 @@ echo $APP_PID > "$PID_FILE"
 echo ""
 echo "✅ BIOTECH lancé en arrière-plan !"
 echo "   PID          : $APP_PID"
-echo "   Logs         : tail -f server.log"
 echo "   Arrêter      : ./arreter.sh"
 echo "   Voir logs    : ./logs.sh"
 echo ""
