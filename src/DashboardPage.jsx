@@ -312,23 +312,24 @@ export default function DashboardPage() {
     }
 
     // ── Delegue Layout ───────────────────────────────────────────────────────
+    const delegateTabs = [
+        { id: 'calendar', label: 'Calendrier', icon: <IconCalendar /> },
+        { id: 'cycle', label: 'Cycle', icon: <IconCycle /> },
+        { id: 'samples', label: 'Échantillons', icon: <IconSamples /> },
+        { id: 'stockpct', label: 'Stock PCT', icon: <IconPCT /> },
+        { id: 'congress', label: 'Congrès', icon: <IconCongress /> },
+        { id: 'leave', label: 'Mes Congés', icon: <IconLeave /> },
+    ];
+
     let displayedTabs = [...delegateTabs];
 
-    // Logic: 
-    // - For dashboard1 (Biotech): Hide Stock PCT for ALL delegates.
-    // - For dashboard2 (Tenshi): Only amal and rania see Stock PCT.
-    if (role === 'delegue') {
+    // Logic: for dashboard1 (Biotech), only amal and rania can see Stock PCT.
+    // Others in dashboard1 have it hidden.
+    if (role === 'delegue' && dashboardId === 'dashboard1') {
+        const allowedUsers = ['amal', 'rania'];
         const currentUsername = (localStorage.getItem('username') || '').toLowerCase();
-
-        if (dashboardId === 'dashboard1') {
-            // Biotech: restricted for everyone
+        if (!allowedUsers.includes(currentUsername)) {
             displayedTabs = displayedTabs.filter(tab => tab.id !== 'stockpct');
-        } else if (dashboardId === 'dashboard2') {
-            // Tenshi: only amal and rania see it
-            const allowedTenshiUsers = ['amal', 'rania'];
-            if (!allowedTenshiUsers.includes(currentUsername)) {
-                displayedTabs = displayedTabs.filter(tab => tab.id !== 'stockpct');
-            }
         }
     }
 
