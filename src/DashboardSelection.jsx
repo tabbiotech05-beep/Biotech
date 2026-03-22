@@ -50,102 +50,118 @@ export default function DashboardSelection() {
         }
     };
 
+    const [searchQuery, setSearchQuery] = React.useState('');
+
+    // Flatten all users into a single list
+    const allUsers = React.useMemo(() => {
+        const list = [];
+        Object.entries(dashboardUsers).forEach(([dashId, users]) => {
+            users.forEach(username => {
+                list.push({ username, dashboardId: dashId });
+            });
+        });
+        return list.sort((a, b) => a.username.localeCompare(b.username));
+    }, [dashboardUsers]);
+
+    const filteredUsers = allUsers.filter(u =>
+        u.username.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    const configMap = {
+        dashboard1: { name: 'Biotech', accent: '#10b981', light: 'rgba(16, 185, 129, 0.1)' },
+        dashboard2: { name: 'Tenshi', accent: '#6366f1', light: 'rgba(99, 102, 241, 0.1)' }
+    };
+
     return (
-        <div className="min-h-screen iso-grid-bg flex flex-col items-center justify-center p-8 relative overflow-hidden">
-            {/* Background orbs */}
-            <div className="absolute top-1/3 left-1/5 w-96 h-96 rounded-full opacity-5 animate-spin-slow"
-                style={{ background: 'radial-gradient(circle, #6366f1, transparent)', filter: 'blur(80px)' }} />
-            <div className="absolute bottom-1/3 right-1/5 w-80 h-80 rounded-full opacity-5 animate-spin-slow"
-                style={{ background: 'radial-gradient(circle, #06b6d4, transparent)', filter: 'blur(70px)', animationDirection: 'reverse' }} />
+        <div className="min-h-screen iso-grid-bg flex flex-col items-center p-8 relative overflow-hidden">
+            {/* Background design */}
+            <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-50/30 blur-[120px] rounded-full -z-10" />
+            <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-green-50/20 blur-[100px] rounded-full -z-10" />
 
             {/* Header */}
-            <div className="text-center mb-12 animate-fade-up">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4 text-xs font-bold uppercase tracking-widest"
-                    style={{ background: 'rgba(99, 102, 241, 0.08)', border: '1px solid rgba(99, 102, 241, 0.15)', color: '#6366f1' }}>
-                    <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-                    Sélection du Tableau de Bord
+            <div className="w-full max-w-2xl text-center mb-10 animate-fade-up">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 text-[10px] font-black uppercase tracking-widest bg-white shadow-sm border border-slate-100 text-blue-600">
+                    <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+                    Panneau d'Administration
                 </div>
-                <h1 className="text-4xl font-black text-slate-900 mb-2">Choisissez votre espace</h1>
-                <p className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>Sélectionnez le tableau de bord auquel vous souhaitez accéder</p>
+                <h1 className="text-4xl font-black text-slate-900 mb-2 tracking-tight">Sélection du Calendrier</h1>
+                <p className="text-slate-500 font-medium">Accédez au planning de n'importe quel délégué en un clic.</p>
             </div>
 
-            {/* Dashboard Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
-                {allowedDashboards.map((dashboard, idx) => {
-                    const config = dashboardConfig[dashboard] || dashboardConfig.dashboard1;
-                    return (
-                        <div
-                            key={dashboard}
-                            className="animate-fade-up"
-                            style={{ animationDelay: `${idx * 0.1}s` }}
-                        >
-                            {/* Main Card */}
-                            <div
-                                className="iso-card p-8 cursor-pointer group mb-4 shadow-sm hover:shadow-md"
-                                onClick={() => navigate(`/dashboard/${dashboard}`)}
+            {/* Search & Stats */}
+            <div className="w-full max-w-2xl mb-8 space-y-4 animate-fade-up" style={{ animationDelay: '0.1s' }}>
+                <div className="relative group">
+                    <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-blue-500 transition-colors">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                    </div>
+                    <input
+                        type="text"
+                        placeholder="Rechercher un délégué..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full pl-14 pr-6 py-5 bg-white border border-slate-100 rounded-3xl shadow-xl shadow-slate-200/50 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-400 transition-all font-bold text-slate-700 placeholder:text-slate-300"
+                    />
+                </div>
+
+                <div className="flex justify-between items-center px-2">
+                    <span className="text-xs font-black text-slate-400 uppercase tracking-widest">
+                        {filteredUsers.length} Délégués trouvés
+                    </span>
+                    <div className="flex gap-4">
+                        {allowedDashboards.map(dash => (
+                            <button
+                                key={dash}
+                                onClick={() => navigate(`/dashboard/${dash}`)}
+                                className="text-xs font-black uppercase tracking-widest flex items-center gap-2 hover:opacity-70 transition-opacity"
+                                style={{ color: configMap[dash]?.accent }}
                             >
-                                {/* Logo area */}
-                                <div className="flex justify-center mb-6">
-                                    <div className="relative">
-                                        <div className="w-24 h-24 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105"
-                                            style={{ background: '#ffffff', border: `1px solid var(--border-subtle)`, boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
-                                            <img src={config.logo} alt={config.name} className="h-16 w-16 object-contain rounded-xl" />
-                                        </div>
-                                        <div className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center shadow-sm"
-                                            style={{ background: config.accent }}>
-                                            <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-                                            </svg>
-                                        </div>
+                                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: configMap[dash]?.accent }} />
+                                Espace {configMap[dash]?.name}
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Unified List */}
+            <div className="w-full max-w-2xl grid grid-cols-1 gap-3 animate-fade-up" style={{ animationDelay: '0.2s' }}>
+                {filteredUsers.length > 0 ? (
+                    filteredUsers.map((u, idx) => {
+                        const cfg = configMap[u.dashboardId] || configMap.dashboard1;
+                        return (
+                            <button
+                                key={`${u.username}-${idx}`}
+                                onClick={() => navigate(`/dashboard/${u.dashboardId}?viewUser=${u.username}`)}
+                                className="flex items-center justify-between p-5 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-slate-200/70 hover:-translate-y-1 transition-all group"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-white text-lg shadow-inner"
+                                        style={{ backgroundColor: cfg.accent }}>
+                                        {u.username.charAt(0).toUpperCase()}
+                                    </div>
+                                    <div className="text-left">
+                                        <p className="font-black text-slate-900 leading-tight">{u.username}</p>
+                                        <p className="text-[10px] uppercase font-black tracking-tighter" style={{ color: cfg.accent }}>
+                                            Équipe {cfg.name}
+                                        </p>
                                     </div>
                                 </div>
-
-                                <div className="text-center">
-                                    <h2 className="text-2xl font-black text-slate-900 mb-1">{config.name}</h2>
-                                    <p className="text-sm font-bold mb-5" style={{ color: 'var(--text-muted)' }}>{config.team}</p>
-                                    <button
-                                        className="iso-btn w-full py-2.5 text-sm font-black text-white transition-all shadow-md active:scale-95"
-                                        style={{
-                                            background: `linear-gradient(135deg, ${config.accent}, ${config.accent}ee)`,
-                                        }}
-                                    >
-                                        Accéder au tableau de bord
-                                    </button>
+                                <div className="flex items-center gap-2 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:bg-slate-50 group-hover:text-slate-900 transition-colors">
+                                    Voir Calendrier
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
                                 </div>
-                            </div>
+                            </button>
+                        );
+                    })
+                ) : (
+                    <div className="text-center py-20 bg-white/50 rounded-3xl border border-dashed border-slate-200">
+                        <p className="text-slate-400 font-bold">Aucun délégué trouvé pour "{searchQuery}"</p>
+                    </div>
+                )}
+            </div>
 
-                            {/* Users list */}
-                            {dashboardUsers[dashboard] && dashboardUsers[dashboard].length > 0 && (
-                                <div className="px-2">
-                                    <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: 'var(--text-muted)' }}>
-                                        Voir le calendrier de :
-                                    </p>
-                                    <div className="flex flex-wrap gap-2">
-                                        {dashboardUsers[dashboard].map(username => (
-                                            <button
-                                                key={username}
-                                                onClick={() => navigate(`/dashboard/${dashboard}?viewUser=${username}`)}
-                                                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all"
-                                                style={{
-                                                    background: config.accentLight,
-                                                    border: `1px solid ${config.accentBorder}`,
-                                                    color: config.accent
-                                                }}
-                                                title={`Voir le calendrier de ${username}`}
-                                            >
-                                                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                                </svg>
-                                                {username}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    );
-                })}
+            <div className="mt-12 text-center text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">
+                &copy; Biotech Pharma &bull; Dashboard Engine
             </div>
         </div>
     );

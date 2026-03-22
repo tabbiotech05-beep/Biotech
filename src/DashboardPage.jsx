@@ -312,15 +312,6 @@ export default function DashboardPage() {
     }
 
     // ── Delegue Layout ───────────────────────────────────────────────────────
-    const delegateTabs = [
-        { id: 'calendar', label: 'Calendrier', icon: <IconCalendar /> },
-        { id: 'cycle', label: 'Cycle', icon: <IconCycle /> },
-        { id: 'samples', label: 'Échantillons', icon: <IconSamples /> },
-        { id: 'stockpct', label: 'Stock PCT', icon: <IconPCT /> },
-        { id: 'congress', label: 'Congrès', icon: <IconCongress /> },
-        { id: 'leave', label: 'Mes Congés', icon: <IconLeave /> },
-    ];
-
     let displayedTabs = [...delegateTabs];
 
     // Logic: for dashboard1 (Biotech), only amal and rania can see Stock PCT.
