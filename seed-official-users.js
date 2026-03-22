@@ -100,47 +100,74 @@ const seedOfficialUsers = async () => {
             }
         }
 
-        const allUsersList = [...admins, ...biotechUsers, ...tenshiUsers, 'asma'];
+        const allUsersList = [...admins, ...biotechUsers, ...tenshiUsers, 'asma'].map(u => u.toLowerCase().trim());
+
+        // --- Cleanup Duplicates for Amal and Maha ---
+        // Ensure we only have one of each, preferably the one with data
+        for (const target of ['amal', 'maha']) {
+            const duplicates = await User.find({
+                username: { $regex: new RegExp(`^${target}$`, 'i') }
+            }).sort({ createdAt: 1 }); // Oldest first
+
+            if (duplicates.length > 1) {
+                console.log(`⚠️  Found ${duplicates.length} duplicates for "${target}". Cleaning up...`);
+                // Keep the oldest one (most likely to have long-standing data) 
+                // but ensure it gets the correct final username
+                const keep = duplicates[0];
+                keep.username = target;
+                await keep.save();
+
+                for (let i = 1; i < duplicates.length; i++) {
+                    console.log(`🗑️  Removing duplicate ${duplicates[i].username} (${duplicates[i]._id})`);
+                    await User.deleteOne({ _id: duplicates[i]._id });
+                }
+            }
+        }
 
         for (const username of allUsersList) {
             const rawPwd = passwords[username] || '123456';
-            const user = await User.findOne({ username });
+            const user = await User.findOne({ username: { $regex: new RegExp(`^${username}$`, 'i') } });
+
+            const finalRole = admins.includes(username) ? 'admin' : (username === 'asma' ? 'pharmacienne' : 'delegue');
+            const finalDashboards = admins.includes(username) ? ['dashboard1', 'dashboard2'] : (biotechUsers.includes(username) || username === 'asma' ? ['dashboard1'] : ['dashboard2']);
 
             if (!user) {
                 const newUser = new User({
                     username,
                     email: `${username}@bioxtenshi.com`,
                     password: await getHash(rawPwd),
-                    role: admins.includes(username) ? 'admin' : (username === 'asma' ? 'pharmacienne' : 'delegue'),
-                    allowedDashboards: admins.includes(username) ? ['dashboard1', 'dashboard2'] : (biotechUsers.includes(username) || username === 'asma' ? ['dashboard1'] : ['dashboard2'])
+                    role: finalRole,
+                    allowedDashboards: finalDashboards
                 });
                 await newUser.save();
                 console.log(`✅ Created User: ${username} with official password`);
             } else {
-                // BUGFIX: Always ensure role and allowedDashboards are synced with the script's arrays
-                const correctRole = admins.includes(username) ? 'admin' : (username === 'asma' ? 'pharmacienne' : 'delegue');
-                const correctDashboards = admins.includes(username) ? ['dashboard1', 'dashboard2'] : (biotechUsers.includes(username) || username === 'asma' ? ['dashboard1'] : ['dashboard2']);
-
-                let changed = false;
-                if (user.role !== correctRole) {
-                    user.role = correctRole;
-                    changed = true;
+                // FORCE UPDATE metadata (allowedDashboards, role) to match lists
+                let modified = false;
+                if (user.role !== finalRole) {
+                    user.role = finalRole;
+                    modified = true;
                 }
-                if (JSON.stringify(user.allowedDashboards) !== JSON.stringify(correctDashboards)) {
-                    user.allowedDashboards = correctDashboards;
-                    changed = true;
+
+                // Compare arrays for allowedDashboards
+                const currentDash = (user.allowedDashboards || []).slice().sort();
+                const targetDash = finalDashboards.slice().sort();
+                if (JSON.stringify(currentDash) !== JSON.stringify(targetDash)) {
+                    user.allowedDashboards = finalDashboards;
+                    modified = true;
+                }
+
+                if (modified) {
+                    await user.save();
+                    console.log(`🔄 Sync'd metadata (role/dashboards) for ${username}`);
                 }
 
                 // Check if password is "123456" and update it to official if needed
                 const isDefault = await bcrypt.compare('123456', user.password);
                 if (isDefault && rawPwd !== '123456') {
                     user.password = await getHash(rawPwd);
-                    changed = true;
-                }
-
-                if (changed) {
                     await user.save();
-                    console.log(`🔄 Synchronized data/password for ${username}`);
+                    console.log(`🔄 Updated password for ${username} to official one`);
                 }
             }
         }
