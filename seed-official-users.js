@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import User from './server/models/User.js';
 import Stock from './server/models/Stock.js';
 import Doctor from './server/models/Doctor.js';
+import Visit from './server/models/Visit.js';
 import Cycle from './server/models/Cycle.js';
 import { execSync } from 'child_process';
 import fs from 'fs';
@@ -160,6 +161,18 @@ const seedOfficialUsers = async () => {
                 if (modified) {
                     await user.save();
                     console.log(`🔄 Sync'd metadata (role/dashboards) for ${username}`);
+
+                    // --- MIGRATION: If user moved to a new dashboard, migrate their visits ---
+                    if (finalDashboards.length === 1) {
+                        const newDashId = finalDashboards[0];
+                        const updateRes = await Visit.updateMany(
+                            { user: user._id, dashboardId: { $ne: newDashId } },
+                            { $set: { dashboardId: newDashId } }
+                        );
+                        if (updateRes.modifiedCount > 0) {
+                            console.log(`📦 Migrated ${updateRes.modifiedCount} visits to ${newDashId} for ${username}`);
+                        }
+                    }
                 }
 
                 // Check if password is "123456" and update it to official if needed
