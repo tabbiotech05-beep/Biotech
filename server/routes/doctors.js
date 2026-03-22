@@ -13,7 +13,10 @@ router.get('/', auth, async (req, res) => {
         let targetUserId = req.user.userId;
         const viewUser = req.query.viewUser;
 
-        if (viewUser) {
+        if (viewUser && viewUser !== req.user.username) {
+            if (req.user.role !== 'admin' && req.user.role !== 'pharmacienne') {
+                return res.status(403).json({ msg: 'Non autorisé à voir les données d\'un autre utilisateur' });
+            }
             const user = await User.findOne({ username: viewUser });
             if (!user) return res.status(404).json({ msg: 'User not found' });
             targetUserId = user._id;

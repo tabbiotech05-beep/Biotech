@@ -20,8 +20,11 @@ router.get('/', auth, async (req, res) => {
     try {
         let targetUserId = req.user.userId; // Default to own visits
 
-        // If viewing another user (Supervisor Mode)
-        if (viewUser) {
+        // Authorization Check: Only admin and pharmacienne can view other users
+        if (viewUser && viewUser !== req.user.username) {
+            if (req.user.role !== 'admin' && req.user.role !== 'pharmacienne') {
+                return res.status(403).json({ msg: 'Non autorisé à voir les données d\'un autre utilisateur' });
+            }
             const targetUser = await User.findOne({ username: viewUser });
             if (!targetUser) {
                 return res.status(404).json({ msg: 'User not found' });
