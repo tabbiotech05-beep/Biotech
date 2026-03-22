@@ -314,13 +314,21 @@ export default function DashboardPage() {
     // ── Delegue Layout ───────────────────────────────────────────────────────
     let displayedTabs = [...delegateTabs];
 
-    // Logic: for dashboard1 (Biotech), only amal and rania can see Stock PCT.
-    // Others in dashboard1 have it hidden.
-    if (role === 'delegue' && dashboardId === 'dashboard1') {
-        const allowedUsers = ['amal', 'rania'];
+    // Logic: 
+    // - For dashboard1 (Biotech): Hide Stock PCT for ALL delegates.
+    // - For dashboard2 (Tenshi): Only amal and rania see Stock PCT.
+    if (role === 'delegue') {
         const currentUsername = (localStorage.getItem('username') || '').toLowerCase();
-        if (!allowedUsers.includes(currentUsername)) {
+
+        if (dashboardId === 'dashboard1') {
+            // Biotech: restricted for everyone
             displayedTabs = displayedTabs.filter(tab => tab.id !== 'stockpct');
+        } else if (dashboardId === 'dashboard2') {
+            // Tenshi: only amal and rania see it
+            const allowedTenshiUsers = ['amal', 'rania'];
+            if (!allowedTenshiUsers.includes(currentUsername)) {
+                displayedTabs = displayedTabs.filter(tab => tab.id !== 'stockpct');
+            }
         }
     }
 
