@@ -312,18 +312,21 @@ export default function DashboardPage() {
     }
 
     // ── Delegue Layout ───────────────────────────────────────────────────────
-    const delegateTabs = [
-        { id: 'calendar', label: 'Calendrier', icon: <IconCalendar /> },
-        { id: 'cycle', label: 'Cycle', icon: <IconCycle /> },
-        { id: 'samples', label: 'Échantillons', icon: <IconSamples /> },
-        { id: 'stockpct', label: 'Stock PCT', icon: <IconPCT /> },
-        { id: 'congress', label: 'Congrès', icon: <IconCongress /> },
-        { id: 'leave', label: 'Mes Congés', icon: <IconLeave /> },
-    ];
+    let displayedTabs = [...delegateTabs];
+
+    // Logic: for dashboard1 (Biotech), only amal and rania can see Stock PCT.
+    // Others in dashboard1 have it hidden.
+    if (role === 'delegue' && dashboardId === 'dashboard1') {
+        const allowedUsers = ['amal', 'rania'];
+        const currentUsername = (localStorage.getItem('username') || '').toLowerCase();
+        if (!allowedUsers.includes(currentUsername)) {
+            displayedTabs = displayedTabs.filter(tab => tab.id !== 'stockpct');
+        }
+    }
 
     // Admin-only: add congé management tab
     if (role === 'admin') {
-        delegateTabs.push({
+        displayedTabs.push({
             id: 'leave-admin',
             label: leavePendingCount > 0 ? `Congés (${leavePendingCount})` : 'Congés',
             icon: <IconLeave />
@@ -351,7 +354,7 @@ export default function DashboardPage() {
             <MobileTopBar dashName={dashName} logo={dashLogo} accent={accent} accentLight={accentLight} onMenuClick={() => setSidebarOpen(true)} />
 
             <Sidebar
-                tabs={delegateTabs}
+                tabs={displayedTabs}
                 activeTab={activeTab}
                 setActiveTab={setActiveTab}
                 accent={accent}
