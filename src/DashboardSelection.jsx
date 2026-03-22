@@ -135,13 +135,12 @@ export default function DashboardSelection() {
                                 className="flex items-center justify-between p-5 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-slate-200/70 hover:-translate-y-1 transition-all group"
                             >
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-white text-lg shadow-inner"
-                                        style={{ backgroundColor: cfg.accent }}>
+                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-white text-lg shadow-inner bg-blue-600">
                                         {u.username.charAt(0).toUpperCase()}
                                     </div>
                                     <div className="text-left">
                                         <p className="font-black text-slate-900 leading-tight">{u.username}</p>
-                                        <p className="text-[10px] uppercase font-black tracking-tighter" style={{ color: cfg.accent }}>
+                                        <p className="text-[10px] uppercase font-black tracking-tighter text-blue-500">
                                             Équipe {cfg.name}
                                         </p>
                                     </div>
