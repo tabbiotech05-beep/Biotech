@@ -117,12 +117,30 @@ const seedOfficialUsers = async () => {
                 await newUser.save();
                 console.log(`✅ Created User: ${username} with official password`);
             } else {
+                // BUGFIX: Always ensure role and allowedDashboards are synced with the script's arrays
+                const correctRole = admins.includes(username) ? 'admin' : (username === 'asma' ? 'pharmacienne' : 'delegue');
+                const correctDashboards = admins.includes(username) ? ['dashboard1', 'dashboard2'] : (biotechUsers.includes(username) || username === 'asma' ? ['dashboard1'] : ['dashboard2']);
+
+                let changed = false;
+                if (user.role !== correctRole) {
+                    user.role = correctRole;
+                    changed = true;
+                }
+                if (JSON.stringify(user.allowedDashboards) !== JSON.stringify(correctDashboards)) {
+                    user.allowedDashboards = correctDashboards;
+                    changed = true;
+                }
+
                 // Check if password is "123456" and update it to official if needed
                 const isDefault = await bcrypt.compare('123456', user.password);
                 if (isDefault && rawPwd !== '123456') {
                     user.password = await getHash(rawPwd);
+                    changed = true;
+                }
+
+                if (changed) {
                     await user.save();
-                    console.log(`🔄 Updated password for ${username} to official one`);
+                    console.log(`🔄 Synchronized data/password for ${username}`);
                 }
             }
         }
