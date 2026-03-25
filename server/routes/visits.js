@@ -47,7 +47,7 @@ router.post('/', auth, async (req, res) => {
     const {
         dashboardId, title, start, end, visitName, visitTime, targetType, details,
         governorate, specialty, doctorName, address, pharmacyName, wholesalerName,
-        givenSampleName, givenSampleBatch,
+        givenSampleName, givenSampleBatch, givenSampleQty,
         givenMaterialName, givenMaterialBatch,
         givenMaterials
     } = req.body;
@@ -109,7 +109,7 @@ router.post('/', auth, async (req, res) => {
             governorate, specialty, address
         });
 
-        // If a sample is given, deduct it from user's inventory
+        // If a sample is given, deduct quantity from user's inventory
         if (givenSampleName) {
             const user = await User.findById(req.user.userId);
             if (!user) return res.status(404).json({ msg: 'User not found' });
@@ -118,11 +118,13 @@ router.post('/', auth, async (req, res) => {
                 s => s.name === givenSampleName && s.batchNumber === (givenSampleBatch || null) && (s.itemType || 'sample') === 'sample'
             );
 
-            if (sampleIndex === -1 || user.samples[sampleIndex].count <= 0) {
-                return res.status(400).json({ msg: 'Échantillon non disponible ou quantité insuffisante' });
+            const qtyToDeduct = Math.max(1, parseInt(givenSampleQty) || 1);
+
+            if (sampleIndex === -1 || user.samples[sampleIndex].count < qtyToDeduct) {
+                return res.status(400).json({ msg: `Échantillon non disponible ou quantité insuffisante (demandé: ${qtyToDeduct})` });
             }
 
-            user.samples[sampleIndex].count -= 1;
+            user.samples[sampleIndex].count -= qtyToDeduct;
             user.markModified('samples');
             await user.save();
         }
