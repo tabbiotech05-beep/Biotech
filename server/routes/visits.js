@@ -184,6 +184,7 @@ router.post('/', auth, async (req, res) => {
             wholesalerName,
             givenSampleName,
             givenSampleBatch,
+            givenSampleQty: parseInt(givenSampleQty) || 1,
             givenMaterialName,
             givenMaterialBatch,
             givenMaterials: givenMaterials || [],
@@ -229,6 +230,12 @@ router.put('/:id', auth, async (req, res) => {
     if (address !== undefined) visitFields.address = address;
     if (pharmacyName !== undefined) visitFields.pharmacyName = pharmacyName;
     if (wholesalerName !== undefined) visitFields.wholesalerName = wholesalerName;
+    if (givenSampleName !== undefined) visitFields.givenSampleName = givenSampleName;
+    if (givenSampleBatch !== undefined) visitFields.givenSampleBatch = givenSampleBatch;
+    if (givenSampleQty !== undefined) visitFields.givenSampleQty = givenSampleQty;
+    if (givenMaterialName !== undefined) visitFields.givenMaterialName = givenMaterialName;
+    if (givenMaterialBatch !== undefined) visitFields.givenMaterialBatch = givenMaterialBatch;
+    if (givenMaterials !== undefined) visitFields.givenMaterials = givenMaterials;
 
     try {
         let visit = await Visit.findById(req.params.id);
@@ -315,7 +322,7 @@ router.delete('/:id', auth, async (req, res) => {
                     s => s.name === visit.givenSampleName && s.batchNumber === (visit.givenSampleBatch || null) && (s.itemType || 'sample') === 'sample'
                 );
                 if (sampleIndex !== -1) {
-                    user.samples[sampleIndex].count += 1;
+                    user.samples[sampleIndex].count += (visit.givenSampleQty || 1);
                     user.markModified('samples');
                     await user.save();
                 }
