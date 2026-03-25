@@ -365,7 +365,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
     const isReadOnly = !!viewUser;
 
     return (
-        <div className="flex flex-col gap-6">
+        <div className="relative flex flex-col gap-6">
             {/* Calendar wrapper — fluid height */}
             <div style={{
                 background: 'var(--bg-card)',
@@ -405,7 +405,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
 
                 {
                     showModal && (
-                        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/40 backdrop-blur-sm py-4 px-2 overflow-hidden">
+                        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm rounded-lg py-4 px-2 overflow-hidden">
                             <div className="bg-white rounded-lg shadow-2xl w-full max-w-[550px] max-h-full overflow-hidden flex flex-col border border-gray-100">
                                 <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
                                     <h3 className="text-lg font-bold text-gray-800">Créer une nouvelle visite</h3>
@@ -820,7 +820,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
                 }
 
                 {selectedEvent && (
-                    <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/40 backdrop-blur-sm py-4 px-2 overflow-hidden">
+                    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm rounded-lg py-4 px-2 overflow-hidden">
                         <div className="bg-white rounded-lg shadow-2xl w-full max-w-[550px] max-h-full overflow-hidden flex flex-col border border-gray-100">
                             <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
                                 <h3 className="text-lg font-bold text-gray-800">
