@@ -192,11 +192,11 @@ export default function SampleHistoryView() {
 
                 // Check sample
                 if (h.givenSampleBatch === batchData.batchNumber) {
-                    offeredRows.push([date, delegate, target, h.givenSampleName, 1]);
+                    offeredRows.push([date, delegate, target, h.givenSampleName, h.givenSampleQty || 1]);
                 }
                 // Check legacy material
                 if (h.givenMaterialBatch === batchData.batchNumber) {
-                    offeredRows.push([date, delegate, target, h.givenMaterialName, 1]);
+                    offeredRows.push([date, delegate, target, h.givenMaterialName, h.givenMaterialQty || 1]);
                 }
                 // Check materials array
                 (h.givenMaterials || []).forEach(m => {
@@ -418,10 +418,10 @@ export default function SampleHistoryView() {
 
                                                     const rows = [];
                                                     if (h.givenSampleBatch === batchData.batchNumber) {
-                                                        rows.push({ id: `${h._id}-s`, date, delegate, target, item: h.givenSampleName, qty: 1 });
+                                                        rows.push({ id: `${h._id}-s`, date, delegate, target, item: h.givenSampleName, qty: h.givenSampleQty || 1 });
                                                     }
                                                     if (h.givenMaterialBatch === batchData.batchNumber) {
-                                                        rows.push({ id: `${h._id}-m`, date, delegate, target, item: h.givenMaterialName, qty: 1 });
+                                                        rows.push({ id: `${h._id}-m`, date, delegate, target, item: h.givenMaterialName, qty: h.givenMaterialQty || 1 });
                                                     }
                                                     (h.givenMaterials || []).forEach((m, idx) => {
                                                         if (m.batch === batchData.batchNumber) {

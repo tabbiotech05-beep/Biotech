@@ -262,7 +262,7 @@ export default function SamplesView({ dashboardId, viewUser }) {
                                             <div className="flex flex-col gap-1">
                                                 {visit.givenSampleName && (
                                                     <span className="font-semibold text-green-700 bg-green-50 px-2 py-1 rounded inline-block w-fit">
-                                                        📦 {visit.givenSampleName}
+                                                        📦 {visit.givenSampleName}{visit.givenSampleQty > 1 ? ` (×${visit.givenSampleQty})` : ''}
                                                     </span>
                                                 )}
                                                 {visit.givenMaterialName && (!visit.givenMaterials || visit.givenMaterials.length === 0) && (
