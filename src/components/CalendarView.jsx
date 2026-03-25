@@ -800,7 +800,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                 </div>
                             </div>
 
-                            <div className="p-4 border-t border-gray-100 flex justify-end gap-3 bg-gray-50/50">
+                            <div className="px-6 py-4 border-t border-gray-100 flex justify-end gap-3">
                                 <button
                                     onClick={() => setShowModal(false)}
                                     className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-md transition-colors"
@@ -1137,7 +1137,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                 </div>
 
                             </div>
-                            <div className="p-4 border-t border-gray-100 bg-gray-50/50">
+                            <div className="px-6 py-4 border-t border-gray-100">
                                 <div className="flex justify-between items-center">
                                     <div>
                                         {!isReadOnly && (
