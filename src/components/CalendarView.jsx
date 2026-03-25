@@ -1011,22 +1011,62 @@ export default function CalendarView({ dashboardId, viewUser }) {
                             </div>
                         )}
 
-                        {selectedEvent.givenSampleName && (
-                            <div className="mb-2 p-3 bg-green-50 text-green-800 rounded-md border border-green-100 flex items-center justify-between">
-                                <div className="flex items-center gap-2">
-                                    <span>📦 Échantillon : <strong>{selectedEvent.givenSampleName}</strong>
-                                        {(selectedEvent.givenSampleQty > 1) && (
-                                            <span className="ml-2 bg-green-200 text-green-900 text-xs font-bold px-2 py-0.5 rounded-full">×{selectedEvent.givenSampleQty}</span>
+                        <div className="mb-4">
+                            <label className="block text-sm font-medium text-gray-700 mb-1">📦 Échantillon (optionnel)</label>
+                            {isReadOnly ? (
+                                selectedEvent.givenSampleName && (
+                                    <div className="mb-2 p-3 bg-green-50 text-green-800 rounded-md border border-green-100 flex items-center justify-between">
+                                        <div className="flex items-center gap-2">
+                                            <span>📦 Échantillon : <strong>{selectedEvent.givenSampleName}</strong>
+                                                {(selectedEvent.givenSampleQty > 1) && (
+                                                    <span className="ml-2 bg-green-200 text-green-900 text-xs font-bold px-2 py-0.5 rounded-full">×{selectedEvent.givenSampleQty}</span>
+                                                )}
+                                            </span>
+                                        </div>
+                                        {selectedEvent.givenSampleBatch && (
+                                            <span className="text-xs font-mono bg-white px-2 py-1 rounded border border-green-200">
+                                                Lot: {selectedEvent.givenSampleBatch}
+                                            </span>
                                         )}
-                                    </span>
+                                    </div>
+                                )
+                            ) : (
+                                <div className="flex gap-2 items-center">
+                                    <select
+                                        className="flex-1 border border-gray-300 rounded-lg px-3 py-2 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                        value={selectedEvent.givenSampleName && selectedEvent.givenSampleBatch !== undefined ? `${selectedEvent.givenSampleName}|${selectedEvent.givenSampleBatch}` : ""}
+                                        onChange={(e) => {
+                                            const val = e.target.value;
+                                            if (!val) {
+                                                setSelectedEvent({ ...selectedEvent, givenSampleName: '', givenSampleBatch: '', givenSampleQty: 0 });
+                                            } else {
+                                                const [name, batch] = val.split('|');
+                                                setSelectedEvent({ ...selectedEvent, givenSampleName: name, givenSampleBatch: batch, givenSampleQty: selectedEvent.givenSampleQty || 1 });
+                                            }
+                                        }}
+                                    >
+                                        <option value="">-- Aucun médicament --</option>
+                                        {userSamples.filter(s => (s.count > 0 || (s.name === selectedEvent.givenSampleName && s.batchNumber === selectedEvent.givenSampleBatch)) && (s.itemType || 'sample') === 'sample').map((s, idx) => (
+                                            <option key={idx} value={`${s.name}|${s.batchNumber || ''}`}>
+                                                📦 {s.name} {s.batchNumber ? `(Lot: ${s.batchNumber})` : ''} - [Disp: {s.count}]
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        className="w-20 border border-gray-300 rounded-lg px-3 py-2 text-sm text-center focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                        value={selectedEvent.givenSampleQty || 1}
+                                        onChange={(e) => {
+                                            const qty = Math.max(1, parseInt(e.target.value) || 1);
+                                            setSelectedEvent({ ...selectedEvent, givenSampleQty: qty });
+                                        }}
+                                        placeholder="Qté"
+                                        disabled={!selectedEvent.givenSampleName}
+                                    />
                                 </div>
-                                {selectedEvent.givenSampleBatch && (
-                                    <span className="text-xs font-mono bg-white px-2 py-1 rounded border border-green-200">
-                                        Lot: {selectedEvent.givenSampleBatch}
-                                    </span>
-                                )}
-                            </div>
-                        )}
+                            )}
+                        </div>
 
                         {selectedEvent.givenMaterials && selectedEvent.givenMaterials.length > 0 && (
                             <div className="mb-4 space-y-2">

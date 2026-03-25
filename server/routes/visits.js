@@ -205,41 +205,19 @@ router.post('/', auth, async (req, res) => {
 router.put('/:id', auth, async (req, res) => {
     const {
         title, start, end, visitName, visitTime, targetType, details,
-        governorate, specialty, doctorName, address, pharmacyName, wholesalerName
+        governorate, specialty, doctorName, address, pharmacyName, wholesalerName,
+        givenSampleName, givenSampleBatch, givenSampleQty,
+        givenMaterialName, givenMaterialBatch,
+        givenMaterials
     } = req.body;
 
-    // Validation for update (if fields are being updated)
-    // In our UI, we send the whole object, so all fields should be checked.
     // Validation for update
     if (details === '') {
         return res.status(400).json({ msg: 'Les détails ne peuvent pas être vides' });
     }
 
-    // Build visit object
-    const visitFields = {};
-    if (title !== undefined) visitFields.title = title;
-    if (start !== undefined) visitFields.start = start;
-    if (end !== undefined) visitFields.end = end;
-    if (visitName !== undefined) visitFields.visitName = visitName;
-    if (visitTime !== undefined) visitFields.visitTime = visitTime;
-    if (targetType !== undefined) visitFields.targetType = targetType;
-    if (details !== undefined) visitFields.details = details;
-    if (governorate !== undefined) visitFields.governorate = governorate;
-    if (specialty !== undefined) visitFields.specialty = specialty;
-    if (doctorName !== undefined) visitFields.doctorName = doctorName;
-    if (address !== undefined) visitFields.address = address;
-    if (pharmacyName !== undefined) visitFields.pharmacyName = pharmacyName;
-    if (wholesalerName !== undefined) visitFields.wholesalerName = wholesalerName;
-    if (givenSampleName !== undefined) visitFields.givenSampleName = givenSampleName;
-    if (givenSampleBatch !== undefined) visitFields.givenSampleBatch = givenSampleBatch;
-    if (givenSampleQty !== undefined) visitFields.givenSampleQty = givenSampleQty;
-    if (givenMaterialName !== undefined) visitFields.givenMaterialName = givenMaterialName;
-    if (givenMaterialBatch !== undefined) visitFields.givenMaterialBatch = givenMaterialBatch;
-    if (givenMaterials !== undefined) visitFields.givenMaterials = givenMaterials;
-
     try {
         let visit = await Visit.findById(req.params.id);
-
         if (!visit) return res.status(404).json({ msg: 'Visit not found' });
 
         // Make sure user owns visit
@@ -247,38 +225,88 @@ router.put('/:id', auth, async (req, res) => {
             return res.status(401).json({ msg: 'Not authorized' });
         }
 
-        // Auto-save entity if it changed/new
-        const saveEntityIfNew = async (type, name, fields) => {
-            if (!name || !name.trim()) return;
-            const trimmedName = name.trim();
-            let model;
-            if (type === 'medecin') model = Doctor;
-            else if (type === 'pharmacie') model = Pharmacy;
-            else if (type === 'grossiste') model = Wholesaler;
-            else return;
+        const user = await User.findById(req.user.userId);
+        if (!user) return res.status(404).json({ msg: 'User not found' });
 
-            let entity = await model.findOne({
-                user: req.user.userId,
-                name: { $regex: new RegExp(`^${trimmedName}$`, 'i') }
-            });
+        // --- INVENTORY RECONCILIATION FOR SAMPLES ---
+        const oldSName = visit.givenSampleName;
+        const oldSBatch = visit.givenSampleBatch;
+        const oldSQty = visit.givenSampleQty || 0;
 
-            if (!entity) {
-                entity = new model({
-                    user: req.user.userId,
-                    name: trimmedName,
-                    governorate: fields.governorate || 'N/A',
-                    address: fields.address || '',
-                    specialty: fields.specialty || (type === 'medecin' ? 'Généraliste' : undefined)
-                });
-                await entity.save();
+        const newSName = givenSampleName;
+        const newSBatch = givenSampleBatch;
+        const newSQty = parseInt(givenSampleQty) || 0;
+
+        if (oldSName !== newSName || oldSBatch !== newSBatch || oldSQty !== newSQty) {
+            // 1. Return old sample to stock if it existed
+            if (oldSName) {
+                const oldIdx = user.samples.findIndex(
+                    s => s.name === oldSName && s.batchNumber === (oldSBatch || null) && (s.itemType || 'sample') === 'sample'
+                );
+                if (oldIdx !== -1) {
+                    user.samples[oldIdx].count += oldSQty;
+                }
             }
-        };
 
-        if (targetType) {
-            await saveEntityIfNew(targetType, targetType === 'medecin' ? doctorName : targetType === 'pharmacie' ? pharmacyName : wholesalerName, {
-                governorate, specialty, address
-            });
+            // 2. Deduct new sample from stock if it exists
+            if (newSName) {
+                const newIdx = user.samples.findIndex(
+                    s => s.name === newSName && s.batchNumber === (newSBatch || null) && (s.itemType || 'sample') === 'sample'
+                );
+                if (newIdx === -1 || user.samples[newIdx].count < newSQty) {
+                    return res.status(400).json({ msg: `Échantillon "${newSName}" non disponible ou quantité insuffisante` });
+                }
+                user.samples[newIdx].count -= newSQty;
+            }
+            user.markModified('samples');
         }
+
+        // --- INVENTORY RECONCILIATION FOR MATERIALS ---
+        // For simplicity, we handle single material legacy fields. 
+        // Array givenMaterials is more complex, but we follow the same pattern if it changed.
+        const oldMName = visit.givenMaterialName;
+        const oldMBatch = visit.givenMaterialBatch;
+        const newMName = givenMaterialName;
+        const newMBatch = givenMaterialBatch;
+
+        if (oldMName !== newMName || oldMBatch !== newMBatch) {
+            if (oldMName) {
+                const oldMIdx = user.samples.findIndex(s => s.name === oldMName && s.batchNumber === (oldMBatch || null) && s.itemType === 'material');
+                if (oldMIdx !== -1) user.samples[oldMIdx].count += 1;
+            }
+            if (newMName) {
+                const newMIdx = user.samples.findIndex(s => s.name === newMName && s.batchNumber === (newMBatch || null) && s.itemType === 'material');
+                if (newMIdx === -1 || user.samples[newMIdx].count <= 0) {
+                    return res.status(400).json({ msg: `Matériel "${newMName}" non disponible` });
+                }
+                user.samples[newMIdx].count -= 1;
+            }
+            user.markModified('samples');
+        }
+
+        await user.save();
+
+        // Build visit object
+        const visitFields = {};
+        if (title !== undefined) visitFields.title = title;
+        if (start !== undefined) visitFields.start = start;
+        if (end !== undefined) visitFields.end = end;
+        if (visitName !== undefined) visitFields.visitName = visitName;
+        if (visitTime !== undefined) visitFields.visitTime = visitTime;
+        if (targetType !== undefined) visitFields.targetType = targetType;
+        if (details !== undefined) visitFields.details = details;
+        if (governorate !== undefined) visitFields.governorate = governorate;
+        if (specialty !== undefined) visitFields.specialty = specialty;
+        if (doctorName !== undefined) visitFields.doctorName = doctorName;
+        if (address !== undefined) visitFields.address = address;
+        if (pharmacyName !== undefined) visitFields.pharmacyName = pharmacyName;
+        if (wholesalerName !== undefined) visitFields.wholesalerName = wholesalerName;
+        if (givenSampleName !== undefined) visitFields.givenSampleName = givenSampleName;
+        if (givenSampleBatch !== undefined) visitFields.givenSampleBatch = givenSampleBatch;
+        if (givenSampleQty !== undefined) visitFields.givenSampleQty = parseInt(givenSampleQty) || 0;
+        if (givenMaterialName !== undefined) visitFields.givenMaterialName = givenMaterialName;
+        if (givenMaterialBatch !== undefined) visitFields.givenMaterialBatch = givenMaterialBatch;
+        if (givenMaterials !== undefined) visitFields.givenMaterials = givenMaterials;
 
         visit = await Visit.findByIdAndUpdate(
             req.params.id,
