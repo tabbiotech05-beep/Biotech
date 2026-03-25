@@ -405,7 +405,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
 
                 {
                     showModal && (
-                        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm rounded-lg py-4 px-2 overflow-hidden">
+                        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/40 backdrop-blur-sm py-4 px-2 overflow-hidden">
                             <div className="bg-white rounded-lg shadow-2xl w-full max-w-[550px] max-h-full overflow-hidden flex flex-col border border-gray-100">
                                 <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
                                     <h3 className="text-lg font-bold text-gray-800">Créer une nouvelle visite</h3>
@@ -800,7 +800,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                 </div>
                             </div>
 
-                            <div className="px-6 py-4 border-t border-gray-100 flex justify-end gap-3">
+                            <div className="px-6 py-4 flex justify-end gap-3">
                                 <button
                                     onClick={() => setShowModal(false)}
                                     className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-md transition-colors"
@@ -820,7 +820,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
                 }
 
                 {selectedEvent && (
-                    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm rounded-lg py-4 px-2 overflow-hidden">
+                    <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/40 backdrop-blur-sm py-4 px-2 overflow-hidden">
                         <div className="bg-white rounded-lg shadow-2xl w-full max-w-[550px] max-h-full overflow-hidden flex flex-col border border-gray-100">
                             <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
                                 <h3 className="text-lg font-bold text-gray-800">
@@ -1137,7 +1137,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                 </div>
 
                             </div>
-                            <div className="px-6 py-4 border-t border-gray-100">
+                            <div className="px-6 py-4">
                                 <div className="flex justify-between items-center">
                                     <div>
                                         {!isReadOnly && (
