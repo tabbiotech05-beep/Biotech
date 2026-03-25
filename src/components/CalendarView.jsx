@@ -683,9 +683,30 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                     <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">🎁 Produits Distribués</label>
                                     <div className="space-y-2">
                                         {selectedEvent.givenSampleName && (
-                                            <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-100">
-                                                <span className="text-sm font-bold text-green-800">📦 {selectedEvent.givenSampleName}</span>
-                                                <span className="bg-green-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{selectedEvent.givenSampleQty || 1}</span>
+                                            <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-100 mb-2">
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-sm font-bold text-green-800">📦 {selectedEvent.givenSampleName}</span>
+                                                    {!isReadOnly && (
+                                                        <span className="text-[10px] text-green-500 font-bold uppercase tracking-tighter">(Modifier qtée)</span>
+                                                    )}
+                                                </div>
+                                                {isReadOnly ? (
+                                                    <span className="bg-green-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{selectedEvent.givenSampleQty || 1}</span>
+                                                ) : (
+                                                    <div className="flex items-center gap-1">
+                                                        <span className="text-xs font-bold text-green-600">x</span>
+                                                        <input
+                                                            type="number"
+                                                            min="1"
+                                                            className="w-16 border border-green-200 rounded-md px-2 py-1 text-center text-sm font-black text-green-700 bg-white"
+                                                            value={selectedEvent.givenSampleQty || 1}
+                                                            onChange={(e) => {
+                                                                const qty = Math.max(1, parseInt(e.target.value) || 1);
+                                                                setSelectedEvent({ ...selectedEvent, givenSampleQty: qty });
+                                                            }}
+                                                        />
+                                                    </div>
+                                                )}
                                             </div>
                                         )}
                                         {selectedEvent.givenMaterials?.map((m, i) => (
