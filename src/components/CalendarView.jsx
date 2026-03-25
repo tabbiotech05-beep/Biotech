@@ -805,11 +805,11 @@ export default function CalendarView({ dashboardId, viewUser }) {
                             </button>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4 mb-4">
+                        <div className="grid grid-cols-2 gap-x-6 gap-y-3 mb-4">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Nom de la visite</label>
                                 <select
-                                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     disabled={isReadOnly}
                                     value={selectedEvent.visitName || 'privée'}
                                     onChange={(e) => setSelectedEvent({ ...selectedEvent, visitName: e.target.value })}
@@ -822,110 +822,105 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                     <option value="cnam">CNAM</option>
                                 </select>
                             </div>
-                            {/* We don't easily allow time editing here without complex date parsing logic reuse,
-                             keeping it read-only or simple for now unless requested.
-                             Actually, let's allow editing fields relevant to content.
-                          */}
-                        </div>
-
-                        <div className="mb-6">
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Type de cible</label>
-                            <div className="flex gap-4">
-                                <label className="flex items-center space-x-2 cursor-pointer">
-                                    <input
-                                        type="radio"
-                                        disabled={isReadOnly}
-                                        name="editTargetType"
-                                        value="medecin"
-                                        checked={selectedEvent.targetType === 'medecin'}
-                                        onChange={(e) => setSelectedEvent({ ...selectedEvent, targetType: e.target.value })}
-                                        className="form-radio text-blue-600 disabled:opacity-50"
-                                    />
-                                    <span>Médecin</span>
-                                </label>
-                                <label className="flex items-center space-x-2 cursor-pointer">
-                                    <input
-                                        type="radio"
-                                        disabled={isReadOnly}
-                                        name="editTargetType"
-                                        value="pharmacie"
-                                        checked={selectedEvent.targetType === 'pharmacie'}
-                                        onChange={(e) => setSelectedEvent({ ...selectedEvent, targetType: e.target.value })}
-                                        className="form-radio text-blue-600 disabled:opacity-50"
-                                    />
-                                    <span>Pharmacie</span>
-                                </label>
-                                <label className="flex items-center space-x-2 cursor-pointer">
-                                    <input
-                                        type="radio"
-                                        disabled={isReadOnly}
-                                        name="editTargetType"
-                                        value="grossiste"
-                                        checked={selectedEvent.targetType === 'grossiste'}
-                                        onChange={(e) => setSelectedEvent({ ...selectedEvent, targetType: e.target.value })}
-                                        className="form-radio text-blue-600 disabled:opacity-50"
-                                    />
-                                    <span>Grossiste</span>
-                                </label>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Type de cible</label>
+                                <div className="flex gap-4 pt-2">
+                                    <label className="flex items-center space-x-2 cursor-pointer text-sm">
+                                        <input
+                                            type="radio"
+                                            disabled={isReadOnly}
+                                            name="editTargetType"
+                                            value="medecin"
+                                            checked={selectedEvent.targetType === 'medecin'}
+                                            onChange={(e) => setSelectedEvent({ ...selectedEvent, targetType: e.target.value })}
+                                            className="form-radio text-blue-600 disabled:opacity-50"
+                                        />
+                                        <span>Dr</span>
+                                    </label>
+                                    <label className="flex items-center space-x-2 cursor-pointer text-sm">
+                                        <input
+                                            type="radio"
+                                            disabled={isReadOnly}
+                                            name="editTargetType"
+                                            value="pharmacie"
+                                            checked={selectedEvent.targetType === 'pharmacie'}
+                                            onChange={(e) => setSelectedEvent({ ...selectedEvent, targetType: e.target.value })}
+                                            className="form-radio text-blue-600 disabled:opacity-50"
+                                        />
+                                        <span>Ph</span>
+                                    </label>
+                                    <label className="flex items-center space-x-2 cursor-pointer text-sm">
+                                        <input
+                                            type="radio"
+                                            disabled={isReadOnly}
+                                            name="editTargetType"
+                                            value="grossiste"
+                                            checked={selectedEvent.targetType === 'grossiste'}
+                                            onChange={(e) => setSelectedEvent({ ...selectedEvent, targetType: e.target.value })}
+                                            className="form-radio text-blue-600 disabled:opacity-50"
+                                        />
+                                        <span>Gr</span>
+                                    </label>
+                                </div>
                             </div>
                         </div>
 
                         {/* Conditional Fields for Médecin */}
                         {selectedEvent.targetType === 'medecin' && (
-                            <div className="space-y-4 mb-6 p-4 bg-gray-50 rounded-md border border-gray-200">
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Gouvernerat</label>
+                            <div className="space-y-3 mb-4 p-3 bg-gray-50 rounded-md border border-gray-200">
+                                <div className="grid grid-cols-3 gap-3">
+                                    <div className="col-span-1">
+                                        <label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Gouvernerat</label>
                                         <input
                                             type="text"
                                             disabled={isReadOnly}
-                                            className="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100 disabled:text-gray-500"
+                                            className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm disabled:bg-gray-100"
                                             value={selectedEvent.governorate || ''}
                                             onChange={(e) => setSelectedEvent({ ...selectedEvent, governorate: e.target.value })}
                                         />
                                     </div>
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">Spécialité</label>
+                                    <div className="col-span-1">
+                                        <label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Spécialité</label>
                                         <input
                                             type="text"
                                             disabled={isReadOnly}
-                                            className="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100 disabled:text-gray-500"
+                                            className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm disabled:bg-gray-100"
                                             value={selectedEvent.specialty || ''}
                                             onChange={(e) => setSelectedEvent({ ...selectedEvent, specialty: e.target.value })}
                                         />
                                     </div>
+                                    <div className="col-span-1">
+                                        <label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Nom du Médecin</label>
+                                        <input
+                                            type="text"
+                                            disabled={isReadOnly}
+                                            list="doctor-options"
+                                            className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm disabled:bg-gray-100"
+                                            value={selectedEvent.doctorName || ''}
+                                            onChange={(e) => {
+                                                const name = e.target.value;
+                                                const found = doctors.find(d => d.name === name);
+                                                if (found) {
+                                                    setSelectedEvent({
+                                                        ...selectedEvent,
+                                                        doctorName: name,
+                                                        governorate: found.governorate || selectedEvent.governorate,
+                                                        specialty: found.specialty || selectedEvent.specialty,
+                                                        address: found.address || selectedEvent.address
+                                                    });
+                                                } else {
+                                                    setSelectedEvent({ ...selectedEvent, doctorName: name });
+                                                }
+                                            }}
+                                        />
+                                    </div>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Nom du Médecin</label>
+                                    <label className="block text-[11px] font-bold text-gray-500 uppercase mb-1">Adresse</label>
                                     <input
                                         type="text"
                                         disabled={isReadOnly}
-                                        list="doctor-options"
-                                        className="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100 disabled:text-gray-500"
-                                        value={selectedEvent.doctorName || ''}
-                                        onChange={(e) => {
-                                            const name = e.target.value;
-                                            const found = doctors.find(d => d.name === name);
-                                            if (found) {
-                                                setSelectedEvent({
-                                                    ...selectedEvent,
-                                                    doctorName: name,
-                                                    governorate: found.governorate || selectedEvent.governorate,
-                                                    specialty: found.specialty || selectedEvent.specialty,
-                                                    address: found.address || selectedEvent.address
-                                                });
-                                            } else {
-                                                setSelectedEvent({ ...selectedEvent, doctorName: name });
-                                            }
-                                        }}
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">Adresse</label>
-                                    <input
-                                        type="text"
-                                        disabled={isReadOnly}
-                                        className="w-full border border-gray-300 rounded px-3 py-2 disabled:bg-gray-100 disabled:text-gray-500"
+                                        className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm disabled:bg-gray-100"
                                         value={selectedEvent.address || ''}
                                         onChange={(e) => setSelectedEvent({ ...selectedEvent, address: e.target.value })}
                                     />
@@ -1069,18 +1064,16 @@ export default function CalendarView({ dashboardId, viewUser }) {
                         </div>
 
                         {selectedEvent.givenMaterials && selectedEvent.givenMaterials.length > 0 && (
-                            <div className="mb-4 space-y-2">
-                                <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest">Matériel Promotionnel Offert</label>
-                                {selectedEvent.givenMaterials.map((item, idx) => (
-                                    <div key={idx} className="p-2 bg-blue-50 text-blue-800 rounded border border-blue-100 flex items-center justify-between text-sm">
-                                        <span>🎁 <strong>{item.name}</strong> {item.count > 1 ? `(x${item.count})` : ''}</span>
-                                        {item.batch && item.batch !== 'N/A' && (
-                                            <span className="text-[10px] font-mono bg-white px-1.5 py-0.5 rounded border border-blue-200">
-                                                Réf: {item.batch}
-                                            </span>
-                                        )}
-                                    </div>
-                                ))}
+                            <div className="mb-3 space-y-1">
+                                <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest">Matériel Promotionnel</label>
+                                <div className="grid grid-cols-2 gap-2">
+                                    {selectedEvent.givenMaterials.map((item, idx) => (
+                                        <div key={idx} className="p-1.5 bg-blue-50 text-blue-800 rounded border border-blue-100 flex items-center justify-between text-[11px]">
+                                            <span className="truncate">🎁 <strong>{item.name}</strong></span>
+                                            <span className="ml-1 bg-blue-200 text-blue-900 px-1 rounded-full text-[10px]">x{item.count}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         )}
 
@@ -1097,24 +1090,22 @@ export default function CalendarView({ dashboardId, viewUser }) {
                             </div>
                         )}
 
-                        <div className="mb-6">
+                        <div className="mb-4">
                             <div className="flex justify-between items-center mb-1">
-                                <label className="block text-sm font-medium text-gray-700">Détails de la tâche</label>
+                                <label className="block text-sm font-medium text-gray-700">✍️ Rapport / Tâche à faire</label>
                                 {!isReadOnly && (
                                     <button
                                         onClick={() => setSelectedEvent({ ...selectedEvent, details: '' })}
-                                        className="text-xs text-red-600 hover:text-red-700 font-medium flex items-center gap-1"
+                                        className="text-[10px] text-red-500 hover:text-red-700 font-bold uppercase tracking-tighter"
                                     >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
-                                        </svg>
-                                        Supprimer
+                                        Effacer
                                     </button>
                                 )}
                             </div>
                             <textarea
                                 disabled={isReadOnly}
-                                className="w-full border border-gray-300 rounded px-3 py-2 h-24 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:text-gray-500"
+                                className="w-full border border-gray-300 rounded px-3 py-2 h-20 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+                                placeholder="Écrivez ici le compte rendu de la visite ou la tâche à suivre..."
                                 value={selectedEvent.details || ''}
                                 onChange={(e) => setSelectedEvent({ ...selectedEvent, details: e.target.value })}
                             ></textarea>
