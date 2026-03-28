@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import User from './server/models/User.js';
 import Stock from './server/models/Stock.js';
 import Doctor from './server/models/Doctor.js';
-import Visit from './server/models/Visit.js';
 import Cycle from './server/models/Cycle.js';
 import { execSync } from 'child_process';
 import fs from 'fs';
@@ -101,80 +100,23 @@ const seedOfficialUsers = async () => {
             }
         }
 
-        const allUsersList = [...admins, ...biotechUsers, ...tenshiUsers, 'asma'].map(u => u.toLowerCase().trim());
-
-        // --- Cleanup Duplicates for Amal and Maha ---
-        // Ensure we only have one of each, preferably the one with data
-        for (const target of ['amal', 'maha']) {
-            const duplicates = await User.find({
-                username: { $regex: new RegExp(`^${target}$`, 'i') }
-            }).sort({ createdAt: 1 }); // Oldest first
-
-            if (duplicates.length > 1) {
-                console.log(`⚠️  Found ${duplicates.length} duplicates for "${target}". Cleaning up...`);
-                // Keep the oldest one (most likely to have long-standing data) 
-                // but ensure it gets the correct final username
-                const keep = duplicates[0];
-                keep.username = target;
-                await keep.save();
-
-                for (let i = 1; i < duplicates.length; i++) {
-                    console.log(`🗑️  Removing duplicate ${duplicates[i].username} (${duplicates[i]._id})`);
-                    await User.deleteOne({ _id: duplicates[i]._id });
-                }
-            }
-        }
+        const allUsersList = [...admins, ...biotechUsers, ...tenshiUsers, 'asma'];
 
         for (const username of allUsersList) {
             const rawPwd = passwords[username] || '123456';
-            const user = await User.findOne({ username: { $regex: new RegExp(`^${username}$`, 'i') } });
-
-            const finalRole = admins.includes(username) ? 'admin' : (username === 'asma' ? 'pharmacienne' : 'delegue');
-            const finalDashboards = admins.includes(username) ? ['dashboard1', 'dashboard2'] : (biotechUsers.includes(username) || username === 'asma' ? ['dashboard1'] : ['dashboard2']);
+            const user = await User.findOne({ username });
 
             if (!user) {
                 const newUser = new User({
                     username,
                     email: `${username}@bioxtenshi.com`,
                     password: await getHash(rawPwd),
-                    role: finalRole,
-                    allowedDashboards: finalDashboards
+                    role: admins.includes(username) ? 'admin' : (username === 'asma' ? 'pharmacienne' : 'delegue'),
+                    allowedDashboards: admins.includes(username) ? ['dashboard1', 'dashboard2'] : (biotechUsers.includes(username) || username === 'asma' ? ['dashboard1'] : ['dashboard2'])
                 });
                 await newUser.save();
                 console.log(`✅ Created User: ${username} with official password`);
             } else {
-                // FORCE UPDATE metadata (allowedDashboards, role) to match lists
-                let modified = false;
-                if (user.role !== finalRole) {
-                    user.role = finalRole;
-                    modified = true;
-                }
-
-                // Compare arrays for allowedDashboards
-                const currentDash = (user.allowedDashboards || []).slice().sort();
-                const targetDash = finalDashboards.slice().sort();
-                if (JSON.stringify(currentDash) !== JSON.stringify(targetDash)) {
-                    user.allowedDashboards = finalDashboards;
-                    modified = true;
-                }
-
-                if (modified) {
-                    await user.save();
-                    console.log(`🔄 Sync'd metadata (role/dashboards) for ${username}`);
-
-                    // --- MIGRATION: If user moved to a new dashboard, migrate their visits ---
-                    if (finalDashboards.length === 1) {
-                        const newDashId = finalDashboards[0];
-                        const updateRes = await Visit.updateMany(
-                            { user: user._id, dashboardId: { $ne: newDashId } },
-                            { $set: { dashboardId: newDashId } }
-                        );
-                        if (updateRes.modifiedCount > 0) {
-                            console.log(`📦 Migrated ${updateRes.modifiedCount} visits to ${newDashId} for ${username}`);
-                        }
-                    }
-                }
-
                 // Check if password is "123456" and update it to official if needed
                 const isDefault = await bcrypt.compare('123456', user.password);
                 if (isDefault && rawPwd !== '123456') {

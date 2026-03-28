@@ -109,60 +109,24 @@ router.post('/', auth, async (req, res) => {
             governorate, specialty, address
         });
 
-        // If a sample is given, deduct quantity from user's inventory
-        if (givenSampleName) {
+        // If samples are given, deduct quantity from user's inventory
+        if (givenSamples && Array.isArray(givenSamples) && givenSamples.length > 0) {
             const user = await User.findById(req.user.userId);
             if (!user) return res.status(404).json({ msg: 'User not found' });
 
-            const sampleIndex = user.samples.findIndex(
-                s => s.name === givenSampleName && s.batchNumber === (givenSampleBatch || null) && (s.itemType || 'sample') === 'sample'
-            );
-
-            const qtyToDeduct = Math.max(1, parseInt(givenSampleQty) || 1);
-
-            if (sampleIndex === -1 || user.samples[sampleIndex].count < qtyToDeduct) {
-                return res.status(400).json({ msg: `Échantillon non disponible ou quantité insuffisante (demandé: ${qtyToDeduct})` });
-            }
-
-            user.samples[sampleIndex].count -= qtyToDeduct;
-            user.markModified('samples');
-            await user.save();
-        }
-
-        // If materials are given in an array, deduct each from user's inventory
-        if (givenMaterials && Array.isArray(givenMaterials) && givenMaterials.length > 0) {
-            const user = await User.findById(req.user.userId);
-            if (!user) return res.status(404).json({ msg: 'User not found' });
-
-            for (const item of givenMaterials) {
-                const materialIndex = user.samples.findIndex(
-                    s => s.name === item.name && s.batchNumber === (item.batch || null) && s.itemType === 'material'
+            for (const item of givenSamples) {
+                const sampleIndex = user.samples.findIndex(
+                    s => s.name === item.name && s.batchNumber === (item.batchNumber || null) && (s.itemType || 'sample') === 'sample'
                 );
 
-                const qtyToDeduct = item.count || 1;
+                const qtyToDeduct = Math.max(1, parseInt(item.count) || 1);
 
-                if (materialIndex === -1 || user.samples[materialIndex].count < qtyToDeduct) {
-                    return res.status(400).json({ msg: `Matériel "${item.name}" non disponible ou quantité insuffisante` });
+                if (sampleIndex === -1 || user.samples[sampleIndex].count < qtyToDeduct) {
+                    return res.status(400).json({ msg: `Échantillon "${item.name}" non disponible ou quantité insuffisante (demandé: ${qtyToDeduct})` });
                 }
 
-                user.samples[materialIndex].count -= qtyToDeduct;
+                user.samples[sampleIndex].count -= qtyToDeduct;
             }
-            user.markModified('samples');
-            await user.save();
-        } else if (givenMaterialName) {
-            // Fallback to legacy single material logic
-            const user = await User.findById(req.user.userId);
-            if (!user) return res.status(404).json({ msg: 'User not found' });
-
-            const materialIndex = user.samples.findIndex(
-                s => s.name === givenMaterialName && s.batchNumber === (givenMaterialBatch || null) && s.itemType === 'material'
-            );
-
-            if (materialIndex === -1 || user.samples[materialIndex].count <= 0) {
-                return res.status(400).json({ msg: 'Matériel non disponible ou quantité insuffisante' });
-            }
-
-            user.samples[materialIndex].count -= 1;
             user.markModified('samples');
             await user.save();
         }
@@ -182,12 +146,7 @@ router.post('/', auth, async (req, res) => {
             address,
             pharmacyName,
             wholesalerName,
-            givenSampleName,
-            givenSampleBatch,
-            givenSampleQty: parseInt(givenSampleQty) || 1,
-            givenMaterialName,
-            givenMaterialBatch,
-            givenMaterials: givenMaterials || [],
+            givenSamples: givenSamples || [],
             user: req.user.userId
         });
 
@@ -228,85 +187,71 @@ router.put('/:id', auth, async (req, res) => {
         const user = await User.findById(req.user.userId);
         if (!user) return res.status(404).json({ msg: 'User not found' });
 
-        // --- INVENTORY RECONCILIATION FOR SAMPLES ---
-        const oldSName = visit.givenSampleName;
-        const oldSBatch = visit.givenSampleBatch;
-        const oldSQty = visit.givenSampleQty || 0;
+        // --- INVENTORY RECONCILIATION ---
 
-        const newSName = givenSampleName;
-        const newSBatch = givenSampleBatch;
-        const newSQty = parseInt(givenSampleQty) || 0;
-
-        if (oldSName !== newSName || oldSBatch !== newSBatch || oldSQty !== newSQty) {
-            // 1. Return old sample to stock if it existed
-            if (oldSName) {
-                const oldIdx = user.samples.findIndex(
-                    s => s.name === oldSName && s.batchNumber === (oldSBatch || null) && (s.itemType || 'sample') === 'sample'
+        // 1. Return ALL old items to stock (Legacy and Multi-sample)
+        // Multi-samples
+        if (visit.givenSamples && visit.givenSamples.length > 0) {
+            for (const s of visit.givenSamples) {
+                const idx = user.samples.findIndex(si =>
+                    si.name === s.name &&
+                    si.batchNumber === (s.batchNumber || null) &&
+                    (si.itemType || 'sample') === 'sample'
                 );
-                if (oldIdx !== -1) {
-                    user.samples[oldIdx].count += oldSQty;
-                }
+                if (idx !== -1) user.samples[idx].count += (s.count || 1);
             }
-
-            // 2. Deduct new sample from stock if it exists
-            if (newSName) {
-                const newIdx = user.samples.findIndex(
-                    s => s.name === newSName && s.batchNumber === (newSBatch || null) && (s.itemType || 'sample') === 'sample'
-                );
-                if (newIdx === -1 || user.samples[newIdx].count < newSQty) {
-                    return res.status(400).json({ msg: `Échantillon "${newSName}" non disponible ou quantité insuffisante` });
-                }
-                user.samples[newIdx].count -= newSQty;
+        }
+        // Legacy single sample
+        if (visit.givenSampleName) {
+            const idx = user.samples.findIndex(si =>
+                si.name === visit.givenSampleName &&
+                si.batchNumber === (visit.givenSampleBatch || null) &&
+                (si.itemType || 'sample') === 'sample'
+            );
+            if (idx !== -1) user.samples[idx].count += (visit.givenSampleQty || 1);
+        }
+        // Legacy materials
+        if (visit.givenMaterials && visit.givenMaterials.length > 0) {
+            for (const m of visit.givenMaterials) {
+                const idx = user.samples.findIndex(si => si.name === m.name && si.batchNumber === (m.batch || null) && si.itemType === 'material');
+                if (idx !== -1) user.samples[idx].count += (m.count || 1);
             }
-            user.markModified('samples');
+        } else if (visit.givenMaterialName) {
+            const idx = user.samples.findIndex(si => si.name === visit.givenMaterialName && si.batchNumber === (visit.givenMaterialBatch || null) && si.itemType === 'material');
+            if (idx !== -1) user.samples[idx].count += 1;
         }
 
-        // --- INVENTORY RECONCILIATION FOR MATERIALS ---
-        // For simplicity, we handle single material legacy fields. 
-        // Array givenMaterials is more complex, but we follow the same pattern if it changed.
-        const oldMName = visit.givenMaterialName;
-        const oldMBatch = visit.givenMaterialBatch;
-        const newMName = givenMaterialName;
-        const newMBatch = givenMaterialBatch;
-
-        if (oldMName !== newMName || oldMBatch !== newMBatch) {
-            if (oldMName) {
-                const oldMIdx = user.samples.findIndex(s => s.name === oldMName && s.batchNumber === (oldMBatch || null) && s.itemType === 'material');
-                if (oldMIdx !== -1) user.samples[oldMIdx].count += 1;
+        // 2. Deduct NEW samples
+        const newSamples = req.body.givenSamples || [];
+        for (const s of newSamples) {
+            const idx = user.samples.findIndex(si =>
+                si.name === s.name &&
+                si.batchNumber === (s.batchNumber || null) &&
+                (si.itemType || 'sample') === 'sample'
+            );
+            const qty = s.count || 1;
+            if (idx === -1 || user.samples[idx].count < qty) {
+                return res.status(400).json({ msg: `Stock insuffisant pour "${s.name}"` });
             }
-            if (newMName) {
-                const newMIdx = user.samples.findIndex(s => s.name === newMName && s.batchNumber === (newMBatch || null) && s.itemType === 'material');
-                if (newMIdx === -1 || user.samples[newMIdx].count <= 0) {
-                    return res.status(400).json({ msg: `Matériel "${newMName}" non disponible` });
-                }
-                user.samples[newMIdx].count -= 1;
-            }
-            user.markModified('samples');
+            user.samples[idx].count -= qty;
         }
 
+        user.markModified('samples');
         await user.save();
 
         // Build visit object
-        const visitFields = {};
-        if (title !== undefined) visitFields.title = title;
-        if (start !== undefined) visitFields.start = start;
-        if (end !== undefined) visitFields.end = end;
-        if (visitName !== undefined) visitFields.visitName = visitName;
-        if (visitTime !== undefined) visitFields.visitTime = visitTime;
-        if (targetType !== undefined) visitFields.targetType = targetType;
-        if (details !== undefined) visitFields.details = details;
-        if (governorate !== undefined) visitFields.governorate = governorate;
-        if (specialty !== undefined) visitFields.specialty = specialty;
-        if (doctorName !== undefined) visitFields.doctorName = doctorName;
-        if (address !== undefined) visitFields.address = address;
-        if (pharmacyName !== undefined) visitFields.pharmacyName = pharmacyName;
-        if (wholesalerName !== undefined) visitFields.wholesalerName = wholesalerName;
-        if (givenSampleName !== undefined) visitFields.givenSampleName = givenSampleName;
-        if (givenSampleBatch !== undefined) visitFields.givenSampleBatch = givenSampleBatch;
-        if (givenSampleQty !== undefined) visitFields.givenSampleQty = parseInt(givenSampleQty) || 0;
-        if (givenMaterialName !== undefined) visitFields.givenMaterialName = givenMaterialName;
-        if (givenMaterialBatch !== undefined) visitFields.givenMaterialBatch = givenMaterialBatch;
-        if (givenMaterials !== undefined) visitFields.givenMaterials = givenMaterials;
+        const visitFields = { ...req.body };
+        // Clean up legacy fields if we want to explicitly remove them during update
+        // but $set with spread might be enough if the Model doesn't have them anymore.
+        // Actually, $set will only update fields defined in the schema.
+
+        // Remove materials fields from being saved if they persist in body
+        delete visitFields.givenMaterialName;
+        delete visitFields.givenMaterialBatch;
+        delete visitFields.givenMaterials;
+        delete visitFields.givenSampleName;
+        delete visitFields.givenSampleBatch;
+        delete visitFields.givenSampleQty;
 
         visit = await Visit.findByIdAndUpdate(
             req.params.id,
@@ -341,52 +286,34 @@ router.delete('/:id', auth, async (req, res) => {
             return res.status(401).json({ msg: 'Non autorisé à supprimer cette visite' });
         }
 
-        // If a sample was given, return it to user's inventory
-        if (visit.givenSampleName) {
-            console.log(`📦 Restoring sample: ${visit.givenSampleName}`);
-            const user = await User.findById(req.user.userId);
-            if (user) {
-                const sampleIndex = user.samples.findIndex(
-                    s => s.name === visit.givenSampleName && s.batchNumber === (visit.givenSampleBatch || null) && (s.itemType || 'sample') === 'sample'
-                );
-                if (sampleIndex !== -1) {
-                    user.samples[sampleIndex].count += (visit.givenSampleQty || 1);
-                    user.markModified('samples');
-                    await user.save();
+        // Return all samples to user's inventory
+        const user = await User.findById(req.user.userId);
+        if (user) {
+            // New multi-samples
+            if (visit.givenSamples && visit.givenSamples.length > 0) {
+                for (const s of visit.givenSamples) {
+                    const idx = user.samples.findIndex(si => si.name === s.name && si.batchNumber === (s.batchNumber || null) && (si.itemType || 'sample') === 'sample');
+                    if (idx !== -1) user.samples[idx].count += (s.count || 1);
                 }
             }
-        }
+            // Legacy single sample
+            if (visit.givenSampleName) {
+                const idx = user.samples.findIndex(si => si.name === visit.givenSampleName && si.batchNumber === (visit.givenSampleBatch || null) && (si.itemType || 'sample') === 'sample');
+                if (idx !== -1) user.samples[idx].count += (visit.givenSampleQty || 1);
+            }
+            // Legacy materials
+            if (visit.givenMaterials && visit.givenMaterials.length > 0) {
+                for (const m of visit.givenMaterials) {
+                    const idx = user.samples.findIndex(si => si.name === m.name && si.batchNumber === (m.batch || null) && si.itemType === 'material');
+                    if (idx !== -1) user.samples[idx].count += (m.count || 1);
+                }
+            } else if (visit.givenMaterialName) {
+                const idx = user.samples.findIndex(si => si.name === visit.givenMaterialName && si.batchNumber === (visit.givenMaterialBatch || null) && si.itemType === 'material');
+                if (idx !== -1) user.samples[idx].count += 1;
+            }
 
-        // Handle multi-materials restoration
-        if (visit.givenMaterials && Array.isArray(visit.givenMaterials) && visit.givenMaterials.length > 0) {
-            console.log(`📦 Restoring multi-materials: ${visit.givenMaterials.length} items`);
-            const user = await User.findById(req.user.userId);
-            if (user) {
-                for (const item of visit.givenMaterials) {
-                    const materialIndex = user.samples.findIndex(
-                        s => s.name === item.name && s.batchNumber === (item.batch || null) && s.itemType === 'material'
-                    );
-                    if (materialIndex !== -1) {
-                        user.samples[materialIndex].count += (item.count || 1);
-                    }
-                }
-                user.markModified('samples');
-                await user.save();
-            }
-        } else if (visit.givenMaterialName) {
-            // Fallback to legacy single material logic
-            console.log(`📦 Restoring material: ${visit.givenMaterialName}`);
-            const user = await User.findById(req.user.userId);
-            if (user) {
-                const materialIndex = user.samples.findIndex(
-                    s => s.name === visit.givenMaterialName && s.batchNumber === (visit.givenMaterialBatch || null) && s.itemType === 'material'
-                );
-                if (materialIndex !== -1) {
-                    user.samples[materialIndex].count += 1;
-                    user.markModified('samples');
-                    await user.save();
-                }
-            }
+            user.markModified('samples');
+            await user.save();
         }
 
         await Visit.findByIdAndDelete(req.params.id);

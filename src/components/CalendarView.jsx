@@ -37,12 +37,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
         address: '',
         pharmacyName: '',
         wholesalerName: '',
-        givenSampleName: '',
-        givenSampleBatch: '',
-        givenSampleQty: 1,
-        givenMaterialName: '',
-        givenMaterialBatch: '',
-        givenMaterials: []
+        givenSamples: []
     });
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [userSamples, setUserSamples] = useState([]);
@@ -71,12 +66,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
             address: '',
             pharmacyName: '',
             wholesalerName: '',
-            givenSampleName: '',
-            givenSampleBatch: '',
-            givenSampleQty: 1,
-            givenMaterialName: '',
-            givenMaterialBatch: '',
-            givenMaterials: []
+            givenSamples: []
         });
         setSelectedEvent(null); // Clear selection when creating new
         setShowModal(true);
@@ -537,19 +527,12 @@ export default function CalendarView({ dashboardId, viewUser }) {
 
                                     <div className="mb-6 space-y-4">
                                         <div>
-                                            <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">🎁 Échantillons & Matériels</label>
+                                            <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">📦 Échantillons Distribués</label>
                                             <div className="flex gap-2 mb-3">
                                                 <select
                                                     className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-blue-500"
-                                                    value={newEvent.givenSampleName && newEvent.givenSampleBatch ? `${newEvent.givenSampleName}|${newEvent.givenSampleBatch}` : ""}
-                                                    onChange={(e) => {
-                                                        const val = e.target.value;
-                                                        if (!val) setNewEvent({ ...newEvent, givenSampleName: '', givenSampleBatch: '', givenSampleQty: 1 });
-                                                        else {
-                                                            const [name, batch] = val.split('|');
-                                                            setNewEvent({ ...newEvent, givenSampleName: name, givenSampleBatch: batch });
-                                                        }
-                                                    }}
+                                                    value={pendingMaterial} // Re-using pendingMaterial for sample select temp state
+                                                    onChange={(e) => setPendingMaterial(e.target.value)}
                                                 >
                                                     <option value="">-- Choisir un échantillon --</option>
                                                     {userSamples.filter(s => s.count > 0 && (s.itemType || 'sample') === 'sample').map((s, idx) => (
@@ -558,54 +541,35 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                                         </option>
                                                     ))}
                                                 </select>
-                                                <input
-                                                    type="number"
-                                                    className="w-16 border border-gray-200 rounded-lg px-2 text-center text-sm"
-                                                    value={pendingSampleQty}
-                                                    onChange={(e) => {
-                                                        const q = Math.max(1, parseInt(e.target.value) || 1);
-                                                        setPendingSampleQty(q);
-                                                        if (newEvent.givenSampleName) setNewEvent(p => ({ ...p, givenSampleQty: q }));
-                                                    }}
-                                                />
-                                            </div>
-
-                                            <div className="flex gap-2">
-                                                <select
-                                                    className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-blue-500"
-                                                    value={pendingMaterial}
-                                                    onChange={(e) => setPendingMaterial(e.target.value)}
-                                                >
-                                                    <option value="">-- Ajouter un cadeau --</option>
-                                                    {userSamples.filter(s => s.count > 0 && s.itemType === 'material').map((s, idx) => (
-                                                        <option key={idx} value={`${s.name}|${s.batchNumber || ''}`}>
-                                                            🎁 {s.name} ({s.count})
-                                                        </option>
-                                                    ))}
-                                                </select>
                                                 <button
                                                     onClick={() => {
                                                         if (!pendingMaterial) return;
                                                         const [name, batch] = pendingMaterial.split('|');
-                                                        const updated = [...newEvent.givenMaterials];
-                                                        const idx = updated.findIndex(m => m.name === name && m.batch === batch);
+                                                        const updated = [...newEvent.givenSamples];
+                                                        const idx = updated.findIndex(s => s.name === name && s.batchNumber === batch);
                                                         if (idx > -1) updated[idx].count += 1;
-                                                        else updated.push({ name, batch, count: 1 });
-                                                        setNewEvent({ ...newEvent, givenMaterials: updated });
+                                                        else updated.push({ name, batchNumber: batch, count: 1 });
+                                                        setNewEvent({ ...newEvent, givenSamples: updated });
                                                         setPendingMaterial('');
                                                     }}
-                                                    className="px-3 bg-blue-50 text-blue-600 rounded-lg font-bold text-xs"
-                                                >+ Add</button>
+                                                    className="px-4 bg-blue-600 text-white rounded-lg font-bold text-xs hover:bg-blue-700 transition-colors"
+                                                >+ Ajouter</button>
                                             </div>
                                         </div>
 
-                                        {newEvent.givenMaterials.length > 0 && (
-                                            <div className="flex flex-wrap gap-2">
-                                                {newEvent.givenMaterials.map((m, i) => (
-                                                    <span key={i} className="text-[10px] bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-bold flex items-center gap-1">
-                                                        {m.name} x{m.count}
-                                                        <button onClick={() => setNewEvent(p => ({ ...p, givenMaterials: p.givenMaterials.filter((_, idx) => idx !== i) }))}>✕</button>
-                                                    </span>
+                                        {newEvent.givenSamples.length > 0 && (
+                                            <div className="space-y-2">
+                                                {newEvent.givenSamples.map((s, i) => (
+                                                    <div key={i} className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-100">
+                                                        <span className="text-sm font-bold text-blue-800">📦 {s.name}</span>
+                                                        <div className="flex items-center gap-3">
+                                                            <span className="bg-blue-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{s.count}</span>
+                                                            <button
+                                                                onClick={() => setNewEvent(p => ({ ...p, givenSamples: p.givenSamples.filter((_, idx) => idx !== i) }))}
+                                                                className="text-red-400 hover:text-red-600 font-bold"
+                                                            >✕</button>
+                                                        </div>
+                                                    </div>
                                                 ))}
                                             </div>
                                         )}
@@ -680,41 +644,69 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                 </div>
 
                                 <div className="mb-6">
-                                    <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">🎁 Produits Distribués</label>
+                                    <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">📦 Échantillons Distribués</label>
                                     <div className="space-y-2">
-                                        {selectedEvent.givenSampleName && (
-                                            <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-100 mb-2">
-                                                <div className="flex items-center gap-2">
-                                                    <span className="text-sm font-bold text-green-800">📦 {selectedEvent.givenSampleName}</span>
-                                                    {!isReadOnly && (
-                                                        <span className="text-[10px] text-green-500 font-bold uppercase tracking-tighter">(Modifier qtée)</span>
-                                                    )}
-                                                </div>
-                                                {isReadOnly ? (
-                                                    <span className="bg-green-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{selectedEvent.givenSampleQty || 1}</span>
-                                                ) : (
-                                                    <div className="flex items-center gap-1">
-                                                        <span className="text-xs font-bold text-green-600">x</span>
-                                                        <input
-                                                            type="number"
-                                                            min="1"
-                                                            className="w-16 border border-green-200 rounded-md px-2 py-1 text-center text-sm font-black text-green-700 bg-white"
-                                                            value={selectedEvent.givenSampleQty || 1}
-                                                            onChange={(e) => {
-                                                                const qty = Math.max(1, parseInt(e.target.value) || 1);
-                                                                setSelectedEvent({ ...selectedEvent, givenSampleQty: qty });
-                                                            }}
-                                                        />
-                                                    </div>
-                                                )}
+                                        {!isReadOnly && (
+                                            <div className="flex gap-2 mb-3">
+                                                <select
+                                                    className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white"
+                                                    value={pendingMaterial}
+                                                    onChange={(e) => setPendingMaterial(e.target.value)}
+                                                >
+                                                    <option value="">-- Ajouter un échantillon --</option>
+                                                    {userSamples.filter(s => (s.itemType || 'sample') === 'sample').map((s, idx) => (
+                                                        <option key={idx} value={`${s.name}|${s.batchNumber || ''}`}>
+                                                            📦 {s.name} ({s.count})
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                                <button
+                                                    onClick={() => {
+                                                        if (!pendingMaterial) return;
+                                                        const [name, batch] = pendingMaterial.split('|');
+                                                        const updated = [...(selectedEvent.givenSamples || [])];
+                                                        const idx = updated.findIndex(s => s.name === name && s.batchNumber === batch);
+                                                        if (idx > -1) updated[idx].count += 1;
+                                                        else updated.push({ name, batchNumber: batch, count: 1 });
+                                                        setSelectedEvent({ ...selectedEvent, givenSamples: updated });
+                                                        setPendingMaterial('');
+                                                    }}
+                                                    className="px-3 bg-blue-600 text-white rounded-lg font-bold text-xs"
+                                                >+ Add</button>
                                             </div>
                                         )}
-                                        {selectedEvent.givenMaterials?.map((m, i) => (
-                                            <div key={i} className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-100">
-                                                <span className="text-sm font-bold text-blue-800 transition-all">🎁 {m.name}</span>
-                                                <span className="bg-blue-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{m.count}</span>
+                                        {((selectedEvent.givenSamples && selectedEvent.givenSamples.length > 0) || selectedEvent.givenSampleName) ? (
+                                            <div className="space-y-2">
+                                                {/* Display legacy sample if it exists */}
+                                                {selectedEvent.givenSampleName && (
+                                                    <div className="flex items-center justify-between p-3 bg-amber-50 rounded-lg border border-amber-100">
+                                                        <span className="text-sm font-bold text-amber-800">📦 {selectedEvent.givenSampleName} (Legacy)</span>
+                                                        <span className="bg-amber-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{selectedEvent.givenSampleQty || 1}</span>
+                                                    </div>
+                                                )}
+                                                {/* Display new multi-samples */}
+                                                {(selectedEvent.givenSamples || []).map((s, i) => (
+                                                    <div key={i} className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-100">
+                                                        <span className="text-sm font-bold text-green-800">📦 {s.name}</span>
+                                                        <div className="flex items-center gap-3">
+                                                            <span className="bg-green-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{s.count}</span>
+                                                            {!isReadOnly && (
+                                                                <button
+                                                                    onClick={() => setSelectedEvent(p => ({ ...p, givenSamples: p.givenSamples.filter((_, idx) => idx !== i) }))}
+                                                                    className="text-red-400 hover:text-red-600 font-bold"
+                                                                >✕</button>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                                {/* Legacy materials check for UI cleanup */}
+                                                {selectedEvent.givenMaterials?.length > 0 && !isReadOnly && (
+                                                    <p className="text-[9px] text-gray-400 italic">Note: Le matériel (cadeaux) sera retiré lors de l'enregistrement.</p>
+                                                )}
                                             </div>
-                                        ))}
+                                        ) : (
+                                            <p className="text-xs text-gray-400 italic">Aucun échantillon distribué.</p>
+                                        )}
                                     </div>
                                 </div>
 

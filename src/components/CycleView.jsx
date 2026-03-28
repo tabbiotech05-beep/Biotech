@@ -586,21 +586,18 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                                     <p className="text-xs text-gray-700 font-medium leading-relaxed whitespace-pre-wrap break-words">
                                                         {visit.details}
                                                     </p>
-                                                    {(visit.givenSampleName || visit.givenMaterialName) && (
+                                                    {(visit.givenSamples?.length > 0 || visit.givenSampleName) && (
                                                         <div className="mt-2 flex flex-wrap gap-2">
+                                                            {/* Legacy support */}
                                                             {visit.givenSampleName && (
-                                                                <span className="text-[9px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full border border-green-200 font-bold uppercase">
-                                                                    📦 {visit.givenSampleName}
+                                                                <span className="text-[9px] bg-amber-100 text-amber-700 px-1.5 py-0.5 rounded-full border border-amber-200 font-bold uppercase">
+                                                                    📦 {visit.givenSampleName} (Legacy)
                                                                 </span>
                                                             )}
-                                                            {visit.givenMaterialName && (!visit.givenMaterials || visit.givenMaterials.length === 0) && (
-                                                                <span className="text-[9px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full border border-blue-200 font-bold uppercase">
-                                                                    🎁 {visit.givenMaterialName}
-                                                                </span>
-                                                            )}
-                                                            {visit.givenMaterials && visit.givenMaterials.map((m, mIdx) => (
-                                                                <span key={mIdx} className="text-[9px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full border border-blue-200 font-bold uppercase">
-                                                                    🎁 {m.name} {m.count > 1 ? `(x${m.count})` : ''}
+                                                            {/* New multi-samples */}
+                                                            {visit.givenSamples?.map((s, sIdx) => (
+                                                                <span key={sIdx} className="text-[9px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full border border-green-200 font-bold uppercase">
+                                                                    📦 {s.name} {s.count > 1 ? `(x${s.count})` : ''}
                                                                 </span>
                                                             ))}
                                                         </div>
@@ -635,21 +632,18 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                             <p className="text-sm text-gray-700 font-medium leading-relaxed whitespace-pre-wrap break-words bg-white p-4 rounded-xl border border-gray-100">
                                                 {selectedItemForDetails.data.details || <span className="text-gray-400 italic">Aucun détail renseigné.</span>}
                                             </p>
-                                            {(selectedItemForDetails.data.givenSampleName || selectedItemForDetails.data.givenMaterialName) && (
+                                            {(selectedItemForDetails.data.givenSamples?.length > 0 || selectedItemForDetails.data.givenSampleName) && (
                                                 <div className="mt-3 flex flex-wrap gap-3">
+                                                    {/* Legacy support */}
                                                     {selectedItemForDetails.data.givenSampleName && (
-                                                        <div className="bg-green-100 text-green-800 px-3 py-1.5 rounded-xl border border-green-200 text-xs font-bold flex items-center gap-2">
-                                                            <span>📦</span> {selectedItemForDetails.data.givenSampleName} {selectedItemForDetails.data.givenSampleBatch && `(Lot: ${selectedItemForDetails.data.givenSampleBatch})`}
+                                                        <div className="bg-amber-100 text-amber-800 px-3 py-1.5 rounded-xl border border-amber-200 text-xs font-bold flex items-center gap-2">
+                                                            <span>📦</span> {selectedItemForDetails.data.givenSampleName} {selectedItemForDetails.data.givenSampleBatch && `(Legacy Lot: ${selectedItemForDetails.data.givenSampleBatch})`}
                                                         </div>
                                                     )}
-                                                    {selectedItemForDetails.data.givenMaterialName && (!selectedItemForDetails.data.givenMaterials || selectedItemForDetails.data.givenMaterials.length === 0) && (
-                                                        <div className="bg-blue-100 text-blue-800 px-3 py-1.5 rounded-xl border border-blue-200 text-xs font-bold flex items-center gap-2">
-                                                            <span>🎁</span> {selectedItemForDetails.data.givenMaterialName} {selectedItemForDetails.data.givenMaterialBatch && selectedItemForDetails.data.givenMaterialBatch !== 'N/A' && `(Réf: ${selectedItemForDetails.data.givenMaterialBatch})`}
-                                                        </div>
-                                                    )}
-                                                    {selectedItemForDetails.data.givenMaterials && selectedItemForDetails.data.givenMaterials.map((m, mIdx) => (
-                                                        <div key={mIdx} className="bg-blue-100 text-blue-800 px-3 py-1.5 rounded-xl border border-blue-200 text-xs font-bold flex items-center gap-2">
-                                                            <span>🎁</span> {m.name} {m.count > 1 ? `(x${m.count})` : ''} {m.batch && m.batch !== 'N/A' && `(Réf: ${m.batch})`}
+                                                    {/* New multi-samples */}
+                                                    {selectedItemForDetails.data.givenSamples?.map((s, sIdx) => (
+                                                        <div key={sIdx} className="bg-green-100 text-green-800 px-3 py-1.5 rounded-xl border border-green-200 text-xs font-bold flex items-center gap-2">
+                                                            <span>📦</span> {s.name} (x{s.count}) {s.batchNumber && `(Lot: ${s.batchNumber})`}
                                                         </div>
                                                     ))}
                                                 </div>
