@@ -190,13 +190,7 @@ export default function SampleHistoryView() {
                 const delegate = h.user ? h.user.username : 'Inconnu';
                 const target = `Dr. ${h.doctorName || h.pharmacyName || 'N/A'}`;
 
-                // Check new multi-samples
-                (h.givenSamples || []).forEach(s => {
-                    if (s.batchNumber === batchData.batchNumber) {
-                        offeredRows.push([date, delegate, target, s.name, s.count || 1]);
-                    }
-                });
-                // Check legacy sample
+                // Check sample
                 if (h.givenSampleBatch === batchData.batchNumber) {
                     offeredRows.push([date, delegate, target, h.givenSampleName, h.givenSampleQty || 1]);
                 }
@@ -423,21 +417,12 @@ export default function SampleHistoryView() {
                                                     const target = `Dr. ${h.doctorName || h.pharmacyName || 'N/A'}`;
 
                                                     const rows = [];
-                                                    // New multi-samples
-                                                    (h.givenSamples || []).forEach((s, idx) => {
-                                                        if (s.batchNumber === batchData.batchNumber) {
-                                                            rows.push({ id: `${h._id}-gs-${idx}`, date, delegate, target, item: s.name, qty: s.count || 1 });
-                                                        }
-                                                    });
-                                                    // Legacy sample
                                                     if (h.givenSampleBatch === batchData.batchNumber) {
                                                         rows.push({ id: `${h._id}-s`, date, delegate, target, item: h.givenSampleName, qty: h.givenSampleQty || 1 });
                                                     }
-                                                    // Legacy material
                                                     if (h.givenMaterialBatch === batchData.batchNumber) {
                                                         rows.push({ id: `${h._id}-m`, date, delegate, target, item: h.givenMaterialName, qty: h.givenMaterialQty || 1 });
                                                     }
-                                                    // Legacy materials array
                                                     (h.givenMaterials || []).forEach((m, idx) => {
                                                         if (m.batch === batchData.batchNumber) {
                                                             rows.push({ id: `${h._id}-gm-${idx}`, date, delegate, target, item: m.name, qty: m.count || 1 });

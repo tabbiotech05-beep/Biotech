@@ -22,11 +22,19 @@ const VisitSchema = new mongoose.Schema({
     address: { type: String },
     pharmacyName: { type: String },
     wholesalerName: { type: String },
-
-    // Multiple samples
+    givenSampleName: { type: String },
+    givenSampleBatch: { type: String },
+    givenSampleQty: { type: Number, default: 1 },
     givenSamples: [{
         name: { type: String },
-        batchNumber: { type: String },
+        batch: { type: String },
+        count: { type: Number, default: 1 }
+    }],
+    givenMaterialName: { type: String },
+    givenMaterialBatch: { type: String },
+    givenMaterials: [{
+        name: { type: String },
+        batch: { type: String },
         count: { type: Number, default: 1 }
     }]
 }, { timestamps: true });

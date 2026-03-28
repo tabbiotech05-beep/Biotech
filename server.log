@@ -1,8 +1,8 @@
 🚀 Starting BioXtenshi Local Environment...
-✅ Local MongoDB running at: mongodb://127.0.0.1:36955/
+✅ Local MongoDB running at: mongodb://127.0.0.1:43521/
 📂 Data stored in: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/data/db
 🌱 Seeding database...
-[dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+[dotenv@17.2.3] injecting env (4) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
 ✅ Connected to MongoDB
 📊 Detected Feriel S1.xlsx, starting import for feriel...
 ✅ Automated: Cycle updated for feriel. Week 1 has 53 doctors.
@@ -43,925 +43,543 @@ Skipping Detrusitol Retard 4MG (already exists with this batch)
 Stock seeding completed successfully.
 ✅ Seeding finished.
 🔌 Starting Backend Server...
-📡 Backend process spawned with PID: 120864
+📡 Backend process spawned with PID: 12441
 🎨 Starting Frontend (Vite)...
-🌐 Frontend process spawned with PID: 120865
+🌐 Frontend process spawned with PID: 12443
 
 ✅ App ready!
    Frontend → http://localhost:5173
    Backend  → http://localhost:5000
 
-[dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
-[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+[dotenv@17.2.3] injecting env (4) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
 🚀 Expiry Job Scheduled (Daily at Midnight)
 Server is running on port 5000
 Connected to MongoDB
 
-  VITE v7.2.7  ready in 3091 ms
+  VITE v7.2.7  ready in 1434 ms
 
   ➜  Local:   http://localhost:5173/
-  ➜  Network: http://192.168.0.219:5173/
-06:06:25 [vite] (client) warning: The character "}" is not valid inside a JSX element
-1177 |              </div>
-1178 |              )
-1179 |  }
-     |  ^
-1180 |          </div>);
-1181 |  
+  ➜  Network: http://192.168.1.146:5173/
+19:20:16 [vite] (client) Pre-transform error: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx: Expected corresponding JSX closing tag for <label>. (149:24)
 
-  Plugin: vite:esbuild
-  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/CalendarView.jsx
-06:06:47 [vite] (client) hmr update /src/index.css
-06:06:53 [vite] (client) hmr update /src/index.css
-06:06:59 [vite] (client) hmr update /src/index.css
-06:07:00 [vite] (client) hmr update /src/index.css
-06:07:00 [vite] (client) hmr update /src/index.css
-06:07:00 [vite] (client) hmr update /src/index.css
-06:07:00 [vite] (client) hmr update /src/index.css
-06:07:00 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:07:04 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:07:13 [vite] (client) hmr update /src/index.css
-06:07:23 [vite] (client) hmr update /src/index.css
-06:07:28 [vite] (client) hmr update /src/index.css
-06:07:28 [vite] (client) hmr update /src/index.css
-06:07:28 [vite] (client) hmr update /src/index.css
-06:07:33 [vite] (client) hmr update /src/index.css
-06:07:43 [vite] (client) hmr update /src/index.css
-Login user: feriel
-Allowed dashboards: [ 'dashboard2' ]
-Fetching /me for feriel. Samples: []
-Fetching /me for feriel. Samples: []
-Fetching /me for feriel. Samples: []
-06:07:53 [vite] (client) hmr update /src/index.css
-06:08:03 [vite] (client) hmr update /src/index.css
-Fetching /me for feriel. Samples: []
-Fetching /me for feriel. Samples: []
-06:08:13 [vite] (client) hmr update /src/index.css
-06:08:23 [vite] (client) hmr update /src/index.css
-06:08:28 [vite] (client) hmr update /src/index.css
-06:08:28 [vite] (client) hmr update /src/index.css
-06:08:28 [vite] (client) hmr update /src/index.css
-06:08:28 [vite] (client) hmr update /src/index.css
-06:08:33 [vite] (client) hmr update /src/index.css
-06:08:43 [vite] (client) hmr update /src/index.css
-06:08:53 [vite] (client) hmr update /src/index.css
-06:09:03 [vite] (client) hmr update /src/index.css
-06:09:13 [vite] (client) hmr update /src/index.css
-06:09:23 [vite] (client) hmr update /src/index.css
-06:09:28 [vite] (client) hmr update /src/index.css
-06:09:28 [vite] (client) hmr update /src/index.css
-06:09:28 [vite] (client) hmr update /src/index.css
-06:09:28 [vite] (client) hmr update /src/index.css
-06:09:38 [vite] (client) hmr update /src/index.css
-06:09:43 [vite] (client) hmr update /src/index.css
-06:09:53 [vite] (client) hmr update /src/index.css
-06:10:03 [vite] (client) hmr update /src/index.css
-06:10:13 [vite] (client) hmr update /src/index.css
-06:10:23 [vite] (client) hmr update /src/index.css
-06:10:28 [vite] (client) hmr update /src/index.css
-06:10:28 [vite] (client) hmr update /src/index.css
-06:10:29 [vite] (client) hmr update /src/index.css
-06:10:29 [vite] (client) hmr update /src/index.css
-06:10:29 [vite] (client) hmr update /src/index.css
-06:10:29 [vite] (client) hmr update /src/index.css
-06:10:29 [vite] (client) hmr update /src/index.css
-06:10:29 [vite] (client) hmr update /src/index.css
-06:10:42 [vite] (client) hmr update /src/index.css
-06:10:42 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
-06:10:42 [vite] (client) hmr update /src/index.css
-06:10:43 [vite] (client) hmr update /src/index.css
-06:10:50 [vite] (client) warning: The character "}" is not valid inside a JSX element
-1177 |              </div>
-1178 |              )
-1179 |  }
-     |  ^
-1180 |          </div>);
-1181 |  
+  147 |                                 onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                             />
+> 149 |                         </div>
+      |                         ^
+  150 |                         <div>
+  151 |                             <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+  152 |                             <input
+  Plugin: vite:react-babel
+  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx:149:24
+  147 |                                  onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                              />
+  149 |                          </div>
+      |                          ^
+  150 |                          <div>
+  151 |                              <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+19:20:34 [vite] Internal server error: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx: Expected corresponding JSX closing tag for <label>. (149:24)
 
-  Plugin: vite:esbuild
-  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/CalendarView.jsx
-06:10:53 [vite] (client) hmr update /src/index.css
-06:11:03 [vite] (client) hmr update /src/index.css
-06:11:13 [vite] (client) hmr update /src/index.css
-06:11:23 [vite] (client) hmr update /src/index.css
-06:11:27 [vite] (client) hmr update /src/index.css
-06:11:33 [vite] (client) hmr update /src/index.css
-06:11:33 [vite] (client) hmr update /src/index.css
-06:11:33 [vite] (client) hmr update /src/index.css
-06:11:33 [vite] (client) hmr update /src/index.css
-06:11:33 [vite] (client) hmr update /src/index.css
-06:11:43 [vite] (client) hmr update /src/index.css
-06:11:53 [vite] (client) hmr update /src/index.css
-06:12:03 [vite] (client) hmr update /src/index.css
-06:12:13 [vite] (client) hmr update /src/index.css
-06:12:23 [vite] (client) hmr update /src/index.css
-06:12:30 [vite] (client) hmr update /src/index.css
-06:12:30 [vite] (client) hmr update /src/index.css
-06:12:30 [vite] (client) hmr update /src/index.css
-06:12:30 [vite] (client) hmr update /src/index.css
-06:12:30 [vite] (client) hmr update /src/index.css
-06:12:36 [vite] (client) hmr update /src/index.css
-06:12:43 [vite] (client) hmr update /src/index.css
-06:12:53 [vite] (client) hmr update /src/index.css
-06:13:03 [vite] (client) hmr update /src/index.css
-06:13:13 [vite] (client) hmr update /src/index.css
-06:13:23 [vite] (client) hmr update /src/index.css
-06:13:30 [vite] (client) hmr update /src/index.css
-06:13:30 [vite] (client) hmr update /src/index.css
-06:13:31 [vite] (client) hmr update /src/index.css
-06:13:31 [vite] (client) hmr update /src/index.css
-06:13:35 [vite] (client) hmr update /src/index.css
-06:13:43 [vite] (client) hmr update /src/index.css
-06:13:53 [vite] (client) hmr update /src/index.css
-06:14:03 [vite] (client) hmr update /src/index.css
-06:14:13 [vite] (client) hmr update /src/index.css
-06:14:23 [vite] (client) hmr update /src/index.css
-06:14:28 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
-06:14:32 [vite] (client) hmr update /src/index.css
-06:14:32 [vite] (client) hmr update /src/index.css
-06:14:32 [vite] (client) hmr update /src/index.css
-06:14:33 [vite] (client) hmr update /src/index.css
-06:14:49 [vite] (client) hmr update /src/index.css
-06:14:53 [vite] (client) hmr update /src/index.css
-06:15:03 [vite] (client) hmr update /src/index.css
-06:15:13 [vite] (client) hmr update /src/index.css
-06:15:23 [vite] (client) hmr update /src/index.css
-06:15:28 [vite] (client) hmr update /src/index.css
-06:15:41 [vite] (client) hmr update /src/index.css
-06:15:41 [vite] (client) hmr update /src/index.css
-06:15:41 [vite] (client) hmr update /src/index.css
-06:15:41 [vite] (client) hmr update /src/index.css
-06:15:41 [vite] (client) hmr update /src/index.css
-06:15:41 [vite] (client) hmr update /src/index.css
-06:15:41 [vite] (client) hmr update /src/index.css
-06:15:49 [vite] (client) hmr update /src/index.css
-06:15:53 [vite] (client) hmr update /src/index.css
-06:16:03 [vite] (client) hmr update /src/index.css
-06:16:13 [vite] (client) hmr update /src/index.css
-06:16:23 [vite] (client) hmr update /src/index.css
-06:16:33 [vite] (client) hmr update /src/index.css
-06:16:33 [vite] (client) hmr update /src/index.css
-06:16:33 [vite] (client) hmr update /src/index.css
-06:16:33 [vite] (client) hmr update /src/index.css
-06:16:33 [vite] (client) hmr update /src/index.css
-06:16:44 [vite] (client) hmr update /src/index.css
-Login user: wiem
-Allowed dashboards: [ 'dashboard2' ]
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:16:53 [vite] (client) hmr update /src/index.css
-06:17:03 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:17:13 [vite] (client) hmr update /src/index.css
-06:17:23 [vite] (client) hmr update /src/index.css
-06:17:33 [vite] (client) hmr update /src/index.css
-06:17:33 [vite] (client) hmr update /src/index.css
-06:17:33 [vite] (client) hmr update /src/index.css
-06:17:33 [vite] (client) hmr update /src/index.css
-06:17:33 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:17:43 [vite] (client) hmr update /src/index.css
-06:17:53 [vite] (client) hmr update /src/index.css
-06:18:03 [vite] (client) hmr update /src/index.css
-06:18:13 [vite] (client) hmr update /src/index.css
-06:18:23 [vite] (client) hmr update /src/index.css
-06:18:28 [vite] (client) hmr update /src/index.css
-06:18:33 [vite] (client) hmr update /src/index.css
-06:18:33 [vite] (client) hmr update /src/index.css
-06:18:34 [vite] (client) hmr update /src/index.css
-06:18:34 [vite] (client) hmr update /src/index.css
-06:18:34 [vite] (client) hmr update /src/index.css
-06:18:34 [vite] (client) hmr update /src/index.css
-06:18:34 [vite] (client) hmr update /src/index.css
-06:18:34 [vite] (client) hmr update /src/index.css
-06:18:34 [vite] (client) hmr update /src/index.css
-06:18:37 [vite] (client) hmr update /src/index.css
-06:18:37 [vite] (client) hmr update /src/index.css
-06:18:43 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:18:53 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:19:03 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:19:13 [vite] (client) hmr update /src/index.css
-06:19:23 [vite] (client) hmr update /src/index.css
-06:19:33 [vite] (client) hmr update /src/index.css
-06:19:34 [vite] (client) hmr update /src/index.css
-06:19:34 [vite] (client) hmr update /src/index.css
-06:19:34 [vite] (client) hmr update /src/index.css
-06:19:34 [vite] (client) hmr update /src/index.css
-06:19:43 [vite] (client) hmr update /src/index.css
-06:19:53 [vite] (client) hmr update /src/index.css
-06:20:03 [vite] (client) hmr update /src/index.css
-06:20:13 [vite] (client) hmr update /src/index.css
-06:20:23 [vite] (client) hmr update /src/index.css
-06:20:27 [vite] (client) hmr update /src/index.css
-06:20:32 [vite] (client) hmr update /src/index.css
-06:20:32 [vite] (client) hmr update /src/index.css
-06:20:34 [vite] (client) hmr update /src/index.css
-06:20:34 [vite] (client) hmr update /src/index.css
-06:20:34 [vite] (client) hmr update /src/index.css
-06:20:34 [vite] (client) hmr update /src/index.css
-06:20:34 [vite] (client) hmr update /src/index.css
-06:20:34 [vite] (client) hmr update /src/index.css
-06:20:34 [vite] (client) hmr update /src/index.css
-06:20:43 [vite] (client) hmr update /src/index.css
-06:20:53 [vite] (client) hmr update /src/index.css
-06:21:03 [vite] (client) hmr update /src/index.css
-06:21:13 [vite] (client) hmr update /src/index.css
-06:21:23 [vite] (client) hmr update /src/index.css
-06:21:33 [vite] (client) hmr update /src/index.css
-06:21:35 [vite] (client) hmr update /src/index.css
-06:21:35 [vite] (client) hmr update /src/index.css
-06:21:35 [vite] (client) hmr update /src/index.css
-06:21:35 [vite] (client) hmr update /src/index.css
-06:21:43 [vite] (client) hmr update /src/index.css
-06:21:53 [vite] (client) hmr update /src/index.css
-06:22:03 [vite] (client) hmr update /src/index.css
-06:22:13 [vite] (client) hmr update /src/index.css
-06:22:23 [vite] (client) hmr update /src/index.css
-06:22:33 [vite] (client) hmr update /src/index.css
-06:22:35 [vite] (client) hmr update /src/index.css
-06:22:35 [vite] (client) hmr update /src/index.css
-06:22:35 [vite] (client) hmr update /src/index.css
-06:22:35 [vite] (client) hmr update /src/index.css
-06:22:43 [vite] (client) hmr update /src/index.css
-06:22:53 [vite] (client) hmr update /src/index.css
-06:23:03 [vite] (client) hmr update /src/index.css
-06:23:13 [vite] (client) hmr update /src/index.css
-06:23:23 [vite] (client) hmr update /src/index.css
-06:23:24 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
-06:23:25 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
-06:23:33 [vite] (client) hmr update /src/index.css
-06:23:35 [vite] (client) hmr update /src/index.css
-06:23:35 [vite] (client) hmr update /src/index.css
-06:23:35 [vite] (client) hmr update /src/index.css
-06:23:35 [vite] (client) hmr update /src/index.css
-06:23:43 [vite] (client) hmr update /src/index.css
-06:23:53 [vite] (client) hmr update /src/index.css
-06:24:03 [vite] (client) hmr update /src/index.css
-06:24:13 [vite] (client) hmr update /src/index.css
-06:24:23 [vite] (client) hmr update /src/index.css
-06:24:33 [vite] (client) hmr update /src/index.css
-06:24:35 [vite] (client) hmr update /src/index.css
-06:24:35 [vite] (client) hmr update /src/index.css
-06:24:35 [vite] (client) hmr update /src/index.css
-06:24:35 [vite] (client) hmr update /src/index.css
-06:24:43 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:24:51 [vite] (client) hmr update /src/index.css
-06:24:53 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:25:03 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:25:10 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:25:15 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:25:23 [vite] (client) hmr update /src/index.css
-06:25:28 [vite] (client) hmr update /src/index.css
-06:25:28 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:25:29 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:25:36 [vite] (client) hmr update /src/index.css
-06:25:36 [vite] (client) hmr update /src/index.css
-06:25:36 [vite] (client) hmr update /src/index.css
-06:25:36 [vite] (client) hmr update /src/index.css
-06:25:36 [vite] (client) hmr update /src/index.css
-06:25:36 [vite] (client) hmr update /src/index.css
-06:25:36 [vite] (client) hmr update /src/index.css
-06:25:36 [vite] (client) hmr update /src/index.css
-06:25:36 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:25:43 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 28,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:25:47 [vite] (client) hmr update /src/index.css
-06:25:53 [vite] (client) hmr update /src/index.css
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 10,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 10,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-Fetching /me for wiem. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 0,
-    itemType: 'sample',
-    _id: new ObjectId('69c3458d652697874e23a6fd'),
-    lastUpdated: 2026-03-25T02:16:45.706Z
-  },
-  {
-    name: 'CELEBREX 200MG BT 30 TUN',
-    batchNumber: 'INIT-2029',
-    count: 10,
-    itemType: 'sample',
-    _id: new ObjectId('69c34adbe5f2b10af8c9e400'),
-    lastUpdated: 2026-03-25T02:39:23.072Z
-  }
-]
-06:26:03 [vite] (client) hmr update /src/index.css
-Login user: asma
-Allowed dashboards: [ 'dashboard1' ]
-06:26:13 [vite] (client) hmr update /src/index.css
-06:26:20 [vite] (client) hmr update /src/index.css
-06:26:23 [vite] (client) hmr update /src/index.css
-06:26:29 [vite] (client) hmr update /src/index.css
-06:26:33 [vite] (client) hmr update /src/index.css
-06:26:35 [vite] (client) hmr update /src/index.css
-06:26:36 [vite] (client) hmr update /src/index.css
-06:26:36 [vite] (client) hmr update /src/index.css
-06:26:36 [vite] (client) hmr update /src/index.css
-06:26:36 [vite] (client) hmr update /src/index.css
-06:26:36 [vite] (client) hmr update /src/index.css
-06:26:36 [vite] (client) hmr update /src/index.css
-06:26:36 [vite] (client) hmr update /src/index.css
-06:26:43 [vite] (client) hmr update /src/index.css
-06:26:43 [vite] (client) hmr update /src/index.css
-06:26:53 [vite] (client) hmr update /src/index.css
-06:27:03 [vite] (client) hmr update /src/index.css
-06:27:13 [vite] (client) hmr update /src/index.css
-06:27:23 [vite] (client) hmr update /src/index.css
-06:27:33 [vite] (client) hmr update /src/index.css
-06:27:36 [vite] (client) hmr update /src/index.css
-06:27:36 [vite] (client) hmr update /src/index.css
-06:27:36 [vite] (client) hmr update /src/index.css
-06:27:36 [vite] (client) hmr update /src/index.css
-06:27:43 [vite] (client) hmr update /src/index.css
-06:27:53 [vite] (client) hmr update /src/index.css
-06:28:03 [vite] (client) hmr update /src/index.css
-06:28:13 [vite] (client) hmr update /src/index.css
-06:28:23 [vite] (client) hmr update /src/index.css
-06:28:33 [vite] (client) hmr update /src/index.css
-06:28:36 [vite] (client) hmr update /src/index.css
-06:28:36 [vite] (client) hmr update /src/index.css
-06:28:36 [vite] (client) hmr update /src/index.css
-06:28:37 [vite] (client) hmr update /src/index.css
-06:28:37 [vite] (client) hmr update /src/index.css
-06:29:07 [vite] (client) hmr update /src/index.css
-06:29:13 [vite] (client) hmr update /src/index.css
-06:29:23 [vite] (client) hmr update /src/index.css
-06:29:33 [vite] (client) hmr update /src/index.css
-06:29:37 [vite] (client) hmr update /src/index.css
-06:29:37 [vite] (client) hmr update /src/index.css
-06:29:38 [vite] (client) hmr update /src/index.css
-06:29:38 [vite] (client) hmr update /src/index.css
-06:30:13 [vite] (client) hmr update /src/index.css
-06:30:23 [vite] (client) hmr update /src/index.css
-06:30:28 [vite] (client) hmr update /src/index.css
-06:30:57 [vite] (client) hmr update /src/index.css
-06:30:57 [vite] (client) hmr update /src/index.css
-06:30:57 [vite] (client) hmr update /src/index.css
-06:30:57 [vite] (client) hmr update /src/index.css
-06:30:57 [vite] (client) hmr update /src/index.css
-06:30:57 [vite] (client) hmr update /src/index.css
-06:30:57 [vite] (client) hmr update /src/index.css
-06:31:24 [vite] (client) hmr update /src/index.css
-06:31:34 [vite] (client) hmr update /src/index.css
-06:31:39 [vite] (client) hmr update /src/index.css
-06:31:40 [vite] (client) hmr update /src/index.css
-06:31:40 [vite] (client) hmr update /src/index.css
-06:31:41 [vite] (client) hmr update /src/index.css
-06:32:14 [vite] (client) hmr update /src/index.css
-06:32:14 [vite] (client) hmr update /src/index.css
-06:32:24 [vite] (client) hmr update /src/index.css
-06:32:29 [vite] (client) hmr update /src/index.css
-06:33:02 [vite] (client) hmr update /src/index.css
-06:33:02 [vite] (client) hmr update /src/index.css
-06:33:03 [vite] (client) hmr update /src/index.css
-06:33:03 [vite] (client) hmr update /src/index.css
-06:33:03 [vite] (client) hmr update /src/index.css
-06:33:03 [vite] (client) hmr update /src/index.css
-06:33:03 [vite] (client) hmr update /src/index.css
-06:33:03 [vite] (client) hmr update /src/index.css
-06:33:30 [vite] (client) hmr update /src/index.css
-06:33:36 [vite] (client) hmr update /src/index.css
-06:33:42 [vite] (client) hmr update /src/index.css
-06:33:43 [vite] (client) hmr update /src/index.css
-06:33:43 [vite] (client) hmr update /src/index.css
-06:33:43 [vite] (client) hmr update /src/index.css
-06:33:44 [vite] (client) hmr update /src/index.css
-06:34:22 [vite] (client) hmr update /src/index.css
-06:34:26 [vite] (client) hmr update /src/index.css
-06:34:35 [vite] (client) hmr update /src/index.css
-06:34:43 [vite] (client) hmr update /src/index.css
-06:34:44 [vite] (client) hmr update /src/index.css
-06:34:44 [vite] (client) hmr update /src/index.css
-06:34:44 [vite] (client) hmr update /src/index.css
-06:34:45 [vite] (client) hmr update /src/index.css
-06:34:45 [vite] (client) hmr update /src/index.css
-06:35:13 [vite] (client) hmr update /src/index.css
-06:35:15 [vite] (client) hmr update /src/index.css
-06:35:24 [vite] (client) hmr update /src/index.css
-06:35:33 [vite] (client) hmr update /src/index.css
-06:35:33 [vite] (client) hmr update /src/index.css
-06:35:44 [vite] (client) hmr update /src/index.css
-06:35:44 [vite] (client) hmr update /src/index.css
-06:35:45 [vite] (client) hmr update /src/index.css
-06:35:45 [vite] (client) hmr update /src/index.css
-06:35:45 [vite] (client) hmr update /src/index.css
-06:36:09 [vite] (client) hmr update /src/index.css
-06:36:15 [vite] (client) hmr update /src/index.css
-06:36:24 [vite] (client) hmr update /src/index.css
-06:36:34 [vite] (client) hmr update /src/index.css
-06:36:44 [vite] (client) hmr update /src/index.css
-06:37:07 [vite] (client) hmr update /src/index.css
-06:37:08 [vite] (client) hmr update /src/index.css
-06:37:08 [vite] (client) hmr update /src/index.css
-06:37:08 [vite] (client) hmr update /src/index.css
-06:37:37 [vite] (client) hmr update /src/index.css
-06:37:44 [vite] (client) hmr update /src/index.css
-06:37:46 [vite] (client) hmr update /src/index.css
-06:37:46 [vite] (client) hmr update /src/index.css
-06:37:46 [vite] (client) hmr update /src/index.css
-06:37:46 [vite] (client) hmr update /src/index.css
-06:38:18 [vite] (client) hmr update /src/index.css
-06:38:24 [vite] (client) hmr update /src/index.css
-06:38:34 [vite] (client) hmr update /src/index.css
-06:38:44 [vite] (client) hmr update /src/index.css
-06:38:48 [vite] (client) hmr update /src/index.css
-06:38:48 [vite] (client) hmr update /src/index.css
-06:38:49 [vite] (client) hmr update /src/index.css
-06:39:24 [vite] (client) hmr update /src/index.css
-06:39:34 [vite] (client) hmr update /src/index.css
-06:39:44 [vite] (client) hmr update /src/index.css
-06:39:48 [vite] (client) hmr update /src/index.css
-06:39:48 [vite] (client) hmr update /src/index.css
-06:39:48 [vite] (client) hmr update /src/index.css
-06:40:22 [vite] (client) hmr update /src/index.css
-06:40:24 [vite] (client) hmr update /src/index.css
-06:40:30 [vite] (client) hmr update /src/index.css
-06:40:30 [vite] (client) hmr update /src/index.css
-06:41:04 [vite] (client) hmr update /src/index.css
-06:41:04 [vite] (client) hmr update /src/index.css
-06:41:04 [vite] (client) hmr update /src/index.css
-06:41:04 [vite] (client) hmr update /src/index.css
-06:41:04 [vite] (client) hmr update /src/index.css
-06:41:04 [vite] (client) hmr update /src/index.css
-06:41:04 [vite] (client) hmr update /src/index.css
-06:41:04 [vite] (client) hmr update /src/index.css
-06:41:04 [vite] (client) hmr update /src/index.css
-06:41:35 [vite] (client) hmr update /src/index.css
-06:41:44 [vite] (client) hmr update /src/index.css
-06:41:48 [vite] (client) hmr update /src/index.css
-06:41:48 [vite] (client) hmr update /src/index.css
-06:41:49 [vite] (client) hmr update /src/index.css
-06:41:49 [vite] (client) hmr update /src/index.css
-06:42:11 [vite] (client) hmr update /src/index.css
-06:42:15 [vite] (client) hmr update /src/index.css
-06:42:24 [vite] (client) hmr update /src/index.css
-06:42:34 [vite] (client) hmr update /src/index.css
-06:42:44 [vite] (client) hmr update /src/index.css
-06:42:49 [vite] (client) hmr update /src/index.css
-06:42:49 [vite] (client) hmr update /src/index.css
-06:42:49 [vite] (client) hmr update /src/index.css
-06:42:49 [vite] (client) hmr update /src/index.css
-06:42:50 [vite] (client) hmr update /src/index.css
-06:43:11 [vite] (client) hmr update /src/index.css
-06:43:14 [vite] (client) hmr update /src/index.css
-06:43:24 [vite] (client) hmr update /src/index.css
-06:43:34 [vite] (client) hmr update /src/index.css
-06:43:44 [vite] (client) hmr update /src/index.css
-06:43:49 [vite] (client) hmr update /src/index.css
-06:43:49 [vite] (client) hmr update /src/index.css
-06:43:49 [vite] (client) hmr update /src/index.css
-06:43:50 [vite] (client) hmr update /src/index.css
-06:43:50 [vite] (client) hmr update /src/index.css
-06:44:08 [vite] (client) hmr update /src/index.css
-06:44:14 [vite] (client) hmr update /src/index.css
-06:44:24 [vite] (client) hmr update /src/index.css
-06:44:34 [vite] (client) hmr update /src/index.css
-06:44:44 [vite] (client) hmr update /src/index.css
-06:44:50 [vite] (client) hmr update /src/index.css
-06:44:50 [vite] (client) hmr update /src/index.css
-06:44:51 [vite] (client) hmr update /src/index.css
+  147 |                                 onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                             />
+> 149 |                         </div>
+      |                         ^
+  150 |                         <div>
+  151 |                             <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+  152 |                             <input
+  Plugin: vite:react-babel
+  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx:149:24
+  147 |                                  onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                              />
+  149 |                          </div>
+      |                          ^
+  150 |                          <div>
+  151 |                              <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+      at constructor (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4756:16)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11747:28)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.parseReturnStatement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13218:28)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12874:21)
+      at JSXParserMixin.parseStatementLike (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseExportDefaultExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13983:19)
+      at JSXParserMixin.parseExport (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13904:25)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12954:27)
+19:20:34 [vite] (client) hmr update /src/index.css
+19:20:34 [vite] (client) hmr update /src/index.css
+19:20:34 [vite] (client) hmr update /src/index.css
+19:20:34 [vite] (client) hmr update /src/index.css
+19:20:37 [vite] (client) hmr update /src/index.css
+19:20:39 [vite] Internal server error: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx: Expected corresponding JSX closing tag for <label>. (149:24)
+
+  147 |                                 onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                             />
+> 149 |                         </div>
+      |                         ^
+  150 |                         <div>
+  151 |                             <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+  152 |                             <input
+  Plugin: vite:react-babel
+  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx:149:24
+  147 |                                  onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                              />
+  149 |                          </div>
+      |                          ^
+  150 |                          <div>
+  151 |                              <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+      at constructor (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4756:16)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11747:28)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.parseReturnStatement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13218:28)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12874:21)
+      at JSXParserMixin.parseStatementLike (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseExportDefaultExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13983:19)
+      at JSXParserMixin.parseExport (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13904:25)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12954:27)
+19:20:46 [vite] (client) hmr update /src/index.css
+19:20:48 [vite] Internal server error: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx: Expected corresponding JSX closing tag for <label>. (149:24)
+
+  147 |                                 onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                             />
+> 149 |                         </div>
+      |                         ^
+  150 |                         <div>
+  151 |                             <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+  152 |                             <input
+  Plugin: vite:react-babel
+  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx:149:24
+  147 |                                  onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                              />
+  149 |                          </div>
+      |                          ^
+  150 |                          <div>
+  151 |                              <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+      at constructor (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4756:16)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11747:28)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.parseReturnStatement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13218:28)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12874:21)
+      at JSXParserMixin.parseStatementLike (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseExportDefaultExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13983:19)
+      at JSXParserMixin.parseExport (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13904:25)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12954:27)
+19:20:56 [vite] (client) hmr update /src/index.css
+19:20:58 [vite] Internal server error: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx: Expected corresponding JSX closing tag for <label>. (149:24)
+
+  147 |                                 onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                             />
+> 149 |                         </div>
+      |                         ^
+  150 |                         <div>
+  151 |                             <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+  152 |                             <input
+  Plugin: vite:react-babel
+  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx:149:24
+  147 |                                  onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                              />
+  149 |                          </div>
+      |                          ^
+  150 |                          <div>
+  151 |                              <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+      at constructor (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4756:16)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11747:28)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.parseReturnStatement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13218:28)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12874:21)
+      at JSXParserMixin.parseStatementLike (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseExportDefaultExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13983:19)
+      at JSXParserMixin.parseExport (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13904:25)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12954:27)
+19:21:06 [vite] (client) hmr update /src/index.css
+19:21:07 [vite] Internal server error: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx: Expected corresponding JSX closing tag for <label>. (149:24)
+
+  147 |                                 onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                             />
+> 149 |                         </div>
+      |                         ^
+  150 |                         <div>
+  151 |                             <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+  152 |                             <input
+  Plugin: vite:react-babel
+  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx:149:24
+  147 |                                  onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                              />
+  149 |                          </div>
+      |                          ^
+  150 |                          <div>
+  151 |                              <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+      at constructor (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4756:16)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11747:28)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.parseReturnStatement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13218:28)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12874:21)
+      at JSXParserMixin.parseStatementLike (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseExportDefaultExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13983:19)
+      at JSXParserMixin.parseExport (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13904:25)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12954:27)
+19:21:16 [vite] (client) hmr update /src/index.css
+19:21:17 [vite] Internal server error: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx: Expected corresponding JSX closing tag for <label>. (149:24)
+
+  147 |                                 onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                             />
+> 149 |                         </div>
+      |                         ^
+  150 |                         <div>
+  151 |                             <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+  152 |                             <input
+  Plugin: vite:react-babel
+  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/StockView.jsx:149:24
+  147 |                                  onChange={e => setNewItem({ ...newItem, batchNumber: e.target.value, type: activeTab })}
+  148 |                              />
+  149 |                          </div>
+      |                          ^
+  150 |                          <div>
+  151 |                              <label className="block text-sm font-medium text-gray-700 mb-1">Quantité</label>
+      at constructor (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4756:16)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
+      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11747:28)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11395:23)
+      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseExpressionBase (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10848:23)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:39
+      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:17)
+      at JSXParserMixin.parseReturnStatement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13218:28)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12874:21)
+      at JSXParserMixin.parseStatementLike (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseExportDefaultExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13983:19)
+      at JSXParserMixin.parseExport (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:13904:25)
+      at JSXParserMixin.parseStatementContent (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12954:27)
+19:21:19 [vite] (client) hmr update /src/index.css
+19:21:19 [vite] (client) hmr update /src/index.css
+19:21:19 [vite] (client) hmr update /src/index.css
+19:21:31 [vite] (client) hmr update /src/index.css
+19:21:31 [vite] (client) hmr update /src/index.css
+19:21:31 [vite] (client) hmr update /src/index.css
+19:21:31 [vite] (client) hmr update /src/index.css
+19:21:31 [vite] (client) hmr update /src/index.css
+19:21:32 [vite] (client) hmr update /src/index.css
+19:21:32 [vite] (client) hmr update /src/index.css
+19:21:32 [vite] (client) hmr update /src/index.css
+19:21:32 [vite] (client) hmr update /src/index.css
+19:21:32 [vite] (client) hmr update /src/index.css
+19:21:40 [vite] (client) hmr update /src/DashboardPage.jsx, /src/index.css
+19:21:41 [vite] (client) hmr update /src/index.css
+19:21:46 [vite] (client) hmr update /src/index.css
+19:21:56 [vite] (client) hmr update /src/index.css
+19:22:06 [vite] (client) hmr update /src/index.css
+19:22:10 [vite] (client) hmr update /src/components/SamplesView.jsx, /src/index.css
+19:22:11 [vite] (client) hmr update /src/components/CycleView.jsx, /src/index.css
+19:22:12 [vite] (client) hmr update /src/components/SampleHistoryView.jsx, /src/index.css
+19:22:12 [vite] (client) hmr update /src/index.css
+19:22:12 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
+19:22:13 [vite] (client) hmr update /src/index.css
+19:22:13 [vite] (client) hmr update /src/index.css
+19:22:16 [vite] (client) hmr update /src/index.css
+19:22:22 [vite] (client) hmr update /src/index.css
+19:22:22 [vite] (client) hmr update /src/index.css
+19:22:22 [vite] (client) hmr update /src/index.css
+19:22:22 [vite] (client) hmr update /src/index.css
+19:22:26 [vite] (client) hmr update /src/index.css
+19:22:36 [vite] (client) hmr update /src/index.css
+19:22:46 [vite] (client) hmr update /src/index.css
+19:22:56 [vite] (client) hmr update /src/index.css
+19:23:06 [vite] (client) hmr update /src/index.css
+19:23:16 [vite] (client) hmr update /src/index.css
+19:23:22 [vite] (client) hmr update /src/index.css
+19:23:22 [vite] (client) hmr update /src/index.css
+19:23:22 [vite] (client) hmr update /src/index.css
+19:23:26 [vite] (client) hmr update /src/index.css
+19:23:36 [vite] (client) hmr update /src/index.css
+19:23:46 [vite] (client) hmr update /src/index.css
+19:23:56 [vite] (client) hmr update /src/index.css
+19:24:06 [vite] (client) hmr update /src/index.css
+19:24:16 [vite] (client) hmr update /src/index.css
+19:24:22 [vite] (client) hmr update /src/index.css
+19:24:22 [vite] (client) hmr update /src/index.css
+19:24:22 [vite] (client) hmr update /src/index.css
+19:24:22 [vite] (client) hmr update /src/index.css
+19:24:34 [vite] (client) hmr update /src/index.css
+19:24:37 [vite] (client) hmr update /src/index.css
+19:24:47 [vite] (client) hmr update /src/index.css
+19:24:57 [vite] (client) hmr update /src/index.css
+19:25:07 [vite] (client) hmr update /src/index.css
+19:25:17 [vite] (client) hmr update /src/index.css
+19:25:22 [vite] (client) hmr update /src/index.css
+19:25:23 [vite] (client) hmr update /src/index.css
+19:25:23 [vite] (client) hmr update /src/index.css
+19:25:23 [vite] (client) hmr update /src/index.css
+19:25:27 [vite] (client) hmr update /src/index.css
+19:25:37 [vite] (client) hmr update /src/index.css
+19:25:47 [vite] (client) hmr update /src/index.css
+
+🛑 Signal SIGTERM reçu — arrêt propre en cours...
+⚠️  Backend process exited (code=null, signal=SIGTERM). Restarting in 3s...
+19:25:53 [vite] (client) hmr update /src/index.css
+19:25:53 [vite] (client) hmr update /src/index.css
+19:25:53 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+19:25:54 [vite] (client) hmr update /src/index.css
+🔄 Restarting Backend Server...
+📡 Backend restarted with PID: 17714
+19:25:55 [vite] (client) hmr update /src/index.css
+✅ MongoDB arrêté proprement.
+19:25:58 [vite] (client) hmr update /src/index.css

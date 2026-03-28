@@ -60,12 +60,7 @@ export default function SamplesView({ dashboardId, viewUser }) {
             });
             if (res.ok) {
                 const data = await res.json();
-                const relevantVisits = data.filter(v =>
-                    v.givenSampleName ||
-                    v.givenMaterialName ||
-                    (v.givenMaterials && v.givenMaterials.length > 0) ||
-                    (v.givenSamples && v.givenSamples.length > 0)
-                );
+                const relevantVisits = data.filter(v => v.givenSampleName || v.givenMaterialName || (v.givenMaterials && v.givenMaterials.length > 0));
                 setHistory(relevantVisits);
             }
         } catch (err) {
@@ -197,7 +192,36 @@ export default function SamplesView({ dashboardId, viewUser }) {
                     </div>
                 )}
 
-
+                {/* Promotional Materials Section */}
+                <h3 className="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                    Matériel Promotionnel (Gifts, Stylos, etc.)
+                </h3>
+                {promotionalMaterials.length === 0 ? (
+                    <div className="text-gray-400 text-sm italic mb-4 bg-gray-50 p-4 rounded border border-dashed text-center">
+                        Aucun matériel promotionnel en possession.
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {promotionalMaterials.map((item, index) => (
+                            <div key={index} className="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div className="flex justify-between items-start">
+                                    <div>
+                                        <h3 className="font-bold text-lg text-blue-900">{item.name}</h3>
+                                        {item.batchNumber && item.batchNumber !== 'N/A' && (
+                                            <p className="text-xs font-mono text-blue-600 bg-white px-2 py-0.5 rounded border border-blue-100 inline-block mt-1">
+                                                Réf: {item.batchNumber}
+                                            </p>
+                                        )}
+                                    </div>
+                                    <span className="bg-blue-600 text-white px-4 py-2 rounded-lg text-2xl font-black shadow-lg shadow-blue-200">
+                                        {item.count}
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
@@ -236,19 +260,11 @@ export default function SamplesView({ dashboardId, viewUser }) {
                                         </td>
                                         <td className="px-4 py-4 border-b">
                                             <div className="flex flex-col gap-1">
-                                                {/* Legacy Sample */}
                                                 {visit.givenSampleName && (
-                                                    <span className="font-semibold text-amber-700 bg-amber-50 px-2 py-1 rounded inline-block w-fit">
+                                                    <span className="font-semibold text-green-700 bg-green-50 px-2 py-1 rounded inline-block w-fit">
                                                         📦 {visit.givenSampleName}{visit.givenSampleQty > 1 ? ` (×${visit.givenSampleQty})` : ''}
                                                     </span>
                                                 )}
-                                                {/* New Samples */}
-                                                {visit.givenSamples?.map((s, sIdx) => (
-                                                    <span key={sIdx} className="font-semibold text-green-700 bg-green-50 px-2 py-1 rounded inline-block w-fit">
-                                                        📦 {s.name}{s.count > 1 ? ` (×${s.count})` : ''}
-                                                    </span>
-                                                ))}
-                                                {/* Legacy Materials */}
                                                 {visit.givenMaterialName && (!visit.givenMaterials || visit.givenMaterials.length === 0) && (
                                                     <span className="font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded inline-block w-fit">
                                                         🎁 {visit.givenMaterialName}
@@ -263,19 +279,11 @@ export default function SamplesView({ dashboardId, viewUser }) {
                                         </td>
                                         <td className="px-4 py-4 border-b">
                                             <div className="flex flex-col gap-1">
-                                                {/* Legacy Sample */}
                                                 {visit.givenSampleName && (
                                                     <span className="text-[10px] font-mono text-gray-600 bg-gray-100 px-2 py-0.5 rounded border border-gray-200 w-fit">
                                                         {visit.givenSampleBatch || 'N/A'}
                                                     </span>
                                                 )}
-                                                {/* New Samples */}
-                                                {visit.givenSamples?.map((s, sIdx) => (
-                                                    <span key={sIdx} className="text-[10px] font-mono text-gray-600 bg-gray-100 px-2 py-0.5 rounded border border-gray-200 w-fit">
-                                                        {s.batchNumber || 'N/A'}
-                                                    </span>
-                                                ))}
-                                                {/* Legacy Materials */}
                                                 {visit.givenMaterialName && (!visit.givenMaterials || visit.givenMaterials.length === 0) && (
                                                     <span className="text-[10px] font-mono text-gray-600 bg-gray-100 px-2 py-0.5 rounded border border-gray-200 w-fit">
                                                         {visit.givenMaterialBatch && visit.givenMaterialBatch !== 'N/A' ? visit.givenMaterialBatch : '-'}

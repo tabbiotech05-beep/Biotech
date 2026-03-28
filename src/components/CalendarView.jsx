@@ -37,7 +37,13 @@ export default function CalendarView({ dashboardId, viewUser }) {
         address: '',
         pharmacyName: '',
         wholesalerName: '',
-        givenSamples: []
+        givenSampleName: '',
+        givenSampleBatch: '',
+        givenSampleQty: 1,
+        givenSamples: [],
+        givenMaterialName: '',
+        givenMaterialBatch: '',
+        givenMaterials: []
     });
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [userSamples, setUserSamples] = useState([]);
@@ -45,6 +51,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
     const [pharmacies, setPharmacies] = useState([]); // Master list for autocomplete
     const [wholesalers, setWholesalers] = useState([]); // Master list for autocomplete
     const [pendingMaterial, setPendingMaterial] = useState(''); // Temp selected material value
+    const [pendingSample, setPendingSample] = useState(''); // Temp selected sample value
     const [pendingQty, setPendingQty] = useState(1); // Temp quantity to add
     const [pendingSampleQty, setPendingSampleQty] = useState(1); // Quantity for sample
 
@@ -66,7 +73,13 @@ export default function CalendarView({ dashboardId, viewUser }) {
             address: '',
             pharmacyName: '',
             wholesalerName: '',
-            givenSamples: []
+            givenSampleName: '',
+            givenSampleBatch: '',
+            givenSampleQty: 1,
+            givenSamples: [],
+            givenMaterialName: '',
+            givenMaterialBatch: '',
+            givenMaterials: []
         });
         setSelectedEvent(null); // Clear selection when creating new
         setShowModal(true);
@@ -526,53 +539,94 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                     )}
 
                                     <div className="mb-6 space-y-4">
-                                        <div>
-                                            <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">📦 Échantillons Distribués</label>
-                                            <div className="flex gap-2 mb-3">
-                                                <select
-                                                    className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-blue-500"
-                                                    value={pendingMaterial} // Re-using pendingMaterial for sample select temp state
-                                                    onChange={(e) => setPendingMaterial(e.target.value)}
-                                                >
-                                                    <option value="">-- Choisir un échantillon --</option>
-                                                    {userSamples.filter(s => s.count > 0 && (s.itemType || 'sample') === 'sample').map((s, idx) => (
-                                                        <option key={idx} value={`${s.name}|${s.batchNumber || ''}`}>
-                                                            📦 {s.name} ({s.count})
-                                                        </option>
-                                                    ))}
-                                                </select>
-                                                <button
-                                                    onClick={() => {
-                                                        if (!pendingMaterial) return;
-                                                        const [name, batch] = pendingMaterial.split('|');
-                                                        const updated = [...newEvent.givenSamples];
-                                                        const idx = updated.findIndex(s => s.name === name && s.batchNumber === batch);
-                                                        if (idx > -1) updated[idx].count += 1;
-                                                        else updated.push({ name, batchNumber: batch, count: 1 });
-                                                        setNewEvent({ ...newEvent, givenSamples: updated });
-                                                        setPendingMaterial('');
-                                                    }}
-                                                    className="px-4 bg-blue-600 text-white rounded-lg font-bold text-xs hover:bg-blue-700 transition-colors"
-                                                >+ Ajouter</button>
-                                            </div>
-                                        </div>
+                                        <div className="mb-6 space-y-4">
+                                            <div>
+                                                <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">🎁 Échantillons & Matériels</label>
 
-                                        {newEvent.givenSamples.length > 0 && (
-                                            <div className="space-y-2">
-                                                {newEvent.givenSamples.map((s, i) => (
-                                                    <div key={i} className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-100">
-                                                        <span className="text-sm font-bold text-blue-800">📦 {s.name}</span>
-                                                        <div className="flex items-center gap-3">
-                                                            <span className="bg-blue-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{s.count}</span>
-                                                            <button
-                                                                onClick={() => setNewEvent(p => ({ ...p, givenSamples: p.givenSamples.filter((_, idx) => idx !== i) }))}
-                                                                className="text-red-400 hover:text-red-600 font-bold"
-                                                            >✕</button>
-                                                        </div>
-                                                    </div>
-                                                ))}
+                                                {/* Multi-Sample Selection */}
+                                                <div className="flex gap-2 mb-3">
+                                                    <select
+                                                        className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-blue-500"
+                                                        value={pendingSample}
+                                                        onChange={(e) => setPendingSample(e.target.value)}
+                                                    >
+                                                        <option value="">-- Ajouter un échantillon --</option>
+                                                        {userSamples.filter(s => s.count > 0 && (s.itemType || 'sample') === 'sample').map((s, idx) => (
+                                                            <option key={idx} value={`${s.name}|${s.batchNumber || ''}`}>
+                                                                📦 {s.name} ({s.count})
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                    <input
+                                                        type="number"
+                                                        className="w-16 border border-gray-200 rounded-lg px-2 text-center text-sm"
+                                                        value={pendingSampleQty}
+                                                        onChange={(e) => setPendingSampleQty(Math.max(1, parseInt(e.target.value) || 1))}
+                                                    />
+                                                    <button
+                                                        onClick={() => {
+                                                            if (!pendingSample) return;
+                                                            const [name, batch] = pendingSample.split('|');
+                                                            const updated = [...newEvent.givenSamples];
+                                                            const idx = updated.findIndex(s => s.name === name && s.batch === batch);
+                                                            if (idx > -1) updated[idx].count += pendingSampleQty;
+                                                            else updated.push({ name, batch, count: pendingSampleQty });
+                                                            setNewEvent({ ...newEvent, givenSamples: updated });
+                                                            setPendingSample('');
+                                                            setPendingSampleQty(1);
+                                                        }}
+                                                        className="px-3 bg-green-50 text-green-600 rounded-lg font-bold text-xs"
+                                                    >+ Add</button>
+                                                </div>
+
+                                                {/* Materials Selection */}
+                                                <div className="flex gap-2">
+                                                    <select
+                                                        className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-blue-500"
+                                                        value={pendingMaterial}
+                                                        onChange={(e) => setPendingMaterial(e.target.value)}
+                                                    >
+                                                        <option value="">-- Ajouter un cadeau --</option>
+                                                        {userSamples.filter(s => s.count > 0 && s.itemType === 'material').map((s, idx) => (
+                                                            <option key={idx} value={`${s.name}|${s.batchNumber || ''}`}>
+                                                                🎁 {s.name} ({s.count})
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                    <button
+                                                        onClick={() => {
+                                                            if (!pendingMaterial) return;
+                                                            const [name, batch] = pendingMaterial.split('|');
+                                                            const updated = [...newEvent.givenMaterials];
+                                                            const idx = updated.findIndex(m => m.name === name && m.batch === batch);
+                                                            if (idx > -1) updated[idx].count += 1;
+                                                            else updated.push({ name, batch, count: 1 });
+                                                            setNewEvent({ ...newEvent, givenMaterials: updated });
+                                                            setPendingMaterial('');
+                                                        }}
+                                                        className="px-3 bg-blue-50 text-blue-600 rounded-lg font-bold text-xs"
+                                                    >+ Add</button>
+                                                </div>
                                             </div>
-                                        )}
+
+                                            {/* Display selected items as badges */}
+                                            {(newEvent.givenSamples?.length > 0 || newEvent.givenMaterials?.length > 0) && (
+                                                <div className="flex flex-wrap gap-2 p-3 bg-gray-50 rounded-xl border border-gray-100">
+                                                    {newEvent.givenSamples?.map((s, i) => (
+                                                        <span key={`s-${i}`} className="text-[10px] bg-green-100 text-green-800 px-2 py-1 rounded-full font-bold flex items-center gap-1 shadow-sm border border-green-200">
+                                                            📦 {s.name} x{s.count}
+                                                            <button onClick={() => setNewEvent(p => ({ ...p, givenSamples: p.givenSamples.filter((_, idx) => idx !== i) }))} className="hover:text-red-500 font-black">✕</button>
+                                                        </span>
+                                                    ))}
+                                                    {newEvent.givenMaterials?.map((m, i) => (
+                                                        <span key={`m-${i}`} className="text-[10px] bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-bold flex items-center gap-1 shadow-sm border border-blue-200">
+                                                            🎁 {m.name} x{m.count}
+                                                            <button onClick={() => setNewEvent(p => ({ ...p, givenMaterials: p.givenMaterials.filter((_, idx) => idx !== i) }))} className="hover:text-red-500 font-black">✕</button>
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
 
                                     <div className="mb-8">
@@ -644,17 +698,18 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                 </div>
 
                                 <div className="mb-6">
-                                    <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">📦 Échantillons Distribués</label>
-                                    <div className="space-y-2">
-                                        {!isReadOnly && (
-                                            <div className="flex gap-2 mb-3">
+                                    <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">🎁 Produits Distribués</label>
+
+                                    {!isReadOnly && (
+                                        <div className="mb-4 space-y-2">
+                                            <div className="flex gap-2">
                                                 <select
-                                                    className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white"
-                                                    value={pendingMaterial}
-                                                    onChange={(e) => setPendingMaterial(e.target.value)}
+                                                    className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-blue-500"
+                                                    value={pendingSample}
+                                                    onChange={(e) => setPendingSample(e.target.value)}
                                                 >
                                                     <option value="">-- Ajouter un échantillon --</option>
-                                                    {userSamples.filter(s => (s.itemType || 'sample') === 'sample').map((s, idx) => (
+                                                    {userSamples.filter(s => s.count > 0 && (s.itemType || 'sample') === 'sample').map((s, idx) => (
                                                         <option key={idx} value={`${s.name}|${s.batchNumber || ''}`}>
                                                             📦 {s.name} ({s.count})
                                                         </option>
@@ -662,51 +717,138 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                                 </select>
                                                 <button
                                                     onClick={() => {
-                                                        if (!pendingMaterial) return;
-                                                        const [name, batch] = pendingMaterial.split('|');
+                                                        if (!pendingSample) return;
+                                                        const [name, batch] = pendingSample.split('|');
                                                         const updated = [...(selectedEvent.givenSamples || [])];
-                                                        const idx = updated.findIndex(s => s.name === name && s.batchNumber === batch);
+                                                        // Migrate legacy if any
+                                                        if (selectedEvent.givenSampleName && updated.length === 0) {
+                                                            updated.push({ name: selectedEvent.givenSampleName, batch: selectedEvent.givenSampleBatch, count: selectedEvent.givenSampleQty || 1 });
+                                                        }
+                                                        const idx = updated.findIndex(s => s.name === name && s.batch === batch);
                                                         if (idx > -1) updated[idx].count += 1;
-                                                        else updated.push({ name, batchNumber: batch, count: 1 });
-                                                        setSelectedEvent({ ...selectedEvent, givenSamples: updated });
-                                                        setPendingMaterial('');
+                                                        else updated.push({ name, batch, count: 1 });
+                                                        setSelectedEvent({ ...selectedEvent, givenSamples: updated, givenSampleName: '', givenSampleQty: 0 }); // Clear legacy
+                                                        setPendingSample('');
                                                     }}
-                                                    className="px-3 bg-blue-600 text-white rounded-lg font-bold text-xs"
+                                                    className="px-3 bg-green-50 text-green-600 rounded-lg font-bold text-xs"
                                                 >+ Add</button>
                                             </div>
-                                        )}
-                                        {((selectedEvent.givenSamples && selectedEvent.givenSamples.length > 0) || selectedEvent.givenSampleName) ? (
-                                            <div className="space-y-2">
-                                                {/* Display legacy sample if it exists */}
-                                                {selectedEvent.givenSampleName && (
-                                                    <div className="flex items-center justify-between p-3 bg-amber-50 rounded-lg border border-amber-100">
-                                                        <span className="text-sm font-bold text-amber-800">📦 {selectedEvent.givenSampleName} (Legacy)</span>
-                                                        <span className="bg-amber-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{selectedEvent.givenSampleQty || 1}</span>
-                                                    </div>
-                                                )}
-                                                {/* Display new multi-samples */}
-                                                {(selectedEvent.givenSamples || []).map((s, i) => (
-                                                    <div key={i} className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-100">
-                                                        <span className="text-sm font-bold text-green-800">📦 {s.name}</span>
-                                                        <div className="flex items-center gap-3">
-                                                            <span className="bg-green-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{s.count}</span>
-                                                            {!isReadOnly && (
-                                                                <button
-                                                                    onClick={() => setSelectedEvent(p => ({ ...p, givenSamples: p.givenSamples.filter((_, idx) => idx !== i) }))}
-                                                                    className="text-red-400 hover:text-red-600 font-bold"
-                                                                >✕</button>
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                ))}
-                                                {/* Legacy materials check for UI cleanup */}
-                                                {selectedEvent.givenMaterials?.length > 0 && !isReadOnly && (
-                                                    <p className="text-[9px] text-gray-400 italic">Note: Le matériel (cadeaux) sera retiré lors de l'enregistrement.</p>
+                                            <div className="flex gap-2">
+                                                <select
+                                                    className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-blue-500"
+                                                    value={pendingMaterial}
+                                                    onChange={(e) => setPendingMaterial(e.target.value)}
+                                                >
+                                                    <option value="">-- Ajouter un cadeau --</option>
+                                                    {userSamples.filter(s => s.count > 0 && s.itemType === 'material').map((s, idx) => (
+                                                        <option key={idx} value={`${s.name}|${s.batchNumber || ''}`}>
+                                                            🎁 {s.name} ({s.count})
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                                <button
+                                                    onClick={() => {
+                                                        if (!pendingMaterial) return;
+                                                        const [name, batch] = pendingMaterial.split('|');
+                                                        const updated = [...(selectedEvent.givenMaterials || [])];
+                                                        const idx = updated.findIndex(m => m.name === name && m.batch === batch);
+                                                        if (idx > -1) updated[idx].count += 1;
+                                                        else updated.push({ name, batch, count: 1 });
+                                                        setSelectedEvent({ ...selectedEvent, givenMaterials: updated });
+                                                        setPendingMaterial('');
+                                                    }}
+                                                    className="px-3 bg-blue-50 text-blue-600 rounded-lg font-bold text-xs"
+                                                >+ Add</button>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    <div className="space-y-2">
+                                        {/* Display legacy sample if it exists and no givenSamples array yet */}
+                                        {selectedEvent.givenSampleName && (!selectedEvent.givenSamples || selectedEvent.givenSamples.length === 0) && (
+                                            <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-100 mb-2">
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-sm font-bold text-green-800">📦 {selectedEvent.givenSampleName}</span>
+                                                    {!isReadOnly && <span className="text-[10px] text-green-500 font-bold uppercase tracking-tighter">(Legacy)</span>}
+                                                </div>
+                                                {isReadOnly ? (
+                                                    <span className="bg-green-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{selectedEvent.givenSampleQty || 1}</span>
+                                                ) : (
+                                                    <input
+                                                        type="number"
+                                                        className="w-16 border border-green-200 rounded-md px-2 py-1 text-center text-sm font-black text-green-700 h-8"
+                                                        value={selectedEvent.givenSampleQty || 1}
+                                                        onChange={(e) => setSelectedEvent({ ...selectedEvent, givenSampleQty: Math.max(1, parseInt(e.target.value) || 1) })}
+                                                    />
                                                 )}
                                             </div>
-                                        ) : (
-                                            <p className="text-xs text-gray-400 italic">Aucun échantillon distribué.</p>
                                         )}
+
+                                        {/* Display array samples */}
+                                        {selectedEvent.givenSamples?.map((s, i) => (
+                                            <div key={`gs-${i}`} className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-100">
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-sm font-bold text-green-800">📦 {s.name}</span>
+                                                    {!isReadOnly && (
+                                                        <button
+                                                            onClick={() => setSelectedEvent(p => ({ ...p, givenSamples: p.givenSamples.filter((_, idx) => idx !== i) }))}
+                                                            className="text-red-400 hover:text-red-600 transition-colors"
+                                                        >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                                                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                                            </svg>
+                                                        </button>
+                                                    )}
+                                                </div>
+                                                {isReadOnly ? (
+                                                    <span className="bg-green-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{s.count}</span>
+                                                ) : (
+                                                    <input
+                                                        type="number"
+                                                        className="w-16 border border-green-200 rounded-md px-2 py-1 text-center text-sm font-black text-green-700 h-8"
+                                                        value={s.count}
+                                                        onChange={(e) => {
+                                                            const updated = [...selectedEvent.givenSamples];
+                                                            updated[i].count = Math.max(1, parseInt(e.target.value) || 1);
+                                                            setSelectedEvent({ ...selectedEvent, givenSamples: updated });
+                                                        }}
+                                                    />
+                                                )}
+                                            </div>
+                                        ))}
+
+                                        {/* Display materials */}
+                                        {selectedEvent.givenMaterials?.map((m, i) => (
+                                            <div key={`gm-${i}`} className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-100">
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-sm font-bold text-blue-800 transition-all">🎁 {m.name}</span>
+                                                    {!isReadOnly && (
+                                                        <button
+                                                            onClick={() => setSelectedEvent(p => ({ ...p, givenMaterials: p.givenMaterials.filter((_, idx) => idx !== i) }))}
+                                                            className="text-red-400 hover:text-red-600 transition-colors"
+                                                        >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                                                                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                                            </svg>
+                                                        </button>
+                                                    )}
+                                                </div>
+                                                {isReadOnly ? (
+                                                    <span className="bg-blue-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black">x{m.count}</span>
+                                                ) : (
+                                                    <input
+                                                        type="number"
+                                                        className="w-16 border border-blue-200 rounded-md px-2 py-1 text-center text-sm font-black text-blue-700 h-8"
+                                                        value={m.count}
+                                                        onChange={(e) => {
+                                                            const updated = [...selectedEvent.givenMaterials];
+                                                            updated[i].count = Math.max(1, parseInt(e.target.value) || 1);
+                                                            setSelectedEvent({ ...selectedEvent, givenMaterials: updated });
+                                                        }}
+                                                    />
+                                                )}
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
 

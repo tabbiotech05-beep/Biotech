@@ -95,8 +95,7 @@ router.get('/batch/:batchNumber', auth, async (req, res) => {
             $or: [
                 { givenSampleBatch: batchNumber },
                 { givenMaterialBatch: batchNumber },
-                { 'givenMaterials.batch': batchNumber },
-                { 'givenSamples.batchNumber': batchNumber }
+                { 'givenMaterials.batch': batchNumber }
             ]
         })
             .populate('user', 'username') // Get delegate name
