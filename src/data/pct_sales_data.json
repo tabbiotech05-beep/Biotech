@@ -1,0 +1,299 @@
+[
+  {
+    "brandName": "VALPROATE De Sodium Viatris 500mg Cp Pell Sec LP Fl30 Officine",
+    "avgMonthlySales": 6189,
+    "janSales": 4372,
+    "febSales": 5192,
+    "closingInventory": 20371,
+    "moh": 3.2914848925513005,
+    "supplies": 0
+  },
+  {
+    "brandName": "ZOLPIDEM Viatris 10mg Comp,Pell,Sec Bt14",
+    "avgMonthlySales": 1816,
+    "janSales": 1900,
+    "febSales": 1740,
+    "closingInventory": 2921,
+    "moh": 1.6084801762114538,
+    "supplies": 5000
+  },
+  {
+    "brandName": "DOBUTAMINE Viatris 250mg/20ml S° Inj Bt10/20ml",
+    "avgMonthlySales": 393,
+    "janSales": 13,
+    "febSales": 1528,
+    "closingInventory": 2696,
+    "moh": 6.860050890585241,
+    "supplies": 0
+  },
+  {
+    "brandName": "METHOTREXATE Viatris 50mg/2ml S° Inj Bt10 Fl 2ml",
+    "avgMonthlySales": 79,
+    "janSales": 208,
+    "febSales": 51,
+    "closingInventory": 256,
+    "moh": 3.240506329113924,
+    "supplies": 0
+  },
+  {
+    "brandName": "AZATHIOPRINE Viatris 50mg Comp Pell Sec Bt100",
+    "avgMonthlySales": 6028,
+    "janSales": 4246,
+    "febSales": 7769,
+    "closingInventory": 35820,
+    "moh": 5.942269409422694,
+    "supplies": 0
+  },
+  {
+    "brandName": "SUFENTANIL Viatris 10µg/2ml S° Inj Bt20 Fl 2ml",
+    "avgMonthlySales": 721,
+    "janSales": 627,
+    "febSales": 0,
+    "closingInventory": 228,
+    "moh": 0.31622746185852985,
+    "supplies": 0
+  },
+  {
+    "brandName": "CAPECITABINE Viatris 500mg Cp pell Bt120",
+    "avgMonthlySales": 233,
+    "janSales": 940,
+    "febSales": 513,
+    "closingInventory": 6808,
+    "moh": 29.218884120171673,
+    "supplies": 0
+  },
+  {
+    "brandName": "SUFENTANIL Viatris 50µg/10ml S° Inj Bt20 Fl 10ml",
+    "avgMonthlySales": 523,
+    "janSales": 557,
+    "febSales": 713,
+    "closingInventory": 984,
+    "moh": 1.881453154875717,
+    "supplies": 0
+  },
+  {
+    "brandName": "PIPER/TAZO Viatris 2g/250mg Pdre.P.Sol.P.Perf Bt1 Fl",
+    "avgMonthlySales": 272,
+    "janSales": 200,
+    "febSales": 300,
+    "closingInventory": 0,
+    "moh": 0,
+    "supplies": 0
+  },
+  {
+    "brandName": "PIPER/TAZO Viaris 4g/500mg Pdre.P.Sol.P.Perf Bt1 Fl",
+    "avgMonthlySales": 0,
+    "janSales": 0,
+    "febSales": 0,
+    "closingInventory": 0,
+    "moh": 0,
+    "supplies": 0
+  },
+  {
+    "brandName": "LEPONEX 25mg Cp sec Bt50",
+    "avgMonthlySales": 244,
+    "janSales": 1,
+    "febSales": 1,
+    "closingInventory": 0,
+    "moh": 0,
+    "supplies": 2400
+  },
+  {
+    "brandName": "LEPONEX 100mg Cp sec Bt50",
+    "avgMonthlySales": 1669,
+    "janSales": 0,
+    "febSales": 0,
+    "closingInventory": 0,
+    "moh": 0,
+    "supplies": 12750
+  },
+  {
+    "brandName": "FLECAINE 100mg Comp Sec Bt30",
+    "avgMonthlySales": 2889,
+    "janSales": 3279,
+    "febSales": 3486,
+    "closingInventory": 27980,
+    "moh": 9.685012114918656,
+    "supplies": "-"
+  },
+  {
+    "brandName": "FLECAINE LP 200mg Gelules Bt30",
+    "avgMonthlySales": 1746,
+    "janSales": 2032,
+    "febSales": 2506,
+    "closingInventory": 1727,
+    "moh": 0.9891179839633448,
+    "supplies": 6500
+  },
+  {
+    "brandName": "FLECAINE LP 50mg Gelules Bt30",
+    "avgMonthlySales": 1471,
+    "janSales": 1777,
+    "febSales": 2141,
+    "closingInventory": 2223,
+    "moh": 1.5112168592794017,
+    "supplies": "-"
+  },
+  {
+    "brandName": "FLECAINE LP 100mg Gelules Bt30",
+    "avgMonthlySales": 4334,
+    "janSales": 4514,
+    "febSales": 5157,
+    "closingInventory": 10019,
+    "moh": 2.3117212736502077,
+    "supplies": 12000
+  },
+  {
+    "brandName": "XANAX RETARD 0.5mg",
+    "avgMonthlySales": 3839,
+    "janSales": 3373,
+    "febSales": 3668,
+    "closingInventory": 3877,
+    "moh": 1.0098984110445428,
+    "supplies": 10000
+  },
+  {
+    "brandName": "XANAX RETARD 1mg",
+    "avgMonthlySales": 5108,
+    "janSales": 3593,
+    "febSales": 4854,
+    "closingInventory": 17181,
+    "moh": 3.3635473766640565,
+    "supplies": 6543
+  },
+  {
+    "brandName": "XANAX 0.75mg/ml Gttes.Buv.",
+    "avgMonthlySales": 4251,
+    "janSales": 2576,
+    "febSales": 4650,
+    "closingInventory": 11847,
+    "moh": 2.7868736767819335,
+    "supplies": 10000
+  },
+  {
+    "brandName": "EFEXOR. XL 150mg Gél. LP",
+    "avgMonthlySales": 83,
+    "janSales": 34,
+    "febSales": 23,
+    "closingInventory": 62,
+    "moh": 0.7469879518072289,
+    "supplies": 500
+  },
+  {
+    "brandName": "LYRICA 75mg Gél. Bt56",
+    "avgMonthlySales": 356,
+    "janSales": 288,
+    "febSales": 372,
+    "closingInventory": 832,
+    "moh": 2.337078651685393,
+    "supplies": "-"
+  },
+  {
+    "brandName": "EFFEXOR LP 37.5mg Gél. LP ",
+    "avgMonthlySales": 1518,
+    "janSales": 788,
+    "febSales": 2360,
+    "closingInventory": 4850,
+    "moh": 3.194993412384717,
+    "supplies": 3000
+  },
+  {
+    "brandName": "EFFEXOR LP 75mg Gél. LP Bt30",
+    "avgMonthlySales": 5375,
+    "janSales": 4334,
+    "febSales": 6251,
+    "closingInventory": 16776,
+    "moh": 3.1211162790697675,
+    "supplies": 5040
+  },
+  {
+    "brandName": "XALATAN 50mcg/ml Collyre Fl 2,5ml",
+    "avgMonthlySales": 6606,
+    "janSales": 5820,
+    "febSales": 6799,
+    "closingInventory": 20314,
+    "moh": 3.0750832576445655,
+    "supplies": 14000
+  },
+  {
+    "brandName": "CADUET 10mg/10mg Comp.Pell.",
+    "avgMonthlySales": 337,
+    "janSales": 224,
+    "febSales": 260,
+    "closingInventory": 1640,
+    "moh": 4.8664688427299705,
+    "supplies": 750
+  },
+  {
+    "brandName": "CADUET 5mg/10mg Comp.Pell. ",
+    "avgMonthlySales": 775,
+    "janSales": 670,
+    "febSales": 838,
+    "closingInventory": 2044,
+    "moh": 2.6374193548387095,
+    "supplies": 1500
+  },
+  {
+    "brandName": "LYRICA 150mg Gél. ",
+    "avgMonthlySales": 543,
+    "janSales": 765,
+    "febSales": 528,
+    "closingInventory": 1432,
+    "moh": 2.6372007366482504,
+    "supplies": 1000
+  },
+  {
+    "brandName": "LYRICA 75mg Gél. Bt14",
+    "avgMonthlySales": 700,
+    "janSales": 450,
+    "febSales": 630,
+    "closingInventory": 2596,
+    "moh": 3.7085714285714286,
+    "supplies": 1236
+  },
+  {
+    "brandName": "XALACOM 50mcg + 5mg/ml Collyre Fl 2,5ml",
+    "avgMonthlySales": 7047,
+    "janSales": 5651,
+    "febSales": 7077,
+    "closingInventory": 25273,
+    "moh": 3.586348800908188,
+    "supplies": 13000
+  },
+  {
+    "brandName": "TAHOR 80mg Comp.Pell. ",
+    "avgMonthlySales": 203,
+    "janSales": 162,
+    "febSales": 371,
+    "closingInventory": 472,
+    "moh": 2.3251231527093594,
+    "supplies": 500
+  },
+  {
+    "brandName": "VIAGRA 25mg Comp.Pell. Bt4",
+    "avgMonthlySales": 794,
+    "janSales": 420,
+    "febSales": 1335,
+    "closingInventory": 1793,
+    "moh": 2.2581863979848866,
+    "supplies": 2880
+  },
+  {
+    "brandName": "VIAGRA 50mg Comp.Pell. Bt4",
+    "avgMonthlySales": 3809,
+    "janSales": 4290,
+    "febSales": 3910,
+    "closingInventory": 17424,
+    "moh": 4.574428983985298,
+    "supplies": "-"
+  },
+  {
+    "brandName": "VIAGRA 100mg Comp.Pell. Bt4",
+    "avgMonthlySales": 6016,
+    "janSales": 6670,
+    "febSales": 5580,
+    "closingInventory": 27697,
+    "moh": 4.603889627659575,
+    "supplies": 2000
+  }
+]

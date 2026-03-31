@@ -24,3 +24,4 @@ data/db/*
 !data/db/.gitkeep
 uploads/*
 !uploads/.gitkeep
+*.xlsx

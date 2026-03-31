@@ -1,0 +1,2158 @@
+{
+  "competitors": [
+    {
+      "specialty": "Concurrents  de CLOMIPRAMINE VIATRIS : ( Clomipramine → 10 mg – 25 mg – 75 mg)"
+    },
+    {
+      "specialty": "ANAFRANIL ",
+      "dosage": "10mg Comp.Enr. Bt 60",
+      "priceWholesale": 4.732290708371665,
+      "pricePharmacy": 5.144,
+      "pricePublic": 7.145016
+    },
+    {
+      "specialty": "ANAFRANIL ",
+      "dosage": "25mg Comp.Enr. Bt 50",
+      "priceWholesale": 5.924563017479302,
+      "pricePharmacy": 6.44,
+      "pricePublic": 8.945160000000001
+    },
+    {
+      "specialty": "ANAFRANIL ",
+      "dosage": "25mg Sol.Inj. Bt 5/2ml",
+      "priceWholesale": 2.5676172953081875,
+      "pricePharmacy": 2.791,
+      "pricePublic": 3.988339
+    },
+    {
+      "specialty": "ANAFRANIL ",
+      "dosage": "75mg Comp.Pell.Séc. Bt 20",
+      "priceWholesale": 10.292548298068079,
+      "pricePharmacy": 11.188,
+      "pricePublic": 15.114988
+    },
+    {
+      "specialty": "Concurrents  de MONTELUKAST : (Montélukast → 5 mg )"
+    },
+    {
+      "specialty": "ASMULAIR ",
+      "dosage": "5mg Comp.à.Croquer Bt 30",
+      "priceWholesale": 29.849,
+      "pricePharmacy": 32.446,
+      "pricePublic": 42.7
+    },
+    {
+      "specialty": "ASTAIR ",
+      "dosage": "5mg Comp. à Croquer Bt 30",
+      "priceWholesale": 31.422,
+      "pricePharmacy": 34.156,
+      "pricePublic": 44.95
+    },
+    {
+      "specialty": "ONCEAIR",
+      "dosage": " 5mg Comp. à Croquer Bt 28",
+      "priceWholesale": 38.053,
+      "pricePharmacy": 41.364,
+      "pricePublic": 54.435
+    },
+    {
+      "specialty": "SINGULAIR",
+      "dosage": "5mg Comp. à Croquer Bt 28",
+      "priceWholesale": 39.797,
+      "pricePharmacy": 43.26,
+      "pricePublic": 56.93
+    },
+    {
+      "specialty": "Concurrents  de TELMISARTAN : (Telmisartan → 40 mg – 80 mg )"
+    },
+    {
+      "specialty": "MICARDIS",
+      "dosage": "40mg Comp. Bt 28",
+      "priceWholesale": 27.592,
+      "pricePharmacy": 29.992,
+      "pricePublic": 39.47
+    },
+    {
+      "specialty": "MICARDIS",
+      "dosage": "80mg Comp. Bt 28",
+      "priceWholesale": 33.111,
+      "pricePharmacy": 35.992,
+      "pricePublic": 47.365
+    },
+    {
+      "specialty": "TELMYCOR",
+      "dosage": "40mg Comp. Bt 30",
+      "priceWholesale": 17.244,
+      "pricePharmacy": 18.744,
+      "pricePublic": 25.325
+    },
+    {
+      "specialty": "TELMYCOR",
+      "dosage": "80mg Comp. Bt 30",
+      "priceWholesale": 19.215,
+      "pricePharmacy": 20.887,
+      "pricePublic": 28.22
+    },
+    {
+      "specialty": "Concurrents  de VALPROATE DE SODIUM VIATRIS : ( Valproate de sodium → LP 500 mg) "
+    },
+    {
+      "specialty": "DEPAKINE CHRONO ",
+      "dosage": "500mg Comp. Pell. Séc. LP Fl 30",
+      "priceWholesale": 12.553,
+      "pricePharmacy": 13.645,
+      "pricePublic": 18.435
+    },
+    {
+      "specialty": "TRIPAKINE LP SAIPH ",
+      "dosage": "500mg Comp. Pell. LP Fl 30",
+      "pricePharmacy": 15.59
+    },
+    {
+      "specialty": "Concurrents  de  ZOLPIDEM : ( Zolpidem → 10 mg )"
+    },
+    {
+      "specialty": "SOMEX ",
+      "dosage": "10mg Comp.Pell.Séc. Bt 15",
+      "priceWholesale": 3.451,
+      "pricePharmacy": 3.751,
+      "pricePublic": 5.21
+    },
+    {
+      "specialty": "STILNOX ",
+      "dosage": "10mg Comp.Pell.Séc. Bt 15",
+      "priceWholesale": 6.15,
+      "pricePharmacy": 6.685,
+      "pricePublic": 9.285
+    },
+    {
+      "specialty": "ZOLPINOX ",
+      "dosage": "10mg Comp.Pell.Séc. Bt 15",
+      "priceWholesale": 3.471,
+      "pricePharmacy": 3.772,
+      "pricePublic": 5.24
+    },
+    {
+      "specialty": "Concurrents  de  AMLOR : ( Amlodipine → 5 mg – 10 mg )"
+    },
+    {
+      "specialty": "AMLODEP ",
+      "dosage": "5mg Comp. Bt 30",
+      "priceWholesale": 8.616,
+      "pricePharmacy": 9.365,
+      "pricePublic": 12.65
+    },
+    {
+      "specialty": "AMLODEP",
+      "dosage": " 5mg Comp. Bt 60",
+      "priceWholesale": 12.406,
+      "pricePharmacy": 13.485,
+      "pricePublic": 18.22
+    },
+    {
+      "specialty": "AMLODIPINE ZENTIVA ",
+      "dosage": "10mg Comp Séc. Bt 30",
+      "priceWholesale": 15.577,
+      "pricePharmacy": 16.932,
+      "pricePublic": 22.875
+    },
+    {
+      "specialty": "AMLODIPINE ZENTIVA ",
+      "dosage": "5mg Comp Séc. Bt 30",
+      "priceWholesale": 10.269,
+      "pricePharmacy": 11.162,
+      "pricePublic": 15.08
+    },
+    {
+      "specialty": "AMLODIPINE MEDIS ",
+      "dosage": "5mg Comp. Pell. Séc. Bt 30",
+      "priceWholesale": 5.856,
+      "pricePharmacy": 6.365,
+      "pricePublic": 8.6
+    },
+    {
+      "specialty": "AMLODIPINE MEDIS ",
+      "dosage": "5mg Comp. Pell. Séc. Bt 90",
+      "priceWholesale": 17.133,
+      "pricePharmacy": 18.624,
+      "pricePublic": 24.51
+    },
+    {
+      "specialty": "AMLODIPINE MEDIS ",
+      "dosage": "5mg Comp Séc. Bt 30",
+      "priceWholesale": 8.836,
+      "pricePharmacy": 9.604,
+      "pricePublic": 12.64
+    },
+    {
+      "specialty": "AMLODIPINE MEDIS ",
+      "dosage": "10mg Comp. Pell. Séc. Bt 90",
+      "priceWholesale": 25.957,
+      "pricePharmacy": 28.215,
+      "pricePublic": 37.13
+    },
+    {
+      "specialty": "AMLODIS ",
+      "dosage": "5mg Comp. Bt 90",
+      "priceWholesale": 20.321,
+      "pricePharmacy": 22.089,
+      "pricePublic": 29.84
+    },
+    {
+      "specialty": "AMLODIS ",
+      "dosage": "10mg Comp. Bt 90",
+      "priceWholesale": 28.155,
+      "pricePharmacy": 30.604,
+      "pricePublic": 40.275
+    },
+    {
+      "specialty": "AMLODIS ",
+      "dosage": " 5mg Comp. Bt 60",
+      "priceWholesale": 14.748,
+      "pricePharmacy": 16.031,
+      "pricePublic": 21.66
+    },
+    {
+      "specialty": "AMLODIS ",
+      "dosage": "5mg Comp. Bt 30",
+      "priceWholesale": 10.584,
+      "pricePharmacy": 11.505,
+      "pricePublic": 15.545
+    },
+    {
+      "specialty": "AMLODIS ",
+      "dosage": " 10mg Comp. Bt 30",
+      "priceWholesale": 14.748,
+      "pricePharmacy": 16.031,
+      "pricePublic": 21.66
+    },
+    {
+      "specialty": "AMLOTENS ",
+      "dosage": "10mg Gél. Bt 30",
+      "priceWholesale": 8.598,
+      "pricePharmacy": 9.346,
+      "pricePublic": 12.625
+    },
+    {
+      "specialty": "AMLOTENS ",
+      "dosage": "10mg Gél. Bt 90",
+      "priceWholesale": 24.537,
+      "pricePharmacy": 26.671,
+      "pricePublic": 35.1
+    },
+    {
+      "specialty": "AMLOTENS ",
+      "dosage": "5mg Gél. Bt 30",
+      "priceWholesale": 5.63,
+      "pricePharmacy": 6.12,
+      "pricePublic": 8.5
+    },
+    {
+      "specialty": "AMLOTENS ",
+      "dosage": "5mg Gél. Bt 90",
+      "priceWholesale": 17.024,
+      "pricePharmacy": 18.505,
+      "pricePublic": 25
+    },
+    {
+      "specialty": "CARDEPINE ",
+      "dosage": "5mg Gel. Bt 32",
+      "priceWholesale": 9.202,
+      "pricePharmacy": 10.003,
+      "pricePublic": 13.515
+    },
+    {
+      "specialty": "CARDEPINE ",
+      "dosage": "10mg Gel. Bt 32",
+      "priceWholesale": 12.702,
+      "pricePharmacy": 13.807,
+      "pricePublic": 18.655
+    },
+    {
+      "specialty": "CARDEPINE ",
+      "dosage": "5mg Gél. Bt 64",
+      "priceWholesale": 13.238,
+      "pricePharmacy": 14.39,
+      "pricePublic": 19.44
+    },
+    {
+      "specialty": "LODEPINE ",
+      "dosage": "5mg Gél. Bt 30",
+      "priceWholesale": 11.003,
+      "pricePharmacy": 11.961,
+      "pricePublic": 16.16
+    },
+    {
+      "specialty": "LODEPINE ",
+      "dosage": "5mg Gél. Bt 60",
+      "priceWholesale": 16.709,
+      "pricePharmacy": 18.163,
+      "pricePublic": 24.54
+    },
+    {
+      "specialty": "LODEPINE ",
+      "dosage": "10mg Comp Séc. Bt 30",
+      "priceWholesale": 14.345,
+      "pricePharmacy": 15.593,
+      "pricePublic": 21.065
+    },
+    {
+      "specialty": "LODEPINE ",
+      "dosage": "5mg Gél. Bt 90",
+      "priceWholesale": 18.983,
+      "pricePharmacy": 20.634,
+      "pricePublic": 27.875
+    },
+    {
+      "specialty": "LODEPINE ",
+      "dosage": "10mg Comp.Séc. Bt 90",
+      "priceWholesale": 27.238,
+      "pricePharmacy": 29.608,
+      "pricePublic": 38.965
+    },
+    {
+      "specialty": "LODIPEX 5 ",
+      "dosage": "5mg Comp. Bt 30",
+      "priceWholesale": 5.856,
+      "pricePharmacy": 6.366,
+      "pricePublic": 8.84
+    },
+    {
+      "specialty": "LODIPEX 10 ",
+      "dosage": "10mg Comp. Bt 30",
+      "priceWholesale": 8.836,
+      "pricePharmacy": 9.605,
+      "pricePublic": 12.975
+    },
+    {
+      "specialty": "LODIPEX 5 ",
+      "dosage": "5mg Comp. Bt 90",
+      "priceWholesale": 17.406,
+      "pricePharmacy": 18.92,
+      "pricePublic": 25.560000000000002
+    },
+    {
+      "specialty": "LOWRAC ",
+      "dosage": "10mg Gél. Bt 90",
+      "priceWholesale": 27.45,
+      "pricePharmacy": 29.838,
+      "pricePublic": 39.265
+    },
+    {
+      "specialty": "LOWRAC ",
+      "dosage": "5mg Gél. Bt 60",
+      "priceWholesale": 17.334,
+      "pricePharmacy": 18.842,
+      "pricePublic": 25.455000000000002
+    },
+    {
+      "specialty": "LOWRAC ",
+      "dosage": "10mg Gél. Bt 30",
+      "priceWholesale": 14.043,
+      "pricePharmacy": 15.264,
+      "pricePublic": 20.62
+    },
+    {
+      "specialty": "LOWRAC ",
+      "dosage": "5mg Gél. Bt 90",
+      "priceWholesale": 18.636,
+      "pricePharmacy": 20.258,
+      "pricePublic": 27.37
+    },
+    {
+      "specialty": "MIBRAL ",
+      "dosage": " 5mg Comp.Séc. Bt 30",
+      "priceWholesale": 11.036,
+      "pricePharmacy": 11.996,
+      "pricePublic": 16.205000000000002
+    },
+    {
+      "specialty": "MIBRAL ",
+      "dosage": "10mg Comp.Séc. Bt 30",
+      "priceWholesale": 13.634,
+      "pricePharmacy": 14.82,
+      "pricePublic": 20.02
+    },
+    {
+      "specialty": "MIBRAL ",
+      "dosage": "5mg Comp.Séc. Bt 60",
+      "priceWholesale": 13.76,
+      "pricePharmacy": 14.957,
+      "pricePublic": 20.205000000000002
+    },
+    {
+      "specialty": "MIBRAL ",
+      "dosage": "5mg Comp.Séc. Bt 90",
+      "priceWholesale": 19.931,
+      "pricePharmacy": 21.665,
+      "pricePublic": 29.27
+    },
+    {
+      "specialty": "MIBRAL 10 ",
+      "dosage": "10mg Comp.Séc. Bt 90",
+      "priceWholesale": 28.6,
+      "pricePharmacy": 31.088,
+      "pricePublic": 40.910000000000004
+    },
+    {
+      "specialty": "TENSYNEL ",
+      "dosage": "5mg Gél. Bt 30",
+      "priceWholesale": 8.468,
+      "pricePharmacy": 9.205,
+      "pricePublic": 12.435
+    },
+    {
+      "specialty": "TENSYNEL ",
+      "dosage": "10mg Gél. Bt 30",
+      "priceWholesale": 12.843,
+      "pricePharmacy": 13.961,
+      "pricePublic": 18.86
+    },
+    {
+      "specialty": "TENSYNEL ",
+      "dosage": "10mg Gél. Bt 90",
+      "priceWholesale": 34.929,
+      "pricePharmacy": 37.968,
+      "pricePublic": 49.965
+    },
+    {
+      "specialty": "TENSYNEL ",
+      "dosage": "5mg Gél. Bt 90",
+      "priceWholesale": 20.321,
+      "pricePharmacy": 22.089,
+      "pricePublic": 29.84
+    },
+    {
+      "specialty": "Concurrents  de  CADUET : ( Amlodipine + Atorvastatine → 5/10 mg – 10/10 mg )"
+    },
+    {
+      "specialty": "LIPTA ",
+      "dosage": "5mg/10mg Comp.Pell. Bt 30",
+      "priceWholesale": 19.688,
+      "pricePharmacy": 21.401,
+      "pricePublic": 28.915
+    },
+    {
+      "specialty": "LIPTA ",
+      "dosage": "10mg/10mg Comp.Pell. Bt 30",
+      "priceWholesale": 19.688,
+      "pricePharmacy": 21.401,
+      "pricePublic": 28.915
+    },
+    {
+      "specialty": "Concurrents  de  TAHOR : ( Atorvastatine → 10 mg – 20 mg – 40 mg – 80 mg )"
+    },
+    {
+      "specialty": "ATOR 20mg Comp. Pell. Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 14.818,
+      "pricePharmacy": 16.108,
+      "pricePublic": 21.76
+    },
+    {
+      "specialty": "ATOR 20mg Comp. Pell. Bt 90",
+      "dosage": "MEDIS",
+      "priceWholesale": 41.634,
+      "pricePharmacy": 45.256,
+      "pricePublic": 59.555
+    },
+    {
+      "specialty": "ATOR 80mg Comp. Pell. Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 42.255,
+      "pricePharmacy": 45.932,
+      "pricePublic": 60.445
+    },
+    {
+      "specialty": "ATOR 80mg Comp. Pell. Bt 90",
+      "dosage": "MEDIS",
+      "priceWholesale": 132.394,
+      "pricePharmacy": 143.913,
+      "pricePublic": 189.39000000000001
+    },
+    {
+      "specialty": "ATOR 10mg Comp. Pell. Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 17.726,
+      "pricePharmacy": 19.268,
+      "pricePublic": 26.03
+    },
+    {
+      "specialty": "ATOR 10mg Comp. Pell. Bt 90",
+      "dosage": "MEDIS",
+      "priceWholesale": 31.754,
+      "pricePharmacy": 34.517,
+      "pricePublic": 45.425000000000004
+    },
+    {
+      "specialty": "ATOR 40mg Comp. Pell. Séc. Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 35.509,
+      "pricePharmacy": 38.598,
+      "pricePublic": 50.795
+    },
+    {
+      "specialty": "ATOR 40mg Comp. Pell. Séc. Bt 90",
+      "dosage": "MEDIS",
+      "priceWholesale": 64.842,
+      "pricePharmacy": 70.483,
+      "pricePublic": 92.755
+    },
+    {
+      "specialty": "ATORVEX 10mg Comp pell. Fl/30",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 14.614,
+      "pricePharmacy": 15.885,
+      "pricePublic": 21.46
+    },
+    {
+      "specialty": "ATORVEX 20mg Comp pell. Fl/30",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 24.007,
+      "pricePharmacy": 26.095,
+      "pricePublic": 34.34
+    },
+    {
+      "specialty": "ATORVEX 40mg Comp pell. Fl/30",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 31.314,
+      "pricePharmacy": 34.038,
+      "pricePublic": 44.795
+    },
+    {
+      "specialty": "CHOLDOWN ",
+      "dosage": "10mg Comp.Pell. Bt 30",
+      "priceWholesale": 10.364,
+      "pricePharmacy": 11.266,
+      "pricePublic": 15.22
+    },
+    {
+      "specialty": "CHOLDOWN ",
+      "dosage": "10mg Comp.Pell. Bt 90",
+      "priceWholesale": 30.619,
+      "pricePharmacy": 33.283,
+      "pricePublic": 43.8
+    },
+    {
+      "specialty": "CHOLDOWN ",
+      "dosage": "20mg Comp.Pell. Bt 30",
+      "priceWholesale": 13.561,
+      "pricePharmacy": 14.741,
+      "pricePublic": 19.915
+    },
+    {
+      "specialty": "CHOLDOWN ",
+      "dosage": "20mg Comp.Pell. Bt 90",
+      "priceWholesale": 40.406,
+      "pricePharmacy": 43.921,
+      "pricePublic": 57.8
+    },
+    {
+      "specialty": "CHOLDOWN 40 ",
+      "dosage": "40mg Comp.Pell. Bt 30",
+      "priceWholesale": 19.152,
+      "pricePharmacy": 20.818,
+      "pricePublic": 28.125
+    },
+    {
+      "specialty": "CHOLDOWN 80 ",
+      "dosage": "80mg Comp.Pell. Bt 30",
+      "priceWholesale": 23.614,
+      "pricePharmacy": 25.669,
+      "pricePublic": 33.78
+    },
+    {
+      "specialty": "CHOLESTYL 10mg Comp.Pell. Bt 30",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 10.485,
+      "pricePharmacy": 11.398,
+      "pricePublic": 15.4
+    },
+    {
+      "specialty": "CHOLESTYL 20mg Comp.Pell. Bt 30",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 13.862,
+      "pricePharmacy": 15.068,
+      "pricePublic": 20.355
+    },
+    {
+      "specialty": "CHOLESTYL 40mg Comp.Pell. Bt 30",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 19.377,
+      "pricePharmacy": 21.063,
+      "pricePublic": 28.455000000000002
+    },
+    {
+      "specialty": "CHOLESTYL 80mg Comp.Pell. Bt 30",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 27.515,
+      "pricePharmacy": 29.908,
+      "pricePublic": 39.36
+    },
+    {
+      "specialty": "CHOLESTYL 10mg Comp. Pell. Bt 90",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 30.828,
+      "pricePharmacy": 33.51,
+      "pricePublic": 44.1
+    },
+    {
+      "specialty": "CHOLESTYL 20mg Comp. Pell. Bt 90",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 40.755,
+      "pricePharmacy": 44.3,
+      "pricePublic": 58.300000000000004
+    },
+    {
+      "specialty": "CHOLESTYL 40mg Comp. Pell. Bt 90",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 56.97,
+      "pricePharmacy": 61.927,
+      "pricePublic": 81.495
+    },
+    {
+      "specialty": "LAPTOR 10mg Comp.Pell. Bt 30",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 10.584,
+      "pricePharmacy": 11.505,
+      "pricePublic": 15.545
+    },
+    {
+      "specialty": "LAPTOR 20mg Comp.Pell.Séc. Bt 30",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 13.866,
+      "pricePharmacy": 15.072,
+      "pricePublic": 20.36
+    },
+    {
+      "specialty": "LAPTOR 40mg Comp.Pell.Séc. Bt 30",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 19.392,
+      "pricePharmacy": 21.079,
+      "pricePublic": 28.48
+    },
+    {
+      "specialty": "LAPTOR 80 80mg Comp.Pell.Séc. Bt 30",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 27.515,
+      "pricePharmacy": 29.908,
+      "pricePublic": 39.36
+    },
+    {
+      "specialty": "LAPTOR 10mg Comp.Pell. Bt 90",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 30.619,
+      "pricePharmacy": 33.283,
+      "pricePublic": 43.8
+    },
+    {
+      "specialty": "LAPTOR 20mg Comp.Pell.Séc. Bt 90",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 40.406,
+      "pricePharmacy": 43.921,
+      "pricePublic": 57.8
+    },
+    {
+      "specialty": "LAPTOR 40mg Comp.Pell.Séc. Bt 90",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 47.187,
+      "pricePharmacy": 51.292,
+      "pricePublic": 67.5
+    },
+    {
+      "specialty": "STATINOR 10mg Comp.Pell. Bt 30",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 17.572,
+      "pricePharmacy": 19.1,
+      "pricePublic": 25.805
+    },
+    {
+      "specialty": "STATINOR 10mg Comp.Pell. Bt 60",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 23.526,
+      "pricePharmacy": 25.573,
+      "pricePublic": 33.655
+    },
+    {
+      "specialty": "STATINOR 10mg Comp.Pell. Bt 90",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 33.596,
+      "pricePharmacy": 36.519,
+      "pricePublic": 48.06
+    },
+    {
+      "specialty": "STATINOR 20mg Comp.Pell. Bt 30",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 22.806,
+      "pricePharmacy": 24.79,
+      "pricePublic": 32.625
+    },
+    {
+      "specialty": "STATINOR 20mg Comp.Pell. Bt 60",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 33.332,
+      "pricePharmacy": 36.231,
+      "pricePublic": 47.68
+    },
+    {
+      "specialty": "STATINOR 20mg Comp.Pell. Bt 90",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 45.198,
+      "pricePharmacy": 49.13,
+      "pricePublic": 64.655
+    },
+    {
+      "specialty": "STATINOR 40mg Comp.Pell. Bt 30",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 22.735,
+      "pricePharmacy": 24.713,
+      "pricePublic": 32.52
+    },
+    {
+      "specialty": "STATINOR 80mg Comp.Pell. Bt 30",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 26.13,
+      "pricePharmacy": 28.404,
+      "pricePublic": 37.38
+    },
+    {
+      "specialty": "TAVASTOR 10mg Comp.Pell.Séc. Fl 30",
+      "dosage": "TERIAK",
+      "priceWholesale": 13.055,
+      "pricePharmacy": 14.191,
+      "pricePublic": 19.17
+    },
+    {
+      "specialty": "TAVASTOR 20mg Comp.Pell.Séc. Fl 30",
+      "dosage": "TERIAK",
+      "priceWholesale": 14.818,
+      "pricePharmacy": 16.108,
+      "pricePublic": 21.76
+    },
+    {
+      "specialty": "TAVASTOR 40mg Comp.Pell. Fl 30",
+      "dosage": "TERIAK",
+      "priceWholesale": 19.406,
+      "pricePharmacy": 21.094,
+      "pricePublic": 28.5
+    },
+    {
+      "specialty": "TAVASTOR 80mg Comp.Pell. Fl 30",
+      "dosage": "TERIAK",
+      "priceWholesale": 27.52,
+      "pricePharmacy": 29.915,
+      "pricePublic": 39.37
+    },
+    {
+      "specialty": "TAVASTOR 10mg Comp.Pell. Fl 90",
+      "dosage": "TERIAK",
+      "priceWholesale": 31.754,
+      "pricePharmacy": 34.517,
+      "pricePublic": 45.425000000000004
+    },
+    {
+      "specialty": "TAVASTOR 20mg Comp.Pell.Séc. Fl 90",
+      "dosage": "TERIAK",
+      "priceWholesale": 41.634,
+      "pricePharmacy": 45.256,
+      "pricePublic": 59.555
+    },
+    {
+      "specialty": "TAVASTOR 40mg Comp.Pell. Fl 90",
+      "dosage": "TERIAK",
+      "priceWholesale": 47.186,
+      "pricePharmacy": 51.291,
+      "pricePublic": 67.5
+    },
+    {
+      "specialty": "TORVA 80mg Comp.Pell. Bt 30",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 23.617,
+      "pricePharmacy": 25.672,
+      "pricePublic": 33.785000000000004
+    },
+    {
+      "specialty": "TORVA 10mg Comp.Pell. Bt 30",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 10.506,
+      "pricePharmacy": 11.42,
+      "pricePublic": 15.43
+    },
+    {
+      "specialty": "TORVA 20mg Comp.Pell. Bt 30",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 13.766,
+      "pricePharmacy": 14.964,
+      "pricePublic": 20.215
+    },
+    {
+      "specialty": "TORVA 10mg Comp.Pell. Bt 60",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 28.169,
+      "pricePharmacy": 30.62,
+      "pricePublic": 40.295
+    },
+    {
+      "specialty": "TORVA 40 40mg Comp.Pell. Bt 30",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 19.28,
+      "pricePharmacy": 20.957,
+      "pricePublic": 28.315
+    },
+    {
+      "specialty": "TORVA 10mg Comp.Pell. Bt 90",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 32.742,
+      "pricePharmacy": 35.591,
+      "pricePublic": 46.84
+    },
+    {
+      "specialty": "TORVA 20mg Comp.Pell. Bt 60",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 35.085,
+      "pricePharmacy": 38.138,
+      "pricePublic": 50.19
+    },
+    {
+      "specialty": "TORVA 20mg Comp.Pell. Bt 90",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 47.575,
+      "pricePharmacy": 51.714,
+      "pricePublic": 68.055
+    },
+    {
+      "specialty": "TORVA 40mg Comp.Pell. Bt 60",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 53.574,
+      "pricePharmacy": 58.235,
+      "pricePublic": 76.635
+    },
+    {
+      "specialty": "TORVA 40 40mg Comp.Pell. Bt 90",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 59.275,
+      "pricePharmacy": 64.432,
+      "pricePublic": 84.795
+    },
+    {
+      "specialty": "Concurrents  de  CELEBREX : ( Célécoxib → 100 mg – 200 mg)"
+    },
+    {
+      "specialty": "ADYBREX 200mg Gél. Bt 10",
+      "dosage": "ADWYA",
+      "priceWholesale": 5.43,
+      "pricePharmacy": 5.903,
+      "pricePublic": 8.2
+    },
+    {
+      "specialty": "ADYBREX 200mg Gél. Bt 30",
+      "dosage": "ADWYA",
+      "priceWholesale": 13.28,
+      "pricePharmacy": 14.435,
+      "pricePublic": 19.5
+    },
+    {
+      "specialty": "ADYBREX 200mg Gél. Bt 20",
+      "dosage": "ADWYA",
+      "priceWholesale": 8.848,
+      "pricePharmacy": 9.618,
+      "pricePublic": 12.995000000000001
+    },
+    {
+      "specialty": "ALGIBREX 200mg Gél. Bt 10",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 4.756,
+      "pricePharmacy": 5.17,
+      "pricePublic": 7.18
+    },
+    {
+      "specialty": "ALGIBREX 200mg Gél. Bt 20",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 8.836,
+      "pricePharmacy": 9.605,
+      "pricePublic": 12.975
+    },
+    {
+      "specialty": "ALGIBREX 200mg Gél. Bt 30",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 13.28,
+      "pricePharmacy": 14.435,
+      "pricePublic": 19.5
+    },
+    {
+      "specialty": "ARTIBREX 200mg Gél. Bt 10",
+      "dosage": "PHARMACARE",
+      "priceWholesale": 6.005,
+      "pricePharmacy": 6.528,
+      "pricePublic": 9.065
+    },
+    {
+      "specialty": "ARTIBREX 200mg Gél. Bt 20",
+      "dosage": "PHARMACARE",
+      "priceWholesale": 10.437,
+      "pricePharmacy": 11.345,
+      "pricePublic": 15.325000000000001
+    },
+    {
+      "specialty": "ARTIBREX 200mg Gél. Bt 30",
+      "dosage": "PHARMACARE",
+      "priceWholesale": 13.76,
+      "pricePharmacy": 14.957,
+      "pricePublic": 20.205000000000002
+    },
+    {
+      "specialty": "CELOXX 200mg Gél. Bt 10",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 8.003,
+      "pricePharmacy": 8.699,
+      "pricePublic": 11.75
+    },
+    {
+      "specialty": "CELOXX 200mg Gél. Bt 20",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 11.58,
+      "pricePharmacy": 12.588,
+      "pricePublic": 17.005
+    },
+    {
+      "specialty": "CELOXX 200mg Gél. Bt 30",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 13.28,
+      "pricePharmacy": 14.435,
+      "pricePublic": 19.5
+    },
+    {
+      "specialty": "COXIBREX 200mg Gél. Bt 10",
+      "dosage": "PHARMAGHREB",
+      "priceWholesale": 4.31,
+      "pricePharmacy": 4.685,
+      "pricePublic": 6.505
+    },
+    {
+      "specialty": "COXIBREX 200mg Gél. Bt 20",
+      "dosage": "PHARMAGHREB",
+      "priceWholesale": 8.85,
+      "pricePharmacy": 9.62,
+      "pricePublic": 12.995000000000001
+    },
+    {
+      "specialty": "COXIBREX 200mg Gél. Bt 30",
+      "dosage": "PHARMAGHREB",
+      "priceWholesale": 13.275,
+      "pricePharmacy": 14.43,
+      "pricePublic": 19.495
+    },
+    {
+      "specialty": "INIBREX 200mg Gél. Bt 10",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 6.15,
+      "pricePharmacy": 6.685,
+      "pricePublic": 9.285
+    },
+    {
+      "specialty": "INIBREX 200mg Gél. Bt 20",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 11.558,
+      "pricePharmacy": 12.563,
+      "pricePublic": 16.975
+    },
+    {
+      "specialty": "INIBREX 200mg Gél. Bt 30",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 13.76,
+      "pricePharmacy": 14.957,
+      "pricePublic": 20.205000000000002
+    },
+    {
+      "specialty": "INICOX 2 200mg Gél. Bt 10",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 5.168,
+      "pricePharmacy": 5.617,
+      "pricePublic": 7.8
+    },
+    {
+      "specialty": "INICOX 2 200mg Gél. Bt 20",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 8.766,
+      "pricePharmacy": 9.528,
+      "pricePublic": 12.870000000000001
+    },
+    {
+      "specialty": "INICOX 2 200mg Gél. Bt 30",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 12.806,
+      "pricePharmacy": 13.92,
+      "pricePublic": 18.805
+    },
+    {
+      "specialty": "X-BACK 100mg Gél.Bt 20",
+      "dosage": "PHILADELPHIA PHARMA",
+      "priceWholesale": 4.636,
+      "pricePharmacy": 5.039,
+      "pricePublic": 7
+    },
+    {
+      "specialty": "X-BACK 200 200mg Gél.Bt 10",
+      "dosage": "PHILADELPHIA PHARMA",
+      "priceWholesale": 4.192,
+      "pricePharmacy": 4.557,
+      "pricePublic": 6.33
+    },
+    {
+      "specialty": "X-BACK 200 200mg Gél.Bt 20",
+      "dosage": "PHILADELPHIA PHARMA",
+      "priceWholesale": 8.607,
+      "pricePharmacy": 9.356,
+      "pricePublic": 12.64
+    },
+    {
+      "specialty": "X-BACK 200 200mg Gél.Bt 30",
+      "dosage": "PHILADELPHIA PHARMA",
+      "priceWholesale": 12.938,
+      "pricePharmacy": 14.064,
+      "pricePublic": 19
+    },
+    {
+      "specialty": "Concurrents  de  NEURONTIN : ( Gabapentine → 300 mg - 600 mg )"
+    },
+    {
+      "specialty": "GABA 300 300mg Gél. Bt 90",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 44.171,
+      "pricePharmacy": 48.014,
+      "pricePublic": 63.185
+    },
+    {
+      "specialty": "GABA 300mg Gél. Bt 50",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 23.428,
+      "pricePharmacy": 25.466,
+      "pricePublic": 33.515
+    },
+    {
+      "specialty": "GABENTIN 300mg Gél. Bt 45",
+      "dosage": "ADWYA",
+      "priceWholesale": 24.557,
+      "pricePharmacy": 26.693,
+      "pricePublic": 35.13
+    },
+    {
+      "specialty": "GABINOR 300mg Gél. Bt 50",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 22.758,
+      "pricePharmacy": 24.738,
+      "pricePublic": 32.555
+    },
+    {
+      "specialty": "GABOREX 300mg Gél. Bt 48",
+      "dosage": "ALLIANCE PHARMA",
+      "priceWholesale": 21.875,
+      "pricePharmacy": 23.778,
+      "pricePublic": 32.125
+    },
+    {
+      "specialty": "GABOREX 300mg Gél. Bt 96",
+      "dosage": "ALLIANCE PHARMA",
+      "priceWholesale": 37.858,
+      "pricePharmacy": 41.151,
+      "pricePublic": 54.155
+    },
+    {
+      "specialty": "NEURALGIN 300mg Gél. Bt 90",
+      "dosage": "PHARMAGHREB",
+      "priceWholesale": 38.966,
+      "pricePharmacy": 42.356,
+      "pricePublic": 55.74
+    },
+    {
+      "specialty": "NEURALGIN 300mg Gél. Bt 50",
+      "dosage": "PHARMAGHREB",
+      "priceWholesale": 21.628,
+      "pricePharmacy": 23.51,
+      "pricePublic": 31.76
+    },
+    {
+      "specialty": "Concurrents  de  XALATAN : ( Latanoprost → 0,005 % collyre )"
+    },
+    {
+      "specialty": "MONOPROST 50µg/ml Collyre Bt 30 Récipients Unidoses",
+      "dosage": "THEA",
+      "priceWholesale": 26.038,
+      "pricePharmacy": 28.303,
+      "pricePublic": 37.245
+    },
+    {
+      "specialty": "LATAZ 0.005% 50µcg/ml Collyre Fl 2.5ml (F)",
+      "dosage": "RAFARM S.A. Pharmaceutical Industry",
+      "priceWholesale": 17.955,
+      "pricePharmacy": 19.517,
+      "pricePublic": 25.685
+    },
+    {
+      "specialty": "LATANOCOL 0.005% Collyre Fl 2.5ml (F)",
+      "dosage": "UNIMED",
+      "priceWholesale": 16.794,
+      "pricePharmacy": 18.255,
+      "pricePublic": 24.665
+    },
+    {
+      "specialty": "LATANOCOL 0.005% Collyre Bt 30 Ophtadoses/0.3ml (F)",
+      "dosage": "UNIMED",
+      "priceWholesale": 19.053,
+      "pricePharmacy": 20.711,
+      "pricePublic": 27.98
+    },
+    {
+      "specialty": "LATANOPROST 0.005% Collyre Fl 2.5ml (F)",
+      "dosage": "PLANETPHARMA-CHAUVIN BAUSCH & LOMB",
+      "priceWholesale": 20.544,
+      "pricePharmacy": 22.332,
+      "pricePublic": 30.17
+    },
+    {
+      "specialty": "LATAPOL 0.005% Collyre Fl 2.5ml (F)",
+      "dosage": "ABDI IBRAHIM",
+      "priceWholesale": 18.175,
+      "pricePharmacy": 19.756,
+      "pricePublic": 26.69
+    },
+    {
+      "specialty": "Concurrents  de  XALACOM : ( Latanoprost + Timolol → 0,005 % / 0,5 %)"
+    },
+    {
+      "specialty": "LATAZ-CO 0.5% 0.005% Collyre Fl 2.5ml (F)",
+      "dosage": "RAFARM S.A. Pharmaceutical Industry",
+      "priceWholesale": 23.926,
+      "pricePharmacy": 26.008,
+      "pricePublic": 34.225
+    },
+    {
+      "specialty": "XALANOL 0.5% 0.005% Collyre Fl 2.5ml (F)",
+      "dosage": "ADWYA",
+      "pricePublic": 29.24
+    },
+    {
+      "specialty": "BILATA SP 0.5% 0.005% Collyre Fl 2.5ml (F)",
+      "dosage": "STERIPHARM",
+      "pricePublic": 26.415
+    },
+    {
+      "specialty": "Concurrents  de  LYRICA : ( Prégabaline → 75 mg – 150 mg )"
+    },
+    {
+      "specialty": "ACIRYL 75mg Gél. Bt 15",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 10.38,
+      "pricePharmacy": 11.283,
+      "pricePublic": 15.245000000000001
+    },
+    {
+      "specialty": "ACIRYL 150mg Gél. Bt 60",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 47.173,
+      "pricePharmacy": 51.277,
+      "pricePublic": 67.48
+    },
+    {
+      "specialty": "ACIRYL 75mg Gél. Bt 60",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 41.104,
+      "pricePharmacy": 44.68,
+      "pricePublic": 58.800000000000004
+    },
+    {
+      "specialty": "ACIRYL 150mg Gél. Bt 30",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 23.572,
+      "pricePharmacy": 25.623,
+      "pricePublic": 33.72
+    },
+    {
+      "specialty": "ADONTAG 150mg Gél. Fl 14",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 11,
+      "pricePharmacy": 11.957,
+      "pricePublic": 16.155
+    },
+    {
+      "specialty": "ADONTAG 150mg Gél. Fl 28",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 22,
+      "pricePharmacy": 23.914,
+      "pricePublic": 32.31
+    },
+    {
+      "specialty": "ADONTAG 150mg Gél. Fl 56",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 44.001,
+      "pricePharmacy": 47.829,
+      "pricePublic": 62.945
+    },
+    {
+      "specialty": "ADONTAG 75mg Gél. Fl 30",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 20.762,
+      "pricePharmacy": 22.568,
+      "pricePublic": 30.490000000000002
+    },
+    {
+      "specialty": "ADONTAG 75mg Gél. Fl 14",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 9.437,
+      "pricePharmacy": 10.258,
+      "pricePublic": 13.86
+    },
+    {
+      "specialty": "DOLICASAIPH 75mg Gél. Bt 30",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 20.216,
+      "pricePharmacy": 21.975,
+      "pricePublic": 29.69
+    },
+    {
+      "specialty": "DOLICASAIPH 75mg Gél. Bt 60",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 40.433,
+      "pricePharmacy": 43.951,
+      "pricePublic": 57.84
+    },
+    {
+      "specialty": "EDGAR 75mg Gél. Bt 15",
+      "dosage": "PHILADELPHIA PHARMA",
+      "priceWholesale": 14.079,
+      "pricePharmacy": 15.304,
+      "pricePublic": 20.675
+    },
+    {
+      "specialty": "EDGAR 150mg Gél. Bt 30",
+      "dosage": "PHILADELPHIA PHARMA",
+      "priceWholesale": 33.491,
+      "pricePharmacy": 36.405,
+      "pricePublic": 47.910000000000004
+    },
+    {
+      "specialty": "EDGAR 150mg Gél. Bt 60",
+      "dosage": "PHILADELPHIA PHARMA",
+      "priceWholesale": 66.981,
+      "pricePharmacy": 72.808,
+      "pricePublic": 95.815
+    },
+    {
+      "specialty": "EDGAR 75mg Gél. Bt 60",
+      "dosage": "PHILADELPHIA PHARMA",
+      "priceWholesale": 49.185,
+      "pricePharmacy": 53.464,
+      "pricePublic": 70.36
+    },
+    {
+      "specialty": "EDGAR 75mg Gél. Bt 30",
+      "dosage": "PHILADELPHIA PHARMA",
+      "priceWholesale": 26.461,
+      "pricePharmacy": 28.763,
+      "pricePublic": 37.85
+    },
+    {
+      "specialty": "GABAMIM 75mg Gél. Bt 30",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 20.552,
+      "pricePharmacy": 22.34,
+      "pricePublic": 30.18
+    },
+    {
+      "specialty": "GABAMIM 150mg Gél. Bt 60",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 59.528,
+      "pricePharmacy": 64.707,
+      "pricePublic": 85.155
+    },
+    {
+      "specialty": "GABAMIM 75mg Gél. Bt 14",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 9.591,
+      "pricePharmacy": 10.425,
+      "pricePublic": 14.085
+    },
+    {
+      "specialty": "GABAMIM 75mg Gél. Bt 60",
+      "dosage": "GALPHARMA",
+      "priceWholesale": 40.283,
+      "pricePharmacy": 43.787,
+      "pricePublic": 57.625
+    },
+    {
+      "specialty": "LYDOL 75mg Gél. Bt 14",
+      "dosage": "TERIAK",
+      "priceWholesale": 9.779,
+      "pricePharmacy": 10.63,
+      "pricePublic": 14.36
+    },
+    {
+      "specialty": "LYDOL 75mg Gél. Bt 56",
+      "dosage": "TERIAK",
+      "priceWholesale": 39.12,
+      "pricePharmacy": 42.524,
+      "pricePublic": 55.96
+    },
+    {
+      "specialty": "LYDOL 150mg Gél. Bt 14",
+      "dosage": "TERIAK",
+      "priceWholesale": 9.779,
+      "pricePharmacy": 10.63,
+      "pricePublic": 14.36
+    },
+    {
+      "specialty": "LYDOL 150mg Gél. Bt 56",
+      "dosage": "TERIAK",
+      "priceWholesale": 39.12,
+      "pricePharmacy": 42.524,
+      "pricePublic": 55.96
+    },
+    {
+      "specialty": "NERGESIC 150mg Gél. Bt 30",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 20.837,
+      "pricePharmacy": 22.65,
+      "pricePublic": 30.6
+    },
+    {
+      "specialty": "NERGESIC 150mg Gél. Bt 60",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 42.782,
+      "pricePharmacy": 46.505,
+      "pricePublic": 61.2
+    },
+    {
+      "specialty": "NERGESIC 75mg Gél. Bt 14",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 9.193,
+      "pricePharmacy": 9.993,
+      "pricePublic": 13.5
+    },
+    {
+      "specialty": "NERGESIC 75mg Gél. Bt 28",
+      "dosage": "DAR ESSAYDALI",
+      "priceWholesale": 18.379,
+      "pricePharmacy": 19.978,
+      "pricePublic": 26.99
+    },
+    {
+      "specialty": "NERVICA 75mg Gél. Bt 14",
+      "dosage": "PHARMAGHREB",
+      "priceWholesale": 11.469,
+      "pricePharmacy": 12.467,
+      "pricePublic": 16.845
+    },
+    {
+      "specialty": "NERVICA 150mg Gél. Bt 56",
+      "dosage": "PHARMAGHREB",
+      "priceWholesale": 55.56,
+      "pricePharmacy": 60.393,
+      "pricePublic": 79.47500000000001
+    },
+    {
+      "specialty": "NERVICA 75mg Gél. Bt 56",
+      "dosage": "PHARMAGHREB",
+      "priceWholesale": 38.755,
+      "pricePharmacy": 42.127,
+      "pricePublic": 55.44
+    },
+    {
+      "specialty": "NEUROMED 75mg Gél. Bt 15",
+      "dosage": "MEDIS",
+      "priceWholesale": 11.362,
+      "pricePharmacy": 12.351,
+      "pricePublic": 16.685
+    },
+    {
+      "specialty": "NEUROMED  75mg Gél. Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 22.369,
+      "pricePharmacy": 24.316,
+      "pricePublic": 32
+    },
+    {
+      "specialty": "NEUROMED 150mg Gél. Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 27.52,
+      "pricePharmacy": 29.914,
+      "pricePublic": 39.365
+    },
+    {
+      "specialty": "NEUROMED 150mg Gél. Bt 90",
+      "dosage": "MEDIS",
+      "priceWholesale": 70.087,
+      "pricePharmacy": 76.185,
+      "pricePublic": 100.26
+    },
+    {
+      "specialty": "NEURYL 75mg Gél. Bt 14",
+      "dosage": "ADWYA",
+      "priceWholesale": 9.437,
+      "pricePharmacy": 10.258,
+      "pricePublic": 13.86
+    },
+    {
+      "specialty": "NEURYL 150mg Gél. Bt 60",
+      "dosage": "ADWYA",
+      "priceWholesale": 45.788,
+      "pricePharmacy": 49.772,
+      "pricePublic": 65.5
+    },
+    {
+      "specialty": "PREGAB 75mg Gél. Bt 30",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 29.638,
+      "pricePharmacy": 32.216,
+      "pricePublic": 42.395
+    },
+    {
+      "specialty": "PREGAB 150mg Gél. Bt 60",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 70.565,
+      "pricePharmacy": 76.705,
+      "pricePublic": 100.94500000000001
+    },
+    {
+      "specialty": "PREGAB 150mg Gél. Bt 30",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 31.754,
+      "pricePharmacy": 34.517,
+      "pricePublic": 45.425000000000004
+    },
+    {
+      "specialty": "PREGAB 75mg Gél. Bt 14",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 12.278,
+      "pricePharmacy": 13.346,
+      "pricePublic": 18.03
+    },
+    {
+      "specialty": "PREGAB 50mg Gél. Bt 30",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 17.126,
+      "pricePharmacy": 18.617,
+      "pricePublic": 25.150000000000002
+    },
+    {
+      "specialty": "PRERICA 150mg Gél. Bt 56",
+      "dosage": "PHARMACARE",
+      "priceWholesale": 59.388,
+      "pricePharmacy": 64.555,
+      "pricePublic": 84.955
+    },
+    {
+      "specialty": "PRERICA 75mg Gél. Bt 14",
+      "dosage": "PHARMACARE",
+      "priceWholesale": 12.483,
+      "pricePharmacy": 13.569,
+      "pricePublic": 18.330000000000002
+    },
+    {
+      "specialty": "PRERICA 150mg Gél. Bt 32",
+      "dosage": "PHARMACARE",
+      "priceWholesale": 31.754,
+      "pricePharmacy": 34.517,
+      "pricePublic": 45.425000000000004
+    },
+    {
+      "specialty": "PRERICA 75mg Gél. Bt 56",
+      "dosage": "PHARMACARE",
+      "priceWholesale": 45.811,
+      "pricePharmacy": 49.797,
+      "pricePublic": 65.535
+    },
+    {
+      "specialty": "PRERICA 75mg Gél. Bt 28",
+      "dosage": "PHARMACARE",
+      "priceWholesale": 18.869,
+      "pricePharmacy": 20.51,
+      "pricePublic": 27.71
+    },
+    {
+      "specialty": "Concurrents  de  ZOLOFT : ( Sertraline → 50 mg )"
+    },
+    {
+      "specialty": "NETRAL 100mg Comp.Pell.Séc. Bt 30",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 25.757,
+      "pricePharmacy": 27.998,
+      "pricePublic": 36.845
+    },
+    {
+      "specialty": "NETRAL 50mg Comp. Pell. Bt 30",
+      "dosage": "S.A.I.PH",
+      "priceWholesale": 16.879,
+      "pricePharmacy": 18.348,
+      "pricePublic": 24.79
+    },
+    {
+      "specialty": "SERTRALINE SANOFI 50mg Comp.Pell.Séc. Bt 15",
+      "dosage": "WINTHROP PHARMA TUNISIE (EX-AVENTIS PHARMA)",
+      "priceWholesale": 6.836,
+      "pricePharmacy": 7.431,
+      "pricePublic": 10.32
+    },
+    {
+      "specialty": "SERVAL 25mg Gél. Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 7.616,
+      "pricePharmacy": 8.279,
+      "pricePublic": 11.185
+    },
+    {
+      "specialty": "SERVAL 50mg Gél. Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 14.044,
+      "pricePharmacy": 15.266,
+      "pricePublic": 20.625
+    },
+    {
+      "specialty": "SERVAL 100mg Gél. Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 27.52,
+      "pricePharmacy": 29.915,
+      "pricePublic": 39.37
+    },
+    {
+      "specialty": "SOLOTIK 50mg Comp.Pell.Séc. Fl 15",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 7.119,
+      "pricePharmacy": 7.738,
+      "pricePublic": 10.75
+    },
+    {
+      "specialty": "SOLOTIK 50mg Comp.Pell.Séc. Fl 30",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 14.614,
+      "pricePharmacy": 15.885,
+      "pricePublic": 21.46
+    },
+    {
+      "specialty": "SOLOTIK 100mg Comp.Pell.Séc. Fl 15",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 14.614,
+      "pricePharmacy": 15.885,
+      "pricePublic": 21.46
+    },
+    {
+      "specialty": "Concurrents  de  VIAGRA : ( Sildénafil → 25 mg – 50 mg – 100 mg)"
+    },
+    {
+      "specialty": "ADENAFIL 50mg Comp.Pell.Séc. Bt 1",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 2.006,
+      "pricePharmacy": 2.181,
+      "pricePublic": 3.115
+    },
+    {
+      "specialty": "ADENAFIL 50mg Comp.Pell.Séc. Bt 2",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 3.382,
+      "pricePharmacy": 3.677,
+      "pricePublic": 5.105
+    },
+    {
+      "specialty": "ADENAFIL 50mg Comp.Pell.Séc. Bt 4",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 6.132,
+      "pricePharmacy": 6.666,
+      "pricePublic": 9.26
+    },
+    {
+      "specialty": "AS-ONE 25mg Comp.Pell. Bt 4",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 6.469,
+      "pricePharmacy": 7.031,
+      "pricePublic": 9.765
+    },
+    {
+      "specialty": "AS-ONE 50mg Comp.Pell. Bt 4",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 6.074,
+      "pricePharmacy": 6.602,
+      "pricePublic": 9.17
+    },
+    {
+      "specialty": "AS-ONE 100mg Comp.Pell. Bt 4",
+      "dosage": "TAHA PHARMA",
+      "priceWholesale": 9.031,
+      "pricePharmacy": 9.817,
+      "pricePublic": 13.265
+    },
+    {
+      "specialty": "ERECTA 50mg Comp.Orodisp. Bt 4",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 9.117,
+      "pricePharmacy": 9.911,
+      "pricePublic": 13.39
+    },
+    {
+      "specialty": "ERECTA 50mg Comp.Orodisp. Bt 8",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 16.772,
+      "pricePharmacy": 18.231,
+      "pricePublic": 24.63
+    },
+    {
+      "specialty": "ERECTA  100mg Comp.Orodisp. Bt 4",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 12.264,
+      "pricePharmacy": 13.331,
+      "pricePublic": 18.01
+    },
+    {
+      "specialty": "ERECTA  100mg Comp.Orodisp. Bt 8",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 22.648,
+      "pricePharmacy": 24.618,
+      "pricePublic": 32.395
+    },
+    {
+      "specialty": "SILAPLUS SAIPH ",
+      "dosage": "ZOLTAN 50mg Comp.Pell.Séc. Bt 4",
+      "priceWholesale": 9.892,
+      "pricePharmacy": 10.753,
+      "pricePublic": 14.525
+    },
+    {
+      "specialty": "SILAPLUS SAIPH ",
+      "dosage": "ZOLTAN 50mg Comp.Pell.Séc. Bt 8",
+      "priceWholesale": 18.22,
+      "pricePharmacy": 19.805,
+      "pricePublic": 26.755
+    },
+    {
+      "specialty": "SILAPLUS SAIPH ",
+      "dosage": "ZOLTAN 100mg Comp.Pell. Bt 4",
+      "priceWholesale": 13.244,
+      "pricePharmacy": 14.397,
+      "pricePublic": 19.45
+    },
+    {
+      "specialty": "SILDENAFIL-ACTAVIS 100mg Comp.Pell. Bt 4",
+      "dosage": "ACTAVIS",
+      "priceWholesale": 10.849,
+      "pricePharmacy": 11.793,
+      "pricePublic": 15.52
+    },
+    {
+      "specialty": "SILDENAFIL-ACTAVIS 50mg Comp. Pell. Bt 4",
+      "dosage": "ACTAVIS",
+      "priceWholesale": 7.749,
+      "pricePharmacy": 8.423,
+      "pricePublic": 11.38
+    },
+    {
+      "specialty": "VIADIS 25mg Comp.Pell. Bt 4",
+      "dosage": "MEDIS",
+      "priceWholesale": 6.819,
+      "pricePharmacy": 7.412,
+      "pricePublic": 10.295
+    },
+    {
+      "specialty": "VIADIS 50mg Comp.Pell. Bt 4",
+      "dosage": "MEDIS",
+      "priceWholesale": 9.117,
+      "pricePharmacy": 9.911,
+      "pricePublic": 13.39
+    },
+    {
+      "specialty": "VIADIS 100mg Comp. Bt 4",
+      "dosage": "MEDIS",
+      "priceWholesale": 10.938,
+      "pricePharmacy": 11.889,
+      "pricePublic": 16.06
+    },
+    {
+      "specialty": "VIAMAXIM / VIAMAX",
+      "dosage": "ANTAR 100mg Comp.Pell. Bt 4 GALPHARMA",
+      "priceWholesale": 9.031,
+      "pricePharmacy": 9.817,
+      "pricePublic": 13.265
+    },
+    {
+      "specialty": "VIAMAXIM / VIAMAX",
+      "dosage": "ANTAR 100mg Comp.Pell. Bt 8GALPHARMA",
+      "priceWholesale": 17.7,
+      "pricePharmacy": 19.24,
+      "pricePublic": 25.995
+    },
+    {
+      "specialty": "VIAMAXIM / VIAMAX",
+      "dosage": "ANTAR 50mg Comp.Pell. Bt 4 GALPHARMA",
+      "priceWholesale": 6.074,
+      "pricePharmacy": 6.602,
+      "pricePublic": 9.17
+    },
+    {
+      "specialty": "VIAMAXIM / VIAMAX",
+      "dosage": "ANTAR 50mg Comp.Pell. Bt 8 GALPHARMA",
+      "priceWholesale": 12.219,
+      "pricePharmacy": 13.282,
+      "pricePublic": 17.945
+    },
+    {
+      "specialty": "VIATEC 25mg Comp.Pell. Bt 4",
+      "dosage": "ADWYA",
+      "priceWholesale": 8.397,
+      "pricePharmacy": 9.128,
+      "pricePublic": 12.33
+    },
+    {
+      "specialty": "VIATEC 25mg Comp.Pell. Bt 8",
+      "dosage": "ADWYA",
+      "priceWholesale": 15.453,
+      "pricePharmacy": 16.797,
+      "pricePublic": 22.695
+    },
+    {
+      "specialty": "VIATEC 50mg Comp.Pell. Bt 4",
+      "dosage": "ADWYA",
+      "priceWholesale": 11.565,
+      "pricePharmacy": 12.571,
+      "pricePublic": 16.985
+    },
+    {
+      "specialty": "VIATEC 50mg Comp.Pell. Bt 8",
+      "dosage": "ADWYA",
+      "priceWholesale": 19.336,
+      "pricePharmacy": 21.018,
+      "pricePublic": 28.395
+    },
+    {
+      "specialty": "VIATEC 100mg Comp.Pell. Bt 4",
+      "dosage": "ADWYA",
+      "priceWholesale": 15.448,
+      "pricePharmacy": 16.792,
+      "pricePublic": 22.685
+    },
+    {
+      "specialty": "VIATEC 100mg Comp.Pell. Bt 8",
+      "dosage": "ADWYA",
+      "priceWholesale": 24.627,
+      "pricePharmacy": 26.77,
+      "pricePublic": 35.230000000000004
+    },
+    {
+      "specialty": "Concurrents  de  EFFEXOR : ( Venlafaxine LP → 37,5 mg – 75 mg – XL 150 mg)"
+    },
+    {
+      "specialty": "TEDEMA 25mg Comp.Pell. Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 6.173,
+      "pricePharmacy": 6.71,
+      "pricePublic": 9.32
+    },
+    {
+      "specialty": "TEDEMA LP 37.5mg Gél. LP Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 10.698,
+      "pricePharmacy": 11.629,
+      "pricePublic": 15.71
+    },
+    {
+      "specialty": "TEDEMA 50mg Comp.Pell. Bt 30",
+      "dosage": "MEDIS",
+      "priceWholesale": 10.002,
+      "pricePharmacy": 10.873,
+      "pricePublic": 14.69
+    },
+    {
+      "specialty": "ZENEXOR LP 37.5mg Gél. à Liberation Prolongée Bt 30",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 10.514,
+      "pricePharmacy": 11.429,
+      "pricePublic": 15.44
+    },
+    {
+      "specialty": "ZENEXOR LP 75mg Gél. à Liberation Prolongée Bt 30",
+      "dosage": "OPALIA PHARMA S.A.",
+      "priceWholesale": 21.099,
+      "pricePharmacy": 22.935,
+      "pricePublic": 30.985
+    },
+    {
+      "specialty": "Concurrents  de  Cardular PP URO LP : ( Doxazosine LP → 4 mg – 8 mg)"
+    },
+    {
+      "specialty": "CARDOX 1mg Comp. Fl 30",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 6.202,
+      "pricePharmacy": 6.741,
+      "pricePublic": 9.365
+    },
+    {
+      "specialty": "CARDOX 4mg Comp.Séc. Fl 30",
+      "dosage": "IBN AL BAYTAR",
+      "priceWholesale": 21.304,
+      "pricePharmacy": 23.158,
+      "pricePublic": 31.285
+    }
+  ],
+  "tenshi": [
+    {
+      "specialty": "CLOMIPRAMINE VIATRIS",
+      "dosage": "25 MG ",
+      "priceWholesale": 4.28,
+      "pricePharmacy": 4.652,
+      "pricePublic": 6.285
+    },
+    {
+      "specialty": "CLOMIPRAMINE VIATRIS",
+      "dosage": "10 MG",
+      "priceWholesale": 3.598,
+      "pricePharmacy": 3.911,
+      "pricePublic": 5.285
+    },
+    {
+      "specialty": "MONTELUKAST MYLAN",
+      "dosage": "5MG",
+      "priceWholesale": 25.865,
+      "pricePharmacy": 28.115,
+      "pricePublic": 37
+    },
+    {
+      "specialty": "PHLOROGLUCINOL VIATRIS",
+      "dosage": "80 MG ",
+      "priceWholesale": 3.318,
+      "pricePharmacy": 3.606,
+      "pricePublic": 4.875
+    },
+    {
+      "specialty": "SOTALOL VIATRIS",
+      "dosage": "160MG ",
+      "priceWholesale": 6.891,
+      "pricePharmacy": 7.491,
+      "pricePublic": 10.405
+    },
+    {
+      "specialty": "TELMISARTAN MYLAN",
+      "dosage": "40MG",
+      "priceWholesale": 15.694572217111315,
+      "pricePharmacy": 17.06,
+      "pricePublic": 23.04806
+    },
+    {
+      "specialty": "TELMISARTAN MYLAN",
+      "dosage": "80MG",
+      "priceWholesale": 15.693652253909844,
+      "pricePharmacy": 17.059,
+      "pricePublic": 23.046709
+    },
+    {
+      "specialty": "FLECAINE LP",
+      "dosage": "100MG",
+      "priceWholesale": 24.453,
+      "pricePharmacy": 26.581,
+      "pricePublic": 34.98
+    },
+    {
+      "specialty": "FLECAINE LP",
+      "dosage": "200MG",
+      "priceWholesale": 25.74,
+      "pricePharmacy": 27.979,
+      "pricePublic": 36.82
+    },
+    {
+      "specialty": "FLECAINE LP",
+      "dosage": "50MG",
+      "priceWholesale": 23.163,
+      "pricePharmacy": 25.179,
+      "pricePublic": 33.135
+    },
+    {
+      "specialty": "FLECAINE",
+      "dosage": "100MG",
+      "priceWholesale": 24.845,
+      "pricePharmacy": 27.006,
+      "pricePublic": 35.54
+    },
+    {
+      "specialty": "VALPROATE DE SODIUM VIATRIS",
+      "dosage": "500MG",
+      "priceWholesale": 10.909,
+      "pricePharmacy": 11.858,
+      "pricePublic": 16.02
+    },
+    {
+      "specialty": "ZOLPIDEM VIATRIS",
+      "dosage": "10mg",
+      "priceWholesale": 3.5,
+      "pricePharmacy": 3.805,
+      "pricePublic": 5.285
+    },
+    {
+      "specialty": "Xanax Retard",
+      "dosage": "1mg",
+      "priceWholesale": 5.356,
+      "pricePharmacy": 5.822,
+      "pricePublic": 7.865
+    },
+    {
+      "specialty": "Xanax Retard",
+      "dosage": "0.5mg",
+      "priceWholesale": 4.043,
+      "pricePharmacy": 4.395,
+      "pricePublic": 6.105
+    },
+    {
+      "specialty": "Xanax",
+      "dosage": "0.75mg/ml",
+      "priceWholesale": 5.253,
+      "pricePharmacy": 5.71,
+      "pricePublic": 7.931
+    },
+    {
+      "specialty": "Amlor",
+      "dosage": "10mg B/30",
+      "priceWholesale": 16.794,
+      "pricePharmacy": 18.256,
+      "pricePublic": 24.664
+    },
+    {
+      "specialty": "Amlor",
+      "dosage": "5mg B/30",
+      "priceWholesale": 17.577,
+      "pricePharmacy": 19.107,
+      "pricePublic": 25.815
+    },
+    {
+      "specialty": "Amlor",
+      "dosage": "5mg B/15",
+      "priceWholesale": 8.738,
+      "pricePharmacy": 9.498,
+      "pricePublic": 12.5
+    },
+    {
+      "specialty": "Caduet",
+      "dosage": "10mg/10mg",
+      "priceWholesale": 33.506,
+      "pricePharmacy": 36.421,
+      "pricePublic": 47.93
+    },
+    {
+      "specialty": "Caduet",
+      "dosage": "5mg/10mg",
+      "priceWholesale": 33.506,
+      "pricePharmacy": 36.421,
+      "pricePublic": 47.93
+    },
+    {
+      "specialty": "Tahor",
+      "dosage": "10mg B/56",
+      "priceWholesale": 40.734,
+      "pricePharmacy": 44.278,
+      "pricePublic": 58.27
+    },
+    {
+      "specialty": "Tahor",
+      "dosage": "10mg B/91",
+      "priceWholesale": 66.065,
+      "pricePharmacy": 71.813,
+      "pricePublic": 94.506
+    },
+    {
+      "specialty": "Tahor",
+      "dosage": "10mg B/28",
+      "priceWholesale": 22.5877,
+      "pricePharmacy": 24.552829900000003,
+      "pricePublic": 32.309999999999995
+    },
+    {
+      "specialty": "Tahor",
+      "dosage": "20mg B/28",
+      "priceWholesale": 31.484,
+      "pricePharmacy": 34.223,
+      "pricePublic": 45.035000000000004
+    },
+    {
+      "specialty": "Tahor",
+      "dosage": "20mg B/91",
+      "priceWholesale": 65.626,
+      "pricePharmacy": 71.336,
+      "pricePublic": 93.88
+    },
+    {
+      "specialty": "Tahor",
+      "dosage": "40mg B/28",
+      "priceWholesale": 38.529,
+      "pricePharmacy": 41.881,
+      "pricePublic": 55.115
+    },
+    {
+      "specialty": "Tahor",
+      "dosage": "40mg B/91",
+      "priceWholesale": 91.437,
+      "pricePharmacy": 99.392,
+      "pricePublic": 130.8
+    },
+    {
+      "specialty": "Tahor",
+      "dosage": "80mg B/28",
+      "priceWholesale": 43.163,
+      "pricePharmacy": 46.919,
+      "pricePublic": 61.745
+    },
+    {
+      "specialty": "Celebrex",
+      "dosage": "200mg B/30",
+      "priceWholesale": 20.972,
+      "pricePharmacy": 22.796,
+      "pricePublic": 30
+    },
+    {
+      "specialty": "Celebrex",
+      "dosage": "200mg B/20",
+      "priceWholesale": 15.17,
+      "pricePharmacy": 16.49,
+      "pricePublic": 22.28
+    },
+    {
+      "specialty": "Celebrex",
+      "dosage": "200mg B/10",
+      "priceWholesale": 9.341,
+      "pricePharmacy": 10.154,
+      "pricePublic": 13.72
+    },
+    {
+      "specialty": "Cardular PP URO LP",
+      "dosage": "4mg B/28",
+      "priceWholesale": 27.708,
+      "pricePharmacy": 30.119,
+      "pricePublic": 39.637
+    },
+    {
+      "specialty": "Cardular URO",
+      "dosage": "2mg B/20",
+      "priceWholesale": 11.208,
+      "pricePharmacy": 12.184,
+      "pricePublic": 16.035
+    },
+    {
+      "specialty": "Cardular URO",
+      "dosage": "4mg B/20",
+      "priceWholesale": 19.672,
+      "pricePharmacy": 21.383,
+      "pricePublic": 28.14
+    },
+    {
+      "specialty": "Neurontin",
+      "dosage": "300mg B/50",
+      "priceWholesale": 42.446,
+      "pricePharmacy": 46.139,
+      "pricePublic": 60.718
+    },
+    {
+      "specialty": "Neurontin",
+      "dosage": "600mg B/50",
+      "priceWholesale": 63.162,
+      "pricePharmacy": 68.657,
+      "pricePublic": 90.353
+    },
+    {
+      "specialty": "Neurontin",
+      "dosage": "800mg B/50",
+      "priceWholesale": 78.309,
+      "pricePharmacy": 85.122,
+      "pricePublic": 112.021
+    },
+    {
+      "specialty": "Xalatan",
+      "dosage": "50mcg/ml",
+      "priceWholesale": 23.774,
+      "pricePharmacy": 25.843,
+      "pricePublic": 34.01
+    },
+    {
+      "specialty": "LYRICA 150mg",
+      "dosage": "150mg B/56",
+      "priceWholesale": 89.906,
+      "pricePharmacy": 97.728,
+      "pricePublic": 128.61
+    },
+    {
+      "specialty": "LYRICA 75mg",
+      "dosage": "75mg B/56",
+      "priceWholesale": 70.591,
+      "pricePharmacy": 76.733,
+      "pricePublic": 100.98
+    },
+    {
+      "specialty": "LYRICA 75mg",
+      "dosage": "75mg B/14",
+      "priceWholesale": 15.577,
+      "pricePharmacy": 16.932,
+      "pricePublic": 22.875
+    },
+    {
+      "specialty": "Zoloft",
+      "dosage": "50mg B/15",
+      "priceWholesale": 10.782,
+      "pricePharmacy": 11.72,
+      "pricePublic": 15.835
+    },
+    {
+      "specialty": "Zoloft",
+      "dosage": "50mg B/30",
+      "priceWholesale": 15.173,
+      "pricePharmacy": 16.493,
+      "pricePublic": 22.28
+    },
+    {
+      "specialty": "Viagra",
+      "dosage": "100mg",
+      "priceWholesale": 25.449,
+      "pricePharmacy": 27.663,
+      "pricePublic": 36.405
+    },
+    {
+      "specialty": "Viagra",
+      "dosage": "25mg",
+      "priceWholesale": 18.644,
+      "pricePharmacy": 20.266,
+      "pricePublic": 27.38
+    },
+    {
+      "specialty": "Viagra",
+      "dosage": "50mg",
+      "priceWholesale": 21.116,
+      "pricePharmacy": 22.953,
+      "pricePublic": 31.01
+    },
+    {
+      "specialty": "Detrusitol Retard",
+      "dosage": "2mg",
+      "priceWholesale": 14.1,
+      "pricePharmacy": 15.327,
+      "pricePublic": 20.707
+    },
+    {
+      "specialty": "Detrusitol Retard",
+      "dosage": "4mg",
+      "priceWholesale": 16.142,
+      "pricePharmacy": 17.546,
+      "pricePublic": 23.705
+    },
+    {
+      "specialty": "Efexor LP",
+      "dosage": "37.5mg",
+      "priceWholesale": 13.949,
+      "pricePharmacy": 15.163,
+      "pricePublic": 20.285
+    },
+    {
+      "specialty": "Efexor LP",
+      "dosage": "75mg",
+      "priceWholesale": 27.896,
+      "pricePharmacy": 30.323,
+      "pricePublic": 39.905
+    },
+    {
+      "specialty": "Xalacom",
+      "dosage": "50mcg/ml 5mg/ml",
+      "priceWholesale": 26.141,
+      "pricePharmacy": 28.415,
+      "pricePublic": 37.394
+    }
+  ]
+}
