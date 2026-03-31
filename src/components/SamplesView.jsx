@@ -60,7 +60,12 @@ export default function SamplesView({ dashboardId, viewUser }) {
             });
             if (res.ok) {
                 const data = await res.json();
-                const relevantVisits = data.filter(v => v.givenSampleName || v.givenMaterialName || (v.givenMaterials && v.givenMaterials.length > 0));
+                const relevantVisits = data.filter(v =>
+                    v.givenSampleName ||
+                    v.givenMaterialName ||
+                    (v.givenMaterials && v.givenMaterials.length > 0) ||
+                    (v.givenSamples && v.givenSamples.length > 0)
+                );
                 setHistory(relevantVisits);
             }
         } catch (err) {
@@ -265,6 +270,11 @@ export default function SamplesView({ dashboardId, viewUser }) {
                                                         📦 {visit.givenSampleName}{visit.givenSampleQty > 1 ? ` (×${visit.givenSampleQty})` : ''}
                                                     </span>
                                                 )}
+                                                {visit.givenSamples && visit.givenSamples.map((s, sIdx) => (
+                                                    <span key={sIdx} className="font-semibold text-green-700 bg-green-50 px-2 py-1 rounded inline-block w-fit">
+                                                        📦 {s.name}{s.count > 1 ? ` (×${s.count})` : ''}
+                                                    </span>
+                                                ))}
                                                 {visit.givenMaterialName && (!visit.givenMaterials || visit.givenMaterials.length === 0) && (
                                                     <span className="font-semibold text-blue-700 bg-blue-50 px-2 py-1 rounded inline-block w-fit">
                                                         🎁 {visit.givenMaterialName}
@@ -284,6 +294,11 @@ export default function SamplesView({ dashboardId, viewUser }) {
                                                         {visit.givenSampleBatch || 'N/A'}
                                                     </span>
                                                 )}
+                                                {visit.givenSamples && visit.givenSamples.map((s, sIdx) => (
+                                                    <span key={sIdx} className="text-[10px] font-mono text-gray-600 bg-gray-100 px-2 py-0.5 rounded border border-gray-200 w-fit">
+                                                        {s.batch || 'N/A'}
+                                                    </span>
+                                                ))}
                                                 {visit.givenMaterialName && (!visit.givenMaterials || visit.givenMaterials.length === 0) && (
                                                     <span className="text-[10px] font-mono text-gray-600 bg-gray-100 px-2 py-0.5 rounded border border-gray-200 w-fit">
                                                         {visit.givenMaterialBatch && visit.givenMaterialBatch !== 'N/A' ? visit.givenMaterialBatch : '-'}

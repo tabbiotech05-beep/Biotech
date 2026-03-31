@@ -31,7 +31,7 @@ export default function DashboardSelection() {
 
     const dashboardConfig = {
         dashboard1: {
-            name: 'BioTechPharmaMD',
+            name: 'BiotechpharmaMD',
             team: 'Équipe BioTech',
             logo: '/images/logo.jpg',
             accent: '#10b981',
@@ -68,7 +68,7 @@ export default function DashboardSelection() {
     );
 
     const configMap = {
-        dashboard1: { name: 'Biotech', accent: '#10b981', light: 'rgba(16, 185, 129, 0.1)' },
+        dashboard1: { name: 'BiotechpharmaMD', accent: '#10b981', light: 'rgba(16, 185, 129, 0.1)' },
         dashboard2: { name: 'Tenshi', accent: '#6366f1', light: 'rgba(99, 102, 241, 0.1)' }
     };
 
@@ -160,7 +160,7 @@ export default function DashboardSelection() {
             </div>
 
             <div className="mt-12 text-center text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">
-                &copy; Biotech Pharma &bull; Dashboard Engine
+                &copy; BiotechpharmaMD &bull; Dashboard Engine
             </div>
         </div>
     );

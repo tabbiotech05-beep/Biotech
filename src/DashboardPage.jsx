@@ -259,7 +259,7 @@ export default function DashboardPage() {
         border: 'border-blue-600', lightBg: 'bg-blue-50', navText: 'text-gray-900'
     };
 
-    const dashName = dashboardId === 'dashboard1' ? 'BioTechPharmaMD' : 'Tenshi';
+    const dashName = dashboardId === 'dashboard1' ? 'BiotechpharmaMD' : 'Tenshi';
     const dashLogo = dashboardId === 'dashboard1' ? '/images/logo.jpg' : '/images/tenshi.png';
 
     // ── Pharmacienne Layout ──────────────────────────────────────────────────
@@ -317,7 +317,7 @@ export default function DashboardPage() {
         { id: 'cycle', label: 'Cycle', icon: <IconCycle /> },
         { id: 'samples', label: 'Échantillons', icon: <IconSamples /> },
         { id: 'stockpct', label: 'Stock PCT', icon: <IconPCT /> },
-        { id: 'congress', label: 'Congrès', icon: <IconCongress /> },
+        { id: 'congress', label: 'Action marketing', icon: <IconCongress /> },
         { id: 'leave', label: 'Mes Congés', icon: <IconLeave /> },
     ];
 

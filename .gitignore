@@ -18,3 +18,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local Data and Uploads (Keep directory structure but ignore files)
+data/db/*
+!data/db/.gitkeep
+uploads/*
+!uploads/.gitkeep

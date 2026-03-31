@@ -12,7 +12,7 @@ dotenv.config({ override: false }); // Don't overwrite env vars passed by parent
 
 const admins = ['mahmoud', 'slim', 'ouanes', 'malek'];
 const biotechUsers = ['seif', 'ines', 'cherifa', 'syrine', 'soufiene'];
-const tenshiUsers = ['wiem', 'feriel', 'rahma', 'rania', 'yosra', 'farah', 'saoussen', 'dorra', 'rahma.b', 'fatma', 'nessrine', 'nafissa', 'amal', 'maha'];
+const tenshiUsers = ['wiem', 'feriel', 'rahma', 'rania', 'bureau', 'farah', 'saoussen', 'dorra', 'rahma.b', 'fatma', 'nessrine', 'nafissa', 'amal', 'maha'];
 
 const passwords = {
     'mahmoud': 'R8D7pVOOnV',
@@ -28,7 +28,7 @@ const passwords = {
     'feriel': 'oJDPIAp1I8',
     'rahma': '6zUdZAm6mN',
     'rania': '6OouDNkEyL',
-    'yosra': 'rdTQ8CMaYN',
+    'bureau': 'rdTQ8CMaYN',
     'farah': 'gsEiMIWZgs',
     'saoussen': 'IG7ZPUHP4L',
     'dorra': 'ArazTk7Hdw',
@@ -58,6 +58,14 @@ const seedOfficialUsers = async () => {
             oldUser.email = 'rania@bioxtenshi.com';
             await oldUser.save();
             console.log('🔄 Automatically renamed user mohamed.f to rania');
+        }
+
+        const oldYosra = await User.findOne({ username: 'yosra' });
+        if (oldYosra) {
+            oldYosra.username = 'bureau';
+            oldYosra.email = 'bureau@bioxtenshi.com';
+            await oldYosra.save();
+            console.log('🔄 Automatically renamed user yosra to bureau');
         }
 
         // --- Feriel's Cycle Import Logic ---

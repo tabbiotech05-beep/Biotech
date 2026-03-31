@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
+import jsPDF from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 export default function CongressView({ dashboardId }) {
     const [congresses, setCongresses] = useState([]);
@@ -16,6 +18,7 @@ export default function CongressView({ dashboardId }) {
         status: 'planifié',
         image: null
     });
+    const [isSaving, setIsSaving] = useState(false);
 
     useEffect(() => {
         fetchCongresses();
@@ -64,6 +67,7 @@ export default function CongressView({ dashboardId }) {
         }
 
         try {
+            setIsSaving(true);
             const url = editingId
                 ? `/api/congress/${editingId}`
                 : '/api/congress';
@@ -87,14 +91,20 @@ export default function CongressView({ dashboardId }) {
                 }
 
                 closeModal();
+            } else {
+                const errData = await res.json();
+                alert(`Erreur: ${errData.msg || 'Une erreur est survenue lors de l\'enregistrement'}`);
             }
         } catch (err) {
             console.error('Error saving congress:', err);
+            alert('Erreur réseau. Veuillez vérifier votre connexion.');
+        } finally {
+            setIsSaving(false);
         }
     };
 
     const deleteCongress = async (id) => {
-        if (!window.confirm('Voulez-vous vraiment supprimer ce congrès ?')) return;
+        if (!window.confirm('Voulez-vous vraiment supprimer cette action marketing ?')) return;
         const token = localStorage.getItem('token');
         try {
             const res = await fetch(`/api/congress/${id}`, {
@@ -148,21 +158,80 @@ export default function CongressView({ dashboardId }) {
         }
     };
 
+    const generatePDF = () => {
+        const doc = new jsPDF();
+        const total = congresses.reduce((sum, c) => sum + (Number(c.amount) || 0), 0);
+
+        // Header
+        doc.setFontSize(20);
+        doc.setTextColor(40);
+        doc.text("BiotechpharmaMD", 14, 22);
+        doc.setFontSize(14);
+        doc.text("Rapport des Actions Marketing", 14, 32);
+        doc.setFontSize(10);
+        doc.text(`Généré le: ${format(new Date(), 'dd/MM/yyyy HH:mm')}`, 14, 40);
+
+        // Table
+        const tableColumn = ["Nom de l'Action", "Médecin(s) (Participant)", "Budget (TND)"];
+        const tableRows = congresses.map(c => [
+            c.name,
+            c.participant,
+            `${(Number(c.amount) || 0).toLocaleString()} TND`
+        ]);
+
+        autoTable(doc, {
+            head: [tableColumn],
+            body: tableRows,
+            startY: 50,
+            theme: 'striped',
+            headStyles: { fillStyle: 'fill', fillColor: [59, 130, 246], textColor: [255, 255, 255] },
+            foot: [['Total', '', `${total.toLocaleString()} TND`]],
+            footStyles: { fillColor: [240, 240, 240], textColor: [0, 0, 0], fontStyle: 'bold' }
+        });
+
+        doc.save(`Rapport_Action_Marketing_${format(new Date(), 'yyyyMMdd')}.pdf`);
+    };
+
+    const isAdmin = localStorage.getItem('role') === 'admin';
+
     return (
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 min-h-[600px]">
             <div className="flex justify-between items-center mb-6">
-                <h3 className="text-xl font-bold text-gray-800">Gestion des Congrés</h3>
-                <button
-                    onClick={() => { setEditingId(null); setShowModal(true); }}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-sm flex items-center gap-2"
-                >
-                    <span className="text-xl font-bold">+</span> Planifier un Congrés
-                </button>
+                <h3 className="text-xl font-bold text-gray-800">Gestion des Actions Marketing</h3>
+                <div className="flex gap-3">
+                    {isAdmin && congresses.length > 0 && (
+                        <button
+                            onClick={generatePDF}
+                            className="px-4 py-2 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-md hover:bg-emerald-100 transition-colors shadow-sm flex items-center gap-2 font-bold"
+                        >
+                            📄 Générer Rapport PDF
+                        </button>
+                    )}
+                    <button
+                        onClick={() => {
+                            setEditingId(null);
+                            setFormData({
+                                name: '',
+                                startDate: '',
+                                endDate: '',
+                                location: '',
+                                participant: '',
+                                amount: '',
+                                status: 'planifié',
+                                image: null
+                            });
+                            setShowModal(true);
+                        }}
+                        className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-sm flex items-center gap-2"
+                    >
+                        <span className="text-xl font-bold">+</span> Planifier une Action Marketing
+                    </button>
+                </div>
             </div>
 
             {congresses.length === 0 ? (
                 <div className="text-center py-20 text-gray-500">
-                    Aucun congrès planifié.
+                    Aucune action marketing planifiée.
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -217,10 +286,10 @@ export default function CongressView({ dashboardId }) {
             {showModal && (
                 <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4 w-full h-full min-h-screen top-0 fixed">
                     <div className="bg-white p-6 rounded-lg shadow-xl w-[500px] max-h-[90vh] overflow-y-auto">
-                        <h3 className="text-xl font-bold mb-6 text-gray-800">{editingId ? 'Modifier le Congrés' : 'Nouveau Congrés'}</h3>
+                        <h3 className="text-xl font-bold mb-6 text-gray-800">{editingId ? "Modifier l'Action Marketing" : "Nouvelle Action Marketing"}</h3>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Nom du Congrés</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Nom de l'Action Marketing</label>
                                 <input required type="text" name="name" value={formData.name} onChange={handleInputChange} className="w-full border border-gray-300 rounded px-3 py-2" />
                             </div>
                             <div className="grid grid-cols-2 gap-4">
@@ -256,13 +325,17 @@ export default function CongressView({ dashboardId }) {
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Image du congrés</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Image de l'action marketing</label>
                                 <input type="file" accept="image/*" onChange={handleFileChange} className="w-full border border-gray-300 rounded px-3 py-2" />
                             </div>
                             <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
                                 <button type="button" onClick={closeModal} className="px-5 py-2.5 text-gray-600 hover:bg-gray-50 rounded-md font-medium">Annuler</button>
-                                <button type="submit" className="px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-medium">
-                                    {editingId ? 'Mettre à jour' : 'Créer'}
+                                <button
+                                    type="submit"
+                                    disabled={isSaving}
+                                    className={`px-5 py-2.5 rounded-md font-medium text-white transition-colors ${isSaving ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
+                                >
+                                    {isSaving ? 'Enregistrement...' : (editingId ? 'Mettre à jour' : 'Créer')}
                                 </button>
                             </div>
                         </form>

@@ -109,7 +109,7 @@ export default function SampleHistoryView() {
             // Header
             doc.setFontSize(20);
             doc.setTextColor(40, 167, 69); // Green
-            doc.text("BioXtenshi - Rapport de Traçabilité", 14, 22);
+            doc.text("BiotechpharmaMD - Rapport de Traçabilité", 14, 22);
 
             doc.setFontSize(10);
             doc.setTextColor(100);
@@ -202,6 +202,12 @@ export default function SampleHistoryView() {
                 (h.givenMaterials || []).forEach(m => {
                     if (m.batch === batchData.batchNumber) {
                         offeredRows.push([date, delegate, target, m.name, m.count || 1]);
+                    }
+                });
+                // Check samples array
+                (h.givenSamples || []).forEach(s => {
+                    if (s.batch === batchData.batchNumber) {
+                        offeredRows.push([date, delegate, target, s.name, s.count || 1]);
                     }
                 });
             });
@@ -426,6 +432,11 @@ export default function SampleHistoryView() {
                                                     (h.givenMaterials || []).forEach((m, idx) => {
                                                         if (m.batch === batchData.batchNumber) {
                                                             rows.push({ id: `${h._id}-gm-${idx}`, date, delegate, target, item: m.name, qty: m.count || 1 });
+                                                        }
+                                                    });
+                                                    (h.givenSamples || []).forEach((s, idx) => {
+                                                        if (s.batch === batchData.batchNumber) {
+                                                            rows.push({ id: `${h._id}-gs-${idx}`, date, delegate, target, item: s.name, qty: s.count || 1 });
                                                         }
                                                     });
 

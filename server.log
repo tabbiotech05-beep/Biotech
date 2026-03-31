@@ -1,748 +1,638 @@
 🚀 Starting BioXtenshi Local Environment...
-✅ Local MongoDB running at: mongodb://127.0.0.1:33425/
+✅ Local MongoDB running at: mongodb://127.0.0.1:40421/
 📂 Data stored in: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/data/db
 🌱 Seeding database...
-[dotenv@17.2.3] injecting env (4) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+[dotenv@17.2.3] injecting env (4) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
 ✅ Connected to MongoDB
 📊 Detected Feriel S1.xlsx, starting import for feriel...
 ✅ Automated: Cycle updated for feriel. Week 1 has 53 doctors.
-
-✅ Official Seeding/Update Complete!
+Error seeding users: ValidationError: Stock validation failed: batchNumber: Path `batchNumber` is required.
+    at Document.invalidate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/document.js:3370:32)
+    at validatePath (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/document.js:3145:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Promise.all (index 0)
+    at async model.$__validate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/document.js:3086:3)
+    at async model.validate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/document.js:2663:5)
+    at async model.validateBeforeSave (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/plugins/validateBeforeSave.js:34:7)
+    at async Kareem.execPre (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/kareem/index.js:65:24)
+    at async model.$__save (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/model.js:369:5)
+    at async model.save (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/model.js:609:5) {
+  errors: {
+    batchNumber: ValidatorError: Path `batchNumber` is required.
+        at SchemaString.doValidate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/schemaType.js:1425:13)
+        at validatePath (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/document.js:3137:24)
+        at model.$__validate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/document.js:3083:21)
+        at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+        at async model.validate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/document.js:2663:5)
+        at async model.validateBeforeSave (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/plugins/validateBeforeSave.js:34:7)
+        at async Kareem.execPre (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/kareem/index.js:65:24)
+        at async model.$__save (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/model.js:369:5)
+        at async model.save (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/model.js:609:5)
+        at async seedOfficialUsers (file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/seed-official-users.js:149:17) {
+      properties: [Object],
+      kind: 'required',
+      path: 'batchNumber',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose#validatorError)]: true
+    }
+  },
+  _message: 'Stock validation failed'
+}
 💊 Seeding Stock...
-[dotenv@17.2.3] injecting env (4) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+[dotenv@17.2.3] injecting env (4) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
 MongoDB Connected
 Starting to seed 28 products...
-Skipping CELEBREX 200 MG CAP X 10 TUN (already exists with this batch)
-Skipping CELEBREX 200 MG CAP X 20 TUN (already exists with this batch)
-Skipping CELEBREX 200MG BT 30 TUN (already exists with this batch)
-Skipping TAHOR 10 MG X 91 TUN (already exists with this batch)
-Skipping TAHOR 10 MG X 28 TUN (already exists with this batch)
-Skipping TAHOR 20 MG X 91 TUN (already exists with this batch)
-Skipping TAHOR 20MG X 28 (already exists with this batch)
-Skipping TAHOR 40MG X 28 TUN (already exists with this batch)
-Skipping TAHOR 40MG BT 91 TUN (already exists with this batch)
-Skipping ZOLOFT 50 B30 (already exists with this batch)
-Skipping ZOLOFT CP 50 MG X 15 TUN (already exists with this batch)
-Skipping LYRICA CAP 150MG 56BL TN PZR (already exists with this batch)
-Skipping LYRICA CAP 75MG 14BL TN PZR (already exists with this batch)
-Skipping LYRICA CAP 75MG 56BL TN PZR (already exists with this batch)
-Skipping EFFEXOR LP 37.5mg CAP 3x10 BLS TN/MA (already exists with this batch)
-Skipping XALACOM ED 50MCG/5MG/ML 2.5ML 1BT TN PZR (already exists with this batch)
-Skipping XALATAN ED 50MCG/ML 1X2.5MLBT TN PZR (already exists with this batch)
-Skipping VIAGRA TAB 100MG 4BL TN PZR (already exists with this batch)
-Skipping VIAGRA TAB 25MG 4BL TN PZR (already exists with this batch)
-Skipping VIAGRA TAB 50MG 4BL TN PZR (already exists with this batch)
-Skipping FLECAINE 100mg (already exists with this batch)
-Skipping FLECAINE LP 200mg (already exists with this batch)
-Skipping FLECAINE LP 50mg (already exists with this batch)
-Skipping FLECAINE LP 100mg (already exists with this batch)
-Skipping SOTALOL (already exists with this batch)
-Skipping VALPROATE Officine (already exists with this batch)
-Skipping Detrusitol Retard 2MG (already exists with this batch)
-Skipping Detrusitol Retard 4MG (already exists with this batch)
+Added: CELEBREX 200 MG CAP X 10 TUN
+Added: CELEBREX 200 MG CAP X 20 TUN
+Added: CELEBREX 200MG BT 30 TUN
+Added: TAHOR 10 MG X 91 TUN
+Added: TAHOR 10 MG X 28 TUN
+Added: TAHOR 20 MG X 91 TUN
+Added: TAHOR 20MG X 28
+Added: TAHOR 40MG X 28 TUN
+Added: TAHOR 40MG BT 91 TUN
+Added: ZOLOFT 50 B30
+Added: ZOLOFT CP 50 MG X 15 TUN
+Added: LYRICA CAP 150MG 56BL TN PZR
+Added: LYRICA CAP 75MG 14BL TN PZR
+Added: LYRICA CAP 75MG 56BL TN PZR
+Added: EFFEXOR LP 37.5mg CAP 3x10 BLS TN/MA
+Added: XALACOM ED 50MCG/5MG/ML 2.5ML 1BT TN PZR
+Added: XALATAN ED 50MCG/ML 1X2.5MLBT TN PZR
+Added: VIAGRA TAB 100MG 4BL TN PZR
+Added: VIAGRA TAB 25MG 4BL TN PZR
+Added: VIAGRA TAB 50MG 4BL TN PZR
+Added: FLECAINE 100mg
+Added: FLECAINE LP 200mg
+Added: FLECAINE LP 50mg
+Added: FLECAINE LP 100mg
+Added: SOTALOL
+Added: VALPROATE Officine
+Added: Detrusitol Retard 2MG
+Added: Detrusitol Retard 4MG
 Stock seeding completed successfully.
 ✅ Seeding finished.
 🔌 Starting Backend Server...
-📡 Backend process spawned with PID: 11175
+📡 Backend process spawned with PID: 9854
 🎨 Starting Frontend (Vite)...
-🌐 Frontend process spawned with PID: 11176
+🌐 Frontend process spawned with PID: 9855
 
 ✅ App ready!
    Frontend → http://localhost:5173
    Backend  → http://localhost:5000
 
-[dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
-[dotenv@17.2.3] injecting env (0) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+[dotenv@17.2.3] injecting env (4) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
 🚀 Expiry Job Scheduled (Daily at Midnight)
 Server is running on port 5000
 Connected to MongoDB
 
-  VITE v7.2.7  ready in 2145 ms
+  VITE v7.2.7  ready in 830 ms
 
   ➜  Local:   http://localhost:5173/
-  ➜  Network: http://172.20.10.2:5173/
-20:21:13 [vite] (client) hmr update /src/index.css
-20:21:13 [vite] (client) hmr update /src/index.css
-20:21:13 [vite] (client) hmr update /src/index.css
-20:21:13 [vite] (client) hmr update /src/index.css
-20:21:13 [vite] (client) hmr update /src/index.css
-20:21:13 [vite] (client) hmr update /src/index.css
-20:21:13 [vite] (client) hmr update /src/index.css
-20:21:13 [vite] (client) hmr update /src/index.css
-20:21:13 [vite] (client) hmr update /src/index.css
-20:21:23 [vite] (client) hmr update /src/index.css
-20:21:33 [vite] (client) hmr update /src/index.css
-20:21:43 [vite] (client) hmr update /src/index.css
-Login user: feriel
+  ➜  Network: http://192.168.1.170:5173/
+17:58:15 [vite] (client) hmr update /src/index.css
+17:58:19 [vite] (client) hmr update /src/index.css
+17:58:21 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:23 [vite] (client) hmr update /src/index.css
+17:58:29 [vite] (client) hmr update /src/index.css
+Login user: amal
 Allowed dashboards: [ 'dashboard2' ]
-20:21:50 [vite] (client) hmr update /src/index.css
-Fetching /me for feriel. Samples: []
-20:21:50 [vite] (client) hmr update /src/index.css
-20:21:50 [vite] (client) hmr update /src/index.css
-20:21:50 [vite] (client) hmr update /src/index.css
-Fetching /me for feriel. Samples: []
-20:21:50 [vite] (client) hmr update /src/index.css
-20:21:53 [vite] (client) hmr update /src/index.css
-Fetching /me for feriel. Samples: []
-Fetching /me for feriel. Samples: []
-20:22:03 [vite] (client) hmr update /src/index.css
-Fetching /me for feriel. Samples: []
-20:22:10 [vite] (client) hmr update /src/index.css
-20:22:10 [vite] (client) hmr update /src/index.css
-20:22:10 [vite] (client) hmr update /src/index.css
-20:22:10 [vite] (client) hmr update /src/index.css
-20:22:13 [vite] (client) hmr update /src/index.css
-Fetching /me for feriel. Samples: []
-Fetching /me for feriel. Samples: []
-20:22:23 [vite] (client) hmr update /src/index.css
+17:58:36 [vite] (client) hmr update /src/index.css
+Fetching /me for amal. Samples: []
+Fetching /me for amal. Samples: []
+17:58:39 [vite] (client) hmr update /src/index.css
+Fetching /me for amal. Samples: []
+Fetching /me for amal. Samples: []
+17:58:49 [vite] (client) hmr update /src/index.css
 Login user: asma
 Allowed dashboards: [ 'dashboard1' ]
-20:22:33 [vite] (client) hmr update /src/index.css
-20:22:43 [vite] (client) hmr update /src/index.css
-20:22:44 [vite] (client) hmr update /src/index.css
-Pharmacienne assigning sample to feriel: CELEBREX 200 MG CAP X 10 TUN (Lot: INIT-2029) count 20
+17:58:59 [vite] (client) hmr update /src/index.css
+17:59:09 [vite] (client) hmr update /src/index.css
+17:59:19 [vite] (client) hmr update /src/index.css
+17:59:22 [vite] (client) hmr update /src/index.css
+17:59:22 [vite] (client) hmr update /src/index.css
+17:59:23 [vite] (client) hmr update /src/index.css
+17:59:23 [vite] (client) hmr update /src/index.css
+17:59:29 [vite] (client) hmr update /src/index.css
+17:59:39 [vite] (client) hmr update /src/index.css
+17:59:49 [vite] (client) hmr update /src/index.css
+Pharmacienne assigning sample to feriel: CELEBREX 200 MG CAP X 10 TUN (Lot: INIT-2029) count 10
+17:59:55 [vite] (client) hmr update /src/index.css
+17:59:56 [vite] (client) hmr update /src/index.css
 User saved with samples: [
   {
     name: 'CELEBREX 200 MG CAP X 10 TUN',
     batchNumber: 'INIT-2029',
-    count: 20,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8445ac49d35a67fb78'),
-    lastUpdated: 2026-03-28T19:22:44.834Z
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
   }
 ]
-20:22:47 [vite] (client) hmr update /src/index.css
-20:22:47 [vite] (client) hmr update /src/index.css
-20:22:47 [vite] (client) hmr update /src/index.css
-20:22:53 [vite] (client) hmr update /src/index.css
-Pharmacienne assigning sample to feriel: ZOLOFT CP 50 MG X 15 TUN (Lot: INIT-2029) count 40
-20:22:55 [vite] (client) hmr update /src/index.css
+17:59:56 [vite] (client) hmr update /src/index.css
+18:00:02 [vite] (client) hmr update /src/index.css
+18:00:09 [vite] (client) hmr update /src/index.css
+18:00:19 [vite] (client) hmr update /src/index.css
+18:00:21 [vite] (client) hmr update /src/index.css
+18:00:28 [vite] (client) hmr update /src/index.css
+18:00:28 [vite] (client) hmr update /src/index.css
+18:00:28 [vite] (client) hmr update /src/index.css
+18:00:28 [vite] (client) hmr update /src/index.css
+18:00:28 [vite] (client) hmr update /src/index.css
+18:00:28 [vite] (client) hmr update /src/index.css
+18:00:28 [vite] (client) hmr update /src/index.css
+18:00:28 [vite] (client) hmr update /src/index.css
+18:00:28 [vite] (client) hmr update /src/index.css
+Pharmacienne assigning sample to feriel: TAHOR 10 MG X 91 TUN (Lot: INIT-2029) count 10
 User saved with samples: [
   {
     name: 'CELEBREX 200 MG CAP X 10 TUN',
     batchNumber: 'INIT-2029',
-    count: 20,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8445ac49d35a67fb78'),
-    lastUpdated: 2026-03-28T19:22:44.834Z
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
   },
   {
-    name: 'ZOLOFT CP 50 MG X 15 TUN',
+    name: 'TAHOR 10 MG X 91 TUN',
     batchNumber: 'INIT-2029',
-    count: 40,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8f45ac49d35a67fb89'),
-    lastUpdated: 2026-03-28T19:22:55.500Z
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
   }
 ]
-20:23:03 [vite] (client) hmr update /src/index.css
-20:23:08 [vite] (client) hmr update /src/index.css
+18:00:31 [vite] (client) hmr update /src/index.css
+18:00:32 [vite] (client) hmr update /src/index.css
+18:00:39 [vite] (client) hmr update /src/index.css
+18:00:49 [vite] (client) hmr update /src/index.css
+18:00:59 [vite] (client) hmr update /src/index.css
+18:01:09 [vite] (client) hmr update /src/index.css
+18:01:19 [vite] (client) hmr update /src/index.css
+18:01:22 [vite] (client) hmr update /src/index.css
+18:01:25 [vite] (client) hmr update /src/index.css
+18:01:25 [vite] (client) hmr update /src/index.css
+18:01:25 [vite] (client) hmr update /src/index.css
+18:01:25 [vite] (client) hmr update /src/index.css
+18:01:25 [vite] (client) hmr update /src/index.css
+18:01:25 [vite] (client) hmr update /src/index.css
+18:01:25 [vite] (client) hmr update /src/index.css
+18:01:25 [vite] (client) hmr update /src/index.css
+18:01:29 [vite] (client) hmr update /src/index.css
 Login user: feriel
 Allowed dashboards: [ 'dashboard2' ]
-20:23:10 [vite] (client) hmr update /src/index.css
-20:23:10 [vite] (client) hmr update /src/index.css
-20:23:10 [vite] (client) hmr update /src/index.css
-20:23:10 [vite] (client) hmr update /src/index.css
-20:23:10 [vite] (client) hmr update /src/index.css
-20:23:10 [vite] (client) hmr update /src/index.css
-20:23:10 [vite] (client) hmr update /src/index.css
-20:23:10 [vite] (client) hmr update /src/index.css
-20:23:11 [vite] (client) hmr update /src/index.css
 Fetching /me for feriel. Samples: [
   {
     name: 'CELEBREX 200 MG CAP X 10 TUN',
     batchNumber: 'INIT-2029',
-    count: 20,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8445ac49d35a67fb78'),
-    lastUpdated: 2026-03-28T19:22:44.834Z
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
   },
   {
-    name: 'ZOLOFT CP 50 MG X 15 TUN',
+    name: 'TAHOR 10 MG X 91 TUN',
     batchNumber: 'INIT-2029',
-    count: 40,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8f45ac49d35a67fb89'),
-    lastUpdated: 2026-03-28T19:22:55.500Z
-  }
-]
-20:23:14 [vite] (client) hmr update /src/index.css
-20:23:14 [vite] (client) hmr update /src/index.css
-Fetching /me for feriel. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 20,
-    itemType: 'sample',
-    _id: new ObjectId('69c82a8445ac49d35a67fb78'),
-    lastUpdated: 2026-03-28T19:22:44.834Z
-  },
-  {
-    name: 'ZOLOFT CP 50 MG X 15 TUN',
-    batchNumber: 'INIT-2029',
-    count: 40,
-    itemType: 'sample',
-    _id: new ObjectId('69c82a8f45ac49d35a67fb89'),
-    lastUpdated: 2026-03-28T19:22:55.500Z
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
   }
 ]
 Fetching /me for feriel. Samples: [
   {
     name: 'CELEBREX 200 MG CAP X 10 TUN',
     batchNumber: 'INIT-2029',
-    count: 20,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8445ac49d35a67fb78'),
-    lastUpdated: 2026-03-28T19:22:44.834Z
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
   },
   {
-    name: 'ZOLOFT CP 50 MG X 15 TUN',
+    name: 'TAHOR 10 MG X 91 TUN',
     batchNumber: 'INIT-2029',
-    count: 40,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8f45ac49d35a67fb89'),
-    lastUpdated: 2026-03-28T19:22:55.500Z
-  }
-]
-20:23:23 [vite] (client) hmr update /src/index.css
-20:23:33 [vite] (client) hmr update /src/index.css
-20:23:43 [vite] (client) hmr update /src/index.css
-20:23:53 [vite] (client) hmr update /src/index.css
-20:23:58 [vite] (client) hmr update /src/index.css
-20:23:59 [vite] (client) hmr update /src/index.css
-20:23:59 [vite] (client) hmr update /src/index.css
-Fetching /me for feriel. Samples: [
-  {
-    name: 'CELEBREX 200 MG CAP X 10 TUN',
-    batchNumber: 'INIT-2029',
-    count: 19,
-    itemType: 'sample',
-    _id: new ObjectId('69c82a8445ac49d35a67fb78'),
-    lastUpdated: 2026-03-28T19:22:44.834Z
-  },
-  {
-    name: 'ZOLOFT CP 50 MG X 15 TUN',
-    batchNumber: 'INIT-2029',
-    count: 40,
-    itemType: 'sample',
-    _id: new ObjectId('69c82a8f45ac49d35a67fb89'),
-    lastUpdated: 2026-03-28T19:22:55.500Z
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
   }
 ]
 Fetching /me for feriel. Samples: [
   {
     name: 'CELEBREX 200 MG CAP X 10 TUN',
     batchNumber: 'INIT-2029',
-    count: 19,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8445ac49d35a67fb78'),
-    lastUpdated: 2026-03-28T19:22:44.834Z
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
   },
   {
-    name: 'ZOLOFT CP 50 MG X 15 TUN',
+    name: 'TAHOR 10 MG X 91 TUN',
     batchNumber: 'INIT-2029',
-    count: 40,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8f45ac49d35a67fb89'),
-    lastUpdated: 2026-03-28T19:22:55.500Z
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
   }
 ]
-20:24:03 [vite] (client) hmr update /src/index.css
-20:24:07 [vite] (client) hmr update /src/index.css
-20:24:09 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
-20:24:12 [vite] (client) hmr update /src/index.css
+18:01:39 [vite] (client) hmr update /src/index.css
+18:01:49 [vite] (client) hmr update /src/index.css
 Fetching /me for feriel. Samples: [
   {
     name: 'CELEBREX 200 MG CAP X 10 TUN',
     batchNumber: 'INIT-2029',
-    count: 19,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8445ac49d35a67fb78'),
-    lastUpdated: 2026-03-28T19:22:44.834Z
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
   },
   {
-    name: 'ZOLOFT CP 50 MG X 15 TUN',
+    name: 'TAHOR 10 MG X 91 TUN',
     batchNumber: 'INIT-2029',
-    count: 40,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8f45ac49d35a67fb89'),
-    lastUpdated: 2026-03-28T19:22:55.500Z
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
   }
 ]
-20:24:23 [vite] (client) hmr update /src/index.css
-20:24:29 [vite] (client) hmr update /src/index.css
 Fetching /me for feriel. Samples: [
   {
     name: 'CELEBREX 200 MG CAP X 10 TUN',
     batchNumber: 'INIT-2029',
-    count: 19,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8445ac49d35a67fb78'),
-    lastUpdated: 2026-03-28T19:22:44.834Z
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
   },
   {
-    name: 'ZOLOFT CP 50 MG X 15 TUN',
+    name: 'TAHOR 10 MG X 91 TUN',
     batchNumber: 'INIT-2029',
-    count: 39,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8f45ac49d35a67fb89'),
-    lastUpdated: 2026-03-28T19:22:55.500Z
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
   }
 ]
-20:24:33 [vite] (client) hmr update /src/index.css
-20:24:43 [vite] (client) hmr update /src/index.css
-20:24:53 [vite] (client) hmr update /src/index.css
-20:25:03 [vite] (client) hmr update /src/index.css
-20:25:08 [vite] (client) hmr update /src/index.css
-20:25:13 [vite] (client) hmr update /src/index.css
-20:25:13 [vite] (client) hmr update /src/index.css
-20:25:13 [vite] (client) hmr update /src/index.css
-20:25:13 [vite] (client) hmr update /src/index.css
-20:25:13 [vite] (client) hmr update /src/index.css
-20:25:13 [vite] (client) hmr update /src/index.css
-20:25:14 [vite] (client) hmr update /src/index.css
 Fetching /me for feriel. Samples: [
   {
     name: 'CELEBREX 200 MG CAP X 10 TUN',
     batchNumber: 'INIT-2029',
-    count: 19,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8445ac49d35a67fb78'),
-    lastUpdated: 2026-03-28T19:22:44.834Z
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
   },
   {
-    name: 'ZOLOFT CP 50 MG X 15 TUN',
+    name: 'TAHOR 10 MG X 91 TUN',
     batchNumber: 'INIT-2029',
-    count: 39,
+    count: 10,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8f45ac49d35a67fb89'),
-    lastUpdated: 2026-03-28T19:22:55.500Z
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
   }
 ]
-20:25:23 [vite] (client) hmr update /src/index.css
+18:01:59 [vite] (client) hmr update /src/index.css
+18:02:09 [vite] (client) hmr update /src/index.css
+18:02:19 [vite] (client) hmr update /src/index.css
+18:02:22 [vite] (client) hmr update /src/index.css
+18:02:22 [vite] (client) hmr update /src/index.css
+18:02:22 [vite] (client) hmr update /src/index.css
+18:02:25 [vite] (client) hmr update /src/index.css
+18:02:25 [vite] (client) hmr update /src/index.css
+18:02:25 [vite] (client) hmr update /src/index.css
+18:02:25 [vite] (client) hmr update /src/index.css
+18:02:25 [vite] (client) hmr update /src/index.css
+18:02:25 [vite] (client) hmr update /src/index.css
+18:02:29 [vite] (client) hmr update /src/index.css
+18:02:29 [vite] (client) hmr update /src/index.css
+18:02:39 [vite] (client) hmr update /src/index.css
+18:02:49 [vite] (client) hmr update /src/index.css
+18:02:59 [vite] (client) hmr update /src/index.css
+18:02:59 [vite] (client) hmr update /src/index.css
 Fetching /me for feriel. Samples: [
   {
     name: 'CELEBREX 200 MG CAP X 10 TUN',
     batchNumber: 'INIT-2029',
-    count: 19,
+    count: 7,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8445ac49d35a67fb78'),
-    lastUpdated: 2026-03-28T19:22:44.834Z
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
   },
   {
-    name: 'ZOLOFT CP 50 MG X 15 TUN',
+    name: 'TAHOR 10 MG X 91 TUN',
     batchNumber: 'INIT-2029',
-    count: 39,
+    count: 8,
     itemType: 'sample',
-    _id: new ObjectId('69c82a8f45ac49d35a67fb89'),
-    lastUpdated: 2026-03-28T19:22:55.500Z
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
   }
 ]
-20:25:33 [vite] (client) hmr update /src/index.css
-20:25:43 [vite] (client) hmr update /src/index.css
-20:25:53 [vite] (client) hmr update /src/index.css
-20:26:03 [vite] (client) hmr update /src/index.css
-20:26:11 [vite] (client) hmr update /src/index.css
-20:26:11 [vite] (client) hmr update /src/index.css
-20:26:11 [vite] (client) hmr update /src/index.css
-20:26:11 [vite] (client) hmr update /src/index.css
-20:26:14 [vite] (client) hmr update /src/index.css
-20:26:23 [vite] (client) hmr update /src/index.css
-20:26:33 [vite] (client) hmr update /src/index.css
-20:26:43 [vite] (client) hmr update /src/index.css
-20:26:53 [vite] (client) hmr update /src/index.css
-20:27:03 [vite] (client) hmr update /src/index.css
-20:27:11 [vite] (client) hmr update /src/index.css
-20:27:11 [vite] (client) hmr update /src/index.css
-20:27:11 [vite] (client) hmr update /src/index.css
-20:27:11 [vite] (client) hmr update /src/index.css
-20:27:16 [vite] (client) hmr update /src/index.css
-20:27:23 [vite] (client) hmr update /src/index.css
-20:27:32 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
-20:27:34 [vite] (client) hmr update /src/index.css
-20:27:43 [vite] (client) hmr update /src/index.css
-20:27:53 [vite] (client) hmr update /src/index.css
-20:28:03 [vite] (client) hmr update /src/index.css
-20:28:11 [vite] (client) hmr update /src/index.css
-20:28:11 [vite] (client) hmr update /src/index.css
-20:28:11 [vite] (client) hmr update /src/index.css
-20:28:11 [vite] (client) hmr update /src/index.css
-20:28:14 [vite] (client) hmr update /src/index.css
-20:28:23 [vite] (client) hmr update /src/index.css
-20:28:33 [vite] (client) hmr update /src/index.css
-20:28:43 [vite] (client) hmr update /src/index.css
-20:28:53 [vite] (client) hmr update /src/index.css
-20:29:03 [vite] (client) hmr update /src/index.css
-20:29:07 [vite] (client) hmr update /src/index.css
-20:29:08 [vite] (client) hmr update /src/index.css
-20:29:16 [vite] (client) hmr update /src/index.css
-20:29:16 [vite] (client) hmr update /src/index.css
-20:29:16 [vite] (client) hmr update /src/index.css
-20:29:16 [vite] (client) hmr update /src/index.css
-20:29:16 [vite] (client) hmr update /src/index.css
-20:29:16 [vite] (client) hmr update /src/index.css
-20:29:17 [vite] (client) hmr update /src/index.css
-20:29:23 [vite] (client) hmr update /src/index.css
-20:29:33 [vite] (client) hmr update /src/index.css
-20:29:43 [vite] (client) hmr update /src/index.css
-20:29:53 [vite] (client) hmr update /src/index.css
-20:30:03 [vite] (client) hmr update /src/index.css
-20:30:12 [vite] (client) hmr update /src/index.css
-20:30:12 [vite] (client) hmr update /src/index.css
-20:30:13 [vite] (client) hmr update /src/index.css
-20:30:13 [vite] (client) hmr update /src/index.css
-20:30:13 [vite] (client) hmr update /src/index.css
-20:30:35 [vite] (client) hmr update /src/index.css
-20:30:43 [vite] (client) hmr update /src/index.css
-20:30:52 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
-20:30:53 [vite] Internal server error: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/CalendarView.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (648:24)
-
-  646 |                                 </div>
-  647 |                             </div>
-> 648 |                         </div>
-      |                         ^
-  649 |                     )
-  650 |                 }
-  651 |
-  Plugin: vite:react-babel
-  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/CalendarView.jsx:648:24
-  646 |                                  </div>
-  647 |                              </div>
-  648 |                          </div>
-      |                          ^
-  649 |                      )
-  650 |                  }
-      at constructor (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:367:19)
-      at JSXParserMixin.raise (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:6624:19)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4771:18)
-      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
-      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
-      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
-      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
-      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
-      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
-      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
-      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
-      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
-      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
-      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
-      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12567:17)
-      at JSXParserMixin.parseParenAndDistinguishExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11747:28)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11395:23)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4793:20)
-      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
-      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
-      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
-      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
-      at JSXParserMixin.parseExprOpBaseRightExpr (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11050:34)
-      at JSXParserMixin.parseExprOpRightExpr (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11045:21)
-      at JSXParserMixin.parseExprOp (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11011:27)
-      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10972:17)
-      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
-      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
-      at JSXParserMixin.parseExpressionBase (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10848:23)
-      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:39
-      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
-      at JSXParserMixin.parseExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:17)
-      at JSXParserMixin.jsxParseExpressionContainer (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4661:31)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4740:36)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
-      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
-      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
-      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
-      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
-      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
-      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
-      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
-      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
-      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
-      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
-      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
-      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12567:17)
-      at JSXParserMixin.parseParenAndDistinguishExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11747:28)
-20:30:53 [vite] (client) hmr update /src/index.css
-20:31:03 [vite] (client) hmr update /src/index.css
-20:31:13 [vite] (client) hmr update /src/index.css
-20:31:13 [vite] (client) hmr update /src/index.css
-20:31:13 [vite] (client) hmr update /src/index.css
-20:31:13 [vite] (client) hmr update /src/index.css
-20:31:13 [vite] (client) hmr update /src/index.css
-20:31:23 [vite] (client) hmr update /src/index.css
-20:31:33 [vite] (client) hmr update /src/index.css
-20:31:36 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
-20:31:43 [vite] (client) hmr update /src/index.css
-20:31:53 [vite] (client) hmr update /src/index.css
-20:32:03 [vite] (client) hmr update /src/index.css
-20:32:13 [vite] (client) hmr update /src/index.css
-20:32:13 [vite] (client) hmr update /src/index.css
-20:32:13 [vite] (client) hmr update /src/index.css
-20:32:13 [vite] (client) hmr update /src/index.css
-20:32:13 [vite] (client) hmr update /src/index.css
-20:32:23 [vite] (client) hmr update /src/index.css
-20:32:33 [vite] (client) hmr update /src/index.css
-20:32:43 [vite] (client) hmr update /src/index.css
-20:32:53 [vite] (client) hmr update /src/index.css
-20:33:03 [vite] (client) hmr update /src/index.css
-20:33:13 [vite] (client) hmr update /src/index.css
-20:33:13 [vite] (client) hmr update /src/index.css
-20:33:13 [vite] (client) hmr update /src/index.css
-20:33:13 [vite] (client) hmr update /src/index.css
-20:33:13 [vite] (client) hmr update /src/index.css
-20:33:23 [vite] (client) hmr update /src/index.css
-20:33:33 [vite] (client) hmr update /src/index.css
-20:33:43 [vite] (client) hmr update /src/index.css
-20:33:53 [vite] (client) hmr update /src/index.css
-20:34:03 [vite] (client) hmr update /src/index.css
-20:34:07 [vite] (client) hmr update /src/index.css
-20:34:14 [vite] (client) hmr update /src/index.css
-20:34:14 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
-20:34:14 [vite] (client) hmr update /src/index.css
-20:34:14 [vite] (client) hmr update /src/index.css
-20:34:14 [vite] (client) hmr update /src/index.css
-20:34:14 [vite] (client) hmr update /src/index.css
-20:34:14 [vite] (client) hmr update /src/index.css
-20:34:14 [vite] (client) hmr update /src/index.css
-20:34:15 [vite] (client) hmr update /src/index.css
-20:34:15 [vite] (client) hmr update /src/index.css
-20:34:15 [vite] (client) hmr update /src/index.css
-20:34:58 [vite] (client) hmr update /src/index.css
-20:35:04 [vite] (client) hmr update /src/index.css
-20:35:13 [vite] (client) hmr update /src/index.css
-20:35:15 [vite] (client) hmr update /src/index.css
-20:35:15 [vite] (client) hmr update /src/index.css
-20:35:15 [vite] (client) hmr update /src/index.css
-20:35:23 [vite] (client) hmr update /src/index.css
-20:35:33 [vite] (client) hmr update /src/index.css
-20:35:43 [vite] (client) hmr update /src/index.css
-20:35:53 [vite] (client) hmr update /src/index.css
-20:36:03 [vite] (client) hmr update /src/index.css
-20:36:13 [vite] (client) hmr update /src/index.css
-20:36:15 [vite] (client) hmr update /src/index.css
-20:36:15 [vite] (client) hmr update /src/index.css
-20:36:15 [vite] (client) hmr update /src/index.css
-20:36:15 [vite] (client) hmr update /src/index.css
-20:36:23 [vite] (client) hmr update /src/index.css
-20:36:33 [vite] (client) hmr update /src/index.css
-20:36:43 [vite] (client) hmr update /src/index.css
-20:36:53 [vite] (client) hmr update /src/index.css
-20:37:03 [vite] (client) hmr update /src/index.css
-20:37:13 [vite] (client) hmr update /src/index.css
-20:37:15 [vite] (client) hmr update /src/index.css
-20:37:15 [vite] (client) hmr update /src/index.css
-20:37:15 [vite] (client) hmr update /src/index.css
-20:37:15 [vite] (client) hmr update /src/index.css
-20:37:23 [vite] (client) hmr update /src/index.css
-20:37:33 [vite] (client) hmr update /src/index.css
-20:37:43 [vite] (client) hmr update /src/index.css
-20:37:53 [vite] (client) hmr update /src/index.css
-20:38:03 [vite] (client) hmr update /src/index.css
-20:38:13 [vite] (client) hmr update /src/index.css
-20:38:18 [vite] (client) hmr update /src/index.css
-20:38:18 [vite] (client) hmr update /src/index.css
-20:38:18 [vite] (client) hmr update /src/index.css
-20:38:39 [vite] (client) hmr update /src/index.css
-20:38:43 [vite] (client) hmr update /src/index.css
-20:38:53 [vite] (client) hmr update /src/index.css
-20:39:03 [vite] (client) hmr update /src/index.css
-20:39:07 [vite] (client) hmr update /src/index.css
-20:39:12 [vite] (client) hmr update /src/index.css
-20:39:12 [vite] (client) hmr update /src/index.css
-20:39:16 [vite] (client) hmr update /src/index.css
-20:39:16 [vite] (client) hmr update /src/index.css
-20:39:17 [vite] (client) hmr update /src/index.css
-20:39:17 [vite] (client) hmr update /src/index.css
-20:39:17 [vite] (client) hmr update /src/index.css
-20:39:19 [vite] (client) hmr update /src/index.css
-20:39:23 [vite] (client) hmr update /src/index.css
-20:39:28 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
-20:39:33 [vite] (client) hmr update /src/index.css
-20:39:43 [vite] (client) hmr update /src/index.css
-20:39:53 [vite] (client) hmr update /src/index.css
-20:40:03 [vite] (client) hmr update /src/index.css
-20:40:13 [vite] (client) hmr update /src/index.css
-20:40:17 [vite] (client) hmr update /src/index.css
-20:40:17 [vite] (client) hmr update /src/index.css
-20:40:17 [vite] (client) hmr update /src/index.css
-20:40:17 [vite] (client) hmr update /src/index.css
-20:40:23 [vite] (client) hmr update /src/index.css
-20:40:28 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
-20:40:29 [vite] Internal server error: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/CalendarView.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (787:32)
-
-  785 |                                 </div>
-  786 |
-> 787 |                                 <div className="mb-8">
-      |                                 ^
-  788 |                                     <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">✍️ Rapport Final</label>
-  789 |                                     <textarea
-  790 |                                         disabled={isReadOnly}
-  Plugin: vite:react-babel
-  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/CalendarView.jsx:787:32
-  785 |                                  </div>
-  786 |  
-  787 |                                  <div className="mb-8">
-      |                                  ^
-  788 |                                      <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">✍️ Ra...
-  789 |                                      <textarea
-      at constructor (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:367:19)
-      at JSXParserMixin.raise (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:6624:19)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4771:18)
-      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
-      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
-      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
-      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
-      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
-      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
-      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
-      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
-      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
-      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
-      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
-      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12567:17)
-      at JSXParserMixin.parseParenAndDistinguishExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11747:28)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11395:23)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4793:20)
-      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
-      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
-      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
-      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
-      at JSXParserMixin.parseExprOpBaseRightExpr (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11050:34)
-      at JSXParserMixin.parseExprOpRightExpr (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11045:21)
-      at JSXParserMixin.parseExprOp (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11011:27)
-      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10972:17)
-      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
-      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
-      at JSXParserMixin.parseExpressionBase (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10848:23)
-      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:39
-      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
-      at JSXParserMixin.parseExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:17)
-      at JSXParserMixin.jsxParseExpressionContainer (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4661:31)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4740:36)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
-      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
-      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
-      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
-      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
-      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
-      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
-      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
-      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
-      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
-      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
-      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
-20:40:33 [vite] (client) hmr update /src/index.css
-20:40:43 [vite] (client) hmr update /src/index.css
-20:40:53 [vite] (client) hmr update /src/index.css
-20:40:58 [vite] (client) hmr update /src/components/CalendarView.jsx, /src/index.css
-20:40:58 [vite] Internal server error: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/CalendarView.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (780:32)
-
-  778 |                                 </div>
-  779 |
-> 780 |                                 <div className="mb-8">
-      |                                 ^
-  781 |                                     <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">✍️ Rapport Final</label>
-  782 |                                     <textarea
-  783 |                                         disabled={isReadOnly}
-  Plugin: vite:react-babel
-  File: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/CalendarView.jsx:780:32
-  778 |                                  </div>
-  779 |  
-  780 |                                  <div className="mb-8">
-      |                                  ^
-  781 |                                      <label className="block text-[11px] font-bold text-gray-400 uppercase mb-2">✍️ Ra...
-  782 |                                      <textarea
-      at constructor (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:367:19)
-      at JSXParserMixin.raise (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:6624:19)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4771:18)
-      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
-      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
-      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
-      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
-      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
-      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
-      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
-      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
-      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
-      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
-      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
-      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12567:17)
-      at JSXParserMixin.parseParenAndDistinguishExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11747:28)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11395:23)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4793:20)
-      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
-      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
-      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
-      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
-      at JSXParserMixin.parseExprOpBaseRightExpr (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11050:34)
-      at JSXParserMixin.parseExprOpRightExpr (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11045:21)
-      at JSXParserMixin.parseExprOp (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11011:27)
-      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10972:17)
-      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
-      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
-      at JSXParserMixin.parseExpressionBase (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10848:23)
-      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:39
-      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
-      at JSXParserMixin.parseExpression (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10844:17)
-      at JSXParserMixin.jsxParseExpressionContainer (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4661:31)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4740:36)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
-      at JSXParserMixin.jsxParseElementAt (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4727:32)
-      at JSXParserMixin.jsxParseElement (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4778:17)
-      at JSXParserMixin.parseExprAtom (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:4788:19)
-      at JSXParserMixin.parseExprSubscripts (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11145:23)
-      at JSXParserMixin.parseUpdate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11130:21)
-      at JSXParserMixin.parseMaybeUnary (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:11110:23)
-      at JSXParserMixin.parseMaybeUnaryOrPrivate (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10963:61)
-      at JSXParserMixin.parseExprOps (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10968:23)
-      at JSXParserMixin.parseMaybeConditional (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10945:23)
-      at JSXParserMixin.parseMaybeAssign (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10895:21)
-      at /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:39
-      at JSXParserMixin.allowInAnd (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:12500:12)
-      at JSXParserMixin.parseMaybeAssignAllowIn (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/@babel/parser/lib/index.js:10864:17)
-20:41:03 [vite] (client) hmr update /src/index.css
-20:41:13 [vite] (client) hmr update /src/index.css
-20:41:17 [vite] (client) hmr update /src/index.css
-20:41:17 [vite] (client) hmr update /src/index.css
-20:41:17 [vite] (client) hmr update /src/index.css
-20:41:17 [vite] (client) hmr update /src/index.css
-20:41:23 [vite] (client) hmr update /src/index.css
-20:41:33 [vite] (client) hmr update /src/index.css
-20:41:43 [vite] (client) hmr update /src/index.css
-20:41:53 [vite] (client) hmr update /src/index.css
-20:42:03 [vite] (client) hmr update /src/index.css
-20:42:13 [vite] (client) hmr update /src/index.css
-20:42:17 [vite] (client) hmr update /src/index.css
-20:42:17 [vite] (client) hmr update /src/index.css
-20:42:17 [vite] (client) hmr update /src/index.css
-20:42:17 [vite] (client) hmr update /src/index.css
-20:42:23 [vite] (client) hmr update /src/index.css
-20:42:33 [vite] (client) hmr update /src/index.css
-20:42:43 [vite] (client) hmr update /src/index.css
-20:42:53 [vite] (client) hmr update /src/index.css
-20:43:03 [vite] (client) hmr update /src/index.css
-20:43:13 [vite] (client) hmr update /src/index.css
-20:43:17 [vite] (client) hmr update /src/index.css
-20:43:17 [vite] (client) hmr update /src/index.css
-20:43:17 [vite] (client) hmr update /src/index.css
-20:43:17 [vite] (client) hmr update /src/index.css
-20:43:23 [vite] (client) hmr update /src/index.css
-20:43:33 [vite] (client) hmr update /src/index.css
-20:43:43 [vite] (client) hmr update /src/index.css
+Fetching /me for feriel. Samples: [
+  {
+    name: 'CELEBREX 200 MG CAP X 10 TUN',
+    batchNumber: 'INIT-2029',
+    count: 7,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
+  },
+  {
+    name: 'TAHOR 10 MG X 91 TUN',
+    batchNumber: 'INIT-2029',
+    count: 8,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
+  }
+]
+18:03:09 [vite] (client) hmr update /src/index.css
+18:03:14 [vite] (client) hmr update /src/index.css
+Fetching /me for feriel. Samples: [
+  {
+    name: 'CELEBREX 200 MG CAP X 10 TUN',
+    batchNumber: 'INIT-2029',
+    count: 7,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
+  },
+  {
+    name: 'TAHOR 10 MG X 91 TUN',
+    batchNumber: 'INIT-2029',
+    count: 8,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
+  }
+]
+18:03:19 [vite] (client) hmr update /src/index.css
+Fetching /me for feriel. Samples: [
+  {
+    name: 'CELEBREX 200 MG CAP X 10 TUN',
+    batchNumber: 'INIT-2029',
+    count: 7,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
+  },
+  {
+    name: 'TAHOR 10 MG X 91 TUN',
+    batchNumber: 'INIT-2029',
+    count: 8,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
+  }
+]
+Fetching /me for feriel. Samples: [
+  {
+    name: 'CELEBREX 200 MG CAP X 10 TUN',
+    batchNumber: 'INIT-2029',
+    count: 7,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
+  },
+  {
+    name: 'TAHOR 10 MG X 91 TUN',
+    batchNumber: 'INIT-2029',
+    count: 8,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
+  }
+]
+18:03:22 [vite] (client) hmr update /src/index.css
+18:03:27 [vite] (client) hmr update /src/index.css
+18:03:27 [vite] (client) hmr update /src/index.css
+18:03:27 [vite] (client) hmr update /src/index.css
+18:03:27 [vite] (client) hmr update /src/index.css
+18:03:27 [vite] (client) hmr update /src/index.css
+18:03:27 [vite] (client) hmr update /src/index.css
+18:03:27 [vite] (client) hmr update /src/index.css
+18:03:30 [vite] (client) hmr update /src/index.css
+Login user: asma
+Allowed dashboards: [ 'dashboard1' ]
+18:03:39 [vite] (client) hmr update /src/index.css
+18:03:49 [vite] (client) hmr update /src/index.css
+18:03:59 [vite] (client) hmr update /src/index.css
+18:04:09 [vite] (client) hmr update /src/index.css
+Login user: feriel
+Allowed dashboards: [ 'dashboard2' ]
+Fetching /me for feriel. Samples: [
+  {
+    name: 'CELEBREX 200 MG CAP X 10 TUN',
+    batchNumber: 'INIT-2029',
+    count: 7,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
+  },
+  {
+    name: 'TAHOR 10 MG X 91 TUN',
+    batchNumber: 'INIT-2029',
+    count: 8,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
+  }
+]
+Fetching /me for feriel. Samples: [
+  {
+    name: 'CELEBREX 200 MG CAP X 10 TUN',
+    batchNumber: 'INIT-2029',
+    count: 7,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
+  },
+  {
+    name: 'TAHOR 10 MG X 91 TUN',
+    batchNumber: 'INIT-2029',
+    count: 8,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
+  }
+]
+18:04:19 [vite] (client) hmr update /src/index.css
+Fetching /me for feriel. Samples: [
+  {
+    name: 'CELEBREX 200 MG CAP X 10 TUN',
+    batchNumber: 'INIT-2029',
+    count: 7,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
+  },
+  {
+    name: 'TAHOR 10 MG X 91 TUN',
+    batchNumber: 'INIT-2029',
+    count: 8,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
+  }
+]
+18:04:24 [vite] (client) hmr update /src/index.css
+18:04:24 [vite] (client) hmr update /src/index.css
+18:04:24 [vite] (client) hmr update /src/index.css
+18:04:24 [vite] (client) hmr update /src/index.css
+18:04:29 [vite] (client) hmr update /src/index.css
+🗑️ Deletion request for visit ID: 69cbf033f0340762945adcab by user: 69cbd252a1db36546d171f65
+🔍 Ownership check: Visit User [69cbd252a1db36546d171f65] vs Request User [69cbd252a1db36546d171f65]
+📦 Restoring multi-samples: 2 items
+✅ Visit deleted successfully
+18:04:30 [vite] (client) hmr update /src/index.css
+Fetching /me for feriel. Samples: [
+  {
+    name: 'CELEBREX 200 MG CAP X 10 TUN',
+    batchNumber: 'INIT-2029',
+    count: 10,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
+  },
+  {
+    name: 'TAHOR 10 MG X 91 TUN',
+    batchNumber: 'INIT-2029',
+    count: 10,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
+  }
+]
+Fetching /me for feriel. Samples: [
+  {
+    name: 'CELEBREX 200 MG CAP X 10 TUN',
+    batchNumber: 'INIT-2029',
+    count: 10,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef7bf0340762945adb4a'),
+    lastUpdated: 2026-03-31T15:59:55.770Z
+  },
+  {
+    name: 'TAHOR 10 MG X 91 TUN',
+    batchNumber: 'INIT-2029',
+    count: 10,
+    itemType: 'sample',
+    _id: new ObjectId('69cbef9cf0340762945adb67'),
+    lastUpdated: 2026-03-31T16:00:28.457Z
+  }
+]
+18:04:39 [vite] (client) hmr update /src/index.css
+Login user: asma
+Allowed dashboards: [ 'dashboard1' ]
+18:04:49 [vite] (client) hmr update /src/index.css
+18:04:59 [vite] (client) hmr update /src/index.css
+18:05:09 [vite] (client) hmr update /src/index.css
+18:05:19 [vite] (client) hmr update /src/index.css
+18:05:22 [vite] (client) hmr update /src/index.css
+18:05:25 [vite] (client) hmr update /src/index.css
+18:05:25 [vite] (client) hmr update /src/index.css
+18:05:25 [vite] (client) hmr update /src/index.css
+18:05:25 [vite] (client) hmr update /src/index.css
+18:05:25 [vite] (client) hmr update /src/index.css
+18:05:25 [vite] (client) hmr update /src/index.css
+18:05:25 [vite] (client) hmr update /src/index.css
+18:05:29 [vite] (client) hmr update /src/index.css
+Login user: asma
+Allowed dashboards: [ 'dashboard1' ]
+18:05:39 [vite] (client) hmr update /src/index.css
+18:05:48 [vite] (client) hmr update /src/index.css
+18:05:49 [vite] (client) hmr update /src/index.css
+18:05:55 [vite] (client) hmr update /src/index.css
+18:06:01 [vite] (client) hmr update /src/index.css
+18:06:02 [vite] (client) hmr update /src/index.css
+18:06:09 [vite] (client) hmr update /src/index.css
+18:06:12 [vite] (client) hmr update /src/index.css
+18:06:17 [vite] (client) hmr update /src/index.css
+18:06:21 [vite] (client) hmr update /src/index.css
+18:06:22 [vite] (client) hmr update /src/index.css
+18:06:24 [vite] (client) hmr update /src/index.css
+18:06:24 [vite] (client) hmr update /src/index.css
+18:06:24 [vite] (client) hmr update /src/index.css
+18:06:24 [vite] (client) hmr update /src/index.css
+18:06:25 [vite] (client) hmr update /src/index.css
+18:06:25 [vite] (client) hmr update /src/index.css
+18:06:25 [vite] (client) hmr update /src/index.css
+18:06:25 [vite] (client) hmr update /src/index.css
+18:06:25 [vite] (client) hmr update /src/index.css
+18:06:25 [vite] (client) hmr update /src/index.css
+18:06:30 [vite] (client) hmr update /src/index.css
+18:06:39 [vite] (client) hmr update /src/index.css
+18:06:49 [vite] (client) hmr update /src/index.css
+18:06:59 [vite] (client) hmr update /src/index.css
+18:07:09 [vite] (client) hmr update /src/index.css
+18:07:19 [vite] (client) hmr update /src/index.css
+18:07:22 [vite] (client) hmr update /src/index.css
+18:07:22 [vite] (client) hmr update /src/index.css
+18:07:27 [vite] (client) hmr update /src/index.css
+18:07:27 [vite] (client) hmr update /src/index.css
+18:07:27 [vite] (client) hmr update /src/index.css
+18:07:27 [vite] (client) hmr update /src/index.css
+18:07:27 [vite] (client) hmr update /src/index.css
+18:07:27 [vite] (client) hmr update /src/index.css
+18:07:27 [vite] (client) hmr update /src/index.css
+18:07:27 [vite] (client) hmr update /src/index.css
+18:07:28 [vite] (client) hmr update /src/index.css
+18:07:28 [vite] (client) hmr update /src/index.css
+18:07:39 [vite] (client) hmr update /src/index.css
+18:07:49 [vite] (client) hmr update /src/index.css
+18:07:59 [vite] (client) hmr update /src/index.css
+18:08:09 [vite] (client) hmr update /src/index.css
+18:08:19 [vite] (client) hmr update /src/index.css
+18:08:25 [vite] (client) hmr update /src/index.css
+18:08:25 [vite] (client) hmr update /src/index.css
+18:08:26 [vite] (client) hmr update /src/index.css
+18:08:26 [vite] (client) hmr update /src/index.css
+18:08:29 [vite] (client) hmr update /src/index.css
+18:08:39 [vite] (client) hmr update /src/index.css
+18:08:49 [vite] (client) hmr update /src/index.css
+18:08:59 [vite] (client) hmr update /src/index.css
+18:09:09 [vite] (client) hmr update /src/index.css
+18:09:19 [vite] (client) hmr update /src/index.css
+18:09:26 [vite] (client) hmr update /src/index.css
+18:09:26 [vite] (client) hmr update /src/index.css
+18:09:26 [vite] (client) hmr update /src/index.css
+18:09:26 [vite] (client) hmr update /src/index.css
+18:09:26 [vite] (client) hmr update /src/index.css
+18:09:33 [vite] (client) hmr update /src/index.css
+18:09:39 [vite] (client) hmr update /src/index.css
+18:09:49 [vite] (client) hmr update /src/index.css
+18:09:59 [vite] (client) hmr update /src/index.css
+18:10:09 [vite] (client) hmr update /src/index.css
+18:10:19 [vite] (client) hmr update /src/index.css
+18:10:26 [vite] (client) hmr update /src/index.css
+18:10:26 [vite] (client) hmr update /src/index.css
+18:10:26 [vite] (client) hmr update /src/index.css
+18:10:26 [vite] (client) hmr update /src/index.css
+18:10:30 [vite] (client) hmr update /src/index.css
+18:10:39 [vite] (client) hmr update /src/index.css
+18:10:49 [vite] (client) hmr update /src/index.css
+18:10:59 [vite] (client) hmr update /src/index.css
+18:11:09 [vite] (client) hmr update /src/index.css
+18:11:19 [vite] (client) hmr update /src/index.css
+18:11:26 [vite] (client) hmr update /src/index.css
+18:11:26 [vite] (client) hmr update /src/index.css
+18:11:26 [vite] (client) hmr update /src/index.css
+18:11:27 [vite] (client) hmr update /src/index.css
+18:11:40 [vite] (client) hmr update /src/index.css
+18:11:49 [vite] (client) hmr update /src/index.css

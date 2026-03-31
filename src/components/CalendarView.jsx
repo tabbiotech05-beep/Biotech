@@ -664,6 +664,19 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                         <p className="text-sm font-bold text-gray-700">{selectedEvent.governorate || '—'}</p>
                                     </div>
                                     <div className="col-span-1">
+                                        <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Spécialité</label>
+                                        {isReadOnly ? (
+                                            <p className="text-sm font-bold text-gray-700">{selectedEvent.specialty || '—'}</p>
+                                        ) : (
+                                            <input
+                                                type="text"
+                                                className="w-full border border-gray-200 rounded-md px-2 py-1 text-[11px] font-bold"
+                                                value={selectedEvent.specialty || ''}
+                                                onChange={(e) => setSelectedEvent({ ...selectedEvent, specialty: e.target.value })}
+                                            />
+                                        )}
+                                    </div>
+                                    <div className="col-span-1">
                                         <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Cible</label>
                                         <p className="text-sm font-black text-blue-600 truncate">{selectedEvent.doctorName || selectedEvent.pharmacyName || selectedEvent.wholesalerName || '—'}</p>
                                     </div>
@@ -718,6 +731,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                                     className="px-3 bg-green-50 text-green-600 rounded-lg font-bold text-xs"
                                                 >+ Add</button>
                                             </div>
+                                        </div>
                                     )}
 
                                     <div className="space-y-2">
@@ -773,7 +787,6 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                                 )}
                                             </div>
                                         ))}
-
                                     </div>
                                 </div>
 
@@ -818,10 +831,10 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                     </div>
                                 </div>
                             </div>
-                            </div>
                         </div>
-                )}
                     </div>
+                )}
+            </div>
         </div>
-            );
+    );
 }

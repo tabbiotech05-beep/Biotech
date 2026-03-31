@@ -33,7 +33,7 @@ const upload = multer({
         if (mimetype && extname) {
             return cb(null, true);
         } else {
-            cb('Error: Images Only!');
+            cb(new Error('Erreur: Images uniquement (jpeg/jpg/png/webp)!'));
         }
     }
 });
@@ -51,7 +51,7 @@ router.post('/', auth, upload.single('image'), async (req, res) => {
         }
 
         const newCongress = new Congress({
-            user: req.user.id,
+            user: req.user.userId,
             dashboardId,
             name,
             startDate,
@@ -94,11 +94,11 @@ router.put('/:id', auth, upload.single('image'), async (req, res) => {
 
         // Find congress by ID
         let congress = await Congress.findById(req.params.id);
-        if (!congress) return res.status(404).json({ msg: 'Congress not found' });
+        if (!congress) return res.status(404).json({ msg: 'Action marketing introuvable' });
 
         // Ensure user owns congress
-        if (congress.user.toString() !== req.user.id) {
-            return res.status(401).json({ msg: 'Not authorized' });
+        if (congress.user.toString() !== req.user.userId) {
+            return res.status(401).json({ msg: 'Non autorisé' });
         }
 
         // Update fields
@@ -133,7 +133,7 @@ router.put('/:id', auth, upload.single('image'), async (req, res) => {
 router.delete('/:id', auth, async (req, res) => {
     try {
         const congress = await Congress.findById(req.params.id);
-        if (!congress) return res.status(404).json({ msg: 'Congress not found' });
+        if (!congress) return res.status(404).json({ msg: 'Action marketing introuvable' });
 
         // Ensure user owns congress
         if (congress.user.toString() !== req.user.id) {
@@ -146,7 +146,7 @@ router.delete('/:id', auth, async (req, res) => {
         }
 
         await congress.deleteOne();
-        res.json({ msg: 'Congress removed' });
+        res.json({ msg: 'Action marketing supprimée' });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

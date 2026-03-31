@@ -81,7 +81,7 @@ export default function LoginPage() {
                                 </div>
                             </div>
                         </div>
-                        <h1 className="text-2xl font-black text-slate-900 mb-1">BIOTECH TENSHI</h1>
+                        <h1 className="text-2xl font-black text-slate-900 mb-1">BiotechpharmaMD</h1>
                         <p className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>Système de Gestion Pharmaceutique</p>
                     </div>
 
@@ -171,7 +171,7 @@ export default function LoginPage() {
                     {/* Footer */}
                     <div className="mt-6 pt-5 text-center" style={{ borderTop: '1px solid var(--border-subtle)' }}>
                         <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
-                            © 2026 BIOTECH TENSHI · Système de Gestion
+                            © 2026 BiotechpharmaMD · Système de Gestion
                         </p>
                     </div>
                 </div>
