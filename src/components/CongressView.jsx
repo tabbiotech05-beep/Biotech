@@ -16,6 +16,7 @@ export default function CongressView({ dashboardId }) {
         participant: '',
         amount: '',
         status: 'planifié',
+        comment: '',
         image: null
     });
     const [isSaving, setIsSaving] = useState(false);
@@ -62,6 +63,7 @@ export default function CongressView({ dashboardId }) {
         data.append('participant', formData.participant);
         data.append('amount', formData.amount);
         data.append('status', formData.status);
+        data.append('comment', formData.comment || '');
         if (formData.image) {
             data.append('image', formData.image);
         }
@@ -129,6 +131,7 @@ export default function CongressView({ dashboardId }) {
             participant: congress.participant,
             amount: congress.amount,
             status: congress.status,
+            comment: congress.comment || '',
             image: null // Start null, file input is for NEW image only
         });
         setShowModal(true);
@@ -145,6 +148,7 @@ export default function CongressView({ dashboardId }) {
             participant: '',
             amount: '',
             status: 'planifié',
+            comment: '',
             image: null
         });
     };
@@ -155,6 +159,26 @@ export default function CongressView({ dashboardId }) {
             case 'en cours': return 'bg-yellow-100 text-yellow-800';
             case 'terminé': return 'bg-green-100 text-green-800';
             default: return 'bg-gray-100 text-gray-800';
+        }
+    };
+
+    const handleApprove = async (id, isApproved, comment) => {
+        const token = localStorage.getItem('token');
+        try {
+            const res = await fetch(`/api/congress/${id}/approve`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': token
+                },
+                body: JSON.stringify({ isApproved, comment })
+            });
+            if (res.ok) {
+                const updated = await res.json();
+                setCongresses(congresses.map(c => c._id === id ? updated : c));
+            }
+        } catch (err) {
+            console.error('Error approving congress:', err);
         }
     };
 
@@ -218,6 +242,7 @@ export default function CongressView({ dashboardId }) {
                                 participant: '',
                                 amount: '',
                                 status: 'planifié',
+                                comment: '',
                                 image: null
                             });
                             setShowModal(true);
@@ -249,12 +274,50 @@ export default function CongressView({ dashboardId }) {
                                         Pas d'image
                                     </div>
                                 )}
-                                <span className={`absolute top-2 right-2 px-2 py-1 rounded text-xs font-semibold ${getStatusColor(congress.status)}`}>
-                                    {congress.status}
-                                </span>
+                                <div className="absolute top-2 left-2 flex flex-col gap-1">
+                                    <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${getStatusColor(congress.status)}`}>
+                                        {congress.status}
+                                    </span>
+                                    {congress.isAdminCreated && (
+                                    <span className="px-2 py-0.5 bg-purple-600 text-white rounded text-[10px] font-black uppercase tracking-wider shadow-sm">
+                                        Admin
+                                    </span>
+                                )}
+                                {congress.isApproved && (
+                                    <div className="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1">
+                                        <span>✅</span>
+                                        <span>Approuvé par {congress.approvedBy || 'Admin'}</span>
+                                    </div>
+                                )}
                             </div>
-                            <div className="p-4">
-                                <h4 className="font-bold text-lg mb-2 text-gray-800">{congress.name}</h4>
+                            {!congress.isApproved && (
+                                <div className="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-[2px]">
+                                    <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg animate-pulse border-2 border-white/20">
+                                        En attente d'approbation
+                                    </span>
+                                </div>
+                            )}
+                        </div>
+                            <div className="p-4 flex flex-col h-full bg-white relative">
+                                {!congress.isApproved && isAdmin && (
+                                    <div className="absolute -top-6 right-2 z-20">
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); handleApprove(congress._id, true, congress.comment); }}
+                                            className="px-4 py-2 bg-emerald-600 text-white rounded-full text-xs font-black uppercase tracking-widest shadow-xl hover:bg-emerald-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+                                        >
+                                            <span>✔️</span> Approuver
+                                        </button>
+                                    </div>
+                                )}
+                                <div className="mb-4">
+                                    <h4 className="font-black text-gray-900 line-clamp-1 group-hover:text-blue-600 transition-colors uppercase tracking-tight">{congress.name}</h4>
+                                    {congress.comment && (
+                                        <div className="mt-2 p-2 bg-slate-50 border-l-4 border-blue-400 rounded-r text-[10px] italic text-slate-600 flex items-start gap-2">
+                                            <span className="text-blue-400 font-bold text-lg leading-none">“</span>
+                                            {congress.comment}
+                                        </div>
+                                    )}
+                                </div>
                                 <div className="space-y-2 text-sm text-gray-600">
                                     <p className="flex items-center gap-2">
                                         📅 {format(new Date(congress.startDate), 'dd MMM yyyy', { locale: fr })} - {format(new Date(congress.endDate), 'dd MMM yyyy', { locale: fr })}
@@ -263,19 +326,23 @@ export default function CongressView({ dashboardId }) {
                                     <p>👤 {congress.participant}</p>
                                     <p>💰 {congress.amount} TND</p>
                                 </div>
-                                <div className="mt-4 flex justify-end gap-2 text-sm">
-                                    <button
-                                        onClick={() => openEditModal(congress)}
-                                        className="text-blue-600 hover:text-blue-800 font-medium px-2 py-1 rounded hover:bg-blue-50"
-                                    >
-                                        Modifier
-                                    </button>
-                                    <button
-                                        onClick={() => deleteCongress(congress._id)}
-                                        className="text-red-600 hover:text-red-800 font-medium px-2 py-1 rounded hover:bg-red-50"
-                                    >
-                                        Supprimer
-                                    </button>
+                                <div className="mt-auto pt-4 flex items-center justify-end border-t border-gray-50 gap-2">
+                                    {(isAdmin || (!congress.isAdminCreated && !congress.isApproved)) && (
+                                        <button
+                                            onClick={() => openEditModal(congress)}
+                                            className="px-3 py-1.5 text-blue-600 bg-blue-50 hover:bg-blue-100 font-bold rounded-lg text-[10px] uppercase tracking-wider transition-colors"
+                                        >
+                                            Modifier
+                                        </button>
+                                    )}
+                                    {(isAdmin || !congress.isApproved) && (
+                                        <button
+                                            onClick={() => deleteCongress(congress._id)}
+                                            className="px-3 py-1.5 text-red-600 bg-red-50 hover:bg-red-100 font-bold rounded-lg text-[10px] uppercase tracking-wider transition-colors"
+                                        >
+                                            Supprimer
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -323,6 +390,16 @@ export default function CongressView({ dashboardId }) {
                                         <option value="terminé">Terminé</option>
                                     </select>
                                 </div>
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Commentaire {isAdmin ? "(Visible par le délégué)" : ""}</label>
+                                <textarea 
+                                    name="comment" 
+                                    value={formData.comment} 
+                                    onChange={handleInputChange} 
+                                    placeholder="Ajouter des notes ou instructions..."
+                                    className="w-full border border-gray-300 rounded px-3 py-2 text-sm h-20"
+                                />
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Image de l'action marketing</label>

@@ -39,6 +39,22 @@ const congressSchema = new mongoose.Schema({
         enum: ['planifié', 'en cours', 'terminé'],
         default: 'planifié'
     },
+    isAdminCreated: {
+        type: Boolean,
+        default: false
+    },
+    isApproved: {
+        type: Boolean,
+        default: false
+    },
+    comment: {
+        type: String,
+        default: ''
+    },
+    approvedBy: {
+        type: String,
+        default: ''
+    },
     image: {
         type: String, // Store file path
     }

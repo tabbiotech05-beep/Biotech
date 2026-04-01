@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
 
 export default function DashboardSelection() {
     const navigate = useNavigate();
@@ -51,6 +53,7 @@ export default function DashboardSelection() {
     };
 
     const [searchQuery, setSearchQuery] = React.useState('');
+    const [downloading, setDownloading] = React.useState(false);
 
     // Flatten all users into a single list
     const allUsers = React.useMemo(() => {
@@ -66,6 +69,110 @@ export default function DashboardSelection() {
     const filteredUsers = allUsers.filter(u =>
         u.username.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    const downloadAllExpenses = async () => {
+        setDownloading(true);
+        try {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const currentMonth = now.getMonth() + 1;
+            const token = localStorage.getItem('token');
+            const res = await fetch(`/api/expenses/all?year=${currentYear}&month=${currentMonth}`, {
+                headers: { 'x-auth-token': token }
+            });
+            if (!res.ok) { alert('Erreur lors du téléchargement'); return; }
+            const expenses = await res.json();
+
+            if (expenses.length === 0) {
+                alert('Aucune note de frais trouvée.');
+                return;
+            }
+
+            const doc = new jsPDF();
+            let firstPage = true;
+
+            // Group by user
+            const byUser = {};
+            expenses.forEach(exp => {
+                const uname = exp.user?.username || 'Inconnu';
+                if (!byUser[uname]) byUser[uname] = [];
+                byUser[uname].push(exp);
+            });
+
+            Object.entries(byUser).forEach(([username, userExps]) => {
+                if (!firstPage) doc.addPage();
+                firstPage = false;
+
+                // User header
+                doc.setFillColor(16, 185, 129);
+                doc.rect(0, 0, 210, 24, 'F');
+                doc.setTextColor(255, 255, 255);
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(14);
+                doc.text(`Notes de Frais — ${username}`, 14, 16);
+
+                let cursorY = 30;
+
+                userExps.forEach((exp, idx) => {
+                    doc.setTextColor(30, 30, 30);
+                    doc.setFont('helvetica', 'bold');
+                    doc.setFontSize(11);
+                    doc.text(`${['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'][(exp.month||1)-1]} ${exp.year}`, 14, cursorY);
+                    doc.setFont('helvetica', 'normal');
+                    doc.setFontSize(9);
+                    doc.setTextColor(100, 100, 100);
+                    doc.text(`Voiture: ${exp.carModel || '-'}  |  Immat: ${exp.licensePlate || '-'}  |  Kms: ${exp.kilometrage}`, 14, cursorY + 6);
+
+                    const tableColumn = ['Sem.', 'Secteurs Visités', 'Hôtel', 'Essence', 'Péage', 'Parking', 'Autres Détail', 'Autres DT'];
+                    const tableRows = (exp.entries || []).map(e => [
+                        String(e.week),
+                        e.secteursVisites || '',
+                        String(e.hotel || 0),
+                        String(e.essence || 0),
+                        String(e.peage || 0),
+                        String(e.parking || 0),
+                        e.autresDescription || '',
+                        String(e.autresMontant || 0)
+                    ]);
+
+                    autoTable(doc, {
+                        startY: cursorY + 10,
+                        head: [tableColumn],
+                        body: tableRows,
+                        theme: 'grid',
+                        headStyles: { fillColor: [16, 185, 129], textColor: 255, fontStyle: 'bold', fontSize: 7 },
+                        styles: { fontSize: 7 },
+                        columnStyles: { 0: { halign: 'center', cellWidth: 10 } },
+                        margin: { left: 14, right: 14 }
+                    });
+
+                    cursorY = doc.lastAutoTable.finalY + 4;
+
+                    // Total line
+                    doc.setFillColor(16, 185, 129);
+                    doc.roundedRect(14, cursorY, 182, 8, 1, 1, 'F');
+                    doc.setFont('helvetica', 'bold');
+                    doc.setFontSize(8);
+                    doc.setTextColor(255, 255, 255);
+                    doc.text(`TOTAL : ${Number(exp.totalAmount).toFixed(3)} DT`, 18, cursorY + 5.5);
+
+                    cursorY += 14;
+
+                    if (cursorY > 260 && idx < userExps.length - 1) {
+                        doc.addPage();
+                        cursorY = 15;
+                    }
+                });
+            });
+
+            doc.save(`Toutes_Notes_de_Frais_${new Date().toISOString().slice(0,10)}.pdf`);
+        } catch (err) {
+            console.error(err);
+            alert('Erreur lors de la génération du PDF.');
+        } finally {
+            setDownloading(false);
+        }
+    };
 
     const configMap = {
         dashboard1: { name: 'BiotechpharmaMD', accent: '#10b981', light: 'rgba(16, 185, 129, 0.1)' },
@@ -107,7 +214,22 @@ export default function DashboardSelection() {
                     <span className="text-xs font-black text-slate-400 uppercase tracking-widest">
                         {filteredUsers.length} Délégués trouvés
                     </span>
-                    <div className="flex gap-4">
+                    <div className="flex items-center gap-4">
+                        <button
+                            onClick={downloadAllExpenses}
+                            disabled={downloading}
+                            className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-white shadow-md hover:opacity-90 transition-all disabled:opacity-60"
+                            style={{ background: 'linear-gradient(135deg, #10b981, #059669)' }}
+                        >
+                            {downloading ? (
+                                <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                            ) : (
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                            )}
+                            Télécharger Notes de Frais
+                        </button>
                         {allowedDashboards.map(dash => (
                             <button
                                 key={dash}

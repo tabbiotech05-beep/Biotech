@@ -43,7 +43,9 @@ const upload = multer({
 // @access  Private
 router.post('/', auth, upload.single('image'), async (req, res) => {
     try {
-        const { dashboardId, name, startDate, endDate, location, participant, amount, status } = req.body;
+        const { dashboardId, name, startDate, endDate, location, participant, amount, status, comment } = req.body;
+
+        const isAdmin = req.user.role === 'admin';
 
         let imagePath = '';
         if (req.file) {
@@ -60,7 +62,11 @@ router.post('/', auth, upload.single('image'), async (req, res) => {
             participant,
             amount,
             status,
-            image: imagePath
+            image: imagePath,
+            isAdminCreated: isAdmin,
+            isApproved: isAdmin, // Admins auto-approve
+            approvedBy: isAdmin ? req.user.username : '',
+            comment: comment || ''
         });
 
         const congress = await newCongress.save();
@@ -72,12 +78,24 @@ router.post('/', auth, upload.single('image'), async (req, res) => {
 });
 
 // @route   GET api/congress
-// @desc    Get all congresses (Global visibility)
+// @desc    Get all congresses (Global visibility with approval filter)
 // @access  Private
 router.get('/', auth, async (req, res) => {
     try {
-        // Global visibility: Return ALL congresses regardless of dashboard
-        const congresses = await Congress.find({}).sort({ startDate: 1 });
+        const isAdmin = req.user.role === 'admin';
+        let query = {};
+
+        if (!isAdmin) {
+            // Délégués see only approved congresses OR their own pending ones
+            query = {
+                $or: [
+                    { isApproved: true },
+                    { user: req.user.userId }
+                ]
+            };
+        }
+
+        const congresses = await Congress.find(query).sort({ startDate: 1 });
         res.json(congresses);
     } catch (err) {
         console.error(err.message);
@@ -90,25 +108,40 @@ router.get('/', auth, async (req, res) => {
 // @access  Private
 router.put('/:id', auth, upload.single('image'), async (req, res) => {
     try {
-        const { name, startDate, endDate, location, participant, amount, status } = req.body;
+        const { name, startDate, endDate, location, participant, amount, status, comment, isApproved } = req.body;
+
+        const isAdmin = req.user.role === 'admin';
 
         // Find congress by ID
         let congress = await Congress.findById(req.params.id);
         if (!congress) return res.status(404).json({ msg: 'Action marketing introuvable' });
 
-        // Ensure user owns congress
-        if (congress.user.toString() !== req.user.userId) {
-            return res.status(401).json({ msg: 'Non autorisé' });
+        // Access Control
+        if (!isAdmin) {
+            // Delegate cannot edit admin-created congresses
+            if (congress.isAdminCreated) {
+                return res.status(403).json({ msg: 'Non autorisé: action créée par l\'administrateur' });
+            }
+            // Delegate can only edit their own
+            if (congress.user.toString() !== req.user.userId) {
+                return res.status(403).json({ msg: 'Non autorisé' });
+            }
         }
 
         // Update fields
-        congress.name = name;
-        congress.startDate = startDate;
-        congress.endDate = endDate;
-        congress.location = location;
-        congress.participant = participant;
-        congress.amount = amount;
-        congress.status = status;
+        if (name) congress.name = name;
+        if (startDate) congress.startDate = startDate;
+        if (endDate) congress.endDate = endDate;
+        if (location) congress.location = location;
+        if (participant) congress.participant = participant;
+        if (amount) congress.amount = amount;
+        if (status) congress.status = status;
+        
+        // Admin can also update these
+        if (isAdmin) {
+            if (comment !== undefined) congress.comment = comment;
+            if (isApproved !== undefined) congress.isApproved = isApproved === 'true' || isApproved === true;
+        }
 
         // Handle Image Update
         if (req.file) {
@@ -127,17 +160,51 @@ router.put('/:id', auth, upload.single('image'), async (req, res) => {
     }
 });
 
+// @route   PATCH api/congress/:id/approve
+// @desc    Admin approve/reject and comment
+// @access  Admin
+router.patch('/:id/approve', auth, async (req, res) => {
+    try {
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({ msg: 'Accès administrateur requis' });
+        }
+
+        const { isApproved, comment } = req.body;
+        const congress = await Congress.findById(req.params.id);
+
+        if (!congress) return res.status(404).json({ msg: 'Action marketing introuvable' });
+
+        congress.isApproved = isApproved;
+        if (isApproved) {
+            congress.approvedBy = req.user.username;
+        }
+        if (comment !== undefined) congress.comment = comment;
+
+        await congress.save();
+        res.json(congress);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 // @route   DELETE api/congress/:id
 // @desc    Delete a congress
 // @access  Private
 router.delete('/:id', auth, async (req, res) => {
     try {
+        const isAdmin = req.user.role === 'admin';
         const congress = await Congress.findById(req.params.id);
         if (!congress) return res.status(404).json({ msg: 'Action marketing introuvable' });
 
-        // Ensure user owns congress
-        if (congress.user.toString() !== req.user.id) {
-            return res.status(401).json({ msg: 'Not authorized' });
+        // Access Control
+        if (!isAdmin) {
+            if (congress.user.toString() !== req.user.userId) {
+                return res.status(403).json({ msg: 'Non autorisé' });
+            }
+            if (congress.isApproved) {
+                return res.status(403).json({ msg: 'Désolé, cette action est déjà approuvée et ne peut plus être supprimée par un délégué.' });
+            }
         }
 
         // Delete image file if exists
