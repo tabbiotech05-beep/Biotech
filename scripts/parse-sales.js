@@ -23,7 +23,8 @@ const months = {
 
 const files = [
     { name: 'Ventes détaillées 2026-01 Biotech.xlsx', monthCode: '01' },
-    { name: 'Ventes détaillées 2026-02 Biotech.xlsx', monthCode: '02' }
+    { name: 'Ventes détaillées 2026-02 Biotech.xlsx', monthCode: '02' },
+    { name: 'Ventes détaillées 2026-03 Biotech.xlsx', monthCode: '03' }
 ];
 
 let allSalesData = [];

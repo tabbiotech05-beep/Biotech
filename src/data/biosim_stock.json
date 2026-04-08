@@ -1,0 +1,470 @@
+[
+  {
+    "annee": 2024,
+    "mois": "Janvier",
+    "brands": {
+      "Abevmy 100": 1,
+      "Abevmy 400": 1265,
+      "Hertraz 150": 11805,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 42750,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2024,
+    "mois": "Fevrier",
+    "brands": {
+      "Abevmy 100": 386,
+      "Abevmy 400": 633,
+      "Hertraz 150": 9211,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 41742,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2024,
+    "mois": "Mars",
+    "brands": {
+      "Abevmy 100": 2715,
+      "Abevmy 400": 61,
+      "Hertraz 150": 5382,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 40922,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2024,
+    "mois": "Avril",
+    "brands": {
+      "Abevmy 100": 7497,
+      "Abevmy 400": 3455,
+      "Hertraz 150": 7444,
+      "Hertraz 440": 6189,
+      "Hulio": 0,
+      "Semglee": 40069,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2024,
+    "mois": "Mai",
+    "brands": {
+      "Abevmy 100": 6486,
+      "Abevmy 400": 2010,
+      "Hertraz 150": 4486,
+      "Hertraz 440": 6189,
+      "Hulio": 0,
+      "Semglee": 38915,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2024,
+    "mois": "Juin",
+    "brands": {
+      "Abevmy 100": 5907,
+      "Abevmy 400": 1481,
+      "Hertraz 150": 1459,
+      "Hertraz 440": 6189,
+      "Hulio": 0,
+      "Semglee": 37909,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2024,
+    "mois": "Juillet",
+    "brands": {
+      "Abevmy 100": 7328,
+      "Abevmy 400": 2172,
+      "Hertraz 150": 10298,
+      "Hertraz 440": 9339,
+      "Hulio": 0,
+      "Semglee": 36996,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2024,
+    "mois": "Aout",
+    "brands": {
+      "Abevmy 100": 6590,
+      "Abevmy 400": 1520,
+      "Hertraz 150": 8744,
+      "Hertraz 440": 7960,
+      "Hulio": 0,
+      "Semglee": 36198,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2024,
+    "mois": "Sept",
+    "brands": {
+      "Abevmy 100": 5366,
+      "Abevmy 400": 4041,
+      "Hertraz 150": 8278,
+      "Hertraz 440": 6649,
+      "Hulio": 0,
+      "Semglee": 35178,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2024,
+    "mois": "Oct",
+    "brands": {
+      "Abevmy 100": 7230,
+      "Abevmy 400": 2993,
+      "Hertraz 150": 14757,
+      "Hertraz 440": 7966,
+      "Hulio": 0,
+      "Semglee": 34107,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2024,
+    "mois": "Nov",
+    "brands": {
+      "Abevmy 100": 6136,
+      "Abevmy 400": 2307,
+      "Hertraz 150": 14359,
+      "Hertraz 440": 7041,
+      "Hulio": 0,
+      "Semglee": 33227,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2024,
+    "mois": "Dec",
+    "brands": {
+      "Abevmy 100": 9022,
+      "Abevmy 400": 6864,
+      "Hertraz 150": 13689,
+      "Hertraz 440": 7949,
+      "Hulio": 0,
+      "Semglee": 32297,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Janvier",
+    "brands": {
+      "Abevmy 100": 7959,
+      "Abevmy 400": 9017,
+      "Hertraz 150": 18478,
+      "Hertraz 440": 7954,
+      "Hulio": 0,
+      "Semglee": 31334,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Fevrier",
+    "brands": {
+      "Abevmy 100": 10144,
+      "Abevmy 400": 9680,
+      "Hertraz 150": 18310,
+      "Hertraz 440": 7335,
+      "Hulio": 0,
+      "Semglee": 30429,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Mars",
+    "brands": {
+      "Abevmy 100": 9006,
+      "Abevmy 400": 13088,
+      "Hertraz 150": 18131,
+      "Hertraz 440": 5842,
+      "Hulio": 0,
+      "Semglee": 29310,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Avril",
+    "brands": {
+      "Abevmy 100": 8108,
+      "Abevmy 400": 12371,
+      "Hertraz 150": 17795,
+      "Hertraz 440": 7306,
+      "Hulio": 0,
+      "Semglee": 28271,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Mai",
+    "brands": {
+      "Abevmy 100": 7368,
+      "Abevmy 400": 11304,
+      "Hertraz 150": 17276,
+      "Hertraz 440": 6363,
+      "Hulio": 0,
+      "Semglee": 27126,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Juin",
+    "brands": {
+      "Abevmy 100": 9350,
+      "Abevmy 400": 12248,
+      "Hertraz 150": 17011,
+      "Hertraz 440": 11228,
+      "Hulio": 0,
+      "Semglee": 26287,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Juillet",
+    "brands": {
+      "Abevmy 100": 8375,
+      "Abevmy 400": 11590,
+      "Hertraz 150": 16578,
+      "Hertraz 440": 10204,
+      "Hulio": 2000,
+      "Semglee": 25077,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Aout",
+    "brands": {
+      "Abevmy 100": 7053,
+      "Abevmy 400": 10533,
+      "Hertraz 150": 16238,
+      "Hertraz 440": 8872,
+      "Hulio": 1378,
+      "Semglee": 24347,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Sept",
+    "brands": {
+      "Abevmy 100": 10145,
+      "Abevmy 400": 9602,
+      "Hertraz 150": 15864,
+      "Hertraz 440": 9903,
+      "Hulio": 8588,
+      "Semglee": 23040,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Oct",
+    "brands": {
+      "Abevmy 100": 8873,
+      "Abevmy 400": 8611,
+      "Hertraz 150": 15483,
+      "Hertraz 440": 11073,
+      "Hulio": 6750,
+      "Semglee": 22947,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Nov",
+    "brands": {
+      "Abevmy 100": 7877,
+      "Abevmy 400": 7602,
+      "Hertraz 150": 15034,
+      "Hertraz 440": 9801,
+      "Hulio": 18666,
+      "Semglee": 0,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2025,
+    "mois": "Dec",
+    "brands": {
+      "Abevmy 100": 7039,
+      "Abevmy 400": 6865,
+      "Hertraz 150": 14738,
+      "Hertraz 440": 8837,
+      "Hulio": 17470,
+      "Semglee": 0,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Janv",
+    "brands": {
+      "Abevmy 100": 5835,
+      "Abevmy 400": 5729,
+      "Hertraz 150": 14425,
+      "Hertraz 440": 7488,
+      "Hulio": 15779,
+      "Semglee": 0,
+      "Fulphila": 960
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Févr",
+    "brands": {
+      "Abevmy 100": 4793,
+      "Abevmy 400": 4985,
+      "Hertraz 150": 14047,
+      "Hertraz 440": 6017,
+      "Hulio": 14589,
+      "Semglee": 0,
+      "Fulphila": 1999
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Mars",
+    "brands": {
+      "Abevmy 100": 3424,
+      "Abevmy 400": 3998,
+      "Hertraz 150": 13611,
+      "Hertraz 440": 4682,
+      "Hulio": 13106,
+      "Semglee": 0,
+      "Fulphila": 1994
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Avr",
+    "brands": {
+      "Abevmy 100": 0,
+      "Abevmy 400": 0,
+      "Hertraz 150": 0,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 0,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Mai",
+    "brands": {
+      "Abevmy 100": 0,
+      "Abevmy 400": 0,
+      "Hertraz 150": 0,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 0,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Juin",
+    "brands": {
+      "Abevmy 100": 0,
+      "Abevmy 400": 0,
+      "Hertraz 150": 0,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 0,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Juil",
+    "brands": {
+      "Abevmy 100": 0,
+      "Abevmy 400": 0,
+      "Hertraz 150": 0,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 0,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Août",
+    "brands": {
+      "Abevmy 100": 0,
+      "Abevmy 400": 0,
+      "Hertraz 150": 0,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 0,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Sept",
+    "brands": {
+      "Abevmy 100": 0,
+      "Abevmy 400": 0,
+      "Hertraz 150": 0,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 0,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Oct",
+    "brands": {
+      "Abevmy 100": 0,
+      "Abevmy 400": 0,
+      "Hertraz 150": 0,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 0,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Nov",
+    "brands": {
+      "Abevmy 100": 0,
+      "Abevmy 400": 0,
+      "Hertraz 150": 0,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 0,
+      "Fulphila": 0
+    }
+  },
+  {
+    "annee": 2026,
+    "mois": "Déc",
+    "brands": {
+      "Abevmy 100": 0,
+      "Abevmy 400": 0,
+      "Hertraz 150": 0,
+      "Hertraz 440": 0,
+      "Hulio": 0,
+      "Semglee": 0,
+      "Fulphila": 0
+    }
+  }
+]

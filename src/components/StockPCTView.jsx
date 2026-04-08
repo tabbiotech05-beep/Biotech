@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import pctSalesDataRaw from '../data/pct_sales_data.json';
 import PctPricesTab from './PctPricesTab';
 import SalesTab from './SalesTab';
+import ExpiryTab from './ExpiryTab';
 
 export default function StockPCTView() {
     const [stockData, setStockData] = useState({ chambi: [], imported: [] });
@@ -102,6 +103,13 @@ export default function StockPCTView() {
                     <span className="text-xl">📈</span>
                     2. Analyse des Ventes
                 </button>
+                <button
+                    onClick={() => setActiveCategory('expiry')}
+                    className={`flex-1 py-4 px-6 rounded-xl font-bold flex items-center justify-center gap-2 border-2 transition-all ${activeCategory === 'expiry' ? 'border-rose-500 bg-rose-50 text-rose-700 shadow-sm' : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'}`}
+                >
+                    <span className="text-xl">⚠️</span>
+                    3. Proches Expiration
+                </button>
             </div>
 
             {/* Conditional Content Rendering Based on Active Category */}
@@ -161,11 +169,11 @@ export default function StockPCTView() {
                                     <tbody className="divide-y divide-slate-100">
                                         {chambiData.map((item, idx) => (
                                             <tr key={idx} className="hover:bg-slate-50">
-                                                <td className="font-bold text-slate-900">{item.sku}</td>
-                                                <td>{typeof item.cm === 'number' ? item.cm.toLocaleString() : item.cm}</td>
-                                                <td>{typeof item.price === 'number' ? `${item.price.toFixed(3)} DT` : item.price}</td>
-                                                <td className="font-black text-indigo-600">{typeof item.stock === 'number' ? item.stock.toLocaleString() : item.stock}</td>
-                                                <td>
+                                                <td className="font-bold text-slate-900" data-label="SKU / Produit">{item.sku}</td>
+                                                <td data-label="Consommation Moyenne">{typeof item.cm === 'number' ? item.cm.toLocaleString() : item.cm}</td>
+                                                <td data-label="Prix Grossiste TTC">{typeof item.price === 'number' ? `${item.price.toFixed(3)} DT` : item.price}</td>
+                                                <td className="font-black text-indigo-600" data-label="Stock Entrepôt (DC)">{typeof item.stock === 'number' ? item.stock.toLocaleString() : item.stock}</td>
+                                                <td data-label="Statut">
                                                     {item.stock > 1000 ? (
                                                         <span className="iso-badge iso-badge-green">Disponible</span>
                                                     ) : item.stock > 0 ? (
@@ -195,11 +203,11 @@ export default function StockPCTView() {
                                     <tbody className="divide-y divide-slate-100">
                                         {importedData.map((item, idx) => (
                                             <tr key={idx} className="hover:bg-slate-50">
-                                                <td className="font-bold text-slate-900">{item.brandName}</td>
-                                                <td><span className="font-mono text-xs bg-slate-100 px-2 py-0.5 rounded">{item.pctCode}</span></td>
-                                                <td>{typeof item.cm === 'number' ? item.cm.toLocaleString() : item.cm}</td>
-                                                <td className="font-black text-indigo-600">{typeof item.stock === 'number' ? item.stock.toLocaleString() : item.stock}</td>
-                                                <td>
+                                                <td className="font-bold text-slate-900" data-label="Nom du Produit">{item.brandName}</td>
+                                                <td data-label="Code PCT"><span className="font-mono text-xs bg-slate-100 px-2 py-0.5 rounded">{item.pctCode}</span></td>
+                                                <td data-label="Consommation Moyenne 2025">{typeof item.cm === 'number' ? item.cm.toLocaleString() : item.cm}</td>
+                                                <td className="font-black text-indigo-600" data-label="Stock PCT (31 Jan)">{typeof item.stock === 'number' ? item.stock.toLocaleString() : item.stock}</td>
+                                                <td data-label="Statut">
                                                     {item.stock > 1000 ? (
                                                         <span className="iso-badge iso-badge-green">Disponible</span>
                                                     ) : item.stock > 0 ? (
@@ -223,7 +231,7 @@ export default function StockPCTView() {
                         </div>
                     </div>
                 </div>
-            ) : (
+            ) : activeCategory === 'sales' ? (
                 /* SECTION 2: Analyse des Ventes */
                 <div className="space-y-4 animate-fadeIn">
                     {/* Sales Tabs */}
@@ -272,17 +280,17 @@ export default function StockPCTView() {
                                     <tbody className="divide-y divide-slate-100">
                                         {pctSalesData.map((item, idx) => (
                                             <tr key={idx} className="hover:bg-slate-50">
-                                                <td className="font-bold text-slate-900">{item.brandName}</td>
-                                                <td className="text-center text-slate-600 font-mono">{typeof item.avgMonthlySales === 'number' ? item.avgMonthlySales.toLocaleString() : '-'}</td>
-                                                <td className="text-center text-slate-600 font-mono">{typeof item.janSales === 'number' ? item.janSales.toLocaleString() : '-'}</td>
-                                                <td className="text-center text-slate-600 font-mono">{typeof item.febSales === 'number' ? item.febSales.toLocaleString() : '-'}</td>
-                                                <td className="text-center font-black text-indigo-700 font-mono bg-indigo-50/30">{typeof item.closingInventory === 'number' ? item.closingInventory.toLocaleString() : '-'}</td>
-                                                <td className="text-center">
+                                                <td className="font-bold text-slate-900" data-label="Nom du Produit">{item.brandName}</td>
+                                                <td className="text-center text-slate-600 font-mono" data-label="Ventes Moy.">{typeof item.avgMonthlySales === 'number' ? item.avgMonthlySales.toLocaleString() : '-'}</td>
+                                                <td className="text-center text-slate-600 font-mono" data-label="Janvier">{typeof item.janSales === 'number' ? item.janSales.toLocaleString() : '-'}</td>
+                                                <td className="text-center text-slate-600 font-mono" data-label="Février">{typeof item.febSales === 'number' ? item.febSales.toLocaleString() : '-'}</td>
+                                                <td className="text-center font-black text-indigo-700 font-mono bg-indigo-50/30" data-label="Inventaire f. Fév">{typeof item.closingInventory === 'number' ? item.closingInventory.toLocaleString() : '-'}</td>
+                                                <td className="text-center" data-label="MOH">
                                                     <span className={`px-2 py-1 rounded text-xs font-bold ${item.moh < 2 ? 'bg-red-100 text-red-700' : item.moh > 6 ? 'bg-amber-100 text-amber-700' : 'bg-emerald-100 text-emerald-800'}`}>
                                                         {typeof item.moh === 'number' ? item.moh.toFixed(2) : '-'}
                                                     </span>
                                                 </td>
-                                                <td className="text-center text-slate-600 font-mono">{typeof item.supplies === 'number' ? item.supplies.toLocaleString() : '-'}</td>
+                                                <td className="text-center text-slate-600 font-mono" data-label="App. Mars">{typeof item.supplies === 'number' ? item.supplies.toLocaleString() : '-'}</td>
                                             </tr>
                                         ))}
                                         {pctSalesData.length === 0 && (
@@ -297,6 +305,11 @@ export default function StockPCTView() {
                             )}
                         </div>
                     </div>
+                </div>
+            ) : (
+                /* SECTION 3: Proches Expiration */
+                <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm animate-fadeIn">
+                    <ExpiryTab />
                 </div>
             )}
         </div>

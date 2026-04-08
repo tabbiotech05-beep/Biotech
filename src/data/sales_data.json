@@ -14068,5 +14068,5675 @@
     "client": "ZRIBI FIRAS",
     "gouvernorat": "SFAX",
     "quantite": 4
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "AVENIR PHARMA GROS",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "CO.PRO.PHA  sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "DAPHAR",
+    "gouvernorat": "NABEUL",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "MEDIPHARM",
+    "gouvernorat": "NABEUL",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 35
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "COMPTOIR MEDITERRANEE DES PRODUITS PHARMACEUTIQUES",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "DAPHAR",
+    "gouvernorat": "NABEUL",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "MEDIPHARM",
+    "gouvernorat": "NABEUL",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "PHARMAGROS sarl",
+    "gouvernorat": "MANNOUBA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "PHARMASPRINT Sarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "SGHAIER PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "client": "MAKHLOUF FAKHER",
+    "gouvernorat": "",
+    "quantite": 4
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFEXOR. XL 150mg Gél. LP Bt 28",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFEXOR. XL 150mg Gél. LP Bt 28",
+    "client": "EL BAATI MAKRAM ",
+    "gouvernorat": "MAHDIA",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "AVENIR PHARMA GROS",
+    "gouvernorat": "SFAX",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "B & A PHARMA ",
+    "gouvernorat": "ARIANA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "COMPTOIR MEDITERRANEE DES PRODUITS PHARMACEUTIQUES",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 110
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "DALIA PHARMA ",
+    "gouvernorat": "LE KEF",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 160
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "MEDICA-CENTER sa",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "MEDICA-NORD (JILANI MECHERGUI)",
+    "gouvernorat": "BIZERTE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 110
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "PHARMASPRINT Sarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 70
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "SGHAIER PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "AVENIR PHARMA GROS",
+    "gouvernorat": "SFAX",
+    "quantite": 144
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 108
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 288
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 144
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 24
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 144
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "COMPTOIR MEDITERRANEE DES PRODUITS PHARMACEUTIQUES",
+    "gouvernorat": "SOUSSE",
+    "quantite": 48
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "COPHA.CENTRE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 102
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 1080
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "DALIA PHARMA ",
+    "gouvernorat": "LE KEF",
+    "quantite": 102
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "DAPHAR",
+    "gouvernorat": "NABEUL",
+    "quantite": 24
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 144
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "DEPOT DE MEDICAMENTS  KARABIBENE JAMEL",
+    "gouvernorat": "BIZERTE",
+    "quantite": 42
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 288
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 42
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "GO PHARMA",
+    "gouvernorat": "ARIANA",
+    "quantite": 24
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 36
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 108
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 144
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "LIDIAL PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 24
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "MCHIRGUI PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 48
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 54
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 48
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "MEDICA-CENTER sa",
+    "gouvernorat": "SOUSSE",
+    "quantite": 54
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "MEDICAMENTS TEBOULBA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 12
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "MEDICA-NORD (JILANI MECHERGUI)",
+    "gouvernorat": "BIZERTE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 324
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 216
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "MEDIPHARM",
+    "gouvernorat": "NABEUL",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 24
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "PHARMAGROS sarl",
+    "gouvernorat": "MANNOUBA",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "PHARMASPRINT Sarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 144
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "PHARMASUD (MOHAMED REKIK)",
+    "gouvernorat": "SFAX",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 54
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 288
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 36
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "SGHAIER PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 72
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 72
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "SONYPHA SARL (Comptant)",
+    "gouvernorat": "MANOUBA",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 402
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "DRIRA MOHAMED",
+    "gouvernorat": "SFAX",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "client": "CNAM",
+    "gouvernorat": "TUNIS",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 185
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "CO GE MED (COMPTOIR GENERAL DES MEDICAMENTS)  ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "COMPTOIR MEDITERRANEE DES PRODUITS PHARMACEUTIQUES",
+    "gouvernorat": "SOUSSE",
+    "quantite": 70
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "CO.PRO.PHA  sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 195
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "DALIA PHARMA ",
+    "gouvernorat": "LE KEF",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "DAPHAR",
+    "gouvernorat": "NABEUL",
+    "quantite": 185
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "EXCEL PHARMA",
+    "gouvernorat": "MAHDIA",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 45
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "GO PHARMA",
+    "gouvernorat": "ARIANA",
+    "quantite": 70
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "GZ PHARMA",
+    "gouvernorat": "BEJA",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "MCHIRGUI PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "MEDICA-NORD (JILANI MECHERGUI)",
+    "gouvernorat": "BIZERTE",
+    "quantite": 35
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 135
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "PHARMASPRINT Sarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 185
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "PHARMASUD (MOHAMED REKIK)",
+    "gouvernorat": "SFAX",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 160
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "SABRI PHARMA ",
+    "gouvernorat": "SIDI BOUZID",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "SGHAIER PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 160
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "SONYPHA SARL (Comptant)",
+    "gouvernorat": "MANOUBA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "BEN SLIMA MOUNIRA EPOUSE GHORBEL",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "BOUATTOUR NEJIB",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "EL AOUD CHOKRI",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "EL BAATI MAKRAM ",
+    "gouvernorat": "MAHDIA",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "KESSENTINI INES",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "ZRIBI FIRAS",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "BRAHIM AHAKOUS",
+    "gouvernorat": "TUNIS",
+    "quantite": 4
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "client": "MARWA SMIDA",
+    "gouvernorat": "TUNIS",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMACIENS SANTE PUBLIQUE  AU COMPTANT",
+    "gouvernorat": "TUNIS",
+    "quantite": 4
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "DIRECTION SANTE MILITAIRE",
+    "gouvernorat": "TUNIS",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "AVENIR PHARMA GROS",
+    "gouvernorat": "SFAX",
+    "quantite": 96
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "B & A PHARMA ",
+    "gouvernorat": "ARIANA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 480
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 96
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "CO GE MED (COMPTOIR GENERAL DES MEDICAMENTS)  ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 64
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 192
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "COMPTOIR MEDITERRANEE DES PRODUITS PHARMACEUTIQUES",
+    "gouvernorat": "SOUSSE",
+    "quantite": 48
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "COPHA.CENTRE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 352
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 32
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "CO.PRO.PHA  sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 32
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 640
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "DALIA PHARMA ",
+    "gouvernorat": "LE KEF",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "DAPHAR",
+    "gouvernorat": "NABEUL",
+    "quantite": 64
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "DEPOT DE MEDICAMENTS  KARABIBENE JAMEL",
+    "gouvernorat": "BIZERTE",
+    "quantite": 64
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 320
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "EXCEL PHARMA",
+    "gouvernorat": "MAHDIA",
+    "quantite": 8
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "GO PHARMA",
+    "gouvernorat": "ARIANA",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 15
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 96
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 64
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "MCHIRGUI PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 15
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 70
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDICA-CENTER sa",
+    "gouvernorat": "SOUSSE",
+    "quantite": 64
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDICA-NORD (JILANI MECHERGUI)",
+    "gouvernorat": "BIZERTE",
+    "quantite": 32
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 300
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDIPHARM",
+    "gouvernorat": "NABEUL",
+    "quantite": 38
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 64
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 70
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 70
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMAGROS sarl",
+    "gouvernorat": "MANNOUBA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMASPRINT Sarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 160
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMASUD (MOHAMED REKIK)",
+    "gouvernorat": "SFAX",
+    "quantite": 160
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 96
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 224
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "SGHAIER PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 15
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 48
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 320
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 640
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "UNIPHAR s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 32
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "PERSONNEL DE LA P.C.T RET/SALAIRE",
+    "gouvernorat": "TUNIS",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "BOUAZIZI FARAH",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "BOUZADI EZZEDINE",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "CHOUK HAIFA",
+    "gouvernorat": "TUNIS",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "client": "SIWAR TRABELSI",
+    "gouvernorat": "TUNIS",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 12
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "B & A PHARMA ",
+    "gouvernorat": "ARIANA",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 195
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 24
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "COPHA.CENTRE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 184
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "CO.PRO.PHA  sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 16
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 39
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "DALIA PHARMA ",
+    "gouvernorat": "LE KEF",
+    "quantite": 7
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "DAPHAR",
+    "gouvernorat": "NABEUL",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 11
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "DEPOT DE MEDICAMENTS  KARABIBENE JAMEL",
+    "gouvernorat": "BIZERTE",
+    "quantite": 15
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 26
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "EXCEL PHARMA",
+    "gouvernorat": "MAHDIA",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 43
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 39
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "LIDIAL PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 4
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 19
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDICA-NORD (JILANI MECHERGUI)",
+    "gouvernorat": "BIZERTE",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 31
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDIPHARM",
+    "gouvernorat": "NABEUL",
+    "quantite": 27
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 22
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 8
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMASPRINT Sarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 59
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMASUD (MOHAMED REKIK)",
+    "gouvernorat": "SFAX",
+    "quantite": 15
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 14
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 63
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 70
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "UNIPHAR s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 8
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "BEN MANSOUR EL MEHDI ",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "BEN SLIMA MOUNIRA EPOUSE GHORBEL",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "EL AOUD CHOKRI",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "EL BAATI MAKRAM ",
+    "gouvernorat": "MAHDIA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "KESSENTINI INES",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "MALLEK IMEN",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "client": "EL HENI NABIL",
+    "gouvernorat": "TUNIS",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "AVENIR PHARMA GROS",
+    "gouvernorat": "SFAX",
+    "quantite": 31
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 236
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 32
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "CO GE MED (COMPTOIR GENERAL DES MEDICAMENTS)  ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "COPHA.CENTRE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 96
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 56
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "DALIA PHARMA ",
+    "gouvernorat": "LE KEF",
+    "quantite": 7
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "EXCEL PHARMA",
+    "gouvernorat": "MAHDIA",
+    "quantite": 8
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 9
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "GO PHARMA",
+    "gouvernorat": "ARIANA",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "GZ PHARMA",
+    "gouvernorat": "BEJA",
+    "quantite": 15
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 96
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 26
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "MCHIRGUI PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 7
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDICA-NORD (JILANI MECHERGUI)",
+    "gouvernorat": "BIZERTE",
+    "quantite": 8
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 36
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "MEDIPHARM",
+    "gouvernorat": "NABEUL",
+    "quantite": 15
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 26
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 25
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMAGROS sarl",
+    "gouvernorat": "MANNOUBA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "PHARMASUD (MOHAMED REKIK)",
+    "gouvernorat": "SFAX",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 16
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 32
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 15
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "SABRI PHARMA ",
+    "gouvernorat": "SIDI BOUZID",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 64
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 94
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "SOTUPHA sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "UNIPHAR s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 4
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 7
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "BEN SLIMA MOUNIRA EPOUSE GHORBEL",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "EL AOUD CHOKRI",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "ZRIBI FIRAS",
+    "gouvernorat": "SFAX",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "client": "BEN MOHAMED ANIS",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 24
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 102
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 12
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "DAPHAR",
+    "gouvernorat": "NABEUL",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 36
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "MEDICAMENTS TEBOULBA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 54
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "PHARMASPRINT Sarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 24
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 36
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "CO.PRO.PHA  sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 12
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "DAPHAR",
+    "gouvernorat": "NABEUL",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 12
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 12
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 12
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 24
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 12
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 4
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 4
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "ETABLISSEMENTS  DES PRISONS ET DE LA  REEDUCATION",
+    "gouvernorat": "TUNIS",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "HOPITAL UNIVERSITAIRE  \"HABIB BOUGATFA\" DE BIZERTE",
+    "gouvernorat": "BIZERTE",
+    "quantite": 18
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 140
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "COMPTOIR MEDITERRANEE DES PRODUITS PHARMACEUTIQUES",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 140
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "DALIA PHARMA ",
+    "gouvernorat": "LE KEF",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 140
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "MCHIRGUI PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "MEDICAMENTS TEBOULBA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 150
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 140
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "SGHAIER PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 15
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 140
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "SONYPHA SARL (Comptant)",
+    "gouvernorat": "MANOUBA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "ACHICH ADEL",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "AMMAR HANA EP BEN AYED ",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "AMOURI FAOUZI",
+    "gouvernorat": "SFAX",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "AOUAY SOUHIR  ",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "AYADI RIDHA",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "AYADI SANA ",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "BAHLOUL  HELA NEE ELFEKI  (AU COMPTANT)",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "BAKLOUTI  SARRA ( COMPTANT ) ",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "BEN AYED NAJOUA",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "BEN HAMIDA NEJIB",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "BEN MANSOUR EL MEHDI ",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "BEN SLIMA MOUNIRA EPOUSE GHORBEL",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "BIBI MOUNIRA BEN SOLTANE",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "BOUATTOUR RAFIK",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "BOUATTOUR ZOUBEIR",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "BOUAZIZ MED ",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "CHAABOUNI NEJIB (COMPTANT)",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "CHAARI ABDESSATAR",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "DHAOUADI ADEL  (Comptant)",
+    "gouvernorat": "NABEUL",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "DRIRA MOHAMED",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "EL AOUD CHOKRI",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "EL BAATI MAKRAM ",
+    "gouvernorat": "MAHDIA",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "ELLOUZE TAMANY",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "FENDRI MOHAMED ( AU COMPTANT )",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "FOURATI MED HEDI ",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "GHODHBANE  NAJET ",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "HADIJI SAMIA",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "HARIZ MOLKA",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "JEMNI MORSI",
+    "gouvernorat": "SFAX",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "KACEM TAOUFIK",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "KALLEL IKRAM",
+    "gouvernorat": "SFAX",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "KCHAOU AFEF ",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "KESSENTINI INES",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "KHALFALLAH KAMEL (COMPTANT)",
+    "gouvernorat": "MEDENINE",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "LOULOU FERIEL EP ABELKAFI ",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "MAALEJ SAMIA EP NJAH",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "MALLEK IMEN",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "MZID HAMADI",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "PHARMACIE MEZGHANNI MOHAMED ET MARIEM FAKHFAKH",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "SELLAMI OLFA BEN ABDELKADER",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "SMAOUI SALEM",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "SOUSSI KAMEL (AU COMPTANT)",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "client": "ZRIBI FIRAS",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 240
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "DEPHAC sarl",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 240
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "GO PHARMA",
+    "gouvernorat": "ARIANA",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 90
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "MCHIRGUI PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "MEDICAMENTS TEBOULBA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 300
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "MEDIPHARM",
+    "gouvernorat": "NABEUL",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "PHARMASPRINT Sarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "SONYPHA SARL (Comptant)",
+    "gouvernorat": "MANOUBA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 240
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "client": "SOTUPHA sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "DIRECTION SANTE MILITAIRE",
+    "gouvernorat": "TUNIS",
+    "quantite": 90
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "CO GE MED (COMPTOIR GENERAL DES MEDICAMENTS)  ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "GO PHARMA",
+    "gouvernorat": "ARIANA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "GO PHARMA",
+    "gouvernorat": "ARIANA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "LIDIAL PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "MEDICAMENTS TEBOULBA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "MEDICA-NORD (JILANI MECHERGUI)",
+    "gouvernorat": "BIZERTE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "MEDIPHARM",
+    "gouvernorat": "NABEUL",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "PHARMASPRINT Sarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "SONYPHA SARL (Comptant)",
+    "gouvernorat": "MANOUBA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 240
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "UNIPHAR s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "CO GE MED (COMPTOIR GENERAL DES MEDICAMENTS)  ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "COMPTOIR MEDITERRANEE DES PRODUITS PHARMACEUTIQUES",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 140
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "CO.PRO.PHA  sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 600
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "DALIA PHARMA ",
+    "gouvernorat": "LE KEF",
+    "quantite": 70
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "DEPHAC sarl",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 400
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "EXCEL PHARMA",
+    "gouvernorat": "MAHDIA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 170
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 90
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "LIDIAL PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "MCHIRGUI PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDICAMENTS TEBOULBA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDICA-NORD (JILANI MECHERGUI)",
+    "gouvernorat": "BIZERTE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 220
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "PHARMAGROS sarl",
+    "gouvernorat": "MANNOUBA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "PHARMASUD (MOHAMED REKIK)",
+    "gouvernorat": "SFAX",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 150
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "SGHAIER PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 240
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "HOPITAL \"MHAMED BOURGUIBA\" - KEF",
+    "gouvernorat": "LE KEF",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "BOUSAADA CHOKRI",
+    "gouvernorat": "BIZERTE",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "EL BAATI MAKRAM ",
+    "gouvernorat": "MAHDIA",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "KALLEL DORRA EP JARRAYA ",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "MALLEK IMEN",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "RJAB SFAR MOHAMED",
+    "gouvernorat": "SILIANA",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "client": "BOUZOUITINA KHALED",
+    "gouvernorat": "TUNIS",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "UTSS",
+    "gouvernorat": "TUNIS",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "AVENIR PHARMA GROS",
+    "gouvernorat": "SFAX",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "B & A PHARMA ",
+    "gouvernorat": "ARIANA",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "CO GE MED (COMPTOIR GENERAL DES MEDICAMENTS)  ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 125
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "COMPTOIR MEDITERRANEE DES PRODUITS PHARMACEUTIQUES",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "COPHA.CENTRE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 400
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "DAPHAR",
+    "gouvernorat": "NABEUL",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "DEPHAC sarl",
+    "gouvernorat": "MONASTIR",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "DEPOT DE MEDICAMENTS  KARABIBENE JAMEL",
+    "gouvernorat": "BIZERTE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "EXCEL PHARMA",
+    "gouvernorat": "MAHDIA",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "EXPRESS PHARMA suarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 230
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "INTERMED sarl ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "MCHIRGUI PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDICAMENTS TEBOULBA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDICA-NORD (JILANI MECHERGUI)",
+    "gouvernorat": "BIZERTE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 400
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "MEDIPHARM",
+    "gouvernorat": "NABEUL",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "PHARMAGROS sarl",
+    "gouvernorat": "MANNOUBA",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "PHARMASUD (MOHAMED REKIK)",
+    "gouvernorat": "SFAX",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 290
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "SGHAIER PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 300
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 400
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "AYADI SANA ",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "EL BAATI MAKRAM ",
+    "gouvernorat": "MAHDIA",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "MALLEK IMEN",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "MARWAN LOBNA EP. LOUATI",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "client": "PERSONNEL DE LA P.C.T RET/SALAIRE",
+    "gouvernorat": "TUNIS",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 160
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "COMPTOIR MEDITERRANEE DES PRODUITS PHARMACEUTIQUES",
+    "gouvernorat": "SOUSSE",
+    "quantite": 96
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "COPHA.CENTRE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "DALIA PHARMA ",
+    "gouvernorat": "LE KEF",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 160
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "MEDICA-CENTER sa",
+    "gouvernorat": "SOUSSE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "MEDICAMENTS TEBOULBA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 400
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 70
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "PHARMAGROS sarl",
+    "gouvernorat": "MANNOUBA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "SGHAIER PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 240
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "AMMAR FATMA  EP CHTOUROU",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "AMOURI FAOUZI",
+    "gouvernorat": "SFAX",
+    "quantite": 4
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "BACCOUR NEJIB",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "BAHLOUL  HELA NEE ELFEKI  (AU COMPTANT)",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "BEN MANSOUR EL MEHDI ",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "BEN SLIMA MOUNIRA EPOUSE GHORBEL",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "BIBI MOUNIRA BEN SOLTANE",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "BOUATTOUR ZOUBEIR",
+    "gouvernorat": "SFAX",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "CHEIKHROUHOU SAMI",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "EL BAATI MAKRAM ",
+    "gouvernorat": "MAHDIA",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "ELLOUZE TAMANY",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "GHODHBANE  NAJET ",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "HARIZ MOLKA",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "HEDHLI RIADH",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "JARDAK MAHDI",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "JARRAYA  SONIA",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "JEMNI MORSI",
+    "gouvernorat": "SFAX",
+    "quantite": 4
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "KACEM TAOUFIK",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "KCHAOU AFEF ",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "KESSENTINI INES",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "LENGLIZ KHALIL",
+    "gouvernorat": "SOUSSE",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "LOULOU FERIEL EP ABELKAFI ",
+    "gouvernorat": "SFAX",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "MAALEJ SAMIA EP NJAH",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "MZID HAMADI",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "PHARMACIE MEZGHANNI MOHAMED ET MARIEM FAKHFAKH",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "client": "SOUSSI KAMEL (AU COMPTANT)",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "AVENIR PHARMA GROS",
+    "gouvernorat": "SFAX",
+    "quantite": 124
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 220
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 112
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "CENTRA-NORD (MOHAMED SFAXI)",
+    "gouvernorat": "BIZERTE",
+    "quantite": 37
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 108
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "COMPTOIR MEDITERRANEE DES PRODUITS PHARMACEUTIQUES",
+    "gouvernorat": "SOUSSE",
+    "quantite": 36
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "COPHA.CENTRE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 132
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 57
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "CO.PRO.PHA  sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 60
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 480
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "DALIA PHARMA ",
+    "gouvernorat": "LE KEF",
+    "quantite": 37
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "DEPOT DE MEDICAMENTS  KARABIBENE JAMEL",
+    "gouvernorat": "BIZERTE",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 269
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "EXCEL PHARMA",
+    "gouvernorat": "MAHDIA",
+    "quantite": 28
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 63
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "GO PHARMA",
+    "gouvernorat": "ARIANA",
+    "quantite": 28
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 14
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "LIDIAL PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 6
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "MEDICA-CENTER sa",
+    "gouvernorat": "SOUSSE",
+    "quantite": 37
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 240
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "MEDIKA  sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 141
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "MEDIPHARM",
+    "gouvernorat": "NABEUL",
+    "quantite": 28
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 184
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 28
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "PHARMASPRINT Sarl",
+    "gouvernorat": "TUNIS",
+    "quantite": 9
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 81
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 90
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 596
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "ACHICH ADEL",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "AMOURI FAOUZI",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "AYADI RIDHA",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "BACCOUR NEJIB",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "BEN SLIMA MOUNIRA EPOUSE GHORBEL",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "BIBI MOUNIRA BEN SOLTANE",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "EL BAATI MAKRAM ",
+    "gouvernorat": "MAHDIA",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "GHEDIRA NAJIA  EP  NOOMAN",
+    "gouvernorat": "MONASTIR",
+    "quantite": 15
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "GHODHBANE  NAJET ",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "HARIZ MOLKA",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "JEMNI MORSI",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "LENGLIZ KHALIL",
+    "gouvernorat": "SOUSSE",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "MAALEJ SAMIA EP NJAH",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "SOUSSI KAMEL (AU COMPTANT)",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "client": "ZRIBI FIRAS",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 80
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "CAB DEPHAR sarl",
+    "gouvernorat": "NABEUL",
+    "quantite": 240
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 240
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "COPHARMA sarl",
+    "gouvernorat": "MAHDIA",
+    "quantite": 64
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "DAPHAR",
+    "gouvernorat": "NABEUL",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "EASY PHARMA sarl",
+    "gouvernorat": "MANNOUBA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "EXCEL PHARMA",
+    "gouvernorat": "MAHDIA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "GO PHARMA",
+    "gouvernorat": "ARIANA",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "HC PHARMACIS",
+    "gouvernorat": "SOUSSE",
+    "quantite": 44
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 120
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "MCHIRGUI PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "MEDICA JENDOUBA sarl",
+    "gouvernorat": "JENDOUBA",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "MEDICA-CENTER sa",
+    "gouvernorat": "SOUSSE",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "MEDICAMENTS TEBOULBA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 160
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "MEDIPHARM",
+    "gouvernorat": "NABEUL",
+    "quantite": 70
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "PHARMA SERVICE s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "PRO PHA DIS SARL",
+    "gouvernorat": "SFAX",
+    "quantite": 100
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 140
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "UNIVERS PHARMA",
+    "gouvernorat": "SFAX",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "BEN SLIMA MOUNIRA EPOUSE GHORBEL",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "BIBI MOUNIRA BEN SOLTANE",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "EL BAATI MAKRAM ",
+    "gouvernorat": "MAHDIA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "HARIZ MOLKA",
+    "gouvernorat": "SFAX",
+    "quantite": 2
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "JARDAK MAHDI",
+    "gouvernorat": "SFAX",
+    "quantite": 1
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "JERRAYA NEJIB",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "KALLEL DORRA EP JARRAYA ",
+    "gouvernorat": "SFAX",
+    "quantite": 3
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "MAALEJ SAMIA EP NJAH",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "client": "SOUSSI KAMEL (AU COMPTANT)",
+    "gouvernorat": "SFAX",
+    "quantite": 5
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "AVICENNE sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "CENTRA NORD PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "CO.DI.PHAR (MAROUEN LOTFI)",
+    "gouvernorat": "SFAX",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "CO.GE.PHA  s.a.",
+    "gouvernorat": "ARIANA",
+    "quantite": 90
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "COMPTOIR MEDITERRANEE DES PRODUITS PHARMACEUTIQUES",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "CO.PHA.DIS",
+    "gouvernorat": "NABEUL",
+    "quantite": 200
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "CO.PRO.PHA  sarl",
+    "gouvernorat": "SOUSSE",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "COTUPHA s.a.",
+    "gouvernorat": "TUNIS",
+    "quantite": 300
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "DAPHAR",
+    "gouvernorat": "NABEUL",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "DE.PHA.NORD (Abdelaziz FERIANI)",
+    "gouvernorat": "BEJA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "DEPOT DE MEDICAMENTS  KARABIBENE JAMEL",
+    "gouvernorat": "BIZERTE",
+    "quantite": 70
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "DISTRI-MED sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "EXCEL PHARMA",
+    "gouvernorat": "MAHDIA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "GALIEN",
+    "gouvernorat": "NABEUL",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "GESTE PHARMA ",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "GO PHARMA",
+    "gouvernorat": "ARIANA",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "KARRAY.PROPHA",
+    "gouvernorat": "TUNIS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "KIPROPHA sarl",
+    "gouvernorat": "ARIANA",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "MCHIRGUI PHARMA",
+    "gouvernorat": "BIZERTE",
+    "quantite": 40
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "MEDICA SERVICE sarl",
+    "gouvernorat": "BEN AROUS",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "MEDIGROS",
+    "gouvernorat": "TUNIS",
+    "quantite": 240
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "NEW SERPHARMA",
+    "gouvernorat": "SOUSSE",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "OMNIPHARM REPARTITION",
+    "gouvernorat": "SFAX",
+    "quantite": 20
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "PHARMADIS (AMEL MAAOUIA)",
+    "gouvernorat": "TUNIS",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "PHARMAGROS sarl",
+    "gouvernorat": "MANNOUBA",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "PROPHA-SUD sarl",
+    "gouvernorat": "MEDENINE",
+    "quantite": 50
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "RUSPINA PHARMA",
+    "gouvernorat": "MONASTIR",
+    "quantite": 10
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "SM PHARMA ",
+    "gouvernorat": "SOUSSE",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "SOCIETE MEDICAMENTS OKBA sarl",
+    "gouvernorat": "KAIROUAN",
+    "quantite": 30
+  },
+  {
+    "mois": "Mars",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "client": "SO.PRO.PHA  s.a.",
+    "gouvernorat": "SFAX",
+    "quantite": 20
   }
 ]

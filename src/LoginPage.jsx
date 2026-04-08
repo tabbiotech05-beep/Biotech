@@ -7,6 +7,23 @@ export default function LoginPage() {
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
+    React.useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            const role = localStorage.getItem('role');
+            const allowedDashboards = JSON.parse(localStorage.getItem('allowedDashboards') || '[]');
+
+            if (role === 'pharmacienne') {
+                const targetDash = allowedDashboards[0] || 'dashboard1';
+                navigate(`/dashboard/${targetDash}`);
+            } else if (allowedDashboards.length > 1) {
+                navigate('/dashboard-selection');
+            } else if (allowedDashboards.length === 1) {
+                navigate(`/dashboard/${allowedDashboards[0]}`);
+            }
+        }
+    }, [navigate]);
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };

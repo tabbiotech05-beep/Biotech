@@ -9,8 +9,13 @@ export default function DashboardSelection() {
     const [dashboardUsers, setDashboardUsers] = React.useState({});
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/');
+            return;
+        }
+
         const fetchDashboardUsers = async () => {
-            const token = localStorage.getItem('token');
             try {
                 const res = await fetch('/api/auth/dashboard-users', {
                     headers: { 'x-auth-token': token }
@@ -59,16 +64,31 @@ export default function DashboardSelection() {
     const allUsers = React.useMemo(() => {
         const list = [];
         Object.entries(dashboardUsers).forEach(([dashId, users]) => {
-            users.forEach(username => {
-                list.push({ username, dashboardId: dashId });
-            });
+            if (Array.isArray(users)) {
+                users.forEach(userObj => {
+                    // Handle both old (string) and new (object) formats defensively
+                    const username = typeof userObj === 'string' ? userObj : userObj?.username;
+                    const profileImage = typeof userObj === 'string' ? null : userObj?.profileImage;
+                    
+                    if (username) {
+                        list.push({ 
+                            username, 
+                            profileImage,
+                            dashboardId: dashId 
+                        });
+                    }
+                });
+            }
         });
         return list.sort((a, b) => a.username.localeCompare(b.username));
     }, [dashboardUsers]);
 
     const filteredUsers = allUsers.filter(u =>
-        u.username.toLowerCase().includes(searchQuery.toLowerCase())
+        u.username?.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    const biotechUsers = filteredUsers.filter(u => u.dashboardId === 'dashboard1');
+    const tenshiUsers = filteredUsers.filter(u => u.dashboardId === 'dashboard2');
 
     const downloadAllExpenses = async () => {
         setDownloading(true);
@@ -179,6 +199,14 @@ export default function DashboardSelection() {
         dashboard2: { name: 'Tenshi', accent: '#6366f1', light: 'rgba(99, 102, 241, 0.1)' }
     };
 
+    const getImageUrl = (url) => {
+        if (!url) return null;
+        if (url.startsWith('http')) return url;
+        // Normalize path: remove leading slash if present, then add one
+        const cleanPath = url.startsWith('/') ? url.slice(1) : url;
+        return `/${cleanPath}`;
+    };
+
     return (
         <div className="min-h-screen iso-grid-bg flex flex-col items-center p-8 relative overflow-hidden">
             {/* Background design */}
@@ -245,40 +273,116 @@ export default function DashboardSelection() {
                 </div>
             </div>
 
-            {/* Unified List */}
-            <div className="w-full max-w-2xl grid grid-cols-1 gap-3 animate-fade-up" style={{ animationDelay: '0.2s' }}>
-                {filteredUsers.length > 0 ? (
-                    filteredUsers.map((u, idx) => {
-                        const cfg = configMap[u.dashboardId] || configMap.dashboard1;
-                        return (
-                            <button
-                                key={`${u.username}-${idx}`}
-                                onClick={() => navigate(`/dashboard/${u.dashboardId}?viewUser=${u.username}`)}
-                                className="flex items-center justify-between p-5 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-xl hover:shadow-slate-200/70 hover:-translate-y-1 transition-all group"
-                            >
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-xl flex items-center justify-center font-black text-white text-lg shadow-inner bg-blue-600">
-                                        {u.username.charAt(0).toUpperCase()}
-                                    </div>
-                                    <div className="text-left">
-                                        <p className="font-black text-slate-900 leading-tight">{u.username}</p>
-                                        <p className="text-[10px] uppercase font-black tracking-tighter text-blue-500">
-                                            Équipe {cfg.name}
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="flex items-center gap-2 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:bg-slate-50 group-hover:text-slate-900 transition-colors">
-                                    Voir Calendrier
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                                </div>
-                            </button>
-                        );
-                    })
-                ) : (
-                    <div className="text-center py-20 bg-white/50 rounded-3xl border border-dashed border-slate-200">
-                        <p className="text-slate-400 font-bold">Aucun délégué trouvé pour "{searchQuery}"</p>
+            {/* Two-Column Grid Layout */}
+            <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 animate-fade-up" style={{ animationDelay: '0.2s' }}>
+                
+                {/* BIOTECH COLUMN */}
+                <div className="space-y-6">
+                    <div className="flex items-center gap-3 px-6 py-4 bg-emerald-50/50 rounded-3xl border border-emerald-100/50">
+                        <div className="w-10 h-10 rounded-2xl bg-emerald-500 flex items-center justify-center text-white shadow-lg shadow-emerald-200">
+                            <span className="font-black text-xs">B</span>
+                        </div>
+                        <div>
+                            <h2 className="text-sm font-black text-emerald-900 uppercase tracking-[0.2em]">Équipe Biotech</h2>
+                            <p className="text-[10px] font-bold text-emerald-600/70">{biotechUsers.length} Délégués</p>
+                        </div>
                     </div>
-                )}
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {biotechUsers.length > 0 ? (
+                            biotechUsers.map((u, idx) => {
+                                const cfg = configMap.dashboard1;
+                                return (
+                                    <button
+                                        key={`bt-${idx}`}
+                                        onClick={() => navigate(`/dashboard/dashboard1?viewUser=${u.username}`)}
+                                        className="group relative flex flex-col items-center p-6 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+                                    >
+                                        <div className="relative mb-4">
+                                            <div className="w-20 h-20 rounded-3xl flex items-center justify-center font-black text-white text-2xl shadow-xl overflow-hidden transition-transform duration-500 group-hover:scale-110"
+                                                style={{ background: `linear-gradient(135deg, ${cfg.accent}, #059669)` }}>
+                                                {u.profileImage ? (
+                                                    <img 
+                                                        src={getImageUrl(u.profileImage)} 
+                                                        alt={u.username} 
+                                                        className="w-full h-full object-cover"
+                                                        onError={(e) => {
+                                                            e.target.style.display = 'none';
+                                                            e.target.parentElement.innerText = u.username?.charAt(0).toUpperCase() || '?';
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    u.username?.charAt(0).toUpperCase() || '?'
+                                                )}
+                                            </div>
+                                        </div>
+                                        <h3 className="text-lg font-black text-slate-800 uppercase tracking-tight">{u.username}</h3>
+                                        <div className="mt-4 flex items-center gap-2 text-[8px] font-black uppercase tracking-[0.2em] text-slate-300 group-hover:text-emerald-500 transition-colors">
+                                            Voir Calendrier
+                                            <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                                        </div>
+                                    </button>
+                                );
+                            })
+                        ) : (
+                             <div className="col-span-full py-10 text-center text-slate-300 text-[10px] font-bold uppercase tracking-widest bg-white/30 rounded-3xl border border-dashed border-slate-100">Vide</div>
+                        )}
+                    </div>
+                </div>
+
+                {/* TENSHI COLUMN */}
+                <div className="space-y-6">
+                    <div className="flex items-center gap-3 px-6 py-4 bg-indigo-50/50 rounded-3xl border border-indigo-100/50">
+                        <div className="w-10 h-10 rounded-2xl bg-indigo-500 flex items-center justify-center text-white shadow-lg shadow-indigo-200">
+                            <span className="font-black text-xs">T</span>
+                        </div>
+                        <div>
+                            <h2 className="text-sm font-black text-indigo-900 uppercase tracking-[0.2em]">Équipe Tenshi</h2>
+                            <p className="text-[10px] font-bold text-indigo-600/70">{tenshiUsers.length} Délégués</p>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {tenshiUsers.length > 0 ? (
+                            tenshiUsers.map((u, idx) => {
+                                const cfg = configMap.dashboard2;
+                                return (
+                                    <button
+                                        key={`tn-${idx}`}
+                                        onClick={() => navigate(`/dashboard/dashboard2?viewUser=${u.username}`)}
+                                        className="group relative flex flex-col items-center p-6 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+                                    >
+                                        <div className="relative mb-4">
+                                            <div className="w-20 h-20 rounded-3xl flex items-center justify-center font-black text-white text-2xl shadow-xl overflow-hidden transition-transform duration-500 group-hover:scale-110"
+                                                style={{ background: `linear-gradient(135deg, ${cfg.accent}, #3b82f6)` }}>
+                                                {u.profileImage ? (
+                                                    <img 
+                                                        src={getImageUrl(u.profileImage)} 
+                                                        alt={u.username} 
+                                                        className="w-full h-full object-cover"
+                                                        onError={(e) => {
+                                                            e.target.style.display = 'none';
+                                                            e.target.parentElement.innerText = u.username?.charAt(0).toUpperCase() || '?';
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    u.username?.charAt(0).toUpperCase() || '?'
+                                                )}
+                                            </div>
+                                        </div>
+                                        <h3 className="text-lg font-black text-slate-800 uppercase tracking-tight">{u.username}</h3>
+                                        <div className="mt-4 flex items-center gap-2 text-[8px] font-black uppercase tracking-[0.2em] text-slate-300 group-hover:text-indigo-500 transition-colors">
+                                            Voir Calendrier
+                                            <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                                        </div>
+                                    </button>
+                                );
+                            })
+                        ) : (
+                            <div className="col-span-full py-10 text-center text-slate-300 text-[10px] font-bold uppercase tracking-widest bg-white/30 rounded-3xl border border-dashed border-slate-100">Vide</div>
+                        )}
+                    </div>
+                </div>
             </div>
 
             <div className="mt-12 text-center text-[10px] font-black text-slate-300 uppercase tracking-[0.2em]">

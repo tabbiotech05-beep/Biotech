@@ -1,5 +1,6 @@
 import express from 'express';
 import Expense from '../models/Expense.js';
+import User from '../models/User.js';
 import auth from '../middleware/auth.js';
 
 const router = express.Router();
@@ -70,13 +71,29 @@ router.post('/', auth, async (req, res) => {
                            (Number(entry.autresMontant) || 0);
         });
 
+        // If licensePlate or carModel is not provided, try to fetch them from the user profile
+        let finalLicensePlate = licensePlate;
+        let finalCarModel = carModel;
+        
+        if (!finalLicensePlate || !finalCarModel) {
+            const user = await User.findById(req.user.userId);
+            if (user) {
+                if (!finalLicensePlate && user.carLicensePlate) {
+                    finalLicensePlate = user.carLicensePlate;
+                }
+                if (!finalCarModel && user.carModel) {
+                    finalCarModel = user.carModel;
+                }
+            }
+        }
+
         const newExpense = new Expense({
             user: req.user.userId,
             dashboardId,
             year,
             month,
-            carModel,
-            licensePlate,
+            carModel: finalCarModel || '',
+            licensePlate: finalLicensePlate || '',
             kilometrage,
             entries,
             totalAmount

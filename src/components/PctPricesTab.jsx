@@ -25,7 +25,7 @@ export default function PctPricesTab() {
     const renderTableFormat = (data, isCompetitorView) => {
         return (
             <div className="overflow-x-auto mt-4 rounded-lg bg-white shadow-sm border border-gray-100">
-                <table className="w-full text-left border-collapse">
+                <table className="iso-table w-full text-left border-collapse">
                     <thead>
                         <tr className="bg-indigo-50 text-indigo-900 text-xs uppercase tracking-wider">
                             <th className="px-4 py-3 border-b border-indigo-100 font-bold">Spécialité</th>
@@ -51,15 +51,15 @@ export default function PctPricesTab() {
 
                             return (
                                 <tr key={idx} className="hover:bg-indigo-50/30 transition-colors border-b border-gray-50 last:border-0">
-                                    <td className="px-4 py-3 font-medium text-gray-800">{row.specialty}</td>
-                                    <td className="px-4 py-3 text-gray-600">{row.dosage}</td>
-                                    <td className="px-4 py-3 text-right text-gray-700 font-mono">
+                                    <td className="px-4 py-3 font-medium text-gray-800" data-label="Spécialité">{row.specialty}</td>
+                                    <td className="px-4 py-3 text-gray-600" data-label="Dosage">{row.dosage}</td>
+                                    <td className="px-4 py-3 text-right text-gray-700 font-mono" data-label="Grossiste TTC (TND)">
                                         {row.priceWholesale ? Number(row.priceWholesale).toFixed(3) : '-'}
                                     </td>
-                                    <td className="px-4 py-3 text-right text-gray-700 font-mono">
+                                    <td className="px-4 py-3 text-right text-gray-700 font-mono" data-label="Pharmacie TTC (TND)">
                                         {row.pricePharmacy ? Number(row.pricePharmacy).toFixed(3) : '-'}
                                     </td>
-                                    <td className="px-4 py-3 text-right font-bold text-indigo-700 font-mono">
+                                    <td className="px-4 py-3 text-right font-bold text-indigo-700 font-mono" data-label="Public TTC (TND)">
                                         {row.pricePublic ? Number(row.pricePublic).toFixed(3) : '-'}
                                     </td>
                                 </tr>

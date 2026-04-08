@@ -17,14 +17,19 @@ export default function SamplesView({ dashboardId, viewUser }) {
             });
             if (res.ok) {
                 const data = await res.json();
-                setDelegates(data);
+                if (Array.isArray(data)) {
+                    setDelegates(data);
 
-                // If viewing a specific user, extract their samples
-                if (viewUser) {
-                    const targetUser = data.find(u => u.username === viewUser);
-                    if (targetUser) {
-                        setSamples(targetUser.samples || []);
+                    // If viewing a specific user, extract their samples
+                    if (viewUser) {
+                        const targetUser = data.find(u => u.username === viewUser);
+                        if (targetUser) {
+                            setSamples(targetUser.samples || []);
+                        }
                     }
+                } else {
+                    console.warn('Expected array from /api/auth/users, got:', data);
+                    setDelegates([]);
                 }
             }
         } catch (err) {
@@ -60,13 +65,18 @@ export default function SamplesView({ dashboardId, viewUser }) {
             });
             if (res.ok) {
                 const data = await res.json();
-                const relevantVisits = data.filter(v =>
-                    v.givenSampleName ||
-                    v.givenMaterialName ||
-                    (v.givenMaterials && v.givenMaterials.length > 0) ||
-                    (v.givenSamples && v.givenSamples.length > 0)
-                );
-                setHistory(relevantVisits);
+                if (Array.isArray(data)) {
+                    const relevantVisits = data.filter(v =>
+                        v.givenSampleName ||
+                        v.givenMaterialName ||
+                        (v.givenMaterials && v.givenMaterials.length > 0) ||
+                        (v.givenSamples && v.givenSamples.length > 0)
+                    );
+                    setHistory(relevantVisits);
+                } else {
+                    console.warn('Expected array from /api/visits, got:', data);
+                    setHistory([]);
+                }
             }
         } catch (err) {
             console.error('Error fetching history:', err);

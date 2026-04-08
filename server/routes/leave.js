@@ -86,6 +86,20 @@ router.put('/:id/approve', auth, async (req, res) => {
         const leave = await LeaveRequest.findById(req.params.id);
         if (!leave) return res.status(404).json({ msg: 'Demande introuvable' });
 
+        if (leave.status === 'approved') {
+            return res.status(400).json({ msg: 'Cette demande est déjà approuvée' });
+        }
+
+        // Calculate days (inclusive)
+        const diffTime = Math.abs(new Date(leave.endDate) - new Date(leave.startDate));
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+        const user = await User.findById(leave.user);
+        if (user) {
+            user.totalLeaveDays = (user.totalLeaveDays || 0) - diffDays;
+            await user.save();
+        }
+
         leave.status = 'approved';
         leave.adminComment = req.body.comment || '';
         leave.reviewedBy = req.user.userId;

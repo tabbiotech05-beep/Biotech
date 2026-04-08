@@ -65,7 +65,7 @@ export default function SalesTab() {
                 </div>
 
                 <div className="overflow-x-auto rounded-lg bg-white shadow-sm border border-gray-100 h-[600px] relative">
-                    <table className="w-full text-left border-collapse">
+                    <table className="iso-table w-full text-left border-collapse">
                         <thead className="sticky top-0 bg-indigo-50 shadow-sm z-10">
                             <tr className="text-indigo-900 text-xs uppercase tracking-wider">
                                 <th className="px-4 py-3 border-b border-indigo-100 font-bold">Mois</th>
@@ -78,15 +78,15 @@ export default function SalesTab() {
                         <tbody className="text-sm">
                             {filteredData.slice(0, 500).map((row, idx) => (
                                 <tr key={idx} className="hover:bg-indigo-50/30 transition-colors border-b border-gray-50 last:border-0">
-                                    <td className="px-4 py-3 whitespace-nowrap">
+                                    <td className="px-4 py-3 whitespace-nowrap" data-label="Mois">
                                         <span className="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded border border-indigo-200">
                                             {row.mois}
                                         </span>
                                     </td>
-                                    <td className="px-4 py-3 font-medium text-gray-800">{row.client}</td>
-                                    <td className="px-4 py-3 text-gray-600">{row.libelle}</td>
-                                    <td className="px-4 py-3 text-gray-600">{row.gouvernorat}</td>
-                                    <td className="px-4 py-3 text-center text-indigo-700 font-black font-mono bg-indigo-50/30 border-l border-indigo-50">
+                                    <td className="px-4 py-3 font-medium text-gray-800" data-label="Client">{row.client}</td>
+                                    <td className="px-4 py-3 text-gray-600" data-label="Libellé (Spécialité)">{row.libelle}</td>
+                                    <td className="px-4 py-3 text-gray-600" data-label="Gouvernorat">{row.gouvernorat}</td>
+                                    <td className="px-4 py-3 text-center text-indigo-700 font-black font-mono bg-indigo-50/30 border-l border-indigo-50" data-label="Quantité">
                                         {row.quantite}
                                     </td>
                                 </tr>

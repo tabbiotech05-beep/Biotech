@@ -7,6 +7,8 @@ import autoTable from 'jspdf-autotable';
 export default function CongressView({ dashboardId }) {
     const [congresses, setCongresses] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [showDeleteGlobalModal, setShowDeleteGlobalModal] = useState(false);
+    const [deleteGlobalId, setDeleteGlobalId] = useState('');
     const [editingId, setEditingId] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
@@ -17,6 +19,7 @@ export default function CongressView({ dashboardId }) {
         amount: '',
         status: 'planifié',
         comment: '',
+        dashboardId: dashboardId,
         image: null
     });
     const [isSaving, setIsSaving] = useState(false);
@@ -53,9 +56,7 @@ export default function CongressView({ dashboardId }) {
         const token = localStorage.getItem('token');
 
         const data = new FormData();
-        // dashboardId is not needed for update but needed for create
-        if (!editingId) data.append('dashboardId', dashboardId);
-
+        data.append('dashboardId', formData.dashboardId || dashboardId);
         data.append('name', formData.name);
         data.append('startDate', formData.startDate);
         data.append('endDate', formData.endDate);
@@ -132,6 +133,7 @@ export default function CongressView({ dashboardId }) {
             amount: congress.amount,
             status: congress.status,
             comment: congress.comment || '',
+            dashboardId: congress.dashboardId || dashboardId,
             image: null // Start null, file input is for NEW image only
         });
         setShowModal(true);
@@ -149,6 +151,7 @@ export default function CongressView({ dashboardId }) {
             amount: '',
             status: 'planifié',
             comment: '',
+            dashboardId: dashboardId,
             image: null
         });
     };
@@ -209,9 +212,17 @@ export default function CongressView({ dashboardId }) {
             startY: 50,
             theme: 'striped',
             headStyles: { fillStyle: 'fill', fillColor: [59, 130, 246], textColor: [255, 255, 255] },
-            foot: [['Total', '', `${total.toLocaleString()} TND`]],
-            footStyles: { fillColor: [240, 240, 240], textColor: [0, 0, 0], fontStyle: 'bold' }
+            styles: { fontSize: 9 }
         });
+
+        // Total Section
+        const finalY = doc.lastAutoTable.finalY + 10;
+        doc.setFillColor(240, 240, 240);
+        doc.roundedRect(14, finalY, 182, 12, 2, 2, 'F');
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(11);
+        doc.setFont('helvetica', 'bold');
+        doc.text(`TOTAL DES ACTIONS : ${total.toLocaleString()} TND`, 18, finalY + 8);
 
         doc.save(`Rapport_Action_Marketing_${format(new Date(), 'yyyyMMdd')}.pdf`);
     };
@@ -223,6 +234,15 @@ export default function CongressView({ dashboardId }) {
             <div className="flex justify-between items-center mb-6">
                 <h3 className="text-xl font-bold text-gray-800">Gestion des Actions Marketing</h3>
                 <div className="flex gap-3">
+                    {isAdmin && (
+                        <button
+                            onClick={() => setShowDeleteGlobalModal(true)}
+                            className="px-4 py-2 bg-red-50 text-red-600 border border-red-200 rounded-md hover:bg-red-100 transition-colors shadow-sm flex items-center gap-2 font-bold"
+                        >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                            Supprimer une Action
+                        </button>
+                    )}
                     {isAdmin && congresses.length > 0 && (
                         <button
                             onClick={generatePDF}
@@ -243,6 +263,7 @@ export default function CongressView({ dashboardId }) {
                                 amount: '',
                                 status: 'planifié',
                                 comment: '',
+                                dashboardId: dashboardId,
                                 image: null
                             });
                             setShowModal(true);
@@ -279,11 +300,16 @@ export default function CongressView({ dashboardId }) {
                                         {congress.status}
                                     </span>
                                     {congress.isAdminCreated && (
-                                    <span className="px-2 py-0.5 bg-purple-600 text-white rounded text-[10px] font-black uppercase tracking-wider shadow-sm">
-                                        Admin
-                                    </span>
-                                )}
-                                {congress.isApproved && (
+                                        <span className="px-2 py-0.5 bg-purple-600 text-white rounded text-[10px] font-black uppercase tracking-wider shadow-sm">
+                                            Admin
+                                        </span>
+                                    )}
+                                    {isAdmin && (
+                                        <span className={`px-2 py-0.5 text-white rounded text-[10px] font-black uppercase tracking-wider shadow-sm ${congress.dashboardId === 'dashboard1' ? 'bg-emerald-600' : 'bg-indigo-600'}`}>
+                                            {congress.dashboardId === 'dashboard1' ? 'Biotech' : 'Tenshi'}
+                                        </span>
+                                    )}
+                                    {congress.isApproved && (
                                     <div className="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1">
                                         <span>✅</span>
                                         <span>Approuvé par {congress.approvedBy || 'Admin'}</span>
@@ -335,11 +361,20 @@ export default function CongressView({ dashboardId }) {
                                             Modifier
                                         </button>
                                     )}
-                                    {(isAdmin || !congress.isApproved) && (
+                                    {(!isAdmin && !congress.isApproved) && (
                                         <button
                                             onClick={() => deleteCongress(congress._id)}
                                             className="px-3 py-1.5 text-red-600 bg-red-50 hover:bg-red-100 font-bold rounded-lg text-[10px] uppercase tracking-wider transition-colors"
                                         >
+                                            Supprimer
+                                        </button>
+                                    )}
+                                    {isAdmin && (
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); deleteCongress(congress._id); }}
+                                            className="px-3 py-1.5 text-white bg-red-600 hover:bg-red-700 font-bold rounded-lg text-[10px] uppercase tracking-wider transition-colors shadow-sm flex items-center gap-1"
+                                        >
+                                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                                             Supprimer
                                         </button>
                                     )}
@@ -377,6 +412,15 @@ export default function CongressView({ dashboardId }) {
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Participant</label>
                                 <input required type="text" name="participant" value={formData.participant} onChange={handleInputChange} className="w-full border border-gray-300 rounded px-3 py-2" />
                             </div>
+                            {isAdmin && (
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-1">Équipe assignée (Admin uniquement)</label>
+                                    <select name="dashboardId" value={formData.dashboardId} onChange={handleInputChange} className="w-full border border-gray-300 rounded px-3 py-2 bg-blue-50 font-bold">
+                                        <option value="dashboard1">Biotech</option>
+                                        <option value="dashboard2">Tenshi</option>
+                                    </select>
+                                </div>
+                            )}
                             <div className="grid grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Montant</label>
@@ -405,7 +449,20 @@ export default function CongressView({ dashboardId }) {
                                 <label className="block text-sm font-medium text-gray-700 mb-1">Image de l'action marketing</label>
                                 <input type="file" accept="image/*" onChange={handleFileChange} className="w-full border border-gray-300 rounded px-3 py-2" />
                             </div>
-                            <div className="flex justify-end gap-3 pt-4 border-t border-gray-100">
+                            <div className="flex justify-end gap-3 pt-4 border-t border-gray-100 items-center">
+                                {isAdmin && editingId && (
+                                    <button
+                                        type="button"
+                                        onClick={async () => {
+                                            await deleteCongress(editingId);
+                                            closeModal();
+                                        }}
+                                        className="px-5 py-2.5 text-white bg-red-600 hover:bg-red-700 rounded-md font-medium transition-colors mr-auto flex items-center gap-2"
+                                    >
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                        Supprimer
+                                    </button>
+                                )}
                                 <button type="button" onClick={closeModal} className="px-5 py-2.5 text-gray-600 hover:bg-gray-50 rounded-md font-medium">Annuler</button>
                                 <button
                                     type="submit"
@@ -416,6 +473,51 @@ export default function CongressView({ dashboardId }) {
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            )}
+
+            {showDeleteGlobalModal && (
+                <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm p-4 w-full h-full min-h-screen top-0 fixed">
+                    <div className="bg-white p-6 rounded-lg shadow-xl w-[500px]">
+                        <h3 className="text-xl font-bold mb-4 text-gray-800">Supprimer une Action Marketing</h3>
+                        <p className="text-sm text-gray-600 mb-4">Sélectionnez l'action marketing que vous souhaitez supprimer. Cette action est irréversible.</p>
+                        <select 
+                            className="w-full border border-gray-300 rounded px-3 py-2 mb-6"
+                            value={deleteGlobalId}
+                            onChange={(e) => setDeleteGlobalId(e.target.value)}
+                        >
+                            <option value="">-- Sélectionnez une action --</option>
+                            {congresses.map(c => (
+                                <option key={c._id} value={c._id}>
+                                    {c.name} - {c.participant} ({format(new Date(c.startDate), 'dd MMM yyyy', { locale: fr })})
+                                </option>
+                            ))}
+                        </select>
+                        <div className="flex justify-end gap-3">
+                            <button 
+                                type="button" 
+                                onClick={() => { setShowDeleteGlobalModal(false); setDeleteGlobalId(''); }} 
+                                className="px-5 py-2.5 text-gray-600 hover:bg-gray-50 rounded-md font-medium"
+                            >
+                                Annuler
+                            </button>
+                            <button
+                                type="button"
+                                disabled={!deleteGlobalId}
+                                onClick={async () => {
+                                    if (deleteGlobalId) {
+                                        await deleteCongress(deleteGlobalId);
+                                        setShowDeleteGlobalModal(false);
+                                        setDeleteGlobalId('');
+                                    }
+                                }}
+                                className={`px-5 py-2.5 rounded-md font-medium text-white transition-colors flex items-center gap-2 ${!deleteGlobalId ? 'bg-gray-400 cursor-not-allowed' : 'bg-red-600 hover:bg-red-700'}`}
+                            >
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                Supprimer définitivement
+                            </button>
+                        </div>
                     </div>
                 </div>
             )}

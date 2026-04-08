@@ -1,0 +1,23 @@
+
+> bioxtenshi@0.0.0 build
+> vite build
+
+vite v7.2.7 building client environment for production...
+transforming...
+✓ 39 modules transformed.
+✗ Build failed in 2.00s
+error during build:
+[vite]: Rollup failed to resolve import "recharts" from "/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/src/components/PrixVenteView.jsx".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rollupOptions.external`
+    at viteLog (file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/node_modules/vite/dist/node/chunks/config.js:33634:57)
+    at file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/node_modules/vite/dist/node/chunks/config.js:33668:73
+    at onwarn (file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/node_modules/@vitejs/plugin-react/dist/index.js:76:7)
+    at file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/node_modules/vite/dist/node/chunks/config.js:33668:28
+    at onRollupLog (file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/node_modules/vite/dist/node/chunks/config.js:33663:63)
+    at onLog (file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/node_modules/vite/dist/node/chunks/config.js:33466:4)
+    at file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/node_modules/vite/node_modules/rollup/dist/es/shared/node-entry.js:20961:32
+    at Object.logger [as onLog] (file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/node_modules/vite/node_modules/rollup/dist/es/shared/node-entry.js:22848:9)
+    at ModuleLoader.handleInvalidResolvedId (file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/node_modules/vite/node_modules/rollup/dist/es/shared/node-entry.js:21592:26)
+    at file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/node_modules/vite/node_modules/rollup/dist/es/shared/node-entry.js:21550:26

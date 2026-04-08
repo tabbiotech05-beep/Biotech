@@ -53,21 +53,22 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
             }
             // ────────────────────────────────────────────────────────────────
 
-            setDoctors(doctors);
-            setVisits(visitsRes.data || []);
+            setDoctors(Array.isArray(doctors) ? doctors : []);
+            setVisits(Array.isArray(visitsRes.data) ? visitsRes.data : []);
 
-            if (cycleRes.data && cycleRes.data.weeks) {
+            if (cycleRes.data && Array.isArray(cycleRes.data.weeks)) {
                 const populatedWeeks = cycleRes.data.weeks.map(week => {
+                    if (!Array.isArray(week)) return [];
                     return week.map(item => {
                         // Handle old format (just ID strings) and new format ({id, type})
                         const id = item.id || (typeof item === 'string' ? item : item?._id);
                         const type = item.type || 'Doctor';
 
                         if (type === 'Visit') {
-                            const visit = visitsRes.data?.find(v => v._id === id);
+                            const visit = Array.isArray(visitsRes.data) ? visitsRes.data.find(v => v._id === id) : null;
                             return visit ? { ...visit, __type: 'Visit' } : { _id: id, name: 'Visite Introuvable', __type: 'Visit' };
                         } else {
-                            const doc = doctors.find(d => d._id === id);
+                            const doc = Array.isArray(doctors) ? doctors.find(d => d._id === id) : null;
                             return doc ? { ...doc, __type: 'Doctor' } : { _id: id, name: 'Médecin Introuvable', specialty: 'N/A', __type: 'Doctor' };
                         }
                     });

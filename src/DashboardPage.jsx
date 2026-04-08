@@ -11,6 +11,12 @@ import StockPCTView from './components/StockPCTView';
 import LeaveView from './components/LeaveView';
 import LeaveAdminView from './components/LeaveAdminView';
 import ExpenseView from './components/ExpenseView';
+import ProfileView from './components/ProfileView';
+import PrixVenteView from './components/PrixVenteView';
+import MagicSearchView from './components/MagicSearchView';
+import ListingView from './components/ListingView';
+import ContactView from './components/ContactView';
+import axios from 'axios';
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 const IconCalendar = () => (
@@ -84,6 +90,31 @@ const IconExpense = () => (
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>
 );
+const IconProfile = () => (
+    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+    </svg>
+);
+const IconVente = () => (
+    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+    </svg>
+);
+const IconMagic = () => (
+    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+    </svg>
+);
+const IconList = () => (
+    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+    </svg>
+);
+const IconContact = () => (
+    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+);
 
 // ─── Sidebar Item ─────────────────────────────────────────────────────────────
 function SidebarItem({ icon, label, active, onClick, accent, collapsed }) {
@@ -111,7 +142,7 @@ function SidebarItem({ icon, label, active, onClick, accent, collapsed }) {
 }
 
 // ─── Sidebar Component ────────────────────────────────────────────────────────
-function Sidebar({ tabs, activeTab, setActiveTab, accent, accentLight, logo, dashName, subTitle, user, role, extraActions, sidebarOpen, setSidebarOpen }) {
+function Sidebar({ tabs, activeTab, setActiveTab, accent, accentLight, logo, dashName, subTitle, user, role, profileImage, extraActions, sidebarOpen, setSidebarOpen }) {
     return (
         <>
             {/* Mobile overlay */}
@@ -166,9 +197,21 @@ function Sidebar({ tabs, activeTab, setActiveTab, accent, accentLight, logo, das
                 {/* User + Actions */}
                 <div className="p-4" style={{ borderTop: '1px solid var(--border-subtle)' }}>
                     <div className="flex items-center gap-3 mb-3 px-2">
-                        <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-black text-white flex-shrink-0 shadow-sm"
+                        <div className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-black text-white flex-shrink-0 shadow-sm overflow-hidden"
                             style={{ background: `linear-gradient(135deg, ${accent}, #0ea5e9)` }}>
-                            {user ? user[0].toUpperCase() : '?'}
+                            {profileImage ? (
+                                <img 
+                                    src={profileImage.startsWith('http') ? profileImage : `/${profileImage.startsWith('/') ? profileImage.slice(1) : profileImage}`} 
+                                    alt="Profile" 
+                                    className="w-full h-full object-cover" 
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.parentElement.innerText = user ? user[0].toUpperCase() : '?';
+                                    }}
+                                />
+                            ) : (
+                                user ? user[0].toUpperCase() : '?'
+                            )}
                         </div>
                         <div className="flex-1 min-w-0">
                             <p className="text-sm font-bold text-slate-800 truncate">{user}</p>
@@ -217,6 +260,7 @@ export default function DashboardPage() {
     const [user, setUser] = useState(null);
     const [activeTab, setActiveTab] = useState('calendar');
     const [pharmaTab, setPharmaTab] = useState('assignment');
+    const [userData, setUserData] = useState(null);
     const [leavePendingCount, setLeavePendingCount] = useState(0);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const allowedDashboards = JSON.parse(localStorage.getItem('allowedDashboards') || '[]');
@@ -230,6 +274,14 @@ export default function DashboardPage() {
             navigate('/');
         } else {
             setUser(username);
+            
+            // Fetch detailed user data for profile image
+            axios.get('/api/auth/me', { headers: { 'x-auth-token': token } })
+                .then(res => {
+                    setUserData(res.data);
+                })
+                .catch(err => console.error('Failed to fetch user data:', err));
+
             if (!allowedDashboards.includes(dashboardId)) {
                 alert('Access Denied');
                 navigate('/');
@@ -274,6 +326,7 @@ export default function DashboardPage() {
             { id: 'assignment', label: 'Attribution', icon: <IconAssignment /> },
             { id: 'stock', label: 'Stock', icon: <IconStock /> },
             { id: 'history', label: 'Historique', icon: <IconHistory /> },
+            { id: 'profile', label: 'Mon Profil', icon: <IconProfile /> },
         ];
 
         const pharmaActions = (
@@ -298,6 +351,7 @@ export default function DashboardPage() {
                     subTitle="Gestion des stocks"
                     user={user}
                     role="Pharmacienne"
+                    profileImage={userData?.profileImage}
                     extraActions={pharmaActions}
                     sidebarOpen={sidebarOpen}
                     setSidebarOpen={setSidebarOpen}
@@ -310,6 +364,7 @@ export default function DashboardPage() {
                         {pharmaTab === 'assignment' && <PharmacienneView />}
                         {pharmaTab === 'stock' && <StockView />}
                         {pharmaTab === 'history' && <SampleHistoryView />}
+                        {pharmaTab === 'profile' && <ProfileView />}
                     </div>
                 </main>
 
@@ -326,6 +381,7 @@ export default function DashboardPage() {
         { id: 'congress', label: 'Action marketing', icon: <IconCongress /> },
         { id: 'leave', label: 'Mes Congés', icon: <IconLeave /> },
         { id: 'expense', label: 'Note de Frais', icon: <IconExpense /> },
+        { id: 'profile', label: 'Mon Profil', icon: <IconProfile /> },
     ];
 
     let displayedTabs = [...delegateTabs];
@@ -338,6 +394,40 @@ export default function DashboardPage() {
         if (!allowedUsers.includes(currentUsername)) {
             displayedTabs = displayedTabs.filter(tab => tab.id !== 'stockpct');
         }
+    }
+
+    if (dashboardId === 'dashboard1' && (role === 'delegue' || role === 'admin')) {
+        // Insert Prix et vente before Profile
+        const profileIndex = displayedTabs.findIndex(t => t.id === 'profile');
+        displayedTabs.splice(profileIndex > -1 ? profileIndex : displayedTabs.length, 0, {
+            id: 'prix-vente',
+            label: 'Prix et Vente',
+            icon: <IconVente />
+        });
+        
+        // Add Magic Search after Prix et Vente
+        const vIndex = displayedTabs.findIndex(t => t.id === 'prix-vente');
+        displayedTabs.splice(vIndex > -1 ? vIndex + 1 : displayedTabs.length, 0, {
+            id: 'magic-search',
+            label: 'Magic Search',
+            icon: <IconMagic />
+        });
+
+        // Add Listing after Magic Search
+        const mIndex = displayedTabs.findIndex(t => t.id === 'magic-search');
+        displayedTabs.splice(mIndex > -1 ? mIndex + 1 : displayedTabs.length, 0, {
+            id: 'listing',
+            label: 'Listing',
+            icon: <IconList />
+        });
+
+        // Add Contact after Listing
+        const lIndex = displayedTabs.findIndex(t => t.id === 'listing');
+        displayedTabs.splice(lIndex > -1 ? lIndex + 1 : displayedTabs.length, 0, {
+            id: 'contact',
+            label: 'Contact',
+            icon: <IconContact />
+        });
     }
 
     // Admin-only: add congé management tab
@@ -380,6 +470,7 @@ export default function DashboardPage() {
                 subTitle="Délégué Médical"
                 user={user}
                 role="Délégué"
+                profileImage={userData?.profileImage}
                 extraActions={delegateActions}
                 sidebarOpen={sidebarOpen}
                 setSidebarOpen={setSidebarOpen}
@@ -411,6 +502,11 @@ export default function DashboardPage() {
                     {activeTab === 'leave' && <LeaveView />}
                     {activeTab === 'leave-admin' && <LeaveAdminView />}
                     {activeTab === 'expense' && <ExpenseView dashboardId={dashboardId} />}
+                    {activeTab === 'prix-vente' && <PrixVenteView />}
+                    {activeTab === 'magic-search' && <MagicSearchView />}
+                    {activeTab === 'listing' && <ListingView />}
+                    {activeTab === 'contact' && <ContactView />}
+                    {activeTab === 'profile' && <ProfileView />}
                 </div>
             </main>
         </div>

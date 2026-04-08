@@ -1,0 +1,898 @@
+[
+  {
+    "depot": "DEPOT LE KEF",
+    "libelle": "METHOTREXATE VIATRIS 50mg/2ml Sol.Inj. Bt 10Fl/2ml",
+    "numLot": 7802541,
+    "stock": 18,
+    "expiryDate": "31/07/2026",
+    "rawDate": 1785456000000
+  },
+  {
+    "depot": "CEPHARMA PUBLIC - SFAX -",
+    "libelle": "EFEXOR. XL 150mg Gél. LP Bt 28",
+    "numLot": "KD3016",
+    "stock": 48,
+    "expiryDate": "31/07/2026",
+    "rawDate": 1785456000000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "numLot": "LR3857",
+    "stock": 22,
+    "expiryDate": "31/07/2026",
+    "rawDate": 1785456000000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "numLot": "LR3857",
+    "stock": 993,
+    "expiryDate": "31/07/2026",
+    "rawDate": 1785456000000
+  },
+  {
+    "depot": "CEPHARMA PUBLIC - SFAX -",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "numLot": "MD7922",
+    "stock": 20,
+    "expiryDate": "31/07/2026",
+    "rawDate": 1785456000000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "numLot": "LT7329",
+    "stock": 18288,
+    "expiryDate": "30/09/2026",
+    "rawDate": 1790726400000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "LYRICA 75mg Gél. Bt 56",
+    "numLot": "KA7626",
+    "stock": 532,
+    "expiryDate": "30/11/2026",
+    "rawDate": 1795996800000
+  },
+  {
+    "depot": "CEPHARMA HOPITAUX SFAX",
+    "libelle": "METHOTREXATE VIATRIS 50mg/2ml Sol.Inj. Bt 10Fl/2ml",
+    "numLot": 7802597,
+    "stock": 22,
+    "expiryDate": "31/12/2026",
+    "rawDate": 1798675200000
+  },
+  {
+    "depot": "DEPOT MEDENINE",
+    "libelle": "METHOTREXATE VIATRIS 50mg/2ml Sol.Inj. Bt 10Fl/2ml",
+    "numLot": 7802597,
+    "stock": 3,
+    "expiryDate": "31/12/2026",
+    "rawDate": 1798675200000
+  },
+  {
+    "depot": "RESERVE HOPITAUX",
+    "libelle": "METHOTREXATE VIATRIS 50mg/2ml Sol.Inj. Bt 10Fl/2ml",
+    "numLot": 7802597,
+    "stock": 11,
+    "expiryDate": "31/12/2026",
+    "rawDate": 1798675200000
+  },
+  {
+    "depot": "SODIPHAC HOPITAUX SOUSSE",
+    "libelle": "METHOTREXATE VIATRIS 50mg/2ml Sol.Inj. Bt 10Fl/2ml",
+    "numLot": 7802597,
+    "stock": 53,
+    "expiryDate": "31/12/2026",
+    "rawDate": 1798675200000
+  },
+  {
+    "depot": "TUDIPHARMA",
+    "libelle": "METHOTREXATE VIATRIS 50mg/2ml Sol.Inj. Bt 10Fl/2ml",
+    "numLot": 7802597,
+    "stock": 12,
+    "expiryDate": "31/12/2026",
+    "rawDate": 1798675200000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "numLot": "LL8475",
+    "stock": 4,
+    "expiryDate": "31/12/2026",
+    "rawDate": 1798675200000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "numLot": "LC6923",
+    "stock": 2246,
+    "expiryDate": "31/12/2026",
+    "rawDate": 1798675200000
+  },
+  {
+    "depot": "CEPHARMA PUBLIC - SFAX -",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "numLot": "MP0870",
+    "stock": 5,
+    "expiryDate": "31/12/2026",
+    "rawDate": 1798675200000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "numLot": "MK6416",
+    "stock": 13779,
+    "expiryDate": "31/12/2026",
+    "rawDate": 1798675200000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "numLot": "B300111",
+    "stock": 6,
+    "expiryDate": "28/02/2027",
+    "rawDate": 1803772800000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "TAHOR 80mg Comp.Pell. Bt 28",
+    "numLot": "ME9765",
+    "stock": 328,
+    "expiryDate": "28/02/2027",
+    "rawDate": 1803772800000
+  },
+  {
+    "depot": "DEPOT MEDENINE",
+    "libelle": "CAPECITABINE VIATRIS 500mg Comp.Pell. Bt 120",
+    "numLot": 115576,
+    "stock": 1,
+    "expiryDate": "01/03/2027",
+    "rawDate": 1803859200000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "numLot": "LH3556",
+    "stock": 684,
+    "expiryDate": "31/03/2027",
+    "rawDate": 1806451200000
+  },
+  {
+    "depot": "CEPHARMA PUBLIC - SFAX -",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "numLot": "NA8461",
+    "stock": 133,
+    "expiryDate": "31/03/2027",
+    "rawDate": 1806451200000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "numLot": "NA8461",
+    "stock": 45,
+    "expiryDate": "31/03/2027",
+    "rawDate": 1806451200000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "numLot": "NF0717",
+    "stock": 4598,
+    "expiryDate": "31/03/2027",
+    "rawDate": 1806451200000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "numLot": "NA8457",
+    "stock": 14710,
+    "expiryDate": "31/03/2027",
+    "rawDate": 1806451200000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "numLot": "NE3913",
+    "stock": 5760,
+    "expiryDate": "31/03/2027",
+    "rawDate": 1806451200000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "numLot": "NA8461",
+    "stock": 2354,
+    "expiryDate": "31/03/2027",
+    "rawDate": 1806451200000
+  },
+  {
+    "depot": "SODIPHAC PUBLIC - SOUSSE -",
+    "libelle": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "numLot": "NA8461",
+    "stock": 20,
+    "expiryDate": "31/03/2027",
+    "rawDate": 1806451200000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "numLot": "A309096",
+    "stock": 11,
+    "expiryDate": "31/05/2027",
+    "rawDate": 1811721600000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "numLot": "B739906",
+    "stock": 5,
+    "expiryDate": "31/05/2027",
+    "rawDate": 1811721600000
+  },
+  {
+    "depot": "CEPHARMA PUBLIC - SFAX -",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "numLot": "A311542",
+    "stock": 1,
+    "expiryDate": "30/06/2027",
+    "rawDate": 1814313600000
+  },
+  {
+    "depot": "CEPHARMA PUBLIC - SFAX -",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "numLot": "A310805",
+    "stock": 12,
+    "expiryDate": "30/06/2027",
+    "rawDate": 1814313600000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "numLot": "A310805",
+    "stock": 9,
+    "expiryDate": "30/06/2027",
+    "rawDate": 1814313600000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "FLECAINE LP 200mg Gél. à Libération Prolongée Bt 30",
+    "numLot": "B310804",
+    "stock": 6403,
+    "expiryDate": "30/06/2027",
+    "rawDate": 1814313600000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "numLot": "LM1989",
+    "stock": 9,
+    "expiryDate": "31/07/2027",
+    "rawDate": 1816992000000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "numLot": "LW0685",
+    "stock": 4,
+    "expiryDate": "31/07/2027",
+    "rawDate": 1816992000000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "numLot": "LW0685",
+    "stock": 27138,
+    "expiryDate": "31/07/2027",
+    "rawDate": 1816992000000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "EFFEXOR LP 37.5mg Gél. LP Bt 30",
+    "numLot": "MG9989",
+    "stock": 6260,
+    "expiryDate": "31/07/2027",
+    "rawDate": 1816992000000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "numLot": "MD5865",
+    "stock": 1,
+    "expiryDate": "31/08/2027",
+    "rawDate": 1819670400000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "numLot": "MD5865",
+    "stock": 1309,
+    "expiryDate": "31/08/2027",
+    "rawDate": 1819670400000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "numLot": "MJ6401",
+    "stock": 1256,
+    "expiryDate": "31/08/2027",
+    "rawDate": 1819670400000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "numLot": "A319121",
+    "stock": 11872,
+    "expiryDate": "30/09/2027",
+    "rawDate": 1822262400000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "FLECAINE LP 100mg Gél. à Libération Prolongée Bt 30",
+    "numLot": "A319120",
+    "stock": 2593,
+    "expiryDate": "30/09/2027",
+    "rawDate": 1822262400000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "XALACOM 50mcg + 5mg/ml Collyre Fl 2.5ml (F)",
+    "numLot": "NE9226",
+    "stock": 13000,
+    "expiryDate": "30/09/2027",
+    "rawDate": 1822262400000
+  },
+  {
+    "depot": "DEPOT GAFSA",
+    "libelle": "SUFENTANIL VIATRIS 50µg/10ml Sol.Inj. Bt 20/10ml",
+    "numLot": "H2364",
+    "stock": 18,
+    "expiryDate": "31/10/2027",
+    "rawDate": 1824940800000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "LYRICA 150mg Gél. Bt 56",
+    "numLot": "MH1250",
+    "stock": 1040,
+    "expiryDate": "31/10/2027",
+    "rawDate": 1824940800000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "FLECAINE LP 50mg Gél. à Libération Prolongée Bt 30",
+    "numLot": 345939,
+    "stock": 748,
+    "expiryDate": "30/11/2027",
+    "rawDate": 1827532800000
+  },
+  {
+    "depot": "DEPOT LE KEF",
+    "libelle": "CAPECITABINE VIATRIS 500mg Comp.Pell. Bt 120",
+    "numLot": 120852,
+    "stock": 3,
+    "expiryDate": "31/12/2027",
+    "rawDate": 1830211200000
+  },
+  {
+    "depot": "DEPOT MEDENINE",
+    "libelle": "CAPECITABINE VIATRIS 500mg Comp.Pell. Bt 120",
+    "numLot": 120852,
+    "stock": 2,
+    "expiryDate": "31/12/2027",
+    "rawDate": 1830211200000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "numLot": 8205579,
+    "stock": 1191,
+    "expiryDate": "31/01/2028",
+    "rawDate": 1832889600000
+  },
+  {
+    "depot": "CEPHARMA HOPITAUX SFAX",
+    "libelle": "SUFENTANIL VIATRIS 50µg/10ml Sol.Inj. Bt 20/10ml",
+    "numLot": "H2368",
+    "stock": 103,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "CEPHARMA HOPITAUX SFAX",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0010A",
+    "stock": 360,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "CEPHARMA HOPITAUX SFAX",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0009A",
+    "stock": 720,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "CEPHARMA HOPITAUX SFAX",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0007A",
+    "stock": 461,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "DEPOT GAFSA",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0010A",
+    "stock": 52,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "DEPOT GAFSA",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0009A",
+    "stock": 120,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "DEPOT GAFSA",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0007A",
+    "stock": 395,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "DEPOT LE KEF",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0009A",
+    "stock": 480,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "DEPOT LE KEF",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0007A",
+    "stock": 412,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "DEPOT MEDENINE",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0010A",
+    "stock": 338,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "DEPOT MEDENINE",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0009A",
+    "stock": 360,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "RESERVE HOPITAUX",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0009A",
+    "stock": 8028,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "RESERVE HOPITAUX",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0008A",
+    "stock": 9732,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "SODIPHAC HOPITAUX SOUSSE",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0007A",
+    "stock": 2165,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "SODIPHAC HOPITAUX SOUSSE",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0010A",
+    "stock": 720,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "SODIPHAC HOPITAUX SOUSSE",
+    "libelle": "SUFENTANIL VIATRIS 50µg/10ml Sol.Inj. Bt 20/10ml",
+    "numLot": "H2368",
+    "stock": 285,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "TUDIPHARMA",
+    "libelle": "SUFENTANIL VIATRIS 50µg/10ml Sol.Inj. Bt 20/10ml",
+    "numLot": "H2368",
+    "stock": 5,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "TUDIPHARMA",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0010A",
+    "stock": 4800,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "TUDIPHARMA",
+    "libelle": "AZATHIOPRINE VIATRIS 50mg Comp.Pell.Séc. Bt 100",
+    "numLot": "N25IF0007A",
+    "stock": 721,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "CEPHARMA PUBLIC - SFAX -",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "numLot": "MN4828",
+    "stock": 21,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "numLot": "MN4828",
+    "stock": 26,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "numLot": "MN4828",
+    "stock": 2061,
+    "expiryDate": "29/02/2028",
+    "rawDate": 1835395200000
+  },
+  {
+    "depot": "CEPHARMA HOPITAUX SFAX",
+    "libelle": "CAPECITABINE VIATRIS 500mg Comp.Pell. Bt 120",
+    "numLot": 122359,
+    "stock": 480,
+    "expiryDate": "31/03/2028",
+    "rawDate": 1838073600000
+  },
+  {
+    "depot": "DEPOT GAFSA",
+    "libelle": "CAPECITABINE VIATRIS 500mg Comp.Pell. Bt 120",
+    "numLot": 122359,
+    "stock": 116,
+    "expiryDate": "31/03/2028",
+    "rawDate": 1838073600000
+  },
+  {
+    "depot": "DEPOT LE KEF",
+    "libelle": "CAPECITABINE VIATRIS 500mg Comp.Pell. Bt 120",
+    "numLot": 122359,
+    "stock": 3,
+    "expiryDate": "31/03/2028",
+    "rawDate": 1838073600000
+  },
+  {
+    "depot": "RESERVE HOPITAUX",
+    "libelle": "CAPECITABINE VIATRIS 500mg Comp.Pell. Bt 120",
+    "numLot": 122359,
+    "stock": 1065,
+    "expiryDate": "31/03/2028",
+    "rawDate": 1838073600000
+  },
+  {
+    "depot": "SODIPHAC HOPITAUX SOUSSE",
+    "libelle": "CAPECITABINE VIATRIS 500mg Comp.Pell. Bt 120",
+    "numLot": 122359,
+    "stock": 232,
+    "expiryDate": "31/03/2028",
+    "rawDate": 1838073600000
+  },
+  {
+    "depot": "TUDIPHARMA",
+    "libelle": "CAPECITABINE VIATRIS 500mg Comp.Pell. Bt 120",
+    "numLot": 122359,
+    "stock": 323,
+    "expiryDate": "31/03/2028",
+    "rawDate": 1838073600000
+  },
+  {
+    "depot": "CEPHARMA PUBLIC - SFAX -",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "numLot": "5G1365",
+    "stock": 70,
+    "expiryDate": "31/05/2028",
+    "rawDate": 1843344000000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "numLot": "5G1365",
+    "stock": 80,
+    "expiryDate": "31/05/2028",
+    "rawDate": 1843344000000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "numLot": "5G1365",
+    "stock": 4670,
+    "expiryDate": "31/05/2028",
+    "rawDate": 1843344000000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "EFFEXOR LP 75mg Gél. LP Bt 30",
+    "numLot": "MT6237",
+    "stock": 13558,
+    "expiryDate": "31/05/2028",
+    "rawDate": 1843344000000
+  },
+  {
+    "depot": "RESERVE HOPITAUX",
+    "libelle": "CAPECITABINE VIATRIS 500mg Comp.Pell. Bt 120",
+    "numLot": 124012,
+    "stock": 2000,
+    "expiryDate": "30/06/2028",
+    "rawDate": 1845936000000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "EFEXOR. XL 150mg Gél. LP Bt 28",
+    "numLot": "NP5506",
+    "stock": 491,
+    "expiryDate": "30/06/2028",
+    "rawDate": 1845936000000
+  },
+  {
+    "depot": "CEPHARMA PUBLIC - SFAX -",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "numLot": "C2053",
+    "stock": 40,
+    "expiryDate": "30/06/2028",
+    "rawDate": 1845936000000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "numLot": "C2053",
+    "stock": 55,
+    "expiryDate": "30/06/2028",
+    "rawDate": 1845936000000
+  },
+  {
+    "depot": "SODIPHAC PUBLIC - SOUSSE -",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "numLot": "C2053",
+    "stock": 10,
+    "expiryDate": "30/06/2028",
+    "rawDate": 1845936000000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "VALPROATE DE SODIUM VIATRIS 500mg Comp.Pell.Séc. LP Fl 30",
+    "numLot": "5J1601",
+    "stock": 13000,
+    "expiryDate": "31/07/2028",
+    "rawDate": 1848614400000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "ZOLPIDEM VIATRIS 10mg Comp.Pell.Séc. Bt 14",
+    "numLot": 8216722,
+    "stock": 5000,
+    "expiryDate": "31/07/2028",
+    "rawDate": 1848614400000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "LYRICA 75mg Gél. Bt 14",
+    "numLot": "NH4787",
+    "stock": 1236,
+    "expiryDate": "31/08/2028",
+    "rawDate": 1851292800000
+  },
+  {
+    "depot": "RESERVE HOPITAUX",
+    "libelle": "CAPECITABINE VIATRIS 500mg Comp.Pell. Bt 120",
+    "numLot": 125481,
+    "stock": 2000,
+    "expiryDate": "30/09/2028",
+    "rawDate": 1853884800000
+  },
+  {
+    "depot": "CEPHARMA PUBLIC - SFAX -",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "numLot": "C2923",
+    "stock": 150,
+    "expiryDate": "31/10/2028",
+    "rawDate": 1856563200000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "numLot": "C2923",
+    "stock": 35,
+    "expiryDate": "31/10/2028",
+    "rawDate": 1856563200000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "numLot": "C2923",
+    "stock": 9006,
+    "expiryDate": "31/10/2028",
+    "rawDate": 1856563200000
+  },
+  {
+    "depot": "SODIPHAC PUBLIC - SOUSSE -",
+    "libelle": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "numLot": "C2923",
+    "stock": 40,
+    "expiryDate": "31/10/2028",
+    "rawDate": 1856563200000
+  },
+  {
+    "depot": "SODIPHAC PUBLIC - SOUSSE -",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "numLot": 2401450,
+    "stock": 10,
+    "expiryDate": "31/12/2028",
+    "rawDate": 1861833600000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "numLot": "B881208",
+    "stock": 35,
+    "expiryDate": "31/12/2028",
+    "rawDate": 1861833600000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "VIAGRA 25mg Comp.Pell. Bt 4",
+    "numLot": "B881208",
+    "stock": 1408,
+    "expiryDate": "31/12/2028",
+    "rawDate": 1861833600000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "numLot": "B881006",
+    "stock": 9365,
+    "expiryDate": "31/12/2028",
+    "rawDate": 1861833600000
+  },
+  {
+    "depot": "CEPHARMA PUBLIC - SFAX -",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "numLot": 2403054,
+    "stock": 26,
+    "expiryDate": "31/03/2029",
+    "rawDate": 1869609600000
+  },
+  {
+    "depot": "DISTRIPHAR",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "numLot": 8191424,
+    "stock": 29,
+    "expiryDate": "31/05/2029",
+    "rawDate": 1874880000000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "numLot": 8194201,
+    "stock": 18878,
+    "expiryDate": "31/01/2030",
+    "rawDate": 1896048000000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "numLot": "C114010",
+    "stock": 5399,
+    "expiryDate": "31/03/2030",
+    "rawDate": 1901145600000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "FLECAINE 100mg Comp.Séc. Bt 30",
+    "numLot": 8206054,
+    "stock": 5000,
+    "expiryDate": "31/05/2030",
+    "rawDate": 1906416000000
+  },
+  {
+    "depot": "CEPHARMA HOPITAUX SFAX",
+    "libelle": "DOBUTAMINE VIATRIS 250mg/20ml Sol.Inj. Bt 10/20ml Perf",
+    "numLot": "F1174F01",
+    "stock": 119,
+    "expiryDate": "31/07/2030",
+    "rawDate": 1911686400000
+  },
+  {
+    "depot": "DEPOT GAFSA",
+    "libelle": "DOBUTAMINE VIATRIS 250mg/20ml Sol.Inj. Bt 10/20ml Perf",
+    "numLot": "F1174F01",
+    "stock": 18,
+    "expiryDate": "31/07/2030",
+    "rawDate": 1911686400000
+  },
+  {
+    "depot": "DEPOT LE KEF",
+    "libelle": "DOBUTAMINE VIATRIS 250mg/20ml Sol.Inj. Bt 10/20ml Perf",
+    "numLot": "F1174F01",
+    "stock": 12,
+    "expiryDate": "31/07/2030",
+    "rawDate": 1911686400000
+  },
+  {
+    "depot": "DEPOT MEDENINE",
+    "libelle": "DOBUTAMINE VIATRIS 250mg/20ml Sol.Inj. Bt 10/20ml Perf",
+    "numLot": "F1175F01",
+    "stock": 89,
+    "expiryDate": "31/07/2030",
+    "rawDate": 1911686400000
+  },
+  {
+    "depot": "RESERVE HOPITAUX",
+    "libelle": "DOBUTAMINE VIATRIS 250mg/20ml Sol.Inj. Bt 10/20ml Perf",
+    "numLot": "F1174F01",
+    "stock": 1152,
+    "expiryDate": "31/07/2030",
+    "rawDate": 1911686400000
+  },
+  {
+    "depot": "SODIPHAC HOPITAUX SOUSSE",
+    "libelle": "DOBUTAMINE VIATRIS 250mg/20ml Sol.Inj. Bt 10/20ml Perf",
+    "numLot": "F1174F01",
+    "stock": 135,
+    "expiryDate": "31/07/2030",
+    "rawDate": 1911686400000
+  },
+  {
+    "depot": "TUDIPHARMA",
+    "libelle": "DOBUTAMINE VIATRIS 250mg/20ml Sol.Inj. Bt 10/20ml Perf",
+    "numLot": "F1174F01",
+    "stock": 606,
+    "expiryDate": "31/07/2030",
+    "rawDate": 1911686400000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "numLot": "C137503",
+    "stock": 17652,
+    "expiryDate": "31/08/2030",
+    "rawDate": 1914364800000
+  },
+  {
+    "depot": "RESERVE OFFICINES",
+    "libelle": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "numLot": "C137606",
+    "stock": 6500,
+    "expiryDate": "31/08/2030",
+    "rawDate": 1914364800000
+  }
+]

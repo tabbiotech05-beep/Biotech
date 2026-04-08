@@ -30,7 +30,23 @@ const userSchema = new mongoose.Schema({
         count: { type: Number, required: true, default: 0 },
         itemType: { type: String, enum: ['sample', 'material'], default: 'sample' },
         lastUpdated: { type: Date, default: Date.now }
-    }]
+    }],
+    profileImage: {
+        type: String,
+        default: ''
+    },
+    carLicensePlate: {
+        type: String,
+        default: ''
+    },
+    carModel: {
+        type: String,
+        default: ''
+    },
+    totalLeaveDays: {
+        type: Number,
+        default: 25
+    }
 }, { timestamps: true });
 
 export default mongoose.model('User', userSchema);

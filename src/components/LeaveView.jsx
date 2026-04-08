@@ -28,9 +28,19 @@ export default function LeaveView() {
     const [form, setForm] = useState({ startDate: '', endDate: '', reason: '' });
     const [submitting, setSubmitting] = useState(false);
     const [error, setError] = useState('');
+    const [leaveBalance, setLeaveBalance] = useState(null);
 
     const token = localStorage.getItem('token');
     const headers = { 'x-auth-token': token };
+
+    const fetchProfile = async () => {
+        try {
+            const res = await axios.get('/api/auth/me', { headers });
+            setLeaveBalance(res.data.totalLeaveDays);
+        } catch (e) {
+            console.error('Error fetching profile for leave balance:', e);
+        }
+    };
 
     const fetchLeaves = async () => {
         setLoading(true);
@@ -44,11 +54,21 @@ export default function LeaveView() {
         }
     };
 
-    useEffect(() => { fetchLeaves(); }, []);
+    useEffect(() => { 
+        fetchLeaves(); 
+        fetchProfile();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+
+        const requestedDays = daysBetween(form.startDate, form.endDate);
+        if (leaveBalance !== null && requestedDays > leaveBalance) {
+            setError('impossibilité de fournir un congé du au nombre de jours superieure au solde');
+            return;
+        }
+
         setSubmitting(true);
         try {
             await axios.post('/api/leave', form, { headers });
@@ -78,7 +98,7 @@ export default function LeaveView() {
         <div className="max-w-3xl mx-auto py-8 px-4 space-y-6">
             {/* Header */}
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-5 rounded-2xl shadow-sm border border-gray-100">
-                <div>
+                <div className="flex-1">
                     <h2 className="text-xl font-extrabold text-gray-900 flex items-center gap-2">
                         🏖️ Mes Congés
                     </h2>
@@ -88,6 +108,15 @@ export default function LeaveView() {
                             : 'Soumettez et suivez vos demandes de congé'}
                     </p>
                 </div>
+                
+                {leaveBalance !== null && (
+                    <div className="flex items-center gap-3 bg-indigo-50 px-4 py-2 rounded-xl border border-indigo-100">
+                        <span className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Solde</span>
+                        <span className="text-xl font-black text-indigo-700">{leaveBalance}</span>
+                        <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-widest">jours</span>
+                    </div>
+                )}
+
                 <button
                     onClick={() => setShowForm(v => !v)}
                     className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold rounded-xl shadow-lg shadow-indigo-500/25 transition-all active:scale-95"
@@ -125,9 +154,16 @@ export default function LeaveView() {
                             </div>
                         </div>
                         {form.startDate && form.endDate && new Date(form.endDate) >= new Date(form.startDate) && (
-                            <p className="text-xs text-indigo-600 font-bold -mt-2">
-                                📅 {daysBetween(form.startDate, form.endDate)} jour(s)
-                            </p>
+                            <div className="flex flex-col gap-1 -mt-2">
+                                <p className="text-xs text-indigo-600 font-bold">
+                                    📅 {daysBetween(form.startDate, form.endDate)} jour(s)
+                                </p>
+                                {leaveBalance !== null && daysBetween(form.startDate, form.endDate) > leaveBalance && (
+                                    <p className="text-xs text-red-600 font-black animate-pulse">
+                                        ⚠️ impossibilité de fournir un congé du au nombre de jours superieure au solde
+                                    </p>
+                                )}
+                            </div>
                         )}
                         <div>
                             <label className="text-xs font-black text-gray-400 uppercase tracking-widest block mb-1">Motif</label>

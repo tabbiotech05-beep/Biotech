@@ -5,8 +5,42 @@ import User from '../models/User.js';
 import Stock from '../models/Stock.js';
 import SampleHistory from '../models/SampleHistory.js';
 import auth from '../middleware/auth.js';
+import multer from 'multer';
+import path from 'path';
+import fs from 'fs';
 
 const router = express.Router();
+
+// Ensure upload directory exists
+const uploadDir = 'uploads';
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+}
+
+// Multer Config
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+        cb(null, 'profile-' + Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage,
+    limits: { fileSize: 2000000 }, // 2MB limit
+    fileFilter: (req, file, cb) => {
+        const filetypes = /jpeg|jpg|png|webp/;
+        const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+        const mimetype = filetypes.test(file.mimetype);
+        if (mimetype && extname) {
+            return cb(null, true);
+        } else {
+            cb(new Error('Erreur: Images uniquement (jpeg/jpg/png/webp)!'));
+        }
+    }
+});
 
 // Register Route
 router.post('/register', async (req, res) => {
@@ -83,8 +117,8 @@ router.post('/login', async (req, res) => {
 // @access  Private
 router.get('/dashboard-users', auth, async (req, res) => {
     try {
-        // Fetch all users with their allowedDashboards
-        const users = await User.find({}, 'username allowedDashboards');
+        // Fetch all users with their allowedDashboards and profileImage
+        const users = await User.find({}, 'username allowedDashboards profileImage');
 
         const dashboardUsers = {
             'dashboard1': [],
@@ -95,10 +129,14 @@ router.get('/dashboard-users', auth, async (req, res) => {
             // Only list users who have exclusive access to a single dashboard
             if (user.allowedDashboards && user.allowedDashboards.length === 1) {
                 const dash = user.allowedDashboards[0];
+                const userData = {
+                    username: user.username,
+                    profileImage: user.profileImage
+                };
                 if (dashboardUsers[dash]) {
-                    dashboardUsers[dash].push(user.username);
+                    dashboardUsers[dash].push(userData);
                 } else {
-                    dashboardUsers[dash] = [user.username];
+                    dashboardUsers[dash] = [userData];
                 }
             }
         });
@@ -253,6 +291,51 @@ router.post('/reset-samples', auth, async (req, res) => {
 
         console.log(`Reset samples for all delegates by user ${req.user.userId}`);
         res.json({ message: 'Tous les échantillons ont été réinitialisés.' });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   PUT api/auth/profile
+// @desc    Update user profile (image and license plate)
+// @access  Private
+router.put('/profile', auth, upload.single('image'), async (req, res) => {
+    try {
+        const { carLicensePlate, carModel } = req.body;
+        const user = await User.findById(req.user.userId);
+
+        if (!user) {
+            return res.status(404).json({ message: 'Utilisateur non trouvé' });
+        }
+
+        if (carLicensePlate !== undefined) {
+            user.carLicensePlate = carLicensePlate;
+        }
+
+        if (carModel !== undefined) {
+            user.carModel = carModel;
+        }
+
+        if (req.file) {
+            // Delete old profile image if exists
+            if (user.profileImage && fs.existsSync(user.profileImage)) {
+                try {
+                    fs.unlinkSync(user.profileImage);
+                } catch (err) {
+                    console.error('Failed to delete old profile image:', err);
+                }
+            }
+            user.profileImage = req.file.path;
+        }
+
+        await user.save();
+        
+        // Remove password from response
+        const userResponse = user.toObject();
+        delete userResponse.password;
+        
+        res.json(userResponse);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

@@ -1,0 +1,66 @@
+[
+  {
+    "codePCT": 506649,
+    "designation": "ABEVMY 100mg (25mg/ml) Sol. à Diluer P.Perf. Bt 1Fl/4ml (F)",
+    "ancienPrixPublic": 271.757,
+    "nouveauHopital": 271.757,
+    "nouveauOfficine": 295.4,
+    "nouveauPublic": 388.746
+  },
+  {
+    "codePCT": 506650,
+    "designation": "ABEVMY 400mg (25mg/ml) Sol. à Diluer P.Perf. Bt 1Fl/16ml (F)",
+    "ancienPrixPublic": 987.121,
+    "nouveauHopital": 987.121,
+    "nouveauOfficine": 1073.001,
+    "nouveauPublic": 1412.069
+  },
+  {
+    "codePCT": 857225,
+    "designation": "FULPHILA 6mg/0.6ml Sol. Inj. P. Perf. Bt 1Ser. Pré-remplie (F)",
+    "ancienPrixPublic": 321.531,
+    "nouveauHopital": 321.531,
+    "nouveauOfficine": 321.531,
+    "nouveauPublic": 423.135
+  },
+  {
+    "codePCT": 506652,
+    "designation": "HERTRAZ 150mg Pdre.P.Prép.Inj. Bt 1Fl Lyoph. +1Fl Solv. (F)",
+    "ancienPrixPublic": 279.751,
+    "nouveauHopital": 279.751,
+    "nouveauOfficine": 304.089,
+    "nouveauPublic": 400.181
+  },
+  {
+    "codePCT": 506651,
+    "designation": "HERTRAZ 440mg Pdre.P.Prép.Inj. Bt 1Fl Lyoph. +2Fl Solv. (F)",
+    "ancienPrixPublic": 531.528,
+    "nouveauHopital": 531.528,
+    "nouveauOfficine": 577.771,
+    "nouveauPublic": 760.347
+  },
+  {
+    "codePCT": 506998,
+    "designation": "HULIO 40mg/0.8ml Sol.Inj. Bt 2Ser. Pré-remplies (F)",
+    "ancienPrixPublic": 319.715,
+    "nouveauHopital": 319.715,
+    "nouveauOfficine": 347.53,
+    "nouveauPublic": 457.349
+  },
+  {
+    "codePCT": 507277,
+    "designation": "OGIVRI 150mg Pdre.P.Sol. à Diluer P.Perf. Bt 1Fl/15ml (F)",
+    "ancienPrixPublic": 199.823,
+    "nouveauHopital": 199.823,
+    "nouveauOfficine": 217.208,
+    "nouveauPublic": 285.846
+  },
+  {
+    "codePCT": 507274,
+    "designation": "OGIVRI 420mg Pdre.P.Sol. à Diluer P.Perf. Bt 1Fl/50ml (F)",
+    "ancienPrixPublic": 439.608,
+    "nouveauHopital": 439.608,
+    "nouveauOfficine": 477.854,
+    "nouveauPublic": 628.856
+  }
+]

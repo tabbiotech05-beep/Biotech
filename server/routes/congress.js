@@ -83,16 +83,22 @@ router.post('/', auth, upload.single('image'), async (req, res) => {
 router.get('/', auth, async (req, res) => {
     try {
         const isAdmin = req.user.role === 'admin';
+        const { dashboardId } = req.query;
         let query = {};
+
+        if (dashboardId) {
+            query.dashboardId = { $in: [dashboardId, null, 'undefined', ''] };
+        }
 
         if (!isAdmin) {
             // Délégués see only approved congresses OR their own pending ones
-            query = {
-                $or: [
-                    { isApproved: true },
-                    { user: req.user.userId }
-                ]
-            };
+            query.$and = [
+                { $or: [{ isApproved: true }, { user: req.user.userId }] }
+            ];
+            // Si on a déjà un filtre dashboardId
+            if (query.dashboardId) {
+                // query reste valide car on mixe champ simple et $and
+            }
         }
 
         const congresses = await Congress.find(query).sort({ startDate: 1 });
@@ -108,7 +114,7 @@ router.get('/', auth, async (req, res) => {
 // @access  Private
 router.put('/:id', auth, upload.single('image'), async (req, res) => {
     try {
-        const { name, startDate, endDate, location, participant, amount, status, comment, isApproved } = req.body;
+        const { name, startDate, endDate, location, participant, amount, status, comment, isApproved, dashboardId } = req.body;
 
         const isAdmin = req.user.role === 'admin';
 
@@ -141,6 +147,7 @@ router.put('/:id', auth, upload.single('image'), async (req, res) => {
         if (isAdmin) {
             if (comment !== undefined) congress.comment = comment;
             if (isApproved !== undefined) congress.isApproved = isApproved === 'true' || isApproved === true;
+            if (dashboardId) congress.dashboardId = dashboardId;
         }
 
         // Handle Image Update

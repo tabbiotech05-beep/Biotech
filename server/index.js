@@ -17,6 +17,8 @@ import wholesalerRoutes from './routes/wholesalers.js';
 import stockPCTRoutes from './routes/stockPCT.js';
 import leaveRoutes from './routes/leave.js';
 import expenseRoutes from './routes/expenses.js';
+import magicSearchRoutes from './routes/magic-search.js';
+import contactRoutes from './routes/contacts.js';
 import startExpiryJob from './jobs/expiryJob.js';
 import { initWhatsAppBot } from './utils/whatsappBot.js';
 
@@ -56,6 +58,8 @@ app.use('/api/wholesalers', wholesalerRoutes);
 app.use('/api/stock-pct', stockPCTRoutes);
 app.use('/api/leave', leaveRoutes);
 app.use('/api/expenses', expenseRoutes);
+app.use('/api/magic-search', magicSearchRoutes);
+app.use('/api/contacts', contactRoutes);
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 app.get('/', (req, res) => {

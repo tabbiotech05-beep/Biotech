@@ -36,7 +36,28 @@ export default function ExpenseView({ dashboardId }) {
 
     useEffect(() => {
         fetchExpenses();
+        fetchUserProfile();
     }, [dashboardId]);
+
+    const fetchUserProfile = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch('/api/auth/me', {
+                headers: { 'x-auth-token': token }
+            });
+            if (res.ok) {
+                const data = await res.json();
+                if (data.carLicensePlate && !licensePlate) {
+                    setLicensePlate(data.carLicensePlate);
+                }
+                if (data.carModel && !carModel) {
+                    setCarModel(data.carModel);
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching profile:', error);
+        }
+    };
 
     const fetchExpenses = async () => {
         try {

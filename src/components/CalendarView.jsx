@@ -21,6 +21,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
     const [date, setDate] = useState(new Date()); // Default to current date
     const [isProcessing, setIsProcessing] = useState(false); // New state to prevent duplicates
     const [eventsData, setEventsData] = useState([]); // Start empty, fetch from DB
+    const isReadOnly = !!viewUser;
     const [showModal, setShowModal] = useState(false);
     const [newEvent, setNewEvent] = useState({
         title: '',
@@ -44,7 +45,8 @@ export default function CalendarView({ dashboardId, viewUser }) {
     });
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [userSamples, setUserSamples] = useState([]);
-    const [doctors, setDoctors] = useState([]); // Master list for autocomplete
+    const [doctors, setDoctors] = useState([]); // Master list for autocomplete (cycle DB)
+    const [contactDoctors, setContactDoctors] = useState([]); // From contacts section
     const [pharmacies, setPharmacies] = useState([]); // Master list for autocomplete
     const [wholesalers, setWholesalers] = useState([]); // Master list for autocomplete
     const [pendingSample, setPendingSample] = useState(''); // Temp selected sample value
@@ -126,11 +128,39 @@ export default function CalendarView({ dashboardId, viewUser }) {
         } catch (err) { console.error('Error fetching wholesalers:', err); }
     };
 
+    // Fetch contacts from the Biotech contact section for autocomplete
+    const fetchContactDoctors = async () => {
+        if (dashboardId !== 'dashboard1') return; // Only for Biotech
+        const token = localStorage.getItem('token');
+        if (!token) return;
+        try {
+            const username = localStorage.getItem('username') || '';
+            // Detect current delegate by username
+            const delegateMap = { sofiene: 'Sofiene', seif: 'Seif', ines: 'Ines', syrine: 'Syrine', cherifa: 'Cherifa' };
+            const delegateName = delegateMap[username.toLowerCase()];
+            if (!delegateName) return;
+            const res = await fetch(`/api/contacts/${delegateName}`, { headers: { 'x-auth-token': token } });
+            if (res.ok) {
+                const data = await res.json();
+                // Transform to the same format as cycle doctors: { name, governorate, specialty, address }
+                const mapped = data.map(c => ({
+                    _id: c._id || `contact-${c.nom}-${c.prenom}`,
+                    name: `${c.nom} ${c.prenom}`.trim(),
+                    governorate: c.gouvernorat || '',
+                    specialty: c.specialite || '',
+                    address: c.adresse || ''
+                }));
+                setContactDoctors(mapped);
+            }
+        } catch (err) { console.error('Error fetching contact doctors:', err); }
+    };
+
     useEffect(() => {
         fetchUserSamples();
         fetchDoctors();
         fetchPharmacies();
         fetchWholesalers();
+        fetchContactDoctors();
         if (eventsData.length > 0 && !eventsData[0].id) {
             setEventsData(prev => prev.map((e, i) => ({ ...e, id: i })));
         }
@@ -150,19 +180,62 @@ export default function CalendarView({ dashboardId, viewUser }) {
             const res = await fetch(url, {
                 headers: { 'x-auth-token': token }
             });
-            const data = await res.json();
+            const visitsData = await res.json();
 
-            // Convert strings to Date objects
-            const formattedEvents = data.map(event => ({
+            // Fetch Leaves
+            let leaveUrl = '/api/leave';
+            if (localStorage.getItem('role') === 'admin') {
+                leaveUrl = '/api/leave/all';
+            }
+
+            const leaveRes = await fetch(leaveUrl, {
+                headers: { 'x-auth-token': token }
+            });
+            const leavesDataArr = await leaveRes.json();
+            
+            // Filter leaves for specific user if viewing another user's dashboard
+            let filteredLeaves = [];
+            if (Array.isArray(leavesDataArr)) {
+                filteredLeaves = leavesDataArr.filter(l => {
+                    if (viewUser) {
+                        // Match by username if viewing specific user (since viewUser is a username string)
+                        const leaveUsername = (l.user?.username || l.user || '').toString().toLowerCase();
+                        return leaveUsername === viewUser.toLowerCase();
+                    } else if (localStorage.getItem('role') === 'admin') {
+                         // In admin selection, we might not want ALL leaves on one calendar
+                         return true; 
+                    }
+                    return l.status === 'approved';
+                }).filter(l => l.status === 'approved');
+            }
+
+            const formattedVisits = Array.isArray(visitsData) ? visitsData.map(event => ({
                 ...event,
-                id: event._id, // Map _id to id for big-calendar
+                id: event._id,
                 start: new Date(event.start),
                 end: new Date(event.end)
-            }));
+            })) : [];
 
-            setEventsData(formattedEvents);
+            const formattedLeaves = filteredLeaves.map(leave => {
+                // For all-day events, set end to the end of the day
+                const startDate = new Date(leave.startDate);
+                const endDate = new Date(leave.endDate);
+                endDate.setHours(23, 59, 59);
+                
+                return {
+                    id: leave._id,
+                    title: `🏖️ CONGÉ: ${leave.reason}`,
+                    start: startDate,
+                    end: endDate,
+                    allDay: true,
+                    isLeave: true,
+                    status: leave.status
+                };
+            });
+
+            setEventsData([...formattedVisits, ...formattedLeaves]);
         } catch (err) {
-            console.error('Error fetching visits:', err);
+            console.error('Error fetching calendar data:', err);
         }
     }, [dashboardId, viewUser]);
 
@@ -352,8 +425,19 @@ export default function CalendarView({ dashboardId, viewUser }) {
             }
         }
     };
-    // If viewUser is present (Read-Only Mode), disable interactions
-    const isReadOnly = !!viewUser;
+    const eventPropGetter = useCallback((event) => {
+        const style = {
+            backgroundColor: event.isLeave ? '#f59e0b' : '#3b82f6', // amber-500 for leave, blue-500 for visits
+            borderRadius: '6px',
+            opacity: 0.8,
+            color: 'white',
+            border: 'none',
+            display: 'block',
+            fontSize: '11px',
+            fontWeight: 'bold'
+        };
+        return { style };
+    }, []);
 
     return (
         <div className="relative flex flex-col gap-6">
@@ -384,6 +468,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
                     onSelectSlot={!isReadOnly ? handleSelectSlot : undefined}
                     onSelectEvent={handleSelectEvent}
                     dayPropGetter={dayPropGetter}
+                    eventPropGetter={eventPropGetter}
                     messages={{
                         next: "Suivant",
                         previous: "Précédent",
@@ -470,7 +555,8 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                                             value={newEvent.doctorName}
                                                             onChange={(e) => {
                                                                 const name = e.target.value;
-                                                                const found = doctors.find(d => d.name === name);
+                                                                // Look in both cycle DB doctors and contacts
+                                                                const found = doctors.find(d => d.name === name) || contactDoctors.find(c => c.name === name);
                                                                 setNewEvent({
                                                                     ...newEvent,
                                                                     doctorName: name,
@@ -478,7 +564,12 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                                                 });
                                                             }}
                                                         />
-                                                        <datalist id="doctor-options">{doctors.map(d => <option key={d._id} value={d.name} />)}</datalist>
+                                                        <datalist id="doctor-options">
+                                                            {/* Cycle DB doctors */}
+                                                            {doctors.map(d => <option key={`db-${d._id}`} value={d.name} />)}
+                                                            {/* Contacts section doctors (Biotech only) */}
+                                                            {contactDoctors.map(c => <option key={`ct-${c._id}`} value={c.name} />)}
+                                                        </datalist>
                                                     </div>
                                                     <div>
                                                         <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Adresse</label>
