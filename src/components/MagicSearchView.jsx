@@ -9,6 +9,8 @@ export default function MagicSearchView() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    const [selectedItem, setSelectedItem] = useState(null);
+
     // Debounced search logic
     useEffect(() => {
         const delayDebounceFn = setTimeout(() => {
@@ -37,7 +39,7 @@ export default function MagicSearchView() {
     };
 
     return (
-        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 min-h-[600px] space-y-6">
+        <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 min-h-[600px] space-y-6 relative">
             {/* HEADER */}
             <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-3">
@@ -100,7 +102,11 @@ export default function MagicSearchView() {
                             </thead>
                             <tbody className="divide-y divide-slate-100">
                                 {results.map((item, idx) => (
-                                    <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
+                                    <tr 
+                                        key={idx} 
+                                        className="hover:bg-slate-50/50 transition-colors cursor-pointer"
+                                        onClick={() => setSelectedItem(item)}
+                                    >
                                         <td className="px-4 py-4 whitespace-nowrap">
                                            <div className="font-bold text-slate-700">{item.date}</div>
                                            <div className={`text-[9px] font-black uppercase px-1.5 py-0.5 rounded inline-block mt-1 ${item.source === 'Database' ? 'bg-blue-100 text-blue-600' : 'bg-slate-200 text-slate-500'}`}>
@@ -133,6 +139,77 @@ export default function MagicSearchView() {
                     </div>
                 )}
             </div>
+
+            {/* DETAIL MODAL */}
+            {selectedItem && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in">
+                    <div 
+                        className="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden animate-scale-up border border-slate-100"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Modal Header */}
+                        <div className="relative h-32 bg-gradient-to-br from-purple-600 to-indigo-700 p-8 flex items-end">
+                            <button 
+                                onClick={() => setSelectedItem(null)}
+                                className="absolute top-6 right-6 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                            >
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                            <div className="flex items-center gap-4">
+                                <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg text-purple-600">
+                                    <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 className="text-white text-2xl font-black">{selectedItem.target}</h3>
+                                    <p className="text-purple-100 text-sm font-bold uppercase tracking-wider">{selectedItem.targetType}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Modal Content */}
+                        <div className="p-8 space-y-8">
+                            <div className="grid grid-cols-2 gap-6">
+                                <div className="space-y-1">
+                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Date de la mission</p>
+                                    <p className="text-slate-800 font-bold">{selectedItem.date}</p>
+                                </div>
+                                <div className="space-y-1 text-right">
+                                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Délégué assigné</p>
+                                    <p className="text-slate-800 font-bold">{selectedItem.delegate}</p>
+                                </div>
+                            </div>
+
+                            <div className="space-y-3">
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Détails complets de la mission</p>
+                                <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 italic text-slate-600 leading-relaxed min-h-[100px]">
+                                    {selectedItem.task || "Aucun détail spécifié pour cette mission."}
+                                </div>
+                            </div>
+
+                            <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+                                <div className="flex gap-2">
+                                    <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase ${selectedItem.status === 'Approuvé' || selectedItem.status === 'Réalisé' ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}`}>
+                                        {selectedItem.status}
+                                    </span>
+                                    <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase ${selectedItem.source === 'Database' ? 'bg-blue-100 text-blue-600' : 'bg-slate-200 text-slate-500'}`}>
+                                        {selectedItem.source === 'Database' ? 'Données Récentes' : 'Archives Historiques'}
+                                    </span>
+                                </div>
+                                <button 
+                                    onClick={() => setSelectedItem(null)}
+                                    className="px-6 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl text-sm font-bold transition-all"
+                                >
+                                    Fermer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
