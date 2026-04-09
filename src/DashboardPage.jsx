@@ -181,7 +181,7 @@ function Sidebar({ tabs, activeTab, setActiveTab, accent, accentLight, logo, das
                 </div>
 
                 {/* Nav */}
-                <nav className="flex-1 py-4 overflow-y-auto">
+                <nav className="flex-1 py-4 overflow-y-auto custom-scrollbar">
                     {tabs.map(tab => (
                         <SidebarItem
                             key={tab.id}

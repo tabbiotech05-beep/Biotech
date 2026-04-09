@@ -152,15 +152,15 @@ export default function LeaveAdminView() {
                                 {/* Delegate header — always visible */}
                                 <button
                                     onClick={() => setExpandedUser(isExpanded ? null : username)}
-                                    className="w-full p-5 flex items-center justify-between hover:bg-gray-50 transition-colors text-left"
+                                    className="w-full p-4 flex items-center justify-between hover:bg-gray-50 transition-colors text-left"
                                 >
                                     <div className="flex items-center gap-4">
-                                        <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center text-sm font-black text-indigo-600 flex-shrink-0">
+                                        <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center text-xs font-black text-indigo-600 flex-shrink-0">
                                             {username[0].toUpperCase()}
                                         </div>
                                         <div>
-                                            <p className="font-black text-gray-900">{username}</p>
-                                            <p className="text-xs text-gray-400 mt-0.5">{userLeaves.length} demande(s)</p>
+                                            <p className="font-bold text-sm text-gray-900">{username}</p>
+                                            <p className="text-[10px] text-gray-400 mt-0.5">{userLeaves.length} demande(s)</p>
                                         </div>
                                         <div className="flex gap-2 ml-2 flex-wrap">
                                             {pending > 0 && (

@@ -246,13 +246,13 @@ export default function DashboardSelection() {
                         <button
                             onClick={downloadAllExpenses}
                             disabled={downloading}
-                            className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest text-white shadow-md hover:opacity-90 transition-all disabled:opacity-60"
+                            className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-white shadow-md hover:opacity-90 transition-all disabled:opacity-60"
                             style={{ background: 'linear-gradient(135deg, #10b981, #059669)' }}
                         >
                             {downloading ? (
                                 <span className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
                             ) : (
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
                             )}
@@ -296,10 +296,10 @@ export default function DashboardSelection() {
                                     <button
                                         key={`bt-${idx}`}
                                         onClick={() => navigate(`/dashboard/dashboard1?viewUser=${u.username}`)}
-                                        className="group relative flex flex-col items-center p-6 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+                                        className="group relative flex flex-col items-center p-4 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
                                     >
-                                        <div className="relative mb-4">
-                                            <div className="w-20 h-20 rounded-3xl flex items-center justify-center font-black text-white text-2xl shadow-xl overflow-hidden transition-transform duration-500 group-hover:scale-110"
+                                        <div className="relative mb-3">
+                                            <div className="w-14 h-14 rounded-2xl flex items-center justify-center font-black text-white text-lg shadow-xl overflow-hidden transition-transform duration-500 group-hover:scale-110"
                                                 style={{ background: `linear-gradient(135deg, ${cfg.accent}, #059669)` }}>
                                                 {u.profileImage ? (
                                                     <img 
@@ -316,7 +316,7 @@ export default function DashboardSelection() {
                                                 )}
                                             </div>
                                         </div>
-                                        <h3 className="text-lg font-black text-slate-800 uppercase tracking-tight">{u.username}</h3>
+                                        <h3 className="text-sm font-black text-slate-800 uppercase tracking-tight">{u.username}</h3>
                                         <div className="mt-4 flex items-center gap-2 text-[8px] font-black uppercase tracking-[0.2em] text-slate-300 group-hover:text-emerald-500 transition-colors">
                                             Voir Calendrier
                                             <svg className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
@@ -350,10 +350,10 @@ export default function DashboardSelection() {
                                     <button
                                         key={`tn-${idx}`}
                                         onClick={() => navigate(`/dashboard/dashboard2?viewUser=${u.username}`)}
-                                        className="group relative flex flex-col items-center p-6 bg-white border border-slate-100 rounded-[2.5rem] shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+                                        className="group relative flex flex-col items-center p-4 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
                                     >
-                                        <div className="relative mb-4">
-                                            <div className="w-20 h-20 rounded-3xl flex items-center justify-center font-black text-white text-2xl shadow-xl overflow-hidden transition-transform duration-500 group-hover:scale-110"
+                                        <div className="relative mb-3">
+                                            <div className="w-14 h-14 rounded-2xl flex items-center justify-center font-black text-white text-lg shadow-xl overflow-hidden transition-transform duration-500 group-hover:scale-110"
                                                 style={{ background: `linear-gradient(135deg, ${cfg.accent}, #3b82f6)` }}>
                                                 {u.profileImage ? (
                                                     <img 
