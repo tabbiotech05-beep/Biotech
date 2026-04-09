@@ -25,3 +25,5 @@ data/db/*
 uploads/*
 !uploads/.gitkeep
 *.xlsx
+app.pid
+*.log
