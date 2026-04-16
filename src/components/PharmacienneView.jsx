@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 export default function PharmacienneView() {
     const [users, setUsers] = useState([]);
     const [stocks, setStocks] = useState([]);
-    const [selectedUser, setSelectedUser] = useState(null);
-    const [selectedStock, setSelectedStock] = useState(null); // Full stock object
-    const [sampleCount, setSampleCount] = useState('');
+    
+    // Batch Assignment State
+    const [selectedUsers, setSelectedUsers] = useState([]); // array of user IDs
+    const [quantities, setQuantities] = useState({}); // { stockId: count }
+
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
     const [activeAssignmentTab, setActiveAssignmentTab] = useState('sample'); // 'sample' or 'material'
@@ -45,30 +47,74 @@ export default function PharmacienneView() {
         }
     };
 
-    const handleAssign = async (e) => {
-        e.preventDefault();
-        if (!selectedUser || !selectedStock || !sampleCount) return;
+    const toggleUser = (id) => {
+        if (selectedUsers.includes(id)) {
+            setSelectedUsers(selectedUsers.filter(uid => uid !== id));
+        } else {
+            setSelectedUsers([...selectedUsers, id]);
+        }
+    };
+
+    const selectAllUsers = () => {
+        setSelectedUsers(users.map(u => u._id));
+    };
+
+    const clearUserSelection = () => {
+        setSelectedUsers([]);
+    };
+
+    const handleQuantityChange = (stockId, value) => {
+        setQuantities({
+            ...quantities,
+            [stockId]: value
+        });
+    };
+
+    const handleBatchAssign = async () => {
+        if (selectedUsers.length === 0) {
+            setMessage('Sélectionnez au moins un délégué');
+            return;
+        }
+
+        const assignments = [];
+        for (const [stockId, countStr] of Object.entries(quantities)) {
+            const count = parseInt(countStr);
+            if (count && count > 0) {
+                const s = stocks.find(st => st._id === stockId);
+                if (s) {
+                    assignments.push({
+                        stockId: s._id,
+                        name: s.name,
+                        count: count
+                    });
+                }
+            }
+        }
+
+        if (assignments.length === 0) {
+            setMessage('Veuillez spécifier au moins une quantité valide > 0');
+            return;
+        }
 
         setLoading(true);
         try {
             const token = localStorage.getItem('token');
-            const res = await fetch(`/api/auth/users/${selectedUser._id}/samples`, {
+            const res = await fetch(`/api/auth/batch-assign-samples`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'x-auth-token': token
                 },
                 body: JSON.stringify({
-                    name: selectedStock.name,
-                    stockId: selectedStock._id,
-                    count: parseInt(sampleCount)
+                    userIds: selectedUsers,
+                    assignments
                 })
             });
 
             if (res.ok) {
-                setMessage('Assignation réussie !');
-                setSelectedStock(null);
-                setSampleCount('');
+                setMessage('✅ Assignation en masse réussie !');
+                setQuantities({});
+                setSelectedUsers([]);
                 fetchDelegues();
                 fetchStock();
             } else {
@@ -80,7 +126,7 @@ export default function PharmacienneView() {
             setMessage('Erreur serveur.');
         } finally {
             setLoading(false);
-            setTimeout(() => setMessage(''), 3000);
+            setTimeout(() => setMessage(''), 5000);
         }
     };
 
@@ -112,114 +158,150 @@ export default function PharmacienneView() {
         }
     };
 
+    // Derived states
+    const filteredStocks = stocks.filter(s => (s.type || 'sample') === activeAssignmentTab && s.quantity > 0);
+
     return (
         <div className="bg-white p-8 rounded-lg shadow-sm">
             <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">Tableau de Bord Pharmacienne</h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Left: Assignment Form */}
-                <div className="lg:col-span-1 bg-gray-50 p-6 rounded-xl border border-gray-200 shadow-sm">
-                    <h3 className="font-semibold text-lg mb-4 text-gray-700">Assigner du Stock</h3>
+            {message && (
+                <div className={`p-4 mb-6 rounded-md text-sm border font-medium ${message.includes('réussie') || message.includes('✅') ? 'bg-green-50 text-green-700 border-green-200' : 'bg-red-50 text-red-700 border-red-200'}`}>
+                    {message}
+                </div>
+            )}
 
-                    {/* Form Tabs */}
-                    <div className="flex border-b mb-4">
-                        <button
-                            onClick={() => { setActiveAssignmentTab('sample'); setSelectedStock(null); }}
-                            className={`flex-1 py-2 text-xs font-bold uppercase transition-all ${activeAssignmentTab === 'sample' ? 'text-green-600 border-b-2 border-green-600 bg-green-50/50' : 'text-gray-400 hover:text-gray-600'}`}
-                        >
-                            Médicaments
-                        </button>
-                        <button
-                            onClick={() => { setActiveAssignmentTab('material'); setSelectedStock(null); }}
-                            className={`flex-1 py-2 text-xs font-bold uppercase transition-all ${activeAssignmentTab === 'material' ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50/50' : 'text-gray-400 hover:text-gray-600'}`}
-                        >
-                            Matériel Promo
-                        </button>
+            <div className="flex flex-col xl:flex-row gap-8">
+                {/* Left side: Batch Assignment Workspace */}
+                <div className="xl:w-3/5 flex flex-col gap-6">
+                    <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 shadow-sm">
+                        <h3 className="font-bold text-lg text-gray-800 mb-4 pb-2 border-b border-gray-300">
+                            1. Sélection des Délégués
+                        </h3>
+                        <div className="flex gap-2 mb-4">
+                            <button onClick={selectAllUsers} className="text-xs bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded transition-colors text-gray-700 font-medium">Tout sélectionner</button>
+                            <button onClick={clearUserSelection} className="text-xs bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded transition-colors text-gray-700 font-medium">Tout effacer</button>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-48 overflow-y-auto pr-2 custom-scrollbar">
+                            {users.map(user => (
+                                <label key={user._id} className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${selectedUsers.includes(user._id) ? 'bg-indigo-50 border-indigo-300' : 'bg-white border-gray-200 hover:bg-gray-100'}`}>
+                                    <input 
+                                        type="checkbox" 
+                                        className="w-4 h-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" 
+                                        checked={selectedUsers.includes(user._id)}
+                                        onChange={() => toggleUser(user._id)}
+                                    />
+                                    <span className="text-sm font-medium text-gray-700 truncate">{user.username}</span>
+                                </label>
+                            ))}
+                        </div>
+                        <div className="mt-3 text-xs text-indigo-600 font-bold">
+                            {selectedUsers.length} délégué(s) sélectionné(s)
+                        </div>
                     </div>
 
-                    {message && (
-                        <div className={`p-3 mb-4 rounded-md text-sm border ${message.includes('réussie') || message.includes('✅') ? 'bg-green-50 text-green-700 border-green-100' : 'bg-red-50 text-red-700 border-red-100'}`}>
-                            {message}
-                        </div>
-                    )}
+                    <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 shadow-sm">
+                        <h3 className="font-bold text-lg text-gray-800 mb-4 pb-2 border-b border-gray-300">
+                            2. Quantités à Assigner (Par Délégué)
+                        </h3>
 
-                    <form onSubmit={handleAssign} className="space-y-4">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Délégué</label>
-                            <select
-                                className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
-                                value={selectedUser ? selectedUser._id : ''}
-                                onChange={(e) => setSelectedUser(users.find(u => u._id === e.target.value))}
-                                required
+                        {/* Form Tabs */}
+                        <div className="flex border-b border-gray-300 mb-4">
+                            <button
+                                onClick={() => setActiveAssignmentTab('sample')}
+                                className={`flex-1 py-3 text-sm font-bold uppercase transition-all ${activeAssignmentTab === 'sample' ? 'text-green-700 border-b-2 border-green-600 bg-green-50' : 'text-gray-500 hover:bg-white'}`}
                             >
-                                <option value="">Choisir un délégué...</option>
-                                {users.map(user => (
-                                    <option key={user._id} value={user._id}>{user.username} ({user.email})</option>
-                                ))}
-                            </select>
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
-                                {activeAssignmentTab === 'sample' ? 'Produit et N° de Lot' : 'Article Promotionnel'}
-                            </label>
-                            <select
-                                className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
-                                value={selectedStock ? selectedStock._id : ''}
-                                onChange={(e) => setSelectedStock(stocks.find(s => s._id === e.target.value))}
-                                required
+                                Médicaments
+                            </button>
+                            <button
+                                onClick={() => setActiveAssignmentTab('material')}
+                                className={`flex-1 py-3 text-sm font-bold uppercase transition-all ${activeAssignmentTab === 'material' ? 'text-blue-700 border-b-2 border-blue-600 bg-blue-50' : 'text-gray-500 hover:bg-white'}`}
                             >
-                                <option value="">Choisir un article...</option>
-                                {stocks
-                                    .filter(s => (s.type || 'sample') === activeAssignmentTab && s.quantity > 0)
-                                    .map((stock) => (
-                                        <option key={stock._id} value={stock._id}>
-                                            {stock.name} {activeAssignmentTab === 'sample' && `- Lot: ${stock.batchNumber}`} (Dispo: {stock.quantity})
-                                        </option>
-                                    ))}
-                            </select>
+                                Matériel Promo
+                            </button>
                         </div>
 
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Quantité à donner</label>
-                            <input
-                                type="number"
-                                className="w-full border border-gray-300 rounded-md p-2 focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white"
-                                placeholder={`ex: max ${selectedStock ? selectedStock.quantity : 10}`}
-                                value={sampleCount}
-                                onChange={(e) => setSampleCount(e.target.value)}
-                                required
-                                min="1"
-                                max={selectedStock ? selectedStock.quantity : undefined}
-                            />
+                        <div className="bg-white rounded-lg border border-gray-200">
+                            <table className="w-full text-left">
+                                <thead className="bg-gray-100/50">
+                                    <tr>
+                                        <th className="px-4 py-3 text-xs font-semibold text-gray-600 border-b">Produit</th>
+                                        <th className="px-4 py-3 text-xs font-semibold text-gray-600 border-b">Dispo. (Total)</th>
+                                        <th className="px-4 py-3 text-xs font-semibold text-gray-600 border-b w-32">Qté par délégué</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {filteredStocks.length === 0 ? (
+                                        <tr>
+                                            <td colSpan="3" className="px-4 py-8 text-center text-gray-400 italic">
+                                                Aucun produit disponible en stock.
+                                            </td>
+                                        </tr>
+                                    ) : (
+                                        filteredStocks.map(stock => {
+                                            const totalNeeded = (parseInt(quantities[stock._id]) || 0) * (selectedUsers.length || 1);
+                                            const isOver = totalNeeded > stock.quantity;
+                                            return (
+                                                <tr key={stock._id} className="border-b last:border-0 hover:bg-gray-50">
+                                                    <td className="px-4 py-3">
+                                                        <div className="text-sm font-bold text-gray-800">{stock.name}</div>
+                                                        {activeAssignmentTab === 'sample' && <div className="text-xs text-gray-500 font-mono">Lot: {stock.batchNumber}</div>}
+                                                    </td>
+                                                    <td className="px-4 py-3 text-sm text-gray-600 font-medium">
+                                                        {stock.quantity}
+                                                    </td>
+                                                    <td className="px-4 py-3">
+                                                        <input 
+                                                            type="number"
+                                                            min="0"
+                                                            value={quantities[stock._id] || ''}
+                                                            onChange={(e) => handleQuantityChange(stock._id, e.target.value)}
+                                                            className={`w-full text-center border rounded-md p-1.5 focus:ring-2 focus:ring-indigo-500 focus:outline-none ${isOver ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
+                                                            placeholder="0"
+                                                        />
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })
+                                    )}
+                                </tbody>
+                            </table>
                         </div>
 
                         <button
-                            type="submit"
-                            disabled={loading || !selectedUser || !selectedStock}
-                            className={`w-full py-3 px-4 rounded-md text-white font-bold transition-all shadow-md active:scale-95 ${loading || !selectedUser || !selectedStock ? 'bg-gray-400 cursor-not-allowed' : (activeAssignmentTab === 'sample' ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700')}`}
+                            onClick={handleBatchAssign}
+                            disabled={loading || selectedUsers.length === 0}
+                            className={`mt-6 w-full py-4 rounded-xl text-white font-bold text-lg transition-all shadow-md active:scale-[0.98] flex justify-center items-center gap-2 ${loading || selectedUsers.length === 0 ? 'bg-gray-400 cursor-not-allowed shadow-none' : 'bg-indigo-600 hover:bg-indigo-700 hover:shadow-lg'}`}
                         >
-                            {loading ? 'Traitement...' : 'Confirmer l\'Assignation'}
+                            {loading ? (
+                                <span>Traitement en cours...</span>
+                            ) : (
+                                <>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Assigner aux {selectedUsers.length} délégué(s)
+                                </>
+                            )}
                         </button>
-                    </form>
+                    </div>
                 </div>
 
-                {/* Right: List of Delegates */}
-                <div className="lg:col-span-2">
-                    <h3 className="font-semibold text-lg mb-4 text-gray-700">Inventaire des Délégués</h3>
-                    <div className="overflow-x-auto bg-white rounded-lg border border-gray-200">
+                {/* Right side: Inventaire des délégués (Preview) */}
+                <div className="xl:w-2/5">
+                    <h3 className="font-semibold text-lg mb-4 text-gray-700">Inventaire Actuel des Délégués</h3>
+                    <div className="overflow-x-auto bg-white rounded-lg border border-gray-200 h-full max-h-[800px] overflow-y-auto">
                         <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
+                            <thead className="bg-gray-50 sticky top-0 z-10 shadow-sm">
                                 <tr>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Délégué</th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Médicaments</th>
-                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Matériel Promo</th>
+                                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Délégué</th>
+                                    <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Possessions</th>
                                 </tr>
                             </thead>
                             <tbody className="bg-white divide-y divide-gray-200">
                                 {users.length === 0 ? (
                                     <tr>
-                                        <td colSpan="3" className="px-6 py-4 text-center text-sm text-gray-500">Aucun délégué trouvé.</td>
+                                        <td colSpan="2" className="px-6 py-4 text-center text-sm text-gray-500">Aucun délégué trouvé.</td>
                                     </tr>
                                 ) : (
                                     users.map(user => {
@@ -227,32 +309,35 @@ export default function PharmacienneView() {
                                         const materials = user.samples.filter(s => s.itemType === 'material');
 
                                         return (
-                                            <tr key={user._id} className={`hover:bg-gray-50 transition-colors cursor-pointer ${selectedUser?._id === user._id ? 'bg-blue-50/50' : ''}`} onClick={() => setSelectedUser(user)}>
-                                                <td className="px-6 py-4 whitespace-nowrap">
+                                            <tr key={user._id} className="hover:bg-gray-50 transition-colors">
+                                                <td className="px-4 py-3 align-top">
                                                     <div className="text-sm font-bold text-gray-900">{user.username}</div>
-                                                    <div className="text-xs text-gray-500">{user.email}</div>
                                                 </td>
-                                                <td className="px-6 py-4 text-xs">
-                                                    {samples.length > 0 ? (
-                                                        <div className="flex flex-wrap gap-1">
-                                                            {samples.map((s, idx) => (
-                                                                <span key={idx} className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800 border border-green-200">
-                                                                    {s.name}: {s.count}
-                                                                </span>
-                                                            ))}
+                                                <td className="px-4 py-3 text-xs">
+                                                    {samples.length === 0 && materials.length === 0 ? (
+                                                        <span className="text-gray-400 italic">Vide</span>
+                                                    ) : (
+                                                        <div className="flex flex-col gap-1.5">
+                                                            {samples.length > 0 && (
+                                                                <div className="flex flex-wrap gap-1">
+                                                                    {samples.map((s, idx) => (
+                                                                        <span key={idx} className="inline-block px-1.5 py-0.5 rounded text-[10px] font-bold bg-green-50 text-green-700 border border-green-200">
+                                                                            {s.name}: {s.count}
+                                                                        </span>
+                                                                    ))}
+                                                                </div>
+                                                            )}
+                                                            {materials.length > 0 && (
+                                                                <div className="flex flex-wrap gap-1">
+                                                                    {materials.map((m, idx) => (
+                                                                        <span key={idx} className="inline-block px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
+                                                                            {m.name}: {m.count}
+                                                                        </span>
+                                                                    ))}
+                                                                </div>
+                                                            )}
                                                         </div>
-                                                    ) : <span className="text-gray-300 italic">Aucun</span>}
-                                                </td>
-                                                <td className="px-6 py-4 text-xs">
-                                                    {materials.length > 0 ? (
-                                                        <div className="flex flex-wrap gap-1">
-                                                            {materials.map((s, idx) => (
-                                                                <span key={idx} className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800 border border-blue-200">
-                                                                    {s.name}: {s.count}
-                                                                </span>
-                                                            ))}
-                                                        </div>
-                                                    ) : <span className="text-gray-300 italic">Aucun</span>}
+                                                    )}
                                                 </td>
                                             </tr>
                                         );
@@ -265,11 +350,11 @@ export default function PharmacienneView() {
             </div>
 
             {/* Reset Button (Bottom) */}
-            <div className="lg:col-span-3 mt-4 flex justify-end">
+            <div className="mt-8 flex justify-end border-t border-gray-100 pt-6">
                 <button
                     onClick={handleResetSamples}
                     disabled={loading}
-                    className="bg-red-50 text-red-600 hover:bg-red-100 border border-red-200 px-4 py-2 rounded-md font-medium text-sm transition-colors flex items-center gap-2"
+                    className="bg-white text-red-600 hover:bg-red-50 border border-red-200 px-4 py-2 rounded-md font-medium text-sm transition-colors flex items-center gap-2"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />

@@ -107,6 +107,7 @@ export default function SamplesView({ dashboardId, viewUser }) {
         return 'Inconnu';
     };
 
+
     if (loading) {
         return <div className="text-center py-20 text-gray-500">Chargement...</div>;
     }
@@ -145,10 +146,14 @@ export default function SamplesView({ dashboardId, viewUser }) {
                                                     <span className="text-gray-400 text-sm">Vide</span>
                                                 ) : (
                                                     del.samples.map((s, sIdx) => (
-                                                        <span key={sIdx} className="bg-indigo-50 text-indigo-700 px-2 py-1 rounded text-xs border border-indigo-100 flex items-center gap-1 shadow-sm">
+                                                        <span 
+                                                            key={sIdx} 
+                                                            className="bg-indigo-50 text-indigo-700 px-2 py-1 rounded text-xs border border-indigo-100 flex items-center gap-1 shadow-sm group relative"
+                                                        >
                                                             <strong>{s.name}</strong>
                                                             {s.batchNumber && <span className="opacity-60 font-mono text-[10px] bg-white px-1 rounded border border-indigo-200">#{s.batchNumber}</span>}
                                                             : {s.count}
+
                                                         </span>
                                                     ))
                                                 )}

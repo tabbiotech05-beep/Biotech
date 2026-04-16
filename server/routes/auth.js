@@ -276,6 +276,131 @@ router.post('/users/:id/samples', auth, async (req, res) => {
     }
 });
 
+// @route   POST api/auth/batch-assign-samples
+// @desc    Assign multiple samples to multiple delegates at once
+// @access  Private (Pharmacienne/Admin)
+router.post('/batch-assign-samples', auth, async (req, res) => {
+    try {
+        const { userIds, assignments } = req.body;
+        // assignments: [{ stockId, name, count, itemType }]
+
+        if (!userIds || userIds.length === 0 || !assignments || assignments.length === 0) {
+            return res.status(400).json({ message: 'Données insuffisantes pour l\'assignation' });
+        }
+
+        const nbUsers = userIds.length;
+
+        // 1. Check if we have enough global stock for ALL assignments combined
+        for (const assign of assignments) {
+            const requestedTotalQty = parseInt(assign.count, 10) * nbUsers;
+            if (assign.stockId) {
+                const stockItem = await Stock.findById(assign.stockId);
+                if (!stockItem || stockItem.quantity < requestedTotalQty) {
+                    return res.status(400).json({ 
+                        message: `Stock insuffisant pour ${assign.name}. Necessaire: ${requestedTotalQty}, Disponible: ${stockItem ? stockItem.quantity : 0}` 
+                    });
+                }
+            } else {
+                // Fallback to FIFO
+                const stocks = await Stock.find({ name: assign.name, quantity: { $gt: 0 } });
+                const totalStock = stocks.reduce((acc, s) => acc + s.quantity, 0);
+                if (totalStock < requestedTotalQty) {
+                    return res.status(400).json({ 
+                        message: `Stock insuffisant pour ${assign.name}. Necessaire: ${requestedTotalQty}, Disponible: ${totalStock}` 
+                    });
+                }
+            }
+        }
+
+        // 2. Perform Deductions
+        for (const assign of assignments) {
+            const requestedTotalQty = parseInt(assign.count, 10) * nbUsers;
+            if (assign.stockId) {
+                const stockItem = await Stock.findById(assign.stockId);
+                stockItem.quantity -= requestedTotalQty;
+                await stockItem.save();
+            } else {
+                const stocks = await Stock.find({ name: assign.name, quantity: { $gt: 0 } }).sort({ expiryDate: 1 });
+                let remainingToDeduct = requestedTotalQty;
+                for (const stockItem of stocks) {
+                    if (remainingToDeduct <= 0) break;
+                    if (stockItem.quantity >= remainingToDeduct) {
+                        stockItem.quantity -= remainingToDeduct;
+                        remainingToDeduct = 0;
+                    } else {
+                        remainingToDeduct -= stockItem.quantity;
+                        stockItem.quantity = 0;
+                    }
+                    await stockItem.save();
+                }
+            }
+            
+            // fetch batch and type if stockId is used
+            if (assign.stockId) {
+                const st = await Stock.findById(assign.stockId);
+                if (st) {
+                    assign.batchNumber = st.batchNumber;
+                    assign.itemType = st.type || 'sample';
+                }
+            }
+        }
+
+        // 3. Assign to each user
+        for (const uId of userIds) {
+            const user = await User.findById(uId);
+            if (!user || user.role !== 'delegue') continue;
+
+            for (const assign of assignments) {
+                const requestedQty = parseInt(assign.count, 10);
+                const itemTypeToAssign = assign.itemType || 'sample';
+                const batchNumberToAssign = assign.batchNumber || null;
+
+                const sampleIndex = user.samples.findIndex(s => 
+                    s.name === assign.name && 
+                    s.batchNumber === batchNumberToAssign && 
+                    (s.itemType || 'sample') === itemTypeToAssign
+                );
+
+                if (sampleIndex > -1) {
+                    user.samples[sampleIndex].count += requestedQty;
+                    user.samples[sampleIndex].lastUpdated = Date.now();
+                } else {
+                    user.samples.push({
+                        name: assign.name,
+                        batchNumber: batchNumberToAssign,
+                        itemType: itemTypeToAssign,
+                        count: requestedQty
+                    });
+                }
+
+                // Record history
+                try {
+                    const historyEntry = new SampleHistory({
+                        delegateId: user._id,
+                        delegateName: user.username,
+                        stockId: assign.stockId || null,
+                        stockName: assign.name,
+                        batchNumber: batchNumberToAssign || 'N/A',
+                        itemType: itemTypeToAssign,
+                        count: requestedQty,
+                        givenBy: req.user.userId
+                    });
+                    await historyEntry.save();
+                } catch (historyErr) {
+                    console.error('Failed to save history:', historyErr);
+                }
+            }
+            await user.save();
+        }
+
+        res.json({ message: 'Assignation en masse réussie' });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+
 // @route   POST api/auth/reset-samples
 // @desc    Clear samples for all delegates
 // @access  Private (Pharmacienne/Admin)

@@ -16,6 +16,7 @@ import PrixVenteView from './components/PrixVenteView';
 import MagicSearchView from './components/MagicSearchView';
 import ListingView from './components/ListingView';
 import ContactView from './components/ContactView';
+import RepertoireView from './components/RepertoireView';
 import axios from 'axios';
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -439,6 +440,14 @@ export default function DashboardPage() {
         });
     }
 
+    if (dashboardId === 'dashboard2' && (role === 'delegue' || role === 'admin')) {
+        displayedTabs.push({
+            id: 'repertoire',
+            label: 'Répertoire',
+            icon: <IconContact />
+        });
+    }
+
     const delegateActions = (
         <>
             {allowedDashboards.length > 1 && (
@@ -506,6 +515,7 @@ export default function DashboardPage() {
                     {activeTab === 'magic-search' && <MagicSearchView />}
                     {activeTab === 'listing' && <ListingView />}
                     {activeTab === 'contact' && <ContactView />}
+                    {activeTab === 'repertoire' && <RepertoireView dashboardId={dashboardId} viewUser={viewUser} />}
                     {activeTab === 'profile' && <ProfileView />}
                 </div>
             </main>
