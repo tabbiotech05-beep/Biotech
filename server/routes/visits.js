@@ -441,4 +441,47 @@ router.delete('/:id', auth, async (req, res) => {
     }
 });
 
+// @route   GET api/visits/search-tenshi
+// @desc    Search across all dashboard2 visits by doctor/pharmacy/wholesaler name
+// @access  Private (any authenticated user)
+router.get('/search-tenshi', auth, async (req, res) => {
+    const q = req.query.q?.trim();
+    if (!q || q.length < 2) return res.json([]);
+
+    try {
+        const visits = await Visit.find({
+            dashboardId: 'dashboard2',
+            $or: [
+                { doctorName:    { $regex: q, $options: 'i' } },
+                { pharmacyName:  { $regex: q, $options: 'i' } },
+                { wholesalerName:{ $regex: q, $options: 'i' } },
+            ]
+        })
+        .populate('user', 'username')
+        .sort({ start: -1 })
+        .limit(200);
+
+        const results = visits.map(v => ({
+            id: v._id,
+            date: v.start ? new Date(v.start).toLocaleDateString('fr-FR') : '—',
+            target: v.doctorName || v.pharmacyName || v.wholesalerName || v.title || '—',
+            targetType: v.targetType || 'visite',
+            specialty: v.specialty || '',
+            governorate: v.governorate || '',
+            address: v.address || '',
+            delegate: v.user?.username || 'Délégué',
+            task: v.details || v.title || '',
+            givenSamples: v.givenSamples || [],
+            givenMaterials: v.givenMaterials || [],
+            rawDate: v.start ? new Date(v.start).getTime() : 0
+        }));
+
+        res.json(results);
+    } catch (err) {
+        console.error('[search-tenshi] Error:', err.message);
+        res.status(500).json({ msg: 'Erreur serveur lors de la recherche.' });
+    }
+});
+
 export default router;
+

@@ -5,16 +5,30 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
     const isDelegue = userRole === 'delegue';
     const isReadOnly = !!viewUser;
     const [doctors, setDoctors] = useState([]);
-    const [weeks, setWeeks] = useState([[], [], [], [], [], []]);
+    const [pastWeeks, setPastWeeks] = useState([]); // Dynamic computed weeks
+    const [activeWeekLabel, setActiveWeekLabel] = useState("");
     const [loading, setLoading] = useState(true);
-    const [isSaving, setIsSaving] = useState(false);
     const [newDoctor, setNewDoctor] = useState({ name: '', specialty: '', governorate: '', address: '' });
     const [showAddModal, setShowAddModal] = useState(false);
-    const [activeWeek, setActiveWeek] = useState(0); // 0 to 5
     const [searchQuery, setSearchQuery] = useState('');
     const [visits, setVisits] = useState([]);
     const [sidebarTab, setSidebarTab] = useState('doctors'); // 'doctors' or 'tasks'
-    const [selectedItemForDetails, setSelectedItemForDetails] = useState(null); // Track which doctor or task is shown in the footer
+    const [selectedItemForDetails, setSelectedItemForDetails] = useState(null);
+
+    // Helpers to group by weak
+    const getWeekKey = (dateString) => {
+        const d = new Date(dateString);
+        let day = d.getDay();
+        if (day === 0) day = 7; // Convert Sunday(0) to 7
+        d.setHours(0, 0, 0, 0);
+        d.setDate(d.getDate() - (day - 1)); // Go back to Monday
+        const monday = new Date(d);
+        d.setDate(d.getDate() + 6); // Add 6 to reach Sunday
+        const sunday = new Date(d);
+        
+        const formatName = (dt) => dt.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+        return `S. du ${formatName(monday)} au ${formatName(sunday)}`;
+    };
 
     useEffect(() => {
         fetchData();
@@ -31,49 +45,47 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                 ? `?dashboardId=${dashboardId}&viewUser=${viewUser}`
                 : `?dashboardId=${dashboardId}`;
 
-            const [docsRes, cycleRes, visitsRes] = await Promise.all([
+            const [docsRes, visitsRes] = await Promise.all([
                 axios.get(`/api/doctors${queryParam}`, { headers }),
-                axios.get(`/api/cycle${queryParam}`, { headers }),
                 axios.get(`/api/visits${visitQueryParam}`, { headers })
             ]);
 
-            let doctors = docsRes.data;
+            let fetchedDoctors = docsRes.data;
 
             // ── Auto-sync silencieux ─────────────────────────────────────────
-            // Toujours importer depuis les visites (idempotent - ne crée que les manquants)
-            // Cela assure que tous les médecins et grossistes visités apparaissent dans le cycle
             if (!isReadOnly) {
                 try {
                     await axios.post('/api/doctors/import', {}, { headers });
                     const refreshed = await axios.get(`/api/doctors${queryParam}`, { headers });
-                    doctors = refreshed.data;
+                    fetchedDoctors = refreshed.data;
                 } catch (importErr) {
                     console.warn('Auto-sync discret échoué:', importErr.message);
                 }
             }
             // ────────────────────────────────────────────────────────────────
 
-            setDoctors(Array.isArray(doctors) ? doctors : []);
-            setVisits(Array.isArray(visitsRes.data) ? visitsRes.data : []);
+            setDoctors(Array.isArray(fetchedDoctors) ? fetchedDoctors : []);
+            
+            const fetchedVisits = Array.isArray(visitsRes.data) ? visitsRes.data : [];
+            setVisits(fetchedVisits);
 
-            if (cycleRes.data && Array.isArray(cycleRes.data.weeks)) {
-                const populatedWeeks = cycleRes.data.weeks.map(week => {
-                    if (!Array.isArray(week)) return [];
-                    return week.map(item => {
-                        // Handle old format (just ID strings) and new format ({id, type})
-                        const id = item.id || (typeof item === 'string' ? item : item?._id);
-                        const type = item.type || 'Doctor';
+            // Group visits by dynamic weeks
+            const groups = {};
+            fetchedVisits.forEach(v => {
+                const k = getWeekKey(v.start);
+                if (!groups[k]) groups[k] = { label: k, timestamp: new Date(v.start).getTime(), items: [] };
+                groups[k].items.push(v);
+            });
+            
+            // Sort descendant, meaning newest week array first
+            const computed = Object.values(groups).sort((a, b) => b.timestamp - a.timestamp);
+            // Sort items inside week by time descending as well
+            computed.forEach(w => w.items.sort((a,b) => new Date(b.start) - new Date(a.start)));
 
-                        if (type === 'Visit') {
-                            const visit = Array.isArray(visitsRes.data) ? visitsRes.data.find(v => v._id === id) : null;
-                            return visit ? { ...visit, __type: 'Visit' } : { _id: id, name: 'Visite Introuvable', __type: 'Visit' };
-                        } else {
-                            const doc = Array.isArray(doctors) ? doctors.find(d => d._id === id) : null;
-                            return doc ? { ...doc, __type: 'Doctor' } : { _id: id, name: 'Médecin Introuvable', specialty: 'N/A', __type: 'Doctor' };
-                        }
-                    });
-                });
-                setWeeks(populatedWeeks);
+            setPastWeeks(computed);
+            // Set first available week to active
+            if (computed.length > 0) {
+                setActiveWeekLabel(computed[0].label);
             }
         } catch (err) {
             console.error('Error fetching cycle data:', err);
@@ -90,15 +102,7 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                 headers: { 'x-auth-token': token }
             });
             const addedDoctor = res.data;
-            // Update doctors list
-            const updatedDoctors = [...doctors, addedDoctor];
-            setDoctors(updatedDoctors);
-            // Also immediately add to the active week
-            const newWeeks = [...weeks];
-            if (!newWeeks[activeWeek].some(d => d._id === addedDoctor._id)) {
-                newWeeks[activeWeek] = [...newWeeks[activeWeek], addedDoctor];
-                setWeeks(newWeeks);
-            }
+            setDoctors([...doctors, addedDoctor]);
             setNewDoctor({ name: '', specialty: '', governorate: '', address: '' });
             setShowAddModal(false);
         } catch (err) {
@@ -144,49 +148,15 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
         }
     };
 
-    const saveCycle = async () => {
-        setIsSaving(true);
-        try {
-            const token = localStorage.getItem('token');
-            const weeksToSave = weeks.map(week => week.map(item => ({
-                id: item._id,
-                type: item.__type || (item.targetType ? 'Visit' : 'Doctor')
-            })));
-            await axios.post('/api/cycle', { weeks: weeksToSave }, {
-                headers: { 'x-auth-token': token }
-            });
-            alert('Cycle enregistré avec succès');
-        } catch (err) {
-            alert('Erreur lors de l\'enregistrement');
-        } finally {
-            setIsSaving(false);
-        }
-    };
-
-    const moveItemToWeek = (item, weekIndex, type) => {
-        const newWeeks = [...weeks];
-        if (newWeeks[weekIndex].some(i => i._id === item._id)) {
-            alert("Cet élément est déjà dans cette semaine.");
-            return;
-        }
-        newWeeks[weekIndex] = [...newWeeks[weekIndex], { ...item, __type: type }];
-        setWeeks(newWeeks);
-    };
-
-    const removeFromWeek = (weekIndex, doctorId) => {
-        if (!window.confirm("Retirer ce médecin de la semaine ?")) return;
-        const newWeeks = [...weeks];
-        newWeeks[weekIndex] = newWeeks[weekIndex].filter(d => d._id !== doctorId);
-        setWeeks(newWeeks);
-    };
-
     const filteredDoctors = doctors.filter(d =>
         d.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         d.specialty?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         d.governorate?.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    if (loading) return <div className="text-center py-20 font-medium text-gray-500">Chargement de votre planification...</div>;
+    const activeWeekData = pastWeeks.find(w => w.label === activeWeekLabel);
+
+    if (loading) return <div className="text-center py-20 font-medium text-gray-500">Chargement de votre historique de cycle...</div>;
 
     return (
         <div className="flex flex-col h-full space-y-4">
@@ -197,7 +167,7 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                         <svg className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
                             <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
                         </svg>
-                        <p className="text-sm text-yellow-700"> Mode Lecture Seule : Visualisation du cycle de <span className="font-bold">{viewUser}</span></p>
+                        <p className="text-sm text-yellow-700"> Mode Lecture Seule : Visualisation de l'historique de <span className="font-bold">{viewUser}</span></p>
                     </div>
                 )
             }
@@ -205,13 +175,13 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
             {/* Header / Actions */}
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
                 <div>
-                    <h2 className="text-xl font-extrabold text-gray-900">Planification Cycle</h2>
-                    <p className="text-sm text-gray-500">Organisez vos visites sur 6 semaines</p>
+                    <h2 className="text-xl font-extrabold text-gray-900">Historique des Cycles</h2>
+                    <p className="text-sm text-gray-500">Parcourez les tâches réalisées semaine par semaine</p>
                 </div>
                 {!isDelegue && !isReadOnly && (
                     <div className="flex flex-wrap gap-2">
                         <button onClick={handleImport} className="px-4 py-2 text-sm bg-gray-50 text-gray-600 rounded-xl hover:bg-gray-100 border border-gray-200 transition-all">
-                            Récupérer mes visites
+                            Récupérer mes listes
                         </button>
                         <button onClick={handleSyncAll} className="px-4 py-2 text-sm bg-indigo-50 text-indigo-700 rounded-xl hover:bg-indigo-100 border border-indigo-200 transition-all font-bold">
                             🔄 Sync Tous
@@ -219,34 +189,31 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                         <button onClick={() => setShowAddModal(true)} className={`px-4 py-2 text-sm text-white rounded-xl ${theme.bg} ${theme.bgHover} shadow-lg shadow-blue-500/20 transition-all`}>
                             + Nouveau Médecin
                         </button>
-                        <button onClick={saveCycle} disabled={isSaving} className={`px-6 py-2 text-sm font-bold text-white rounded-xl bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/30 transition-all disabled:opacity-50`}>
-                            {isSaving ? 'Enregistrement...' : 'Enregistrer'}
-                        </button>
                     </div>
                 )}
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[calc(100vh-250px)]">
-                {/* Sidebar */}
+                {/* Sidebar (Maintained) */}
                 <div className="lg:col-span-3 bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col overflow-hidden">
                     <div className="flex border-b">
                         <button
                             onClick={() => setSidebarTab('doctors')}
                             className={`flex-1 py-3 text-xs font-bold uppercase tracking-wider transition-all ${sidebarTab === 'doctors' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-400 hover:text-gray-600'}`}
                         >
-                            Médecins
+                            Médecins DB
                         </button>
                         <button
                             onClick={() => setSidebarTab('tasks')}
                             className={`flex-1 py-3 text-xs font-bold uppercase tracking-wider transition-all ${sidebarTab === 'tasks' ? 'text-blue-600 bg-blue-50 border-b-2 border-blue-600' : 'text-gray-400 hover:text-gray-600'}`}
                         >
-                            Pharmacies
+                            Pharmacies / Grossistes
                         </button>
                     </div>
                     <div className="p-4 border-b">
                         <input
                             type="text"
-                            placeholder={sidebarTab === 'doctors' ? "Rechercher un médecin..." : "Rechercher une pharmacie..."}
+                            placeholder={sidebarTab === 'doctors' ? "Rechercher un médecin..." : "Rechercher une tâche..."}
                             className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                             value={searchQuery}
                             onChange={e => setSearchQuery(e.target.value)}
@@ -262,14 +229,11 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                 return (
                                     <button
                                         key={doctor._id}
-                                        onClick={() => {
-                                            if (!isDelegue && !isReadOnly) moveItemToWeek(doctor, activeWeek, 'Doctor');
-                                            setSelectedItemForDetails({ type: 'doctor', data: doctor });
-                                        }}
+                                        onClick={() => setSelectedItemForDetails({ type: 'doctor', data: doctor })}
                                         className={`w-full text-left p-3 rounded-xl border transition-all group relative ${isSelected ? 'border-blue-500 bg-blue-50 ring-1 ring-blue-500' :
-                                            isVisited ? 'bg-green-50/50 border-green-100 hover:border-green-200' : 'bg-gray-50 border-transparent hover:border-blue-200 hover:bg-blue-50/50'
-                                            } ${(isDelegue || isReadOnly) ? '' : 'active:scale-95'}`}
-                                        title={isReadOnly ? "Cliquer pour voir l'historique" : isDelegue ? "Cliquer pour voir l'historique" : `Ajouter à la Semaine ${activeWeek + 1}`}
+                                            isVisited ? 'bg-green-50/50 border-green-100' : 'bg-gray-50 border-transparent hover:border-blue-200 hover:bg-blue-50/50'
+                                            } active:scale-95`}
+                                        title="Cliquer pour voir l'historique"
                                     >
                                         <div className="pr-4">
                                             <div className="flex justify-between items-start">
@@ -280,13 +244,6 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                             </div>
                                             <p className="text-[11px] text-gray-500 mt-0.5">{doctor.specialty} • {doctor.governorate}</p>
                                         </div>
-                                        {!isDelegue && !isReadOnly && (
-                                            <div className="absolute top-1/2 -translate-y-1/2 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-                                                </svg>
-                                            </div>
-                                        )}
                                     </button>
                                 );
                             })
@@ -303,11 +260,8 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                 .map(visit => (
                                     <button
                                         key={visit._id}
-                                        onClick={() => {
-                                            if (!isDelegue && !isReadOnly) moveItemToWeek(visit, activeWeek, 'Visit');
-                                            setSelectedItemForDetails({ type: 'task', data: visit });
-                                        }}
-                                        className="w-full text-left p-3 bg-gray-50 rounded-xl border border-transparent hover:border-blue-200 hover:bg-blue-50/50 transition-all group relative"
+                                        onClick={() => setSelectedItemForDetails({ type: 'task', data: visit })}
+                                        className="w-full text-left p-3 bg-gray-50 rounded-xl border border-transparent hover:border-blue-200 hover:bg-blue-50/50 transition-all group active:scale-95"
                                     >
                                         <div className="flex justify-between items-start">
                                             <div>
@@ -331,134 +285,105 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                     </div>
                 </div>
 
-                {/* Main Focus Area: Single Week Display */}
+                {/* Main Focus Area: Historical Week Display */}
                 <div className="lg:col-span-9 bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col overflow-hidden">
-                    {/* Navigation Tabs */}
-                    <div className="flex border-b overflow-x-auto no-scrollbar">
-                        {[0, 1, 2, 3, 4, 5].map(i => (
-                            <button
-                                key={i}
-                                onClick={() => setActiveWeek(i)}
-                                className={`flex-1 min-w-[120px] py-4 px-2 text-sm font-bold transition-all border-b-2 relative ${activeWeek === i
-                                    ? `text-blue-600 border-blue-600 bg-blue-50/30`
-                                    : 'text-gray-400 border-transparent hover:text-gray-600 hover:bg-gray-50'
-                                    }`}
-                            >
-                                Semaine {i + 1}
-                                {weeks[i].length > 0 && (
-                                    <span className="ml-2 bg-gray-200 text-gray-600 text-[10px] px-1.5 py-0.5 rounded-full">
-                                        {weeks[i].length}
-                                    </span>
-                                )}
-                            </button>
-                        ))}
+                    {/* Navigation Selector (Dynamic) */}
+                    <div className="p-4 border-b bg-gray-50/50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div className="flex items-center gap-3">
+                            <label className="text-sm font-bold text-gray-600 uppercase tracking-wider">Période :</label>
+                            {pastWeeks.length === 0 ? (
+                                <span className="text-sm text-gray-400 font-medium">Aucune activité</span>
+                            ) : (
+                                <select 
+                                    className="px-4 py-2.5 bg-white border border-gray-300 rounded-xl text-sm font-bold text-blue-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer min-w-[250px]"
+                                    value={activeWeekLabel}
+                                    onChange={(e) => setActiveWeekLabel(e.target.value)}
+                                >
+                                    {pastWeeks.map((weekObj) => (
+                                        <option key={weekObj.label} value={weekObj.label}>
+                                            {weekObj.label} — {weekObj.items.length} tâches
+                                        </option>
+                                    ))}
+                                </select>
+                            )}
+                        </div>
                     </div>
 
                     {/* Active Week Content */}
                     <div className="flex-1 p-6 overflow-y-auto">
-                        <div className="flex justify-between items-center mb-6">
-                            <h3 className="text-2xl font-black text-gray-800">
-                                <span className={`mr-2 inline-block w-3 h-8 rounded-full ${theme.bg}`}></span>
-                                Détail de la Semaine {activeWeek + 1}
-                            </h3>
-                            <button
-                                onClick={() => setActiveWeek(prev => (prev > 0 ? prev - 1 : 5))}
-                                className="p-2 mr-2 bg-gray-100 rounded-full hover:bg-gray-200"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button
-                                onClick={() => setActiveWeek(prev => (prev < 5 ? prev + 1 : 0))}
-                                className="p-2 bg-gray-100 rounded-full hover:bg-gray-200"
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-
-                        {weeks[activeWeek].length === 0 ? (
+                        {!activeWeekData || activeWeekData.items.length === 0 ? (
                             <div className="h-full flex flex-col items-center justify-center text-gray-300 py-40">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mb-4 opacity-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <p className="text-xl font-medium">Aucun médecin planifié cette semaine</p>
-                                {!isDelegue && !isReadOnly && <p className="text-sm mt-1">Utilisez la liste à gauche pour ajouter des médecins</p>}
+                                <p className="text-xl font-medium">Aucune donnée historique trouvée</p>
                             </div>
                         ) : (
-                            <div className="overflow-x-auto">
-                                <table className="w-full text-left border-separate border-spacing-y-2">
-                                    <thead>
-                                        <tr className="text-gray-400 text-xs font-bold uppercase tracking-wider">
-                                            <th className="px-4 py-2">Médecin</th>
-                                            <th className="px-4 py-2">Spécialité</th>
-                                            <th className="px-4 py-2">Secteur</th>
-                                            <th className="px-4 py-2 border-r border-transparent">Adresse</th>
-                                            {!isDelegue && !isReadOnly && <th className="px-4 py-2 text-right">Actions</th>}
-                                        </tr>
-                                    </thead>
-                                    <tbody className="text-sm">
-                                        {weeks[activeWeek].map((item, idx) => {
-                                            const isDoctor = item.__type === 'Doctor';
-                                            const doctorVisits = isDoctor ? visits.filter(v => v.doctorName === item.name) : [];
-                                            const isVisited = isDoctor ? doctorVisits.length > 0 : true; // Visits are already "visited" in a way, or we can just say true
-                                            const isSelected = selectedItemForDetails?.data?._id === item._id;
+                            <>
+                                <h3 className="text-xl font-black text-gray-800 mb-6">
+                                    <span className={`mr-2 inline-block w-3 h-6 rounded-full ${theme.bg} align-middle`}></span>
+                                    Déroulé de {activeWeekLabel}
+                                </h3>
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-left border-separate border-spacing-y-2">
+                                        <thead>
+                                            <tr className="text-gray-400 text-[10px] font-bold uppercase tracking-wider">
+                                                <th className="px-4 py-2">Date</th>
+                                                <th className="px-4 py-2">Cible</th>
+                                                <th className="px-4 py-2">Type</th>
+                                                <th className="px-4 py-2">Lieu / Gouvernorat</th>
+                                                <th className="px-4 py-2 border-r border-transparent text-right">Infos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="text-sm">
+                                            {activeWeekData.items.map((item, idx) => {
+                                                const isDoctor = item.targetType === 'medecin';
 
-                                            return (
-                                                <tr key={`${item._id}-${idx}`} className={`hover:bg-gray-50 transition-colors group ${isSelected ? 'ring-2 ring-blue-500 ring-inset bg-blue-50/50' : isVisited && isDoctor ? 'bg-green-50/70' : 'bg-white'}`}>
-                                                    <td className="px-4 py-4 first:rounded-l-2xl border-y border-l border-gray-100 font-bold text-gray-900 cursor-pointer hover:text-blue-600" onClick={() => setSelectedItemForDetails({ type: isDoctor ? 'doctor' : 'task', data: item })}>
-                                                        <div className="flex items-center gap-3">
-                                                            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-xs ${isVisited && isDoctor ? 'bg-green-500' : isDoctor ? theme.bg : 'bg-purple-500'}`}>
-                                                                {isDoctor ? item.name.charAt(0) : 'T'}
-                                                            </div>
-                                                            <div className="flex flex-col">
-                                                                <div className="flex items-center gap-2">
-                                                                    {isDoctor ? item.name : (item.pharmacyName || item.wholesalerName || item.visitName || 'Tâche')}
-                                                                    {isVisited && isDoctor && (
-                                                                        <span className="text-[10px] bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full border border-green-200 uppercase tracking-tighter">Visité</span>
-                                                                    )}
-                                                                    {!isDoctor && (
-                                                                        <span className="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full border border-purple-200 uppercase tracking-tighter">
-                                                                            {item.targetType === 'pharmacie' ? 'Pharmacie' : 'Grossiste'}
-                                                                        </span>
-                                                                    )}
-                                                                </div>
-                                                                <span className="text-[10px] text-blue-500 font-medium whitespace-nowrap">
-                                                                    {isDoctor ? `${doctorVisits.length} visite(s) - Cliquer pour historique` : (item.details || 'Voir détails')}
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="px-4 py-4 border-y border-gray-100 text-gray-600">
-                                                        {isDoctor ? item.specialty : (item.visitName || 'Tâche')}
-                                                    </td>
-                                                    <td className="px-4 py-4 border-y border-gray-100 text-gray-600">
-                                                        {isDoctor ? item.governorate : (item.pharmacyName || item.wholesalerName || '-')}
-                                                    </td>
-                                                    <td className="px-4 py-4 border-y border-gray-100 text-gray-500 text-xs max-w-[200px] truncate">
-                                                        {isDoctor ? (item.address || '-') : (item.details || '-')}
-                                                    </td>
-                                                    {!isDelegue && !isReadOnly && (
-                                                        <td className="px-4 py-4 last:rounded-r-2xl border-y border-r border-gray-100 text-right">
-                                                            <button
-                                                                onClick={() => removeFromWeek(activeWeek, item._id)}
-                                                                className="p-2 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                                                                title="Retirer du cycle"
-                                                            >
-                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                                </svg>
-                                                            </button>
+                                                return (
+                                                    <tr key={item._id} className={`hover:bg-gray-50 transition-colors bg-white group cursor-pointer`} onClick={() => setSelectedItemForDetails({ type: 'task', data: item })}>
+                                                        <td className="px-4 py-4 first:rounded-l-2xl border-y border-l border-gray-100 font-bold text-gray-900 w-[140px]">
+                                                            {new Date(item.start).toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'short' })}
+                                                            <span className="block text-[10px] font-medium text-gray-400 uppercase">{item.visitTime || '12:00'}</span>
                                                         </td>
-                                                    )}
-                                                </tr>
-                                            );
-                                        })}
-                                    </tbody>
-                                </table>
-                            </div>
+                                                        <td className="px-4 py-4 border-y border-gray-100 font-bold text-gray-800">
+                                                            <div className="flex items-center gap-3">
+                                                                <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-white text-xs ${isDoctor ? theme.bg : 'bg-purple-500'}`}>
+                                                                    {isDoctor ? (item.doctorName ? item.doctorName.charAt(0) : 'D') : 'T'}
+                                                                </div>
+                                                                <div>
+                                                                    {isDoctor ? item.doctorName || 'Médecin Inconnu' : (item.pharmacyName || item.wholesalerName || item.visitName || 'Tâche')}
+                                                                    <p className="text-[10px] text-gray-500 font-medium">
+                                                                       {isDoctor ? item.specialty : item.details?.substring(0,30)}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td className="px-4 py-4 border-y border-gray-100 text-gray-600">
+                                                            <span className={`text-[10px] px-2 py-1 rounded-lg font-black uppercase tracking-wider ${isDoctor ? 'bg-blue-50 text-blue-600' : item.targetType === 'pharmacie' ? 'bg-green-50 text-green-600' : 'bg-purple-50 text-purple-600'}`}>
+                                                                {item.targetType || 'Visite'}
+                                                            </span>
+                                                        </td>
+                                                        <td className="px-4 py-4 border-y border-gray-100 text-gray-600">
+                                                            {item.governorate || '-'}
+                                                        </td>
+                                                        <td className="px-4 py-4 last:rounded-r-2xl border-y border-r border-gray-100 text-right">
+                                                            {(item.givenSampleName || (item.givenSamples && item.givenSamples.length > 0)) && (
+                                                                <span title="Échantillons distribués" className="inline-block cursor-help mr-1">📦</span>
+                                                            )}
+                                                            {(item.givenMaterialName || (item.givenMaterials && item.givenMaterials.length > 0)) && (
+                                                                <span title="Articles distribués" className="inline-block cursor-help">🎁</span>
+                                                            )}
+                                                            {!(item.givenSampleName || (item.givenSamples && item.givenSamples.length > 0) || item.givenMaterialName || (item.givenMaterials && item.givenMaterials.length > 0)) && (
+                                                                <span className="text-gray-300 text-xs">—</span>
+                                                            )}
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </>
                         )}
                     </div>
                 </div>
@@ -527,7 +452,8 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                     </div>
                 )
             }
-            {/* Footer Details Panel */}
+            
+            {/* Footer Details Panel (Maintained) */}
             {
                 selectedItemForDetails && (
                     <div className="bg-white border-t-2 border-blue-500 shadow-[0_-10px_40px_rgba(0,0,0,0.1)] animate-in slide-in-from-bottom duration-300 sticky bottom-0 z-40">
@@ -535,21 +461,19 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                             <div className="flex justify-between items-center mb-4">
                                 <div className="flex items-center gap-4">
                                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-black text-white ${theme.bg}`}>
-                                        {selectedItemForDetails.type === 'doctor' ? selectedItemForDetails.data.name.charAt(0) : 'T'}
+                                        {selectedItemForDetails.type === 'doctor' ? selectedItemForDetails.data.name.charAt(0) : 'V'}
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-black text-gray-900 leading-tight">
-                                            {selectedItemForDetails.type === 'doctor' ? 'Historique des Visites' :
+                                            {selectedItemForDetails.type === 'doctor' ? 'Historique des Visites (Médecin)' :
                                                 selectedItemForDetails.data.targetType === 'pharmacie' ? 'Détails Pharmacie' :
                                                     selectedItemForDetails.data.targetType === 'grossiste' ? 'Détails Grossiste' :
-                                                        'Détails de la Tâche'}
+                                                        'Détails de la Visite'}
                                         </h3>
                                         <p className="text-sm font-medium text-blue-600">
                                             {selectedItemForDetails.type === 'doctor'
                                                 ? `Dr. ${selectedItemForDetails.data.name} • ${selectedItemForDetails.data.specialty}`
-                                                : `${selectedItemForDetails.data.targetType === 'pharmacie' ? (selectedItemForDetails.data.pharmacyName || 'Pharmacie') :
-                                                    selectedItemForDetails.data.targetType === 'grossiste' ? (selectedItemForDetails.data.wholesalerName || 'Grossiste') :
-                                                        (selectedItemForDetails.data.visitName || 'Tâche generic')} • ${new Date(selectedItemForDetails.data.start).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}`
+                                                : `${selectedItemForDetails.data.doctorName || selectedItemForDetails.data.pharmacyName || selectedItemForDetails.data.wholesalerName || selectedItemForDetails.data.visitName || 'Tâche'} • ${new Date(selectedItemForDetails.data.start).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}`
                                             }
                                         </p>
                                     </div>
@@ -618,15 +542,16 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                     <div className="w-full p-6 bg-gray-50 rounded-2xl border border-gray-100 shadow-sm">
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                             <div>
-                                                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1 block">Type de visite</label>
+                                                <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1 block">Cible de la visite</label>
                                                 <p className="text-sm font-bold text-gray-800 capitalize">
-                                                    {selectedItemForDetails.data.targetType === 'pharmacie' ? '🏥 Pharmacie' :
-                                                        selectedItemForDetails.data.targetType === 'grossiste' ? '🏢 Grossiste' :
-                                                            selectedItemForDetails.data.targetType === 'autre' ? '📋 Tâche' : selectedItemForDetails.data.targetType}
+                                                    {selectedItemForDetails.data.targetType === 'medecin' ? '🩺 Médecin' :
+                                                        selectedItemForDetails.data.targetType === 'pharmacie' ? '🏥 Pharmacie' :
+                                                            selectedItemForDetails.data.targetType === 'grossiste' ? '🏢 Grossiste' :
+                                                                '📋 Tâche Standard'}
                                                 </p>
+                                                {selectedItemForDetails.data.targetType === 'medecin' && <p className="text-sm text-gray-600">Dr. {selectedItemForDetails.data.doctorName}</p>}
                                                 {selectedItemForDetails.data.targetType === 'pharmacie' && <p className="text-sm text-gray-600">{selectedItemForDetails.data.pharmacyName}</p>}
                                                 {selectedItemForDetails.data.targetType === 'grossiste' && <p className="text-sm text-gray-600">{selectedItemForDetails.data.wholesalerName}</p>}
-                                                {selectedItemForDetails.data.visitName && <p className="text-sm text-gray-600 italic">{selectedItemForDetails.data.visitName}</p>}
                                             </div>
                                             <div>
                                                 <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1 block">Date & Heure</label>

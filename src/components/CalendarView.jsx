@@ -47,6 +47,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
     const [userSamples, setUserSamples] = useState([]);
     const [doctors, setDoctors] = useState([]); // Master list for autocomplete (cycle DB)
     const [contactDoctors, setContactDoctors] = useState([]); // From contacts section
+    const [medSuggestions, setMedSuggestions] = useState([]); // dynamic autocomplete from excel
     const [pharmacies, setPharmacies] = useState([]); // Master list for autocomplete
     const [wholesalers, setWholesalers] = useState([]); // Master list for autocomplete
     const [pendingSample, setPendingSample] = useState(''); // Temp selected sample value
@@ -166,6 +167,26 @@ export default function CalendarView({ dashboardId, viewUser }) {
         }
     }, [showModal, selectedEvent]); // Refresh data when create or edit modal opens
 
+    // Doctor autocomplete via Excel server search
+    const fetchMedSuggestions = async (searchTerm) => {
+        if (!searchTerm || searchTerm.trim().length < 2) {
+            setMedSuggestions([]);
+            return;
+        }
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch(`/api/med-list/search?q=${encodeURIComponent(searchTerm)}`, {
+                headers: { 'x-auth-token': token }
+            });
+            if (res.ok) {
+                const data = await res.json();
+                setMedSuggestions(data);
+            }
+        } catch (err) {
+            console.error('Erreur autocomplete médecins', err);
+        }
+    };
+    
     // Fetch Visits from Backend
     const fetchVisits = useCallback(async () => {
         const token = localStorage.getItem('token');
@@ -555,20 +576,45 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                                             value={newEvent.doctorName}
                                                             onChange={(e) => {
                                                                 const name = e.target.value;
-                                                                // Look in both cycle DB doctors and contacts
-                                                                const found = doctors.find(d => d.name === name) || contactDoctors.find(c => c.name === name);
+                                                                
+                                                                // Fetch dynamic suggestions
+                                                                fetchMedSuggestions(name);
+                                                                
+                                                                // Look in both cycle DB, contacts AND matched medSuggestions
+                                                                const foundLocal = doctors.find(d => d.name === name) || contactDoctors.find(c => c.name === name);
+                                                                const foundExcel = medSuggestions.find(m => m.name === name);
+                                                                
+                                                                let newGov = newEvent.governorate;
+                                                                let newSpec = newEvent.specialty;
+                                                                let newAddress = newEvent.address;
+
+                                                                if (foundLocal) {
+                                                                    newGov = foundLocal.governorate || newGov;
+                                                                    newSpec = foundLocal.specialty || newSpec;
+                                                                    newAddress = foundLocal.address || newAddress;
+                                                                } else if (foundExcel) {
+                                                                    newGov = foundExcel.governorate || newGov;
+                                                                    newSpec = foundExcel.specialty || newSpec;
+                                                                    newAddress = foundExcel.address || newAddress;
+                                                                }
+
                                                                 setNewEvent({
                                                                     ...newEvent,
                                                                     doctorName: name,
-                                                                    ...(found ? { governorate: found.governorate || newEvent.governorate, specialty: found.specialty || newEvent.specialty, address: found.address || newEvent.address } : {})
+                                                                    governorate: newGov,
+                                                                    specialty: newSpec,
+                                                                    address: newAddress
                                                                 });
                                                             }}
                                                         />
                                                         <datalist id="doctor-options">
-                                                            {/* Cycle DB doctors */}
+                                                            {/* Local doctors (cycle & contacts) */}
                                                             {doctors.map(d => <option key={`db-${d._id}`} value={d.name} />)}
-                                                            {/* Contacts section doctors (Biotech only) */}
                                                             {contactDoctors.map(c => <option key={`ct-${c._id}`} value={c.name} />)}
+                                                            {/* National Excel Suggestions */}
+                                                            {medSuggestions.map((m, idx) => (
+                                                                <option key={`excel-${idx}`} value={m.name} />
+                                                            ))}
                                                         </datalist>
                                                     </div>
                                                     <div>
