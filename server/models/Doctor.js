@@ -9,7 +9,8 @@ const DoctorSchema = new mongoose.Schema({
     name: { type: String, required: true },
     specialty: { type: String },
     governorate: { type: String },
-    address: { type: String }
+    address: { type: String },
+    prescriberType: { type: String, enum: ['prescripteur', 'non prescripteur'], default: 'non prescripteur' }
 }, { timestamps: true });
 
 // Ensure unique doctors per user to avoid duplicates

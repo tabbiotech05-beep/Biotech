@@ -19,6 +19,7 @@ const VisitSchema = new mongoose.Schema({
     governorate: { type: String },
     specialty: { type: String },
     doctorName: { type: String },
+    prescriberType: { type: String, enum: ['prescripteur', 'non prescripteur'], default: 'non prescripteur' },
     address: { type: String },
     pharmacyName: { type: String },
     wholesalerName: { type: String },
@@ -36,7 +37,11 @@ const VisitSchema = new mongoose.Schema({
         name: { type: String },
         batch: { type: String },
         count: { type: Number, default: 1 }
-    }]
+    }],
+    assignedTo: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 }, { timestamps: true });
 
 export default mongoose.model('Visit', VisitSchema);

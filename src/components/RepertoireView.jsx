@@ -32,7 +32,8 @@ export default function RepertoireView({ dashboardId, viewUser }) {
                                 name: visit.doctorName,
                                 specialty: visit.specialty || 'Généraliste',
                                 governorate: normalizedGov,
-                                address: normalizedAddr
+                                address: normalizedAddr,
+                                prescriberType: visit.prescriberType || 'non prescripteur'
                             });
                         }
                     } else if (visit.targetType === 'pharmacie' && visit.pharmacyName) {
@@ -77,6 +78,29 @@ export default function RepertoireView({ dashboardId, viewUser }) {
         (item.governorate || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
         (item.specialty || '').toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const handleTogglePrescriber = async (contact) => {
+        if (viewUser) return; // Prevent editing when viewing someone else's data
+        
+        const newStatus = contact.prescriberType === 'prescripteur' ? 'non prescripteur' : 'prescripteur';
+        try {
+            const token = localStorage.getItem('token');
+            await axios.put('/api/doctors/update-status-by-name', 
+                { name: contact.name, prescriberType: newStatus },
+                { headers: { 'x-auth-token': token } }
+            );
+
+            // Update local state
+            setContacts(prev => prev.map(c => 
+                (c.name === contact.name && c.type === 'Médecin') 
+                ? { ...c, prescriberType: newStatus } 
+                : c
+            ));
+        } catch (err) {
+            console.error('Failed to toggle prescriber status', err);
+            alert('Erreur lors du changement de statut');
+        }
+    };
 
     const typeColors = {
         'Médecin': { bg: '#6366f1', badge: 'bg-indigo-50 text-indigo-600 border-indigo-200' },
@@ -147,7 +171,8 @@ export default function RepertoireView({ dashboardId, viewUser }) {
                                 <th className="px-6 py-4">Contact</th>
                                 <th className="px-6 py-4">Spécialité / Type</th>
                                 <th className="px-6 py-4">Gouvernorat</th>
-                                <th className="px-6 py-4 w-1/3">Adresse complète</th>
+                                <th className="px-6 py-4">Adresse complète</th>
+                                <th className="px-6 py-4 text-center">Statut</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-50">
@@ -162,7 +187,9 @@ export default function RepertoireView({ dashboardId, viewUser }) {
                                                     {item.name.charAt(0).toUpperCase()}
                                                 </div>
                                                 <div>
-                                                    <div className="font-extrabold text-slate-800 text-sm">{item.name}</div>
+                                                    <div className="font-extrabold text-slate-800 text-sm flex items-center gap-2">
+                                                        {item.name}
+                                                    </div>
                                                     <div className="text-[10px] uppercase font-bold text-slate-400 mt-0.5">{item.type}</div>
                                                 </div>
                                             </div>
@@ -188,6 +215,22 @@ export default function RepertoireView({ dashboardId, viewUser }) {
                                             <div className="text-[11px] text-slate-500 leading-relaxed font-medium line-clamp-2" title={item.address}>
                                                 {item.address ? item.address : <span className="text-slate-300 italic">Aucune adresse</span>}
                                             </div>
+                                        </td>
+                                        <td className="px-6 py-4 text-center">
+                                            {item.type === 'Médecin' && !viewUser ? (
+                                                <button 
+                                                    onClick={() => handleTogglePrescriber(item)}
+                                                    className={`px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all border shadow-sm active:scale-95 ${item.prescriberType === 'prescripteur' ? 'bg-red-500 border-red-600 text-white' : 'bg-slate-50 border-slate-200 text-slate-400 hover:bg-slate-100 hover:text-slate-600'}`}
+                                                >
+                                                    {item.prescriberType === 'prescripteur' ? 'Prescripteur' : 'Non Prescripteur'}
+                                                </button>
+                                            ) : item.type === 'Médecin' ? (
+                                                <span className={`px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest border ${item.prescriberType === 'prescripteur' ? 'bg-red-50 border-red-200 text-red-600' : 'bg-slate-50 border-slate-100 text-slate-300'}`}>
+                                                    {item.prescriberType === 'prescripteur' ? 'Prescripteur' : 'Non Prescripteur'}
+                                                </span>
+                                            ) : (
+                                                <span className="text-slate-200">—</span>
+                                            )}
                                         </td>
                                     </tr>
                                 );

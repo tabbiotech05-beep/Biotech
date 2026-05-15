@@ -41,7 +41,8 @@ export default function CalendarView({ dashboardId, viewUser }) {
         givenSampleName: '',
         givenSampleBatch: '',
         givenSampleQty: 1,
-        givenSamples: []
+        givenSamples: [],
+        prescriberType: 'non prescripteur'
     });
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [userSamples, setUserSamples] = useState([]);
@@ -53,6 +54,8 @@ export default function CalendarView({ dashboardId, viewUser }) {
     const [pendingSample, setPendingSample] = useState(''); // Temp selected sample value
     const [pendingQty, setPendingQty] = useState(1); // Temp quantity to add
     const [pendingSampleQty, setPendingSampleQty] = useState(1); // Quantity for sample
+    const [allDelegates, setAllDelegates] = useState([]);
+    const [selectedDelegateId, setSelectedDelegateId] = useState('');
 
     const onNavigate = useCallback((newDate) => setDate(newDate), [setDate]);
     const onView = useCallback((newView) => setView(newView), [setView]);
@@ -75,7 +78,8 @@ export default function CalendarView({ dashboardId, viewUser }) {
             givenSampleName: '',
             givenSampleBatch: '',
             givenSampleQty: 1,
-            givenSamples: []
+            givenSamples: [],
+            prescriberType: 'non prescripteur'
         });
         setSelectedEvent(null); // Clear selection when creating new
         setShowModal(true);
@@ -156,12 +160,29 @@ export default function CalendarView({ dashboardId, viewUser }) {
         } catch (err) { console.error('Error fetching contact doctors:', err); }
     };
 
+    const fetchDelegates = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch('/api/auth/users', {
+                headers: { 'x-auth-token': token }
+            });
+            if (res.ok) {
+                const data = await res.json();
+                const currentUsername = localStorage.getItem('username');
+                setAllDelegates(data.filter(u => u.username !== currentUsername));
+            }
+        } catch (err) {
+            console.error('Error fetching delegates:', err);
+        }
+    };
+
     useEffect(() => {
         fetchUserSamples();
         fetchDoctors();
         fetchPharmacies();
         fetchWholesalers();
         fetchContactDoctors();
+        fetchDelegates();
         if (eventsData.length > 0 && !eventsData[0].id) {
             setEventsData(prev => prev.map((e, i) => ({ ...e, id: i })));
         }
@@ -409,6 +430,40 @@ export default function CalendarView({ dashboardId, viewUser }) {
         }
     }
 
+    const handleAssignTask = async () => {
+        if (!selectedDelegateId) {
+            alert('Veuillez séléctionner un délégué.');
+            return;
+        }
+
+        setIsProcessing(true);
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch(`/api/visits/${selectedEvent.id}/assign`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': token
+                },
+                body: JSON.stringify({ targetUserId: selectedDelegateId })
+            });
+
+            if (res.ok) {
+                alert('Tâche envoyée avec succès !');
+                setSelectedEvent(null);
+                setSelectedDelegateId('');
+            } else {
+                const err = await res.json();
+                alert(err.msg || 'Erreur lors de l\'assignation.');
+            }
+        } catch (err) {
+            console.error('Error assigning task:', err);
+            alert('Erreur réseau lors de l\'assignation.');
+        } finally {
+            setIsProcessing(false);
+        }
+    };
+
     const handleDeleteEvent = async () => {
         const eventId = selectedEvent.id || selectedEvent._id;
         if (!eventId) {
@@ -621,6 +676,20 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                                         <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Adresse</label>
                                                         <input type="text" className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm" value={newEvent.address} onChange={(e) => setNewEvent({ ...newEvent, address: e.target.value })} />
                                                     </div>
+                                                    <div>
+                                                        <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Statut prescripteur</label>
+                                                        <div className="flex gap-2 mt-1">
+                                                            {['prescripteur', 'non prescripteur'].map(t => (
+                                                                <button
+                                                                    key={t}
+                                                                    onClick={() => setNewEvent({ ...newEvent, prescriberType: t })}
+                                                                    className={`flex-1 py-2 text-[10px] font-bold rounded-lg border transition-all ${newEvent.prescriberType === t ? 'bg-blue-50 border-blue-200 text-blue-600 shadow-sm' : 'bg-white border-gray-100 text-gray-400'}`}
+                                                                >
+                                                                    {t.charAt(0).toUpperCase() + t.slice(1)}
+                                                                </button>
+                                                            ))}
+                                                        </div>
+                                                    </div>
                                                 </>
                                             )}
                                             {newEvent.targetType === 'pharmacie' && (
@@ -800,6 +869,23 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                         <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Ville</label>
                                         <p className="text-sm font-bold text-gray-700">{selectedEvent.governorate || '—'}</p>
                                     </div>
+                                    {selectedEvent.targetType === 'medecin' && (
+                                        <div className="col-span-1">
+                                            <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Prescripteur</label>
+                                            <div className="flex gap-1">
+                                                {['prescripteur', 'non prescripteur'].map(t => (
+                                                    <button
+                                                        key={t}
+                                                        disabled={isReadOnly}
+                                                        onClick={() => setSelectedEvent({ ...selectedEvent, prescriberType: t })}
+                                                        className={`flex-1 py-1 text-[9px] font-bold rounded border transition-all ${selectedEvent.prescriberType === t ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white border-gray-200 text-gray-400'}`}
+                                                    >
+                                                        {t.charAt(0).toUpperCase()}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
                                     <div className="col-span-1">
                                         <label className="block text-[10px] font-bold text-gray-400 uppercase mb-1">Spécialité</label>
                                         {isReadOnly ? (
@@ -936,6 +1022,31 @@ export default function CalendarView({ dashboardId, viewUser }) {
                                         onChange={(e) => setSelectedEvent({ ...selectedEvent, details: e.target.value })}
                                     />
                                 </div>
+
+                                {!isReadOnly && (
+                                    <div className="mb-8 p-4 bg-blue-50 rounded-xl border border-blue-100">
+                                        <label className="block text-[11px] font-bold text-blue-400 uppercase mb-3 tracking-widest">🚀 Partager avec un collègue</label>
+                                        <div className="flex gap-2">
+                                            <select 
+                                                className="flex-1 border border-blue-200 rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-blue-500"
+                                                value={selectedDelegateId}
+                                                onChange={(e) => setSelectedDelegateId(e.target.value)}
+                                            >
+                                                <option value="">Sélectionner un délégué...</option>
+                                                {allDelegates.map(d => (
+                                                    <option key={d._id} value={d._id}>{d.username}</option>
+                                                ))}
+                                            </select>
+                                            <button 
+                                                onClick={handleAssignTask}
+                                                disabled={isProcessing || !selectedDelegateId}
+                                                className="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-black uppercase tracking-widest hover:bg-blue-700 transition-all disabled:opacity-50 shadow-md shadow-blue-100"
+                                            >
+                                                Envoyer
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
 
                                 <div className="flex flex-col gap-3 pt-6 border-t border-gray-100">
                                     {!isReadOnly && (

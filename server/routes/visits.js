@@ -8,6 +8,10 @@ import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
+const escapeRegExp = (string) => {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+};
+
 // @route   GET api/visits
 // @desc    Get all visits for the logged in user AND specific dashboard
 // @access  Private
@@ -40,6 +44,31 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
+router.get('/assigned-to-me/count', auth, async (req, res) => {
+    try {
+        const count = await Visit.countDocuments({ assignedTo: req.user.userId });
+        res.json({ count });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   GET api/visits/assigned-to-me
+// @desc    Get visits assigned to the logged in user by others
+// @access  Private
+router.get('/assigned-to-me', auth, async (req, res) => {
+    try {
+        const visits = await Visit.find({ assignedTo: req.user.userId })
+            .populate('user', 'username profileImage')
+            .sort({ start: -1 });
+        res.json(visits);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 // @route   POST api/visits
 // @desc    Add new visit
 // @access  Private
@@ -50,7 +79,8 @@ router.post('/', auth, async (req, res) => {
         givenSampleName, givenSampleBatch, givenSampleQty,
         givenSamples,
         givenMaterialName, givenMaterialBatch,
-        givenMaterials
+        givenMaterials,
+        prescriberType
     } = req.body;
 
     // Validation
@@ -71,43 +101,48 @@ router.post('/', auth, async (req, res) => {
 
             let entity = await model.findOne({
                 user: req.user.userId,
-                name: { $regex: new RegExp(`^${trimmedName}$`, 'i') }
+                name: { $regex: new RegExp(`^${escapeRegExp(trimmedName)}$`, 'i') }
             });
 
+            const entityData = {
+                user: req.user.userId,
+                name: trimmedName,
+                governorate: fields.governorate || 'N/A',
+                address: fields.address || ''
+            };
+
+            if (type === 'medecin') {
+                entityData.specialty = fields.specialty || 'Généraliste';
+                entityData.prescriberType = fields.prescriberType || 'non prescripteur';
+            }
+
             if (!entity) {
-                entity = new model({
-                    user: req.user.userId,
-                    name: trimmedName,
-                    governorate: fields.governorate || 'N/A',
-                    address: fields.address || '',
-                    specialty: fields.specialty || (type === 'medecin' ? 'Généraliste' : undefined)
-                });
+                entity = new model(entityData);
+                await entity.save();
+            } else if (type === 'medecin' && fields.prescriberType) {
+                // Update prescriber status for existing doctor
+                entity.prescriberType = fields.prescriberType;
                 await entity.save();
             }
 
-            // Also add medecins AND grossistes to the Doctor collection
-            // so they appear in the cycle view sidebar automatically
-            if (type === 'medecin' || type === 'grossiste') {
-                const doctorLabel = type === 'grossiste' ? '🏢 Grossiste' : (fields.specialty || 'Généraliste');
+            // Also add grossistes to the Doctor collection for cycle view compatibility
+            if (type === 'grossiste') {
                 const doctorExists = await Doctor.findOne({
                     user: req.user.userId,
-                    name: { $regex: new RegExp(`^${trimmedName}$`, 'i') },
-                    specialty: type === 'grossiste' ? '🏢 Grossiste' : { $exists: true }
+                    name: { $regex: new RegExp(`^${escapeRegExp(trimmedName)}$`, 'i') },
+                    specialty: '🏢 Grossiste'
                 });
                 if (!doctorExists) {
                     await new Doctor({
-                        user: req.user.userId,
-                        name: trimmedName,
-                        specialty: doctorLabel,
-                        governorate: fields.governorate || '',
-                        address: fields.address || ''
+                        ...entityData,
+                        specialty: '🏢 Grossiste'
                     }).save();
                 }
             }
         };
 
         await saveEntityIfNew(targetType, targetType === 'medecin' ? doctorName : targetType === 'pharmacie' ? pharmacyName : wholesalerName, {
-            governorate, specialty, address
+            governorate, specialty, address, prescriberType
         });
 
         // FIXED: Support multiple samples in givenSamples array
@@ -203,6 +238,7 @@ router.post('/', auth, async (req, res) => {
             givenMaterialName,
             givenMaterialBatch,
             givenMaterials: givenMaterials || [],
+            prescriberType: prescriberType || 'non prescripteur',
             user: req.user.userId
         });
 
@@ -224,7 +260,8 @@ router.put('/:id', auth, async (req, res) => {
         givenSampleName, givenSampleBatch, givenSampleQty,
         givenSamples,
         givenMaterialName, givenMaterialBatch,
-        givenMaterials
+        givenMaterials,
+        prescriberType
     } = req.body;
 
     // Validation for update
@@ -334,12 +371,21 @@ router.put('/:id', auth, async (req, res) => {
         if (givenMaterialName !== undefined) visitFields.givenMaterialName = givenMaterialName;
         if (givenMaterialBatch !== undefined) visitFields.givenMaterialBatch = givenMaterialBatch;
         if (givenMaterials !== undefined) visitFields.givenMaterials = givenMaterials;
+        if (prescriberType !== undefined) visitFields.prescriberType = prescriberType;
 
         visit = await Visit.findByIdAndUpdate(
             req.params.id,
             { $set: visitFields },
             { new: true }
         );
+
+        // Sync Doctor prescriber status if it is a doctor visit
+        if (visit.targetType === 'medecin' && visit.doctorName && visit.prescriberType) {
+            await Doctor.findOneAndUpdate(
+                { user: req.user.userId, name: { $regex: new RegExp(`^${escapeRegExp(visit.doctorName.trim())}$`, 'i') } },
+                { prescriberType: visit.prescriberType }
+            );
+        }
 
         res.json(visit);
     } catch (err) {
@@ -480,6 +526,32 @@ router.get('/search-tenshi', auth, async (req, res) => {
     } catch (err) {
         console.error('[search-tenshi] Error:', err.message);
         res.status(500).json({ msg: 'Erreur serveur lors de la recherche.' });
+    }
+});
+
+// @route   PUT api/visits/:id/assign
+// @desc    Assign a visit to another user
+// @access  Private
+router.put('/:id/assign', auth, async (req, res) => {
+    const { targetUserId } = req.body;
+    if (!targetUserId) return res.status(400).json({ msg: 'Target user ID is required' });
+
+    try {
+        const visit = await Visit.findById(req.params.id);
+        if (!visit) return res.status(404).json({ msg: 'Visit not found' });
+
+        // Authorization: Only the owner can assign
+        if (visit.user.toString() !== req.user.userId) {
+            return res.status(401).json({ msg: 'User not authorized' });
+        }
+
+        visit.assignedTo = targetUserId;
+        await visit.save();
+
+        res.json({ msg: 'Visit assigned successfully', visit });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
     }
 });
 

@@ -19,6 +19,7 @@ import ContactView from './components/ContactView';
 import RepertoireView from './components/RepertoireView';
 import TenshiSearchView from './components/TenshiSearchView';
 import MedListView from './components/MedListView';
+import AssignmentView from './components/AssignmentView';
 import axios from 'axios';
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -275,6 +276,7 @@ export default function DashboardPage() {
     const [pharmaTab, setPharmaTab] = useState('assignment');
     const [userData, setUserData] = useState(null);
     const [leavePendingCount, setLeavePendingCount] = useState(0);
+    const [assignedCount, setAssignedCount] = useState(0);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const allowedDashboards = JSON.parse(localStorage.getItem('allowedDashboards') || '[]');
     const role = localStorage.getItem('role') || 'delegue';
@@ -290,10 +292,18 @@ export default function DashboardPage() {
             
             // Fetch detailed user data for profile image
             axios.get('/api/auth/me', { headers: { 'x-auth-token': token } })
-                .then(res => {
-                    setUserData(res.data);
-                })
+                .then(res => setUserData(res.data))
                 .catch(err => console.error('Failed to fetch user data:', err));
+
+            // Fetch pending leave count (for badge)
+            axios.get('/api/leave/pending-count', { headers: { 'x-auth-token': token } })
+                .then(res => setLeavePendingCount(res.data.count))
+                .catch(err => console.error('Failed to fetch pending leave count:', err));
+
+            // Fetch assigned tasks count
+            axios.get('/api/visits/assigned-to-me/count', { headers: { 'x-auth-token': token } })
+                .then(res => setAssignedCount(res.data.count))
+                .catch(err => console.error('Failed to fetch assigned count:', err));
 
             if (!allowedDashboards.includes(dashboardId)) {
                 alert('Access Denied');
@@ -387,12 +397,13 @@ export default function DashboardPage() {
 
     // ── Delegue Layout ───────────────────────────────────────────────────────
     const delegateTabs = [
+        { id: 'assignment', label: assignedCount > 0 ? `Assignation (${assignedCount})` : 'Assignation', icon: <IconAssignment /> },
         { id: 'calendar', label: 'Calendrier', icon: <IconCalendar /> },
         { id: 'cycle', label: 'Cycle', icon: <IconCycle /> },
         { id: 'samples', label: 'Échantillons', icon: <IconSamples /> },
         { id: 'stockpct', label: 'Stock PCT', icon: <IconPCT /> },
         { id: 'congress', label: 'Action marketing', icon: <IconCongress /> },
-        { id: 'leave', label: 'Mes Congés', icon: <IconLeave /> },
+        { id: 'leave', label: leavePendingCount > 0 ? `Congés (${leavePendingCount})` : 'Congés', icon: <IconLeave /> },
         { id: 'expense', label: 'Note de Frais', icon: <IconExpense /> },
         { id: 'profile', label: 'Mon Profil', icon: <IconProfile /> },
     ];
@@ -525,6 +536,7 @@ export default function DashboardPage() {
 
                 {/* Content */}
                 <div className="animate-fade-up">
+                    {activeTab === 'assignment' && <AssignmentView />}
                     {activeTab === 'calendar' && <CalendarView key={`${dashboardId}-${viewUser}`} dashboardId={dashboardId} viewUser={viewUser} />}
                     {activeTab === 'samples' && <SamplesView dashboardId={dashboardId} viewUser={viewUser} />}
                     {activeTab === 'congress' && <CongressView key={dashboardId} dashboardId={dashboardId} />}

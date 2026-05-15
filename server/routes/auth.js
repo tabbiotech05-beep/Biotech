@@ -153,12 +153,9 @@ router.get('/dashboard-users', auth, async (req, res) => {
 // @access  Private (Pharmacienne only ideally, but generally Private for MVP)
 router.get('/users', auth, async (req, res) => {
     try {
-        // Only managers should see the list of delegates
-        if (req.user.role !== 'admin' && req.user.role !== 'pharmacienne') {
-            return res.status(403).json({ msg: 'Accès refusé : Rôle manager requis' });
-        }
-        // You might want to filter by role='delegue'
-        const users = await User.find({ role: 'delegue' }, '-password');
+        // Allows delegates to see colleagues for assignment feature
+        // Admin, Pharmacienne, and Delegue can see the list
+        const users = await User.find({ role: 'delegue' }, 'username profileImage role');
         res.json(users);
     } catch (err) {
         console.error(err.message);

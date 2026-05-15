@@ -161,4 +161,39 @@ router.post('/sync-all', auth, async (req, res) => {
     }
 });
 
+// @route   PUT /api/doctors/update-status-by-name
+// @desc    Update doctor prescriber status by name and sync with visits
+router.put('/update-status-by-name', auth, async (req, res) => {
+    const { name, prescriberType } = req.body;
+    if (!name) return res.status(400).json({ msg: 'Name is required' });
+    if (!['prescripteur', 'non prescripteur'].includes(prescriberType)) {
+        return res.status(400).json({ msg: 'Invalid prescriber type' });
+    }
+
+    try {
+        const userId = req.user.userId;
+        const trimmedName = name.trim();
+        const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const nameRegex = new RegExp(`^${escapeRegExp(trimmedName)}$`, 'i');
+
+        // 1. Update Doctor record
+        const doctor = await Doctor.findOneAndUpdate(
+            { user: userId, name: { $regex: nameRegex } },
+            { prescriberType },
+            { new: true }
+        );
+
+        // 2. Update all visits for this doctor to keep Repertoire (which is visit-based) in sync
+        await Visit.updateMany(
+            { user: userId, targetType: 'medecin', doctorName: { $regex: nameRegex } },
+            { prescriberType }
+        );
+
+        res.json({ msg: 'Status updated and synced', doctor });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 export default router;
