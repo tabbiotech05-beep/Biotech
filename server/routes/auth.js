@@ -155,7 +155,7 @@ router.get('/users', auth, async (req, res) => {
     try {
         // Allows delegates to see colleagues for assignment feature
         // Admin, Pharmacienne, and Delegue can see the list
-        const users = await User.find({ role: 'delegue' }, 'username profileImage role');
+        const users = await User.find({ role: 'delegue' }, 'username profileImage role samples');
         res.json(users);
     } catch (err) {
         console.error(err.message);

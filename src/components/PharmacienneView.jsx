@@ -305,8 +305,8 @@ export default function PharmacienneView() {
                                     </tr>
                                 ) : (
                                     users.map(user => {
-                                        const samples = user.samples.filter(s => (s.itemType || 'sample') === 'sample');
-                                        const materials = user.samples.filter(s => s.itemType === 'material');
+                                        const samples = (user.samples || []).filter(s => (s.itemType || 'sample') === 'sample');
+                                        const materials = (user.samples || []).filter(s => s.itemType === 'material');
 
                                         return (
                                             <tr key={user._id} className="hover:bg-gray-50 transition-colors">
