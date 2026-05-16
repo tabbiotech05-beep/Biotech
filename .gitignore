@@ -22,8 +22,8 @@ dist-ssr
 # Local Data and Uploads (Keep directory structure but ignore files)
 data/db/*
 !data/db/.gitkeep
-uploads/*
-!uploads/.gitkeep
-*.xlsx
+# uploads/*
+# !uploads/.gitkeep
+# *.xlsx
 app.pid
-*.log
+# *.log
