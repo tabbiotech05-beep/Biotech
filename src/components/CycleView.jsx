@@ -8,7 +8,7 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
     const [pastWeeks, setPastWeeks] = useState([]); // Dynamic computed weeks
     const [activeWeekLabel, setActiveWeekLabel] = useState("");
     const [loading, setLoading] = useState(true);
-    const [newDoctor, setNewDoctor] = useState({ name: '', specialty: '', governorate: '', address: '' });
+    const [newDoctor, setNewDoctor] = useState({ name: '', specialty: '', governorate: '', address: '', prescriberType: 'non prescripteur' });
     const [showAddModal, setShowAddModal] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [visits, setVisits] = useState([]);
@@ -103,7 +103,7 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
             });
             const addedDoctor = res.data;
             setDoctors([...doctors, addedDoctor]);
-            setNewDoctor({ name: '', specialty: '', governorate: '', address: '' });
+            setNewDoctor({ name: '', specialty: '', governorate: '', address: '', prescriberType: 'non prescripteur' });
             setShowAddModal(false);
         } catch (err) {
             alert(err.response?.data?.msg || 'Error adding doctor');
@@ -236,11 +236,16 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                         title="Cliquer pour voir l'historique"
                                     >
                                         <div className="pr-4">
-                                            <div className="flex justify-between items-start">
-                                                <p className="font-bold text-gray-800 text-sm leading-tight">{doctor.name}</p>
-                                                {isVisited && (
-                                                    <span className="text-[8px] bg-green-500 text-white px-1 py-0.5 rounded font-bold uppercase tracking-tighter">Visité</span>
-                                                )}
+                                            <div className="flex justify-between items-start gap-1">
+                                                <p className="font-bold text-gray-800 text-sm leading-tight flex-1">{doctor.name}</p>
+                                                <div className="flex gap-1 shrink-0">
+                                                    {doctor.prescriberType === 'prescripteur' && (
+                                                        <span className="text-[8px] bg-red-500 text-white px-1 py-0.5 rounded font-black uppercase tracking-tighter">P</span>
+                                                    )}
+                                                    {isVisited && (
+                                                        <span className="text-[8px] bg-green-500 text-white px-1 py-0.5 rounded font-bold uppercase tracking-tighter">Visité</span>
+                                                    )}
+                                                </div>
                                             </div>
                                             <p className="text-[11px] text-gray-500 mt-0.5">{doctor.specialty} • {doctor.governorate}</p>
                                         </div>
@@ -442,6 +447,21 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                         value={newDoctor.address}
                                         onChange={e => setNewDoctor({ ...newDoctor, address: e.target.value })}
                                     />
+                                </div>
+                                <div className="space-y-1">
+                                    <label className="text-xs font-bold text-gray-500 uppercase ml-1">Statut Prescripteur</label>
+                                    <div className="flex gap-2">
+                                        {['prescripteur', 'non prescripteur'].map(t => (
+                                            <button
+                                                key={t}
+                                                type="button"
+                                                onClick={() => setNewDoctor({ ...newDoctor, prescriberType: t })}
+                                                className={`flex-1 py-2 text-[10px] font-bold rounded-xl border transition-all ${newDoctor.prescriberType === t ? 'bg-blue-50 border-blue-200 text-blue-600 shadow-sm' : 'bg-white border-gray-100 text-gray-400'}`}
+                                            >
+                                                {t.charAt(0).toUpperCase() + t.slice(1)}
+                                            </button>
+                                        ))}
+                                    </div>
                                 </div>
                                 <div className="flex gap-4 pt-4">
                                     <button type="button" onClick={() => setShowAddModal(false)} className="flex-1 py-4 text-gray-500 font-bold bg-gray-100 rounded-2xl hover:bg-gray-200 transition-all">Fermer</button>

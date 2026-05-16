@@ -51,7 +51,19 @@ const congressSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
+    delegateComment: {
+        type: String,
+        default: ''
+    },
     approvedBy: {
+        type: String,
+        default: ''
+    },
+    adminCommentAuthor: {
+        type: String,
+        default: ''
+    },
+    delegateCommentAuthor: {
         type: String,
         default: ''
     },

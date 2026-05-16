@@ -66,7 +66,8 @@ router.post('/', auth, upload.single('image'), async (req, res) => {
             isAdminCreated: isAdmin,
             isApproved: isAdmin, // Admins auto-approve
             approvedBy: isAdmin ? req.user.username : '',
-            comment: comment || ''
+            comment: comment || '',
+            adminCommentAuthor: (isAdmin && comment) ? req.user.username : ''
         });
 
         const congress = await newCongress.save();
@@ -101,7 +102,7 @@ router.get('/', auth, async (req, res) => {
             }
         }
 
-        const congresses = await Congress.find(query).sort({ startDate: 1 });
+        const congresses = await Congress.find(query).sort({ startDate: 1 }).populate('user', 'username name');
         res.json(congresses);
     } catch (err) {
         console.error(err.message);
@@ -185,7 +186,10 @@ router.patch('/:id/approve', auth, async (req, res) => {
         if (isApproved) {
             congress.approvedBy = req.user.username;
         }
-        if (comment !== undefined) congress.comment = comment;
+        if (comment !== undefined) {
+            congress.comment = comment;
+            congress.adminCommentAuthor = req.user.username;
+        }
 
         await congress.save();
         res.json(congress);
@@ -221,6 +225,31 @@ router.delete('/:id', auth, async (req, res) => {
 
         await congress.deleteOne();
         res.json({ msg: 'Action marketing supprimée' });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   PATCH api/congress/:id/delegate-comment
+// @desc    Delegate adds a comment on a marketing action
+// @access  Private (non-admin)
+router.patch('/:id/delegate-comment', auth, async (req, res) => {
+    try {
+        const { delegateComment } = req.body;
+
+        const congress = await Congress.findById(req.params.id);
+        if (!congress) return res.status(404).json({ msg: 'Action marketing introuvable' });
+
+        // Only the delegate (non-admin) can use this route, or any non-admin
+        if (req.user.role === 'admin') {
+            return res.status(403).json({ msg: 'Les admins utilisent la route /approve pour commenter' });
+        }
+
+        congress.delegateComment = delegateComment || '';
+        congress.delegateCommentAuthor = req.user.username;
+        await congress.save();
+        res.json(congress);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
