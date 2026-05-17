@@ -49,13 +49,42 @@ async function start() {
 
         console.log('✅ Seeding finished.');
 
+        // Function to filter logs
+        const filterLogs = (data, isError = false) => {
+            const lines = data.toString().split('\n');
+            for (const line of lines) {
+                if (!line.trim()) continue;
+                const low = line.toLowerCase();
+                // We keep errors, startup messages, whatsapp, and app-usage logs
+                if (
+                    low.includes('whatsapp') ||
+                    low.includes('[app-usage]') ||
+                    low.includes('error') ||
+                    low.includes('failed') ||
+                    low.includes('exception') ||
+                    low.includes('port') ||
+                    low.includes('running') ||
+                    low.includes('ready')
+                ) {
+                    if (isError) {
+                        process.stderr.write(line + '\n');
+                    } else {
+                        process.stdout.write(line + '\n');
+                    }
+                }
+            }
+        };
+
         // 3. Start Backend Server
         console.log('🔌 Starting Backend Server...');
         const serverProcess = spawn('node', ['server/index.js'], {
             env,
-            stdio: 'inherit',
+            stdio: ['ignore', 'pipe', 'pipe'],
             cwd: __dirname
         });
+
+        serverProcess.stdout.on('data', (data) => filterLogs(data, false));
+        serverProcess.stderr.on('data', (data) => filterLogs(data, true));
 
         console.log(`📡 Backend process spawned with PID: ${serverProcess.pid}`);
 
@@ -69,9 +98,12 @@ async function start() {
                 console.log('🔄 Restarting Backend Server...');
                 const newProcess = spawn('node', ['server/index.js'], {
                     env,
-                    stdio: 'inherit',
+                    stdio: ['ignore', 'pipe', 'pipe'],
                     cwd: __dirname
                 });
+                newProcess.stdout.on('data', (data) => filterLogs(data, false));
+                newProcess.stderr.on('data', (data) => filterLogs(data, true));
+                
                 console.log(`📡 Backend restarted with PID: ${newProcess.pid}`);
                 newProcess.on('error', (err) => console.error('❌ Restart failed:', err));
                 newProcess.on('exit', (c, s) => console.log(`⚠️  Backend exited again (code=${c}, signal=${s})`));
@@ -82,10 +114,13 @@ async function start() {
         console.log('🎨 Starting Frontend (Vite)...');
         const frontProcess = spawn('npx', ['vite', '--port', '5173', '--host', '0.0.0.0'], {
             env,
-            stdio: 'inherit',
+            stdio: ['ignore', 'pipe', 'pipe'],
             cwd: __dirname,
             shell: true
         });
+
+        frontProcess.stdout.on('data', (data) => filterLogs(data, false));
+        frontProcess.stderr.on('data', (data) => filterLogs(data, true));
 
         console.log(`🌐 Frontend process spawned with PID: ${frontProcess.pid}`);
         console.log(`\n✅ App ready!`);

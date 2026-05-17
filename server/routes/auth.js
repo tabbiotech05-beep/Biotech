@@ -98,8 +98,7 @@ router.post('/login', async (req, res) => {
             { expiresIn: '30d' }
         );
 
-        console.log('Login user:', user.username);
-        console.log('Allowed dashboards:', user.allowedDashboards);
+        console.log(`[APP-USAGE] L'utilisateur ${user.username} a ouvert l'application`);
 
         res.json({
             token,
@@ -111,6 +110,18 @@ router.post('/login', async (req, res) => {
         });
     } catch (err) {
         res.status(500).json({ message: 'Server error', error: err.message });
+    }
+});
+
+// @route   POST api/auth/logout
+// @desc    Log out user (logging purpose)
+// @access  Private
+router.post('/logout', auth, async (req, res) => {
+    try {
+        console.log(`[APP-USAGE] L'utilisateur ${req.user.username} a fermé l'application`);
+        res.json({ message: 'Logged out' });
+    } catch (err) {
+        res.status(500).json({ message: 'Server error' });
     }
 });
 

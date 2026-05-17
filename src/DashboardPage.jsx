@@ -341,7 +341,18 @@ export default function DashboardPage() {
         }
     }, [navigate, dashboardId, viewUser, allowedDashboards]);
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            if (token) {
+                await fetch('/api/auth/logout', { 
+                    method: 'POST', 
+                    headers: { 'x-auth-token': token } 
+                });
+            }
+        } catch (e) {
+            console.error('Logout error', e);
+        }
         localStorage.removeItem('token');
         localStorage.removeItem('username');
         localStorage.removeItem('allowedDashboards');
