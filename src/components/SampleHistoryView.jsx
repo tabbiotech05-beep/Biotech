@@ -187,8 +187,10 @@ export default function SampleHistoryView() {
             const offeredRows = [];
             (batchData.offeredHistory || []).forEach(h => {
                 const date = new Date(h.start).toLocaleDateString('fr-FR');
-                const delegate = h.user ? h.user.username : 'Inconnu';
-                const target = `Dr. ${h.doctorName || h.pharmacyName || 'N/A'}`;
+                const delegate = h.delegateName || (h.user ? h.user.username : 'Inconnu');
+                const target = h.doctorName ? `Dr. ${h.doctorName}` : (h.pharmacyName || h.wholesalerName || 'N/A');
+                
+                // Use original author names if they exist (for traceability)
 
                 // Check sample
                 if (h.givenSampleBatch === batchData.batchNumber) {
@@ -275,10 +277,10 @@ export default function SampleHistoryView() {
                                             </tr>
                                         ) : (
                                             delegates
-                                                .filter(d => d.lastGiven && d.delegateName) // Filter out incomplete entries
+                                                .filter(d => d.lastGiven) // Filter out incomplete entries
                                                 .map((d) => (
                                                     <tr key={d._id} className="hover:bg-gray-50 cursor-pointer" onClick={() => handleDelegateClick(d)}>
-                                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900 font-medium">{d.delegateName}</td>
+                                                        <td className="px-6 py-4 whitespace-nowrap text-gray-900 font-medium">{d.delegateName || 'N/A'}</td>
                                                         <td className="px-6 py-4 whitespace-nowrap text-gray-500">
                                                             {new Date(d.lastGiven).toLocaleDateString('fr-FR')}
                                                         </td>
@@ -419,8 +421,8 @@ export default function SampleHistoryView() {
                                             <tbody className="bg-white divide-y divide-gray-200">
                                                 {(batchData.offeredHistory || []).map(h => {
                                                     const date = new Date(h.start).toLocaleDateString('fr-FR');
-                                                    const delegate = h.user ? h.user.username : 'Inconnu';
-                                                    const target = `Dr. ${h.doctorName || h.pharmacyName || 'N/A'}`;
+                                                    const delegate = h.delegateName || (h.user ? h.user.username : 'Inconnu');
+                                                    const target = h.doctorName ? `Dr. ${h.doctorName}` : (h.pharmacyName || h.wholesalerName || 'N/A');
 
                                                     const rows = [];
                                                     if (h.givenSampleBatch === batchData.batchNumber) {

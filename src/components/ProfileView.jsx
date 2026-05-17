@@ -53,6 +53,7 @@ export default function ProfileView() {
         try {
             const token = localStorage.getItem('token');
             const formData = new FormData();
+            formData.append('username', profile.username);
             formData.append('carLicensePlate', profile.carLicensePlate);
             formData.append('carModel', profile.carModel);
             if (selectedFile) {
@@ -67,13 +68,20 @@ export default function ProfileView() {
             });
 
             setProfile(res.data);
+            if (res.data.username) {
+                localStorage.setItem('username', res.data.username);
+            }
             if (res.data.profileImage) {
                 setPreviewUrl(`/${res.data.profileImage}`);
             }
             setMessage({ text: 'Profil mis à jour avec succès', type: 'success' });
+            
+            // Optional: trigger a page reload or event to update global UI if needed
+            // window.location.reload(); 
         } catch (err) {
             console.error('Error updating profile:', err);
-            setMessage({ text: 'Erreur lors de la mise à jour du profil', type: 'error' });
+            const errorMsg = err.response?.data?.message || 'Erreur lors de la mise à jour du profil';
+            setMessage({ text: errorMsg, type: 'error' });
         } finally {
             setSaving(false);
         }
@@ -133,9 +141,14 @@ export default function ProfileView() {
                         <input
                             type="text"
                             value={profile.username}
-                            disabled
-                            className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-500 cursor-not-allowed font-medium"
+                            onChange={(e) => setProfile({ ...profile, username: e.target.value })}
+                            className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-4 focus:ring-indigo-100 focus:border-indigo-400 outline-none transition-all font-bold text-slate-800"
                         />
+                        {profile.role === 'delegue' && (
+                            <p className="text-[10px] text-amber-600 font-medium mt-1 ml-1 flex items-center gap-1">
+                                <span>⚠️</span> Votre ancien nom restera sur vos anciens échantillons (traçabilité).
+                            </p>
+                        )}
                     </div>
                     <div className="space-y-1">
                         <label className="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Solde Congés</label>

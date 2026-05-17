@@ -239,7 +239,8 @@ router.post('/', auth, async (req, res) => {
             givenMaterialBatch,
             givenMaterials: givenMaterials || [],
             prescriberType: prescriberType || 'non prescripteur',
-            user: req.user.userId
+            user: req.user.userId,
+            delegateName: req.user.username // Capture name at time of visit
         });
 
         const visit = await newVisit.save();

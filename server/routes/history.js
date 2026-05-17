@@ -19,8 +19,21 @@ router.get('/delegates', auth, async (req, res) => {
             {
                 $group: {
                     _id: "$delegateId",
-                    delegateName: { $first: "$delegateName" }, // Take the first name encountered
+                    recordedName: { $first: "$delegateName" },
                     lastGiven: { $max: "$dateGiven" }
+                }
+            },
+            {
+                $lookup: {
+                    from: 'users',
+                    localField: '_id',
+                    foreignField: '_id',
+                    as: 'userInfo'
+                }
+            },
+            {
+                $addFields: {
+                    delegateName: { $ifNull: ["$recordedName", { $arrayElemAt: ["$userInfo.username", 0] }] }
                 }
             },
             { $sort: { lastGiven: -1 } }
@@ -99,7 +112,7 @@ router.get('/batch/:batchNumber', auth, async (req, res) => {
                 { 'givenSamples.batch': batchNumber }
             ]
         })
-            .populate('user', 'username') // Get delegate name
+            .populate('user', 'username') // Fallback if delegateName is missing (e.g. before backfill)
             .sort({ start: -1 });
 
         res.json({

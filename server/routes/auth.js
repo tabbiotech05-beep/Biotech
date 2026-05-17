@@ -4,6 +4,8 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import Stock from '../models/Stock.js';
 import SampleHistory from '../models/SampleHistory.js';
+import Congress from '../models/Congress.js';
+import CustomContact from '../models/CustomContact.js';
 import auth from '../middleware/auth.js';
 import multer from 'multer';
 import path from 'path';
@@ -424,11 +426,39 @@ router.post('/reset-samples', auth, async (req, res) => {
 // @access  Private
 router.put('/profile', auth, upload.single('image'), async (req, res) => {
     try {
-        const { carLicensePlate, carModel } = req.body;
+        const { username, carLicensePlate, carModel } = req.body;
         const user = await User.findById(req.user.userId);
 
         if (!user) {
             return res.status(404).json({ message: 'Utilisateur non trouvé' });
+        }
+
+        if (username && username !== user.username) {
+            // Check if user exists
+            const userExists = await User.findOne({ username });
+            if (userExists) {
+                return res.status(400).json({ message: 'Ce nom d\'utilisateur est déjà pris' });
+            }
+
+            const oldUsername = user.username;
+            user.username = username;
+
+            // Synchronize name in other collections for delegates (Current ownership only)
+            if (user.role === 'delegue') {
+                console.log(`Syncing current ownership from ${oldUsername} to ${username} for delegate ${user._id}`);
+                
+                try {
+                    // Update Custom Contacts (Répertoire) - Maintain current ownership links
+                    await CustomContact.updateMany(
+                        { delegate: oldUsername },
+                        { $set: { delegate: username } }
+                    );
+
+                    // Note: SampleHistory and Congress records are NOT updated to preserve historical traceability as requested
+                } catch (syncErr) {
+                    console.error('Failed to sync current ownership across collections:', syncErr);
+                }
+            }
         }
 
         if (carLicensePlate !== undefined) {

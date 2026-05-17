@@ -6,6 +6,7 @@ const VisitSchema = new mongoose.Schema({
         ref: 'User',
         required: true
     },
+    delegateName: { type: String }, // Stores name at time of visit for traceability
     dashboardId: { type: String, required: true }, // 'dashboard1', 'dashboard2'
     title: { type: String, required: true },
     start: { type: Date, required: true },
