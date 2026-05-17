@@ -98,7 +98,8 @@ router.post('/login', async (req, res) => {
             { expiresIn: '30d' }
         );
 
-        console.log(`[APP-USAGE] L'utilisateur ${user.username} a ouvert l'application`);
+        const now = new Date().toLocaleString('fr-FR');
+        console.log(`[APP-USAGE] [${now}] L'utilisateur ${user.username} a ouvert l'application`);
 
         res.json({
             token,
@@ -118,7 +119,8 @@ router.post('/login', async (req, res) => {
 // @access  Private
 router.post('/logout', auth, async (req, res) => {
     try {
-        console.log(`[APP-USAGE] L'utilisateur ${req.user.username} a fermé l'application`);
+        const now = new Date().toLocaleString('fr-FR');
+        console.log(`[APP-USAGE] [${now}] L'utilisateur ${req.user.username} a fermé l'application`);
         res.json({ message: 'Logged out' });
     } catch (err) {
         res.status(500).json({ message: 'Server error' });
