@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 // ─── Sales Dashboard URL ──────────────────────────────────────────────────────
-// Sales-dashboard tourne sur le port 5174 du VPS.
-const SALES_DASHBOARD_URL = 'http://54.38.98.48:5174';
+// Servi par Express sur le même serveur, path relatif — aucun port séparé requis.
+const SALES_DASHBOARD_URL = '/grossiste/';
+
 import { useNavigate, useParams } from 'react-router-dom';
 import CalendarView from './components/CalendarView';
 import CongressView from './components/CongressView';

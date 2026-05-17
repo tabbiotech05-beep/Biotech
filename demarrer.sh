@@ -63,30 +63,28 @@ if [ ! -d "sales-dashboard/node_modules" ]; then
     echo "✅ Dépendances sales-dashboard installées."
 fi
 
+# ─── Build sales-dashboard (static files served by Express at /grossiste) ─────
+echo "🔨 Build du SALES-DASHBOARD..."
+cd sales-dashboard
+npm run build
+cd "$SCRIPT_DIR"
+echo "✅ Sales-dashboard buildé → servi par Express sur /grossiste"
+
 # ─── Start main app in background ────────────────────────────────────────────
 echo "🚀 Démarrage de BIOTECH en arrière-plan..."
 nohup node start-local.js > "$LOG_FILE" 2>&1 &
 APP_PID=$!
 echo $APP_PID > "$PID_FILE"
 
-# ─── Start sales-dashboard in background ─────────────────────────────────────
-echo "📊 Démarrage du SALES-DASHBOARD (port 5174) en arrière-plan..."
-cd sales-dashboard
-nohup npx vite --port 5174 --host 0.0.0.0 > "$SALES_LOG_FILE" 2>&1 &
-SALES_PID=$!
-echo $SALES_PID > "$SALES_PID_FILE"
-cd "$SCRIPT_DIR"
-
 echo ""
 echo "✅ BIOTECH lancé en arrière-plan !"
-echo "   PID main app     : $APP_PID"
-echo "   PID sales-dash   : $SALES_PID"
+echo "   PID              : $APP_PID"
 echo ""
 echo "   Arrêter          : ./arreter.sh"
-echo "   Voir logs main   : ./logs.sh"
-echo "   Voir logs sales  : tail -f dev.log"
+echo "   Voir logs        : ./logs.sh"
 echo ""
-echo "   Frontend         → http://0.0.0.0:5173"
-echo "   Sales Dashboard  → http://0.0.0.0:5174"
-echo "   Backend          → http://0.0.0.0:5000"
+echo "   Frontend         → http://54.38.98.48:5173"
+echo "   Grossiste        → http://54.38.98.48:5000/grossiste"
+echo "   Backend API      → http://54.38.98.48:5000"
 echo ""
+

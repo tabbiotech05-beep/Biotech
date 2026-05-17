@@ -64,6 +64,14 @@ app.use('/api/contacts', contactRoutes);
 app.use('/api/med-list', medListRoutes);
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
+// ─── Sales Dashboard (Grossiste) — served as static files ────────────────────
+const salesDashDist = path.join(__dirname, '../sales-dashboard/dist');
+app.use('/grossiste', express.static(salesDashDist));
+// SPA fallback : any /grossiste/* route serves index.html
+app.get('/grossiste/*', (req, res) => {
+    res.sendFile(path.join(salesDashDist, 'index.html'));
+});
+
 app.get('/', (req, res) => {
     res.send('API is running...');
 });
