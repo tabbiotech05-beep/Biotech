@@ -69,6 +69,21 @@ router.get('/assigned-to-me', auth, async (req, res) => {
     }
 });
 
+// @route   GET api/visits/assigned-by-me
+// @desc    Get visits assigned BY the logged in user to others
+// @access  Private
+router.get('/assigned-by-me', auth, async (req, res) => {
+    try {
+        const visits = await Visit.find({ user: req.user.userId, assignedTo: { $exists: true, $ne: null } })
+            .populate('assignedTo', 'username profileImage')
+            .sort({ start: -1 });
+        res.json(visits);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 // @route   POST api/visits
 // @desc    Add new visit
 // @access  Private

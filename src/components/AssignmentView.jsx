@@ -3,26 +3,33 @@ import axios from 'axios';
 
 export default function AssignmentView() {
     const [assignedVisits, setAssignedVisits] = useState([]);
+    const [assignedByMeVisits, setAssignedByMeVisits] = useState([]);
     const [loading, setLoading] = useState(false);
     const [selectedVisit, setSelectedVisit] = useState(null);
+    const [viewMode, setViewMode] = useState('received'); // 'received' | 'sent'
 
     useEffect(() => {
-        const fetchAssigned = async () => {
+        const fetchAssignments = async () => {
             setLoading(true);
             try {
                 const token = localStorage.getItem('token');
                 if (!token) return;
-                const res = await axios.get('/api/visits/assigned-to-me', {
-                    headers: { 'x-auth-token': token }
-                });
-                setAssignedVisits(res.data);
+                
+                // Fetch both at the same time
+                const [resReceived, resSent] = await Promise.all([
+                    axios.get('/api/visits/assigned-to-me', { headers: { 'x-auth-token': token } }),
+                    axios.get('/api/visits/assigned-by-me', { headers: { 'x-auth-token': token } })
+                ]);
+                
+                setAssignedVisits(resReceived.data);
+                setAssignedByMeVisits(resSent.data);
             } catch (err) {
-                console.error('Failed to fetch assigned visits', err);
+                console.error('Failed to fetch assignments', err);
             } finally {
                 setLoading(false);
             }
         };
-        fetchAssigned();
+        fetchAssignments();
     }, []);
 
     const formatDate = (dateStr) => {
@@ -49,6 +56,8 @@ export default function AssignmentView() {
         return 'bg-gray-100 text-gray-700 border-gray-200';
     };
 
+    const displayedVisits = viewMode === 'received' ? assignedVisits : assignedByMeVisits;
+
     return (
         <div className="bg-white p-8 rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 space-y-8 min-h-[800px]">
             {/* Header */}
@@ -56,16 +65,45 @@ export default function AssignmentView() {
                 <div>
                     <h2 className="text-3xl font-black text-slate-900 tracking-tight flex items-center gap-3">
                         <span className="bg-blue-600 text-white p-2.5 rounded-2xl shadow-lg shadow-blue-200">
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8" />
-                            </svg>
+                            {viewMode === 'received' ? (
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8" />
+                                </svg>
+                            ) : (
+                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                </svg>
+                            )}
                         </span>
-                        Assignations Reçues
+                        {viewMode === 'received' ? 'Assignations Reçues' : 'Tâches Assignées'}
                     </h2>
                     <p className="text-slate-400 font-bold text-sm mt-2 flex items-center gap-2">
                         <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                        {assignedVisits.length} tâches partagées avec vous
+                        {displayedVisits.length} {viewMode === 'received' ? 'tâches partagées avec vous' : 'tâches que vous avez déléguées'}
                     </p>
+                </div>
+                {/* View Toggles */}
+                <div className="flex p-1 bg-slate-100 rounded-2xl">
+                    <button
+                        onClick={() => setViewMode('received')}
+                        className={`px-6 py-2.5 rounded-xl text-sm font-black transition-all ${
+                            viewMode === 'received' 
+                            ? 'bg-white text-blue-600 shadow-sm' 
+                            : 'text-slate-400 hover:text-slate-600'
+                        }`}
+                    >
+                        Reçues
+                    </button>
+                    <button
+                        onClick={() => setViewMode('sent')}
+                        className={`px-6 py-2.5 rounded-xl text-sm font-black transition-all ${
+                            viewMode === 'sent' 
+                            ? 'bg-white text-blue-600 shadow-sm' 
+                            : 'text-slate-400 hover:text-slate-600'
+                        }`}
+                    >
+                        Envoyées
+                    </button>
                 </div>
             </div>
 
@@ -78,7 +116,7 @@ export default function AssignmentView() {
                         </div>
                     </div>
                 </div>
-            ) : assignedVisits.length === 0 ? (
+            ) : displayedVisits.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-40 text-slate-300">
                     <div className="w-24 h-24 bg-slate-50 rounded-[2.5rem] flex items-center justify-center mb-6 border-2 border-dashed border-slate-100">
                         <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,7 +124,9 @@ export default function AssignmentView() {
                         </svg>
                     </div>
                     <p className="text-xl font-black text-slate-400 italic">Aucune assignation pour le moment</p>
-                    <p className="text-sm font-bold text-slate-300 mt-1">Vos collègues peuvent vous envoyer des tâches via leur calendrier</p>
+                    <p className="text-sm font-bold text-slate-300 mt-1">
+                        {viewMode === 'received' ? "Vos collègues peuvent vous envoyer des tâches via leur calendrier" : "Vous n'avez pas encore délégué de tâches à vos collègues."}
+                    </p>
                 </div>
             ) : (
                 <div className="overflow-hidden rounded-3xl border border-slate-100 bg-slate-50/30">
@@ -94,14 +134,14 @@ export default function AssignmentView() {
                         <thead>
                             <tr className="bg-slate-50/80">
                                 <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] w-16 text-center">Date</th>
-                                <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Délégué Émetteur</th>
+                                <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">{viewMode === 'received' ? 'Délégué Émetteur' : 'Assigné à'}</th>
                                 <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Cible / Patient</th>
                                 <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em]">Instructions</th>
                                 <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-100 bg-white">
-                            {assignedVisits.map((visit) => (
+                            {displayedVisits.map((visit) => (
                                 <tr 
                                     key={visit._id} 
                                     onClick={() => setSelectedVisit(visit)}
@@ -116,9 +156,13 @@ export default function AssignmentView() {
                                     <td className="px-6 py-5">
                                         <div className="flex items-center gap-3">
                                             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white font-black text-xs shadow-md">
-                                                {visit.user?.username?.charAt(0).toUpperCase() || '?'}
+                                                {viewMode === 'received' 
+                                                    ? visit.user?.username?.charAt(0).toUpperCase() || '?' 
+                                                    : visit.assignedTo?.username?.charAt(0).toUpperCase() || '?'}
                                             </div>
-                                            <span className="text-sm font-extrabold text-slate-700 italic group-hover:text-blue-700 transition-colors uppercase tracking-tight">{visit.user?.username}</span>
+                                            <span className="text-sm font-extrabold text-slate-700 italic group-hover:text-blue-700 transition-colors uppercase tracking-tight">
+                                                {viewMode === 'received' ? visit.user?.username : visit.assignedTo?.username}
+                                            </span>
                                         </div>
                                     </td>
                                     <td className="px-6 py-5">
@@ -170,7 +214,9 @@ export default function AssignmentView() {
                                 </span>
                                 <div>
                                     <h3 className="text-2xl font-black text-slate-800 tracking-tight">Détails de la mission</h3>
-                                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest mt-1">Assigné par {selectedVisit.user?.username}</p>
+                                    <p className="text-xs font-black text-slate-400 uppercase tracking-widest mt-1">
+                                        {viewMode === 'received' ? `Assigné par ${selectedVisit.user?.username}` : `Assigné à ${selectedVisit.assignedTo?.username}`}
+                                    </p>
                                 </div>
                             </div>
                             <button onClick={() => setSelectedVisit(null)} className="text-slate-300 hover:text-slate-900 p-3 rounded-[1.25rem] hover:bg-white transition-all border border-transparent hover:border-slate-100 group">
