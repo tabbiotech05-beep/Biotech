@@ -257,6 +257,11 @@ export default function CongressView({ dashboardId }) {
     const generatePDF = () => {
         const doc = new jsPDF();
         const total = congresses.reduce((sum, c) => sum + (Number(c.amount) || 0), 0);
+        
+        const formatNumber = (val) => {
+            const n = Number(val) || 0;
+            return n.toFixed(3);
+        };
 
         // Header
         doc.setFontSize(20);
@@ -270,9 +275,9 @@ export default function CongressView({ dashboardId }) {
         // Table
         const tableColumn = ["Nom de l'Action", "Médecin(s) (Participant)", "Budget (TND)"];
         const tableRows = congresses.map(c => [
-            c.name,
-            c.participant,
-            `${(Number(c.amount) || 0).toLocaleString()} TND`
+            c.name || '',
+            c.participant || '',
+            `${formatNumber(c.amount)} TND`
         ]);
 
         autoTable(doc, {
@@ -291,7 +296,7 @@ export default function CongressView({ dashboardId }) {
         doc.setTextColor(0, 0, 0);
         doc.setFontSize(11);
         doc.setFont('helvetica', 'bold');
-        doc.text(`TOTAL DES ACTIONS : ${total.toLocaleString()} TND`, 18, finalY + 8);
+        doc.text(`TOTAL DES ACTIONS : ${formatNumber(total)} TND`, 18, finalY + 8);
 
         doc.save(`Rapport_Action_Marketing_${format(new Date(), 'yyyyMMdd')}.pdf`);
     };

@@ -242,17 +242,22 @@ export default function ExpenseView({ dashboardId }) {
         doc.setTextColor(30, 30, 30);
         doc.setFont('helvetica', 'normal');
 
+        const formatNumber = (val) => {
+            const n = Number(val) || 0;
+            return n === 0 ? '-' : n.toFixed(3);
+        };
+
         // Table
         const tableColumn = ['Sem.', 'Secteurs Visités', 'Hôtel', 'Essence', 'Péage', 'Parking', 'Autres (Détail)', 'Autres (DT)'];
         const tableRows = (exp.entries || []).map(e => [
             String(e.week),
-            e.secteursVisites || '',
-            String(e.hotel || 0),
-            String(e.essence || 0),
-            String(e.peage || 0),
-            String(e.parking || 0),
-            e.autresDescription || '',
-            String(e.autresMontant || 0)
+            e.secteursVisites || '-',
+            formatNumber(e.hotel),
+            formatNumber(e.essence),
+            formatNumber(e.peage),
+            formatNumber(e.parking),
+            e.autresDescription || '-',
+            formatNumber(e.autresMontant)
         ]);
 
         autoTable(doc, {
