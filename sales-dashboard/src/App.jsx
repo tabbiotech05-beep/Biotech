@@ -36,7 +36,7 @@ const App = () => {
   const [cmData, setCmData] = useState({});
 
   useEffect(() => {
-    fetch('/cm_data.json')
+    fetch(import.meta.env.BASE_URL + 'cm_data.json')
       .then(res => res.json())
       .then(json => setCmData(json))
       .catch(err => console.error("Error loading CM data:", err));
@@ -44,7 +44,9 @@ const App = () => {
 
   useEffect(() => {
     setLoading(true);
-    const url = activeTab === 'biotech' ? '/sales_data.json' : '/local_sales_data.json';
+    const url = activeTab === 'biotech'
+      ? import.meta.env.BASE_URL + 'sales_data.json'
+      : import.meta.env.BASE_URL + 'local_sales_data.json';
     fetch(url)
       .then(res => res.json())
       .then(json => {
