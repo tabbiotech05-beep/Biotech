@@ -298,6 +298,15 @@ export default function DashboardPage() {
     const [assignedCount, setAssignedCount] = useState(0);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const role = localStorage.getItem('role') || 'delegue';
+    
+    const allowedDashboardsStr = localStorage.getItem('allowedDashboards') || '[]';
+    const allowedDashboards = React.useMemo(() => {
+        try {
+            return JSON.parse(allowedDashboardsStr);
+        } catch (e) {
+            return ['dashboard1'];
+        }
+    }, [allowedDashboardsStr]);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -309,13 +318,6 @@ export default function DashboardPage() {
         }
 
         setUser(username);
-        
-        let allowedDashboards = [];
-        try {
-            allowedDashboards = JSON.parse(localStorage.getItem('allowedDashboards') || '[]');
-        } catch (e) {
-            allowedDashboards = ['dashboard1'];
-        }
 
         if (!allowedDashboards.includes(dashboardId)) {
             navigate(allowedDashboards.length > 0 ? `/dashboard/${allowedDashboards[0]}` : '/');
@@ -343,7 +345,7 @@ export default function DashboardPage() {
                     .then(data => setLeavePendingCount(Array.isArray(data) ? data.filter(l => l.status === 'pending').length : 0))
                     .catch(() => { });
             }
-    }, [navigate, dashboardId, viewUser, role]);
+    }, [navigate, dashboardId, viewUser, role, allowedDashboards]);
 
     const handleLogout = async () => {
         try {
