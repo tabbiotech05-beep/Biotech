@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-// ─── Sales Dashboard URL (configurable) ──────────────────────────────────────
-// Le sales-dashboard tourne sur le port 5174 (host 0.0.0.0, accessible réseau).
-// Remplacer par l'IP publique ou le domaine de votre VPS si nécessaire.
-// Ex: 'http://192.168.1.100:5174' ou 'http://monvps.com:5174'
-const SALES_DASHBOARD_URL = 'http://0.0.0.0:5174';
+// ─── Sales Dashboard URL ──────────────────────────────────────────────────────
+// Sales-dashboard tourne sur le port 5174 du VPS.
+const SALES_DASHBOARD_URL = 'http://54.38.98.48:5174';
 import { useNavigate, useParams } from 'react-router-dom';
 import CalendarView from './components/CalendarView';
 import CongressView from './components/CongressView';
