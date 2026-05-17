@@ -80,7 +80,7 @@ async function start() {
 
         // 4. Start Frontend (Vite dev server)
         console.log('🎨 Starting Frontend (Vite)...');
-        const frontProcess = spawn('npx', ['vite', '--port', '5173'], {
+        const frontProcess = spawn('npx', ['vite', '--port', '5173', '--host', '0.0.0.0'], {
             env,
             stdio: 'inherit',
             cwd: __dirname,
@@ -89,8 +89,8 @@ async function start() {
 
         console.log(`🌐 Frontend process spawned with PID: ${frontProcess.pid}`);
         console.log(`\n✅ App ready!`);
-        console.log(`   Frontend → http://localhost:5173`);
-        console.log(`   Backend  → http://localhost:5000\n`);
+        console.log(`   Frontend → http://0.0.0.0:5173`);
+        console.log(`   Backend  → http://0.0.0.0:5000\n`);
 
         frontProcess.on('error', (err) => {
             console.error('❌ Failed to start frontend:', err);

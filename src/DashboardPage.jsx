@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
 // ─── Sales Dashboard URL (configurable) ──────────────────────────────────────
-// Change this to the URL where the sales-dashboard is accessible.
-// On the same machine: 'http://localhost:5173'
-// On the VPS: 'http://YOUR_VPS_IP:5173'
-const SALES_DASHBOARD_URL = 'http://localhost:5173';
+// Le sales-dashboard tourne sur le port 5174 (host 0.0.0.0, accessible réseau).
+// Remplacer par l'IP publique ou le domaine de votre VPS si nécessaire.
+// Ex: 'http://192.168.1.100:5174' ou 'http://monvps.com:5174'
+const SALES_DASHBOARD_URL = 'http://0.0.0.0:5174';
 import { useNavigate, useParams } from 'react-router-dom';
 import CalendarView from './components/CalendarView';
 import CongressView from './components/CongressView';
