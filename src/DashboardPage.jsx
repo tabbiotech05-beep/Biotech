@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from 'react';
+
+// ─── Sales Dashboard URL (configurable) ──────────────────────────────────────
+// Change this to the URL where the sales-dashboard is accessible.
+// On the same machine: 'http://localhost:5173'
+// On the VPS: 'http://YOUR_VPS_IP:5173'
+const SALES_DASHBOARD_URL = 'http://localhost:5173';
 import { useNavigate, useParams } from 'react-router-dom';
 import CalendarView from './components/CalendarView';
 import CongressView from './components/CongressView';
@@ -129,6 +135,61 @@ const IconDoctorList = () => (
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
     </svg>
 );
+const IconGrossiste = () => (
+    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+    </svg>
+);
+
+// ─── Grossiste View (Sales Dashboard via iframe) ───────────────────────────────
+function GrossisteView() {
+    const [loaded, setLoaded] = useState(false);
+    const [error, setError] = useState(false);
+    return (
+        <div style={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 80px)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--border-subtle)', background: 'var(--bg-surface)' }}>
+            {/* Header bar */}
+            <div style={{ padding: '12px 20px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', gap: '10px', background: 'var(--bg-elevated)', flexShrink: 0 }}>
+                <IconGrossiste />
+                <span style={{ fontWeight: 700, fontSize: '14px', color: 'var(--text-primary)' }}>Tableau de Bord Grossistes — Tenshi</span>
+                <a
+                    href={SALES_DASHBOARD_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ marginLeft: 'auto', fontSize: '11px', color: '#6366f1', textDecoration: 'none', padding: '4px 10px', borderRadius: '8px', border: '1px solid #6366f140', background: '#6366f108' }}
+                >
+                    ↗ Ouvrir dans un nouvel onglet
+                </a>
+            </div>
+            {/* Loading / Error state */}
+            {!loaded && !error && (
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', color: 'var(--text-muted)' }}>
+                    <div style={{ width: '32px', height: '32px', border: '3px solid #6366f130', borderTopColor: '#6366f1', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+                    <p style={{ fontSize: '13px' }}>Chargement du dashboard grossistes...</p>
+                </div>
+            )}
+            {error && (
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px', color: 'var(--text-muted)', padding: '40px' }}>
+                    <span style={{ fontSize: '40px' }}>⚠️</span>
+                    <p style={{ fontSize: '14px', fontWeight: 700, color: '#fbbf24' }}>Impossible de charger le dashboard grossistes</p>
+                    <p style={{ fontSize: '12px', textAlign: 'center', maxWidth: '360px' }}>
+                        Vérifiez que le serveur sales-dashboard est bien lancé sur <strong>{SALES_DASHBOARD_URL}</strong>.<br />
+                        Exécutez <code style={{ background: '#ffffff10', padding: '2px 6px', borderRadius: '4px' }}>npm run dev</code> dans le dossier <code style={{ background: '#ffffff10', padding: '2px 6px', borderRadius: '4px' }}>sales-dashboard</code>.
+                    </p>
+                    <a href={SALES_DASHBOARD_URL} target="_blank" rel="noopener noreferrer"
+                        style={{ fontSize: '12px', color: '#6366f1', padding: '8px 16px', borderRadius: '8px', border: '1px solid #6366f140', background: '#6366f110' }}
+                    >Ouvrir directement →</a>
+                </div>
+            )}
+            <iframe
+                src={SALES_DASHBOARD_URL}
+                title="Dashboard Grossistes Tenshi"
+                style={{ flex: 1, width: '100%', border: 'none', display: loaded ? 'block' : 'none' }}
+                onLoad={() => { setLoaded(true); setError(false); }}
+                onError={() => { setError(true); setLoaded(false); }}
+            />
+        </div>
+    );
+}
 
 // ─── Sidebar Item ─────────────────────────────────────────────────────────────
 function SidebarItem({ icon, label, active, onClick, accent, collapsed }) {
@@ -479,6 +540,12 @@ export default function DashboardPage() {
             label: 'Liste Médecins',
             icon: <IconDoctorList />
         });
+        // ── Section Grossiste : Sales Analytics Dashboard ────────────────────
+        displayedTabs.push({
+            id: 'grossiste',
+            label: 'Grossiste',
+            icon: <IconGrossiste />
+        });
     }
 
     const delegateActions = (
@@ -552,6 +619,7 @@ export default function DashboardPage() {
                     {activeTab === 'repertoire' && <RepertoireView dashboardId={dashboardId} viewUser={viewUser} />}
                     {activeTab === 'tenshi-search' && <TenshiSearchView />}
                     {activeTab === 'med-list' && <MedListView />}
+                    {activeTab === 'grossiste' && <GrossisteView />}
                     {activeTab === 'profile' && <ProfileView />}
                 </div>
             </main>
