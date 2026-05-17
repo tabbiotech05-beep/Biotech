@@ -297,7 +297,6 @@ export default function DashboardPage() {
     const [leavePendingCount, setLeavePendingCount] = useState(0);
     const [assignedCount, setAssignedCount] = useState(0);
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const allowedDashboards = JSON.parse(localStorage.getItem('allowedDashboards') || '[]');
     const role = localStorage.getItem('role') || 'delegue';
 
     useEffect(() => {
@@ -306,31 +305,37 @@ export default function DashboardPage() {
 
         if (!token) {
             navigate('/');
-        } else {
-            setUser(username);
-            
-            // Fetch detailed user data for profile image
-            axios.get('/api/auth/me', { headers: { 'x-auth-token': token } })
-                .then(res => setUserData(res.data))
-                .catch(err => console.error('Failed to fetch user data:', err));
+            return;
+        }
 
-            // Fetch pending leave count (for badge)
-            axios.get('/api/leave/pending-count', { headers: { 'x-auth-token': token } })
-                .then(res => setLeavePendingCount(res.data.count))
-                .catch(err => console.error('Failed to fetch pending leave count:', err));
+        setUser(username);
+        
+        let allowedDashboards = [];
+        try {
+            allowedDashboards = JSON.parse(localStorage.getItem('allowedDashboards') || '[]');
+        } catch (e) {
+            allowedDashboards = ['dashboard1'];
+        }
 
-            // Fetch assigned tasks count
-            axios.get('/api/visits/assigned-to-me/count', { headers: { 'x-auth-token': token } })
-                .then(res => setAssignedCount(res.data.count))
-                .catch(err => console.error('Failed to fetch assigned count:', err));
+        if (!allowedDashboards.includes(dashboardId)) {
+            navigate(allowedDashboards.length > 0 ? `/dashboard/${allowedDashboards[0]}` : '/');
+            return;
+        }
 
-            if (!allowedDashboards.includes(dashboardId)) {
-                alert('Access Denied');
-                navigate('/');
-            }
-            if (allowedDashboards.length > 1 && !viewUser) {
-                navigate('/dashboard-selection');
-            }
+        // Fetch detailed user data for profile image
+        axios.get('/api/auth/me', { headers: { 'x-auth-token': token } })
+            .then(res => setUserData(res.data))
+            .catch(err => console.error('Failed to fetch user data:', err));
+
+        // Fetch pending leave count (for badge)
+        axios.get('/api/leave/pending-count', { headers: { 'x-auth-token': token } })
+            .then(res => setLeavePendingCount(res.data.count))
+            .catch(err => console.error('Failed to fetch pending leave count:', err));
+
+        // Fetch assigned tasks count
+        axios.get('/api/visits/assigned-to-me/count', { headers: { 'x-auth-token': token } })
+            .then(res => setAssignedCount(res.data.count))
+            .catch(err => console.error('Failed to fetch assigned count:', err));
             // Fetch pending leave count for admins
             if (role === 'admin') {
                 fetch('/api/leave/all', { headers: { 'x-auth-token': token } })
@@ -338,8 +343,7 @@ export default function DashboardPage() {
                     .then(data => setLeavePendingCount(Array.isArray(data) ? data.filter(l => l.status === 'pending').length : 0))
                     .catch(() => { });
             }
-        }
-    }, [navigate, dashboardId, viewUser, allowedDashboards]);
+    }, [navigate, dashboardId, viewUser, role]);
 
     const handleLogout = async () => {
         try {
