@@ -19,6 +19,13 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
       },
+      // Sales Dashboard (grossiste) servi par Express en statique
+      '/grossiste': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 });
+
