@@ -322,32 +322,52 @@ const App = () => {
 
   return (
     <div className="dashboard-container">
-      {/* Navigation tabs */}
-      <div className="dashboard-tabs">
+      {/* Navigation and Back button */}
+      <div className="top-navigation-bar">
         <button 
-          className={`tab-btn ${activeTab === 'biotech' ? 'active' : ''}`}
+          className="back-btn"
           onClick={() => {
-            setActiveTab('biotech');
-            setSelectedClient('All');
-            setTempSelectedProducts([]);
-            setAppliedProducts([]);
-            setIsChartGenerated(false);
+            if (document.referrer && document.referrer.includes(window.location.host)) {
+              window.history.back();
+            } else {
+              window.location.href = '/dashboard/dashboard2';
+            }
           }}
         >
-          🌐 Produit Importé
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '1.25rem', height: '1.25rem' }}>
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Retour au Dashboard
         </button>
-        <button 
-          className={`tab-btn ${activeTab === 'local' ? 'active' : ''}`}
-          onClick={() => {
-            setActiveTab('local');
-            setSelectedClient('All');
-            setTempSelectedProducts([]);
-            setAppliedProducts([]);
-            setIsChartGenerated(false);
-          }}
-        >
-          🏡 Produits Locaux
-        </button>
+
+        <div className="dashboard-tabs" style={{ margin: '0' }}>
+          <button 
+            className={`tab-btn ${activeTab === 'biotech' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('biotech');
+              setSelectedClient('All');
+              setTempSelectedProducts([]);
+              setAppliedProducts([]);
+              setIsChartGenerated(false);
+            }}
+          >
+            🌐 Produit Importé
+          </button>
+          <button 
+            className={`tab-btn ${activeTab === 'local' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('local');
+              setSelectedClient('All');
+              setTempSelectedProducts([]);
+              setAppliedProducts([]);
+              setIsChartGenerated(false);
+            }}
+          >
+            🏡 Produits Locaux
+          </button>
+        </div>
+
+        <div className="nav-spacer" style={{ width: '180px' }} />
       </div>
 
       <header className={`dashboard-header ${activeTab === 'biotech' ? 'biotech-header' : 'local-header'}`}>

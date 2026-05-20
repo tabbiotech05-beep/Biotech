@@ -755,4 +755,69 @@ tr:hover td {
   color: #ec4899;
 }
 
+/* --- Top Navigation & Back Button --- */
+.top-navigation-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.7rem 1.35rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-card);
+}
+
+.back-btn:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--text-secondary);
+  transform: translateX(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+.back-btn svg {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-btn:hover svg {
+  transform: translateX(-4px);
+}
+
+@media (max-width: 768px) {
+  .top-navigation-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  .nav-spacer {
+    display: none !important;
+  }
+  .back-btn {
+    justify-content: center;
+    transform: none !important;
+  }
+  .back-btn:hover {
+    transform: none !important;
+  }
+  .dashboard-tabs {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
 

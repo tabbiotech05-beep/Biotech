@@ -1,7 +1,12 @@
 import express from 'express';
 import auth from '../middleware/auth.js';
 import CustomContact from '../models/CustomContact.js';
-import staticContactsData from '../../src/data/contacts_data.json' assert { type: 'json' };
+import { readFileSync } from 'fs';
+
+const staticContactsData = JSON.parse(
+    readFileSync(new URL('../../src/data/contacts_data.json', import.meta.url))
+);
+
 
 const router = express.Router();
 
