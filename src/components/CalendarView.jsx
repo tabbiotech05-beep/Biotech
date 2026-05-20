@@ -3,6 +3,7 @@ import { Calendar, dateFnsLocalizer, Views } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import DoctorMedicationModal from './DoctorMedicationModal';
 
 const locales = {
     'fr': fr,
@@ -56,6 +57,7 @@ export default function CalendarView({ dashboardId, viewUser }) {
     const [pendingSampleQty, setPendingSampleQty] = useState(1); // Quantity for sample
     const [allDelegates, setAllDelegates] = useState([]);
     const [selectedDelegateId, setSelectedDelegateId] = useState('');
+    const [medModalDoctor, setMedModalDoctor] = useState(null);
 
     const onNavigate = useCallback((newDate) => setDate(newDate), [setDate]);
     const onView = useCallback((newView) => setView(newView), [setView]);
@@ -847,6 +849,23 @@ export default function CalendarView({ dashboardId, viewUser }) {
                             </div>
 
                             <div className="p-6 overflow-y-auto flex-1 custom-scrollbar">
+                                {selectedEvent.targetType === 'medecin' && selectedEvent.doctorName && (
+                                    <div className="mb-5">
+                                        <button
+                                            onClick={() => setMedModalDoctor({
+                                                name: selectedEvent.doctorName,
+                                                specialty: selectedEvent.specialty || '',
+                                                governorate: selectedEvent.governorate || '',
+                                                address: selectedEvent.address || '',
+                                                prescriberType: selectedEvent.prescriberType || 'non prescripteur'
+                                            })}
+                                            className="w-full py-3 rounded-xl text-sm font-black uppercase tracking-widest transition-all border-2 border-dashed border-teal-300 bg-teal-50 text-teal-600 hover:bg-teal-100 hover:border-teal-400 active:scale-[0.98] flex items-center justify-center gap-2"
+                                        >
+                                            🧪 Voir les Médicaments de Dr. {selectedEvent.doctorName}
+                                        </button>
+                                    </div>
+                                )}
+
                                 <div className="grid grid-cols-2 gap-4 mb-5">
                                     <div>
                                         <label className="block text-sm font-bold text-gray-400 uppercase mb-1.5">Nom</label>
@@ -1081,6 +1100,14 @@ export default function CalendarView({ dashboardId, viewUser }) {
                             </div>
                         </div>
                     </div>
+                )}
+
+                {/* Medication Modal triggered from calendar event */}
+                {medModalDoctor && (
+                    <DoctorMedicationModal
+                        doctor={medModalDoctor}
+                        onClose={() => setMedModalDoctor(null)}
+                    />
                 )}
             </div>
         </div>

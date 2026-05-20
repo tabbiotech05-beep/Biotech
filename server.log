@@ -1,35 +1,19 @@
+nohup: ignoring input
 🚀 Starting BioXtenshi Local Environment...
-✅ Local MongoDB running at: mongodb://127.0.0.1:44633/
-📂 Data stored in: /home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/data/db
+✅ Local MongoDB running at: mongodb://127.0.0.1:62588/
+📂 Data stored in: C:\Users\LENOVO\Desktop\ventes et stocks\data\db
 🌱 Seeding database...
-[dotenv@17.2.3] injecting env (4) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+[dotenv@17.2.3] injecting env (4) from .env -- tip: ⚙️  override existing env vars with { override: true }
 ✅ Connected to MongoDB
 📊 Detected Feriel S1.xlsx, starting import for feriel...
-✅ Automated: Cycle updated for feriel. Week 1 has 53 doctors.
-Error seeding users: MongoServerError: E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "dorra@bioxtenshi.com" }
-    at InsertOneOperation.handleOk (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongodb/lib/operations/insert.js:51:19)
-    at tryOperation (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongodb/lib/operations/execute_operation.js:216:34)
-    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async executeOperation (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongodb/lib/operations/execute_operation.js:80:16)
-    at async Collection.insertOne (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongodb/lib/collection.js:154:16)
-    at async model.$__save (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/model.js:398:16)
-    at async model.save (/home/mahmah/Téléchargements/bioxtenshi-main (copier 1)/node_modules/mongoose/lib/model.js:609:5)
-    at async seedOfficialUsers (file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/seed-official-users.js:125:17) {
-  errorLabelSet: Set(0) {},
-  errorResponse: {
-    index: 0,
-    code: 11000,
-    errmsg: 'E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "dorra@bioxtenshi.com" }',
-    keyPattern: { email: 1 },
-    keyValue: { email: 'dorra@bioxtenshi.com' }
-  },
-  index: 0,
-  code: 11000,
-  keyPattern: { email: 1 },
-  keyValue: { email: 'dorra@bioxtenshi.com' }
-}
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+❌ Automation Error importing feriel cycle: Command failed: python3 -c "import pandas as pd; import json; df = pd.read_excel('Feriel S1.xlsx'); doctors = df[['nom', 'specialite', 'secteur', 'adresse']].fillna('').to_dict(orient='records'); print(json.dumps(doctors))"
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+
+
+✅ Official Seeding/Update Complete!
 💊 Seeding Stock...
-[dotenv@17.2.3] injecting env (4) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+[dotenv@17.2.3] injecting env (4) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
 MongoDB Connected
 Starting to seed 28 products...
 Skipping CELEBREX 200 MG CAP X 10 TUN (already exists with this batch)
@@ -63,27 +47,43 @@ Skipping Detrusitol Retard 4MG (already exists with this batch)
 Stock seeding completed successfully.
 ✅ Seeding finished.
 🔌 Starting Backend Server...
-📡 Backend process spawned with PID: 52612
+📡 Backend process spawned with PID: 16844
 🎨 Starting Frontend (Vite)...
-🌐 Frontend process spawned with PID: 52613
+🌐 Frontend process spawned with PID: 15072
 
 ✅ App ready!
-   Frontend → http://localhost:5173
-   Backend  → http://localhost:5000
+   Frontend → http://0.0.0.0:5173
+   Backend  → http://0.0.0.0:5000
 
-(node:52612) V8: file:///home/mahmah/T%C3%A9l%C3%A9chargements/bioxtenshi-main%20(copier%201)/server/routes/contacts.js:4 'assert' is deprecated in import statements and support will be removed in a future version; use 'with' instead
-(Use `node --trace-warnings ...` to show where the warning was created)
-[MagicSearch] Loading CSV data into memory... This might take a moment.
-
-  VITE v7.2.7  ready in 1070 ms
-
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: http://192.168.1.186:5173/
-[dotenv@17.2.3] injecting env (4) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
-[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
-🚀 Expiry Job Scheduled (Daily at Midnight)
+(node:25272) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
 Server is running on port 5000
-[med-list] Loaded avec - 5946 rows, 8 columns.
-[med-list] Loaded sans - 7885 rows, 13 columns.
-Connected to MongoDB
-[MagicSearch] Successfully loaded 24820 records into memory.
+  [32m[1mVITE[22m v7.2.7[39m  [2mready in [0m[1m422[22m[2m[0m ms[22m
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)

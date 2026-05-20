@@ -819,5 +819,28 @@ tr:hover td {
   }
 }
 
+/* --- Pie Charts Section --- */
+.pie-charts-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
 
+.pie-container {
+  background: var(--bg-card);
+  padding: 2rem;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.pie-container h4 {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-align: center;
+}

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import DoctorMedicationModal from './DoctorMedicationModal';
 
 export default function RepertoireView({ dashboardId, viewUser }) {
     const [searchTerm, setSearchTerm] = useState('');
     const [contacts, setContacts] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [selectedDoctor, setSelectedDoctor] = useState(null);
 
     useEffect(() => {
         const fetchContacts = async () => {
@@ -218,12 +220,20 @@ export default function RepertoireView({ dashboardId, viewUser }) {
                                         </td>
                                         <td className="px-6 py-4 text-center">
                                             {item.type === 'Médecin' && !viewUser ? (
-                                                <button 
-                                                    onClick={() => handleTogglePrescriber(item)}
-                                                    className={`px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all border shadow-sm active:scale-95 ${item.prescriberType === 'prescripteur' ? 'bg-red-500 border-red-600 text-white' : 'bg-slate-50 border-slate-200 text-slate-400 hover:bg-slate-100 hover:text-slate-600'}`}
-                                                >
-                                                    {item.prescriberType === 'prescripteur' ? 'Prescripteur' : 'Non Prescripteur'}
-                                                </button>
+                                                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
+                                                    <button 
+                                                        onClick={() => handleTogglePrescriber(item)}
+                                                        className={`px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all border shadow-sm active:scale-95 ${item.prescriberType === 'prescripteur' ? 'bg-red-500 border-red-600 text-white' : 'bg-slate-50 border-slate-200 text-slate-400 hover:bg-slate-100 hover:text-slate-600'}`}
+                                                    >
+                                                        {item.prescriberType === 'prescripteur' ? 'Prescripteur' : 'Non Prescripteur'}
+                                                    </button>
+                                                    <button
+                                                        onClick={() => setSelectedDoctor(item)}
+                                                        className="px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all border shadow-sm active:scale-95 bg-teal-50 border-teal-200 text-teal-600 hover:bg-teal-100 hover:text-teal-700"
+                                                    >
+                                                        🧪 Médicaments
+                                                    </button>
+                                                </div>
                                             ) : item.type === 'Médecin' ? (
                                                 <span className={`px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest border ${item.prescriberType === 'prescripteur' ? 'bg-red-50 border-red-200 text-red-600' : 'bg-slate-50 border-slate-100 text-slate-300'}`}>
                                                     {item.prescriberType === 'prescripteur' ? 'Prescripteur' : 'Non Prescripteur'}
@@ -244,6 +254,14 @@ export default function RepertoireView({ dashboardId, viewUser }) {
                         </div>
                     )}
                 </div>
+            )}
+
+            {/* Medication Modal */}
+            {selectedDoctor && (
+                <DoctorMedicationModal
+                    doctor={selectedDoctor}
+                    onClose={() => setSelectedDoctor(null)}
+                />
             )}
         </div>
     );

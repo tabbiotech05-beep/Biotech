@@ -11,7 +11,10 @@ import {
   AreaChart,
   Area,
   BarChart,
-  Bar
+  Bar,
+  PieChart,
+  Pie,
+  Cell
 } from 'recharts';
 import './App.css';
 import { jsPDF } from 'jspdf';
@@ -158,6 +161,32 @@ const App = () => {
     });
   }, [plotData, currentCM]);
 
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D', '#FDB462', '#B3DE69', '#FCCDE5', '#D9D9D9'];
+
+  const pieData2025 = useMemo(() => {
+    const products = {};
+    plotData.forEach(item => {
+      if (item.annee === '2025') {
+        products[item.libelle] = (products[item.libelle] || 0) + item.qte;
+      }
+    });
+    return Object.entries(products)
+      .map(([name, value]) => ({ name, value }))
+      .sort((a, b) => b.value - a.value);
+  }, [plotData]);
+
+  const pieData2026 = useMemo(() => {
+    const products = {};
+    plotData.forEach(item => {
+      if (item.annee === '2026') {
+        products[item.libelle] = (products[item.libelle] || 0) + item.qte;
+      }
+    });
+    return Object.entries(products)
+      .map(([name, value]) => ({ name, value }))
+      .sort((a, b) => b.value - a.value);
+  }, [plotData]);
+
   const stats = useMemo(() => {
     const totalQte = plotData.reduce((sum, item) => sum + item.qte, 0);
     const uniqueClients = new Set(plotData.map(item => item.nom_client)).size;
@@ -205,6 +234,50 @@ const App = () => {
       return { client, actualQty, prediction, diff, status, color };
     }).filter(a => selectedClient === 'All' || a.client === selectedClient);
   }, [data, appliedProducts, selectedClient, activeTab]);
+
+  const comparativeTableData = useMemo(() => {
+    const months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+    const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+    
+    const grouped = liveFilteredData.reduce((acc, item) => {
+      const m = item.mois.padStart(2, '0');
+      if (!acc[m]) acc[m] = { qty2025: 0, qty2026: 0 };
+      if (item.annee === '2025') acc[m].qty2025 += item.qte;
+      if (item.annee === '2026') acc[m].qty2026 += item.qte;
+      return acc;
+    }, {});
+
+    return months.map((m, idx) => {
+      const dataForMonth = grouped[m] || { qty2025: 0, qty2026: 0 };
+      const diff = dataForMonth.qty2026 - dataForMonth.qty2025;
+      return {
+        monthKey: m,
+        monthName: monthNames[idx],
+        qty2025: dataForMonth.qty2025,
+        qty2026: dataForMonth.qty2026,
+        diff: diff,
+        evolution: dataForMonth.qty2025 ? ((diff / dataForMonth.qty2025) * 100).toFixed(1) + '%' : '-'
+      };
+    });
+  }, [liveFilteredData]);
+
+  const showComparativeTable = selectedClient !== 'All' && tempSelectedProducts.length === 1;
+
+  const handleDownloadComparativePDF = () => {
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text(`Comparatif Mensuel: ${selectedClient}`, 14, 15);
+    doc.setFontSize(12);
+    doc.text(`Produit: ${tempSelectedProducts[0]}`, 14, 22);
+    
+    autoTable(doc, {
+      html: '#comparative-table',
+      startY: 30,
+      theme: 'grid',
+      styles: { fontSize: 10 }
+    });
+    doc.save(`Comparatif_${selectedClient}_${tempSelectedProducts[0]}.pdf`);
+  };
 
   const handleGeneratePlot = () => {
     setAppliedProducts(tempSelectedProducts);
@@ -586,6 +659,55 @@ const App = () => {
                 </div>
               </div>
 
+              <div className="pie-charts-section">
+                {activeTab === 'biotech' && pieData2025.length > 0 && (
+                  <div className="pie-container">
+                    <h4>Répartition des Produits - 2025</h4>
+                    <ResponsiveContainer width="100%" height={260}>
+                      <PieChart>
+                        <Pie data={pieData2025} cx="50%" cy="50%" innerRadius={50} outerRadius={90} fill="#8884d8" paddingAngle={5} dataKey="value" nameKey="name">
+                          {pieData2025.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                          ))}
+                        </Pie>
+                        <Tooltip formatter={(value) => value.toLocaleString() + ' unités'} />
+                      </PieChart>
+                    </ResponsiveContainer>
+                    <select className="pie-legend-dropdown" style={{ width: '100%', padding: '0.65rem', borderRadius: '12px', border: '1px solid var(--border)', background: 'var(--bg-secondary)', color: 'var(--text-primary)', fontSize: '0.85rem', fontWeight: '600', outline: 'none' }}>
+                      <option value="">📊 Détail des Produits (2025)</option>
+                      {pieData2025.map((item, idx) => (
+                        <option key={idx} value={item.name}>
+                          {item.name} — {item.value.toLocaleString()} unités
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+                {pieData2026.length > 0 && (
+                  <div className="pie-container">
+                    <h4>Répartition des Produits - 2026</h4>
+                    <ResponsiveContainer width="100%" height={260}>
+                      <PieChart>
+                        <Pie data={pieData2026} cx="50%" cy="50%" innerRadius={50} outerRadius={90} fill="#82ca9d" paddingAngle={5} dataKey="value" nameKey="name">
+                          {pieData2026.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                          ))}
+                        </Pie>
+                        <Tooltip formatter={(value) => value.toLocaleString() + ' unités'} />
+                      </PieChart>
+                    </ResponsiveContainer>
+                    <select className="pie-legend-dropdown" style={{ width: '100%', padding: '0.65rem', borderRadius: '12px', border: '1px solid var(--border)', background: 'var(--bg-secondary)', color: 'var(--text-primary)', fontSize: '0.85rem', fontWeight: '600', outline: 'none' }}>
+                      <option value="">📊 Détail des Produits (2026)</option>
+                      {pieData2026.map((item, idx) => (
+                        <option key={idx} value={item.name}>
+                          {item.name} — {item.value.toLocaleString()} unités
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+              </div>
+
               <div className="alerts-section table-container" id="alerts-to-pdf">
                 <div className="section-header-with-action">
                   <div className="header-text">
@@ -632,39 +754,90 @@ const App = () => {
             </>
           )}
 
-          <div className="table-container history-card">
-            <div className="history-header">
-              <h3>Historique Global des Transactions</h3>
-              <span className="period-badge">
-                {activeTab === 'biotech' ? "Toute l'année 2025 & 2026" : "Mars & Avril 2026"}
-              </span>
-            </div>
-            <div className="table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Période</th>
-                    <th>Grossiste</th>
-                    <th>Produit</th>
-                    <th>Quantité</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {liveFilteredData.slice(0, 200).map((item, idx) => (
-                    <tr key={idx}>
-                      <td>{item.period}</td>
-                      <td>{item.nom_client}</td>
-                      <td>{item.libelle}</td>
-                      <td className={`qte-cell ${activeTab === 'biotech' ? 'blue' : 'green'}`}>{item.qte.toLocaleString()}</td>
+          {showComparativeTable ? (
+            <div className="table-container history-card" id="comparative-section">
+              <div className="section-header-with-action">
+                <div className="header-text">
+                  <h3>Comparatif Mensuel (2025 vs 2026)</h3>
+                  <span className="period-badge" style={{ marginTop: '0.5rem', display: 'inline-block' }}>{selectedClient} — {tempSelectedProducts[0]}</span>
+                </div>
+                <button className="pdf-btn" onClick={handleDownloadComparativePDF}>
+                  <span className="icon">📄</span> Télécharger PDF
+                </button>
+              </div>
+              <div className="table-wrapper">
+                <table id="comparative-table">
+                  <thead>
+                    <tr>
+                      <th>Mois</th>
+                      <th>Qté 2025</th>
+                      <th>Qté 2026</th>
+                      <th>Écart</th>
+                      <th>Évolution</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {comparativeTableData.map((row, idx) => (
+                      <tr key={idx}>
+                        <td>{row.monthName}</td>
+                        <td>{row.qty2025.toLocaleString()}</td>
+                        <td>{row.qty2026.toLocaleString()}</td>
+                        <td className={row.diff < 0 ? 'text-danger' : row.diff > 0 ? 'text-success' : ''}>
+                          {row.diff > 0 ? '+' : ''}{row.diff.toLocaleString()}
+                        </td>
+                        <td className={row.diff < 0 ? 'text-danger' : row.diff > 0 ? 'text-success' : ''}>
+                          {row.evolution}
+                        </td>
+                      </tr>
+                    ))}
+                    <tr style={{ fontWeight: 'bold', background: 'rgba(255,255,255,0.05)' }}>
+                      <td>TOTAL</td>
+                      <td>{comparativeTableData.reduce((sum, r) => sum + r.qty2025, 0).toLocaleString()}</td>
+                      <td>{comparativeTableData.reduce((sum, r) => sum + r.qty2026, 0).toLocaleString()}</td>
+                      <td className={comparativeTableData.reduce((sum, r) => sum + r.diff, 0) < 0 ? 'text-danger' : 'text-success'}>
+                        {comparativeTableData.reduce((sum, r) => sum + r.diff, 0) > 0 ? '+' : ''}{comparativeTableData.reduce((sum, r) => sum + r.diff, 0).toLocaleString()}
+                      </td>
+                      <td>-</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
-            {liveFilteredData.length > 200 && (
-              <p className="limit-footer">Affichage des 200 dernières transactions sur {liveFilteredData.length} au total.</p>
-            )}
-          </div>
+          ) : (
+            <div className="table-container history-card">
+              <div className="history-header">
+                <h3>Historique Global des Transactions</h3>
+                <span className="period-badge">
+                  {activeTab === 'biotech' ? "Toute l'année 2025 & 2026" : "Mars & Avril 2026"}
+                </span>
+              </div>
+              <div className="table-wrapper">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Période</th>
+                      <th>Grossiste</th>
+                      <th>Produit</th>
+                      <th>Quantité</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {liveFilteredData.slice(0, 200).map((item, idx) => (
+                      <tr key={idx}>
+                        <td>{item.period}</td>
+                        <td>{item.nom_client}</td>
+                        <td>{item.libelle}</td>
+                        <td className={`qte-cell ${activeTab === 'biotech' ? 'blue' : 'green'}`}>{item.qte.toLocaleString()}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {liveFilteredData.length > 200 && (
+                <p className="limit-footer">Affichage des 200 dernières transactions sur {liveFilteredData.length} au total.</p>
+              )}
+            </div>
+          )}
         </section>
 
       </main>

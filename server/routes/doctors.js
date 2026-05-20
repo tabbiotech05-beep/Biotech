@@ -2,6 +2,7 @@ import express from 'express';
 import Doctor from '../models/Doctor.js';
 import Visit from '../models/Visit.js';
 import User from '../models/User.js';
+import Medication from '../models/Medication.js';
 import auth from '../middleware/auth.js';
 
 const router = express.Router();
@@ -101,6 +102,113 @@ router.post('/import', auth, async (req, res) => {
     }
 });
 
+// Helper to get or create doctor by name
+const getOrCreateDoctorByName = async (userId, name, extraData = {}) => {
+    const trimmedName = name.trim();
+    const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const nameRegex = new RegExp(`^${escapeRegExp(trimmedName)}$`, 'i');
+    
+    let doctor = await Doctor.findOne({ user: userId, name: { $regex: nameRegex } });
+    if (!doctor) {
+        doctor = new Doctor({
+            user: userId,
+            name: trimmedName,
+            specialty: extraData.specialty || 'Généraliste',
+            governorate: extraData.governorate || '',
+            address: extraData.address || '',
+            prescriberType: extraData.prescriberType || 'non prescripteur'
+        });
+        await doctor.save();
+    }
+    return doctor;
+};
+
+// @route   GET /api/doctors/by-name/medications
+// @desc    Get prescribed and not-prescribed medications for a doctor by name
+router.get('/by-name/medications', auth, async (req, res) => {
+    try {
+        const { name, specialty, governorate, address, prescriberType } = req.query;
+        if (!name) return res.status(400).json({ msg: 'Le nom du médecin est requis' });
+        
+        const doctor = await getOrCreateDoctorByName(req.user.userId, name, {
+            specialty, governorate, address, prescriberType
+        });
+        
+        const populatedDoctor = await Doctor.findById(doctor._id).populate('medications');
+        const allMeds = await Medication.find().sort({ name: 1 });
+        const prescribedIds = new Set(populatedDoctor.medications.map(m => m._id.toString()));
+        const prescribed = populatedDoctor.medications;
+        const notPrescribed = allMeds.filter(m => !prescribedIds.has(m._id.toString()));
+        res.json({ prescribed, notPrescribed, doctorId: doctor._id });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   POST /api/doctors/by-name/medications
+// @desc    Add a medication to a doctor's prescribed list by name
+router.post('/by-name/medications', auth, async (req, res) => {
+    try {
+        const { name, medicationId, medicationName, specialty, governorate, address, prescriberType } = req.body;
+        if (!name) return res.status(400).json({ msg: 'Le nom du médecin est requis' });
+        
+        const doctor = await getOrCreateDoctorByName(req.user.userId, name, {
+            specialty, governorate, address, prescriberType
+        });
+        
+        let medId = medicationId;
+        if (!medId) {
+            if (!medicationName) return res.status(400).json({ msg: 'ID ou nom du médicament requis' });
+            const trimmedMedName = medicationName.trim();
+            const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            let med = await Medication.findOne({ name: { $regex: new RegExp(`^${escapeRegExp(trimmedMedName)}$`, 'i') } });
+            if (!med) {
+                const generatedCode = 'MED-' + Date.now() + '-' + Math.random().toString(36).substr(2, 5);
+                med = new Medication({ name: trimmedMedName, code: generatedCode });
+                await med.save();
+            }
+            medId = med._id.toString();
+        }
+        
+        if (doctor.medications.map(id => id.toString()).includes(medId)) {
+            return res.status(400).json({ msg: 'Médicament déjà assigné' });
+        }
+        doctor.medications.push(medId);
+        await doctor.save();
+        
+        const updated = await Doctor.findById(doctor._id).populate('medications');
+        const allMeds = await Medication.find().sort({ name: 1 });
+        const prescribedIds = new Set(updated.medications.map(m => m._id.toString()));
+        res.json({ prescribed: updated.medications, notPrescribed: allMeds.filter(m => !prescribedIds.has(m._id.toString())), doctorId: doctor._id });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   DELETE /api/doctors/by-name/medications/:medId
+// @desc    Remove a medication from a doctor's prescribed list by name
+router.delete('/by-name/medications/:medId', auth, async (req, res) => {
+    try {
+        const { name } = req.query;
+        if (!name) return res.status(400).json({ msg: 'Le nom du médecin est requis' });
+        
+        const doctor = await getOrCreateDoctorByName(req.user.userId, name);
+        
+        doctor.medications = doctor.medications.filter(id => id.toString() !== req.params.medId);
+        await doctor.save();
+        
+        const updated = await Doctor.findById(doctor._id).populate('medications');
+        const allMeds = await Medication.find().sort({ name: 1 });
+        const prescribedIds = new Set(updated.medications.map(m => m._id.toString()));
+        res.json({ prescribed: updated.medications, notPrescribed: allMeds.filter(m => !prescribedIds.has(m._id.toString())), doctorId: doctor._id });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 // @route   DELETE /api/doctors/:id
 router.delete('/:id', auth, async (req, res) => {
     try {
@@ -190,6 +298,36 @@ router.put('/update-status-by-name', auth, async (req, res) => {
         );
 
         res.json({ msg: 'Status updated and synced', doctor });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   GET /api/doctors/medications/catalog
+// @desc    Get all medications in the catalog
+router.get('/medications/catalog', auth, async (req, res) => {
+    try {
+        const meds = await Medication.find().sort({ name: 1 });
+        res.json(meds);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   POST /api/doctors/medications/catalog
+// @desc    Add a new medication to the catalog
+router.post('/medications/catalog', auth, async (req, res) => {
+    try {
+        const { name, code } = req.body;
+        if (!name) return res.status(400).json({ msg: 'Le nom du médicament est requis' });
+        const exists = await Medication.findOne({ name: { $regex: new RegExp(`^${name.trim()}$`, 'i') } });
+        if (exists) return res.status(400).json({ msg: 'Ce médicament existe déjà' });
+        const generatedCode = code && code.trim() ? code.trim() : 'MED-' + Date.now() + '-' + Math.random().toString(36).substr(2, 5);
+        const med = new Medication({ name: name.trim(), code: generatedCode });
+        await med.save();
+        res.json(med);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
