@@ -127,10 +127,20 @@ const getOrCreateDoctorByName = async (userId, name, extraData = {}) => {
 // @desc    Get prescribed and not-prescribed medications for a doctor by name
 router.get('/by-name/medications', auth, async (req, res) => {
     try {
-        const { name, specialty, governorate, address, prescriberType } = req.query;
+        const { name, specialty, governorate, address, prescriberType, viewUser } = req.query;
         if (!name) return res.status(400).json({ msg: 'Le nom du médecin est requis' });
         
-        const doctor = await getOrCreateDoctorByName(req.user.userId, name, {
+        let targetUserId = req.user.userId;
+        if (viewUser && viewUser !== req.user.username) {
+            if (req.user.role !== 'admin' && req.user.role !== 'pharmacienne') {
+                return res.status(403).json({ msg: 'Non autorisé à voir les données d\'un autre utilisateur' });
+            }
+            const user = await User.findOne({ username: viewUser });
+            if (!user) return res.status(404).json({ msg: 'User not found' });
+            targetUserId = user._id;
+        }
+        
+        const doctor = await getOrCreateDoctorByName(targetUserId, name, {
             specialty, governorate, address, prescriberType
         });
         
@@ -150,10 +160,20 @@ router.get('/by-name/medications', auth, async (req, res) => {
 // @desc    Add a medication to a doctor's prescribed list by name
 router.post('/by-name/medications', auth, async (req, res) => {
     try {
-        const { name, medicationId, medicationName, specialty, governorate, address, prescriberType } = req.body;
+        const { name, medicationId, medicationName, specialty, governorate, address, prescriberType, viewUser } = req.body;
         if (!name) return res.status(400).json({ msg: 'Le nom du médecin est requis' });
         
-        const doctor = await getOrCreateDoctorByName(req.user.userId, name, {
+        let targetUserId = req.user.userId;
+        if (viewUser && viewUser !== req.user.username) {
+            if (req.user.role !== 'admin' && req.user.role !== 'pharmacienne') {
+                return res.status(403).json({ msg: 'Non autorisé' });
+            }
+            const user = await User.findOne({ username: viewUser });
+            if (!user) return res.status(404).json({ msg: 'User not found' });
+            targetUserId = user._id;
+        }
+
+        const doctor = await getOrCreateDoctorByName(targetUserId, name, {
             specialty, governorate, address, prescriberType
         });
         
@@ -191,10 +211,20 @@ router.post('/by-name/medications', auth, async (req, res) => {
 // @desc    Remove a medication from a doctor's prescribed list by name
 router.delete('/by-name/medications/:medId', auth, async (req, res) => {
     try {
-        const { name } = req.query;
+        const { name, viewUser } = req.query;
         if (!name) return res.status(400).json({ msg: 'Le nom du médecin est requis' });
         
-        const doctor = await getOrCreateDoctorByName(req.user.userId, name);
+        let targetUserId = req.user.userId;
+        if (viewUser && viewUser !== req.user.username) {
+            if (req.user.role !== 'admin' && req.user.role !== 'pharmacienne') {
+                return res.status(403).json({ msg: 'Non autorisé' });
+            }
+            const user = await User.findOne({ username: viewUser });
+            if (!user) return res.status(404).json({ msg: 'User not found' });
+            targetUserId = user._id;
+        }
+
+        const doctor = await getOrCreateDoctorByName(targetUserId, name);
         
         doctor.medications = doctor.medications.filter(id => id.toString() !== req.params.medId);
         await doctor.save();
@@ -272,28 +302,37 @@ router.post('/sync-all', auth, async (req, res) => {
 // @route   PUT /api/doctors/update-status-by-name
 // @desc    Update doctor prescriber status by name and sync with visits
 router.put('/update-status-by-name', auth, async (req, res) => {
-    const { name, prescriberType } = req.body;
+    const { name, prescriberType, viewUser } = req.body;
     if (!name) return res.status(400).json({ msg: 'Name is required' });
     if (!['prescripteur', 'non prescripteur'].includes(prescriberType)) {
         return res.status(400).json({ msg: 'Invalid prescriber type' });
     }
 
     try {
-        const userId = req.user.userId;
+        let targetUserId = req.user.userId;
+        if (viewUser && viewUser !== req.user.username) {
+            if (req.user.role !== 'admin' && req.user.role !== 'pharmacienne') {
+                return res.status(403).json({ msg: 'Non autorisé' });
+            }
+            const user = await User.findOne({ username: viewUser });
+            if (!user) return res.status(404).json({ msg: 'User not found' });
+            targetUserId = user._id;
+        }
+
         const trimmedName = name.trim();
         const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const nameRegex = new RegExp(`^${escapeRegExp(trimmedName)}$`, 'i');
 
         // 1. Update Doctor record
         const doctor = await Doctor.findOneAndUpdate(
-            { user: userId, name: { $regex: nameRegex } },
+            { user: targetUserId, name: { $regex: nameRegex } },
             { prescriberType },
             { new: true }
         );
 
         // 2. Update all visits for this doctor to keep Repertoire (which is visit-based) in sync
         await Visit.updateMany(
-            { user: userId, targetType: 'medecin', doctorName: { $regex: nameRegex } },
+            { user: targetUserId, targetType: 'medecin', doctorName: { $regex: nameRegex } },
             { prescriberType }
         );
 

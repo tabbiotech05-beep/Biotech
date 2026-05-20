@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function DoctorMedicationModal({ doctor, onClose }) {
+export default function DoctorMedicationModal({ doctor, viewUser, onClose, readOnly = false }) {
     const { name: doctorName, specialty, governorate, address, prescriberType } = doctor;
     const [prescribed, setPrescribed] = useState([]);
     const [notPrescribed, setNotPrescribed] = useState([]);
@@ -20,7 +20,7 @@ export default function DoctorMedicationModal({ doctor, onClose }) {
     const fetchMeds = async () => {
         try {
             setLoading(true);
-            const params = { name: doctorName, specialty, governorate, address, prescriberType };
+            const params = { name: doctorName, specialty, governorate, address, prescriberType, viewUser };
             const res = await axios.get('/api/doctors/by-name/medications', { headers, params });
             setPrescribed(res.data.prescribed || []);
             setNotPrescribed(res.data.notPrescribed || []);
@@ -35,8 +35,9 @@ export default function DoctorMedicationModal({ doctor, onClose }) {
     useEffect(() => { fetchMeds(); }, [doctorName]);
 
     const handleAdd = async (medicationId) => {
+        if (readOnly) return;
         try {
-            const payload = { name: doctorName, medicationId, specialty, governorate, address, prescriberType };
+            const payload = { name: doctorName, medicationId, specialty, governorate, address, prescriberType, viewUser };
             const res = await axios.post('/api/doctors/by-name/medications', payload, { headers });
             setPrescribed(res.data.prescribed);
             setNotPrescribed(res.data.notPrescribed);
@@ -46,10 +47,11 @@ export default function DoctorMedicationModal({ doctor, onClose }) {
     };
 
     const handleRemove = async (medId) => {
+        if (readOnly) return;
         try {
             const res = await axios.delete(`/api/doctors/by-name/medications/${medId}`, {
                 headers,
-                params: { name: doctorName }
+                params: { name: doctorName, viewUser }
             });
             setPrescribed(res.data.prescribed);
             setNotPrescribed(res.data.notPrescribed);
@@ -59,6 +61,7 @@ export default function DoctorMedicationModal({ doctor, onClose }) {
     };
 
     const handleCreateOrAssignPrescribed = async () => {
+        if (readOnly) return;
         if (!newPrescribedName.trim()) return;
         setAddingPrescribed(true);
         try {
@@ -68,7 +71,8 @@ export default function DoctorMedicationModal({ doctor, onClose }) {
                 specialty,
                 governorate,
                 address,
-                prescriberType
+                prescriberType,
+                viewUser
             };
             const res = await axios.post('/api/doctors/by-name/medications', payload, { headers });
             setPrescribed(res.data.prescribed);
@@ -82,6 +86,7 @@ export default function DoctorMedicationModal({ doctor, onClose }) {
     };
 
     const handleCreateNotPrescribed = async () => {
+        if (readOnly) return;
         if (!newNotPrescribedName.trim()) return;
         setAddingNotPrescribed(true);
         try {
@@ -108,8 +113,15 @@ export default function DoctorMedicationModal({ doctor, onClose }) {
                 {/* Header */}
                 <div className="med-modal-header">
                     <div>
-                        <h3 className="med-modal-title">Gestion des Médicaments</h3>
+                        <h3 className="med-modal-title">
+                            {readOnly ? 'Médicaments du Délégué' : 'Gestion des Médicaments'}
+                        </h3>
                         <p className="med-modal-subtitle">Dr. {doctorName}</p>
+                        {readOnly && viewUser && (
+                            <p style={{ fontSize: '11px', color: '#fbbf24', marginTop: '4px', fontWeight: 700 }}>
+                                👁️ Consultation — {viewUser}
+                            </p>
+                        )}
                     </div>
                     <button className="med-modal-close" onClick={onClose}>✕</button>
                 </div>
@@ -134,25 +146,27 @@ export default function DoctorMedicationModal({ doctor, onClose }) {
                                     <span>Prescrits ({prescribed.length})</span>
                                 </div>
                                 
-                                {/* Add to Prescribed Input */}
-                                <div className="med-column-input-row">
-                                    <input
-                                        type="text"
-                                        placeholder="Saisir pour prescrire ou créer..."
-                                        value={newPrescribedName}
-                                        onChange={e => setNewPrescribedName(e.target.value)}
-                                        onKeyDown={e => e.key === 'Enter' && handleCreateOrAssignPrescribed()}
-                                        className="med-col-add-input"
-                                    />
-                                    <button
-                                        onClick={handleCreateOrAssignPrescribed}
-                                        disabled={addingPrescribed || !newPrescribedName.trim()}
-                                        className="med-col-add-btn prescribed"
-                                        title="Créer ou Assigner"
-                                    >
-                                        {addingPrescribed ? '...' : '+'}
-                                    </button>
-                                </div>
+                                {/* Add to Prescribed Input - HIDDEN in readOnly */}
+                                {!readOnly && (
+                                    <div className="med-column-input-row">
+                                        <input
+                                            type="text"
+                                            placeholder="Saisir pour prescrire ou créer..."
+                                            value={newPrescribedName}
+                                            onChange={e => setNewPrescribedName(e.target.value)}
+                                            onKeyDown={e => e.key === 'Enter' && handleCreateOrAssignPrescribed()}
+                                            className="med-col-add-input"
+                                        />
+                                        <button
+                                            onClick={handleCreateOrAssignPrescribed}
+                                            disabled={addingPrescribed || !newPrescribedName.trim()}
+                                            className="med-col-add-btn prescribed"
+                                            title="Créer ou Assigner"
+                                        >
+                                            {addingPrescribed ? '...' : '+'}
+                                        </button>
+                                    </div>
+                                )}
 
                                 <input
                                     type="text"
@@ -168,13 +182,15 @@ export default function DoctorMedicationModal({ doctor, onClose }) {
                                         filteredPrescribed.map(med => (
                                             <div key={med._id} className="med-item prescribed">
                                                 <span className="med-item-name">{med.name}</span>
-                                                <button
-                                                    className="med-item-btn remove"
-                                                    onClick={() => handleRemove(med._id)}
-                                                    title="Retirer"
-                                                >
-                                                    ✕
-                                                </button>
+                                                {!readOnly && (
+                                                    <button
+                                                        className="med-item-btn remove"
+                                                        onClick={() => handleRemove(med._id)}
+                                                        title="Retirer"
+                                                    >
+                                                        ✕
+                                                    </button>
+                                                )}
                                             </div>
                                         ))
                                     )}
@@ -188,25 +204,27 @@ export default function DoctorMedicationModal({ doctor, onClose }) {
                                     <span>Non Prescrits ({notPrescribed.length})</span>
                                 </div>
 
-                                {/* Add to Catalog Input */}
-                                <div className="med-column-input-row">
-                                    <input
-                                        type="text"
-                                        placeholder="Saisir pour ajouter au catalogue..."
-                                        value={newNotPrescribedName}
-                                        onChange={e => setNewNotPrescribedName(e.target.value)}
-                                        onKeyDown={e => e.key === 'Enter' && handleCreateNotPrescribed()}
-                                        className="med-col-add-input"
-                                    />
-                                    <button
-                                        onClick={handleCreateNotPrescribed}
-                                        disabled={addingNotPrescribed || !newNotPrescribedName.trim()}
-                                        className="med-col-add-btn not-prescribed"
-                                        title="Créer dans catalogue"
-                                    >
-                                        {addingNotPrescribed ? '...' : '+'}
-                                    </button>
-                                </div>
+                                {/* Add to Catalog Input - HIDDEN in readOnly */}
+                                {!readOnly && (
+                                    <div className="med-column-input-row">
+                                        <input
+                                            type="text"
+                                            placeholder="Saisir pour ajouter au catalogue..."
+                                            value={newNotPrescribedName}
+                                            onChange={e => setNewNotPrescribedName(e.target.value)}
+                                            onKeyDown={e => e.key === 'Enter' && handleCreateNotPrescribed()}
+                                            className="med-col-add-input"
+                                        />
+                                        <button
+                                            onClick={handleCreateNotPrescribed}
+                                            disabled={addingNotPrescribed || !newNotPrescribedName.trim()}
+                                            className="med-col-add-btn not-prescribed"
+                                            title="Créer dans catalogue"
+                                        >
+                                            {addingNotPrescribed ? '...' : '+'}
+                                        </button>
+                                    </div>
+                                )}
 
                                 <input
                                     type="text"
@@ -222,13 +240,15 @@ export default function DoctorMedicationModal({ doctor, onClose }) {
                                         filteredNotPrescribed.map(med => (
                                             <div key={med._id} className="med-item not-prescribed">
                                                 <span className="med-item-name">{med.name}</span>
-                                                <button
-                                                    className="med-item-btn add"
-                                                    onClick={() => handleAdd(med._id)}
-                                                    title="Ajouter"
-                                                >
-                                                    +
-                                                </button>
+                                                {!readOnly && (
+                                                    <button
+                                                        className="med-item-btn add"
+                                                        onClick={() => handleAdd(med._id)}
+                                                        title="Ajouter"
+                                                    >
+                                                        +
+                                                    </button>
+                                                )}
                                             </div>
                                         ))
                                     )}

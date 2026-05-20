@@ -1106,6 +1106,8 @@ export default function CalendarView({ dashboardId, viewUser }) {
                 {medModalDoctor && (
                     <DoctorMedicationModal
                         doctor={medModalDoctor}
+                        viewUser={viewUser}
+                        readOnly={!!viewUser}
                         onClose={() => setMedModalDoctor(null)}
                     />
                 )}

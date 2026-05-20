@@ -3,6 +3,7 @@ import axios from 'axios';
 import DoctorMedicationModal from './DoctorMedicationModal';
 
 export default function RepertoireView({ dashboardId, viewUser }) {
+    const role = localStorage.getItem('role') || 'delegue';
     const [searchTerm, setSearchTerm] = useState('');
     const [contacts, setContacts] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -82,13 +83,13 @@ export default function RepertoireView({ dashboardId, viewUser }) {
     );
 
     const handleTogglePrescriber = async (contact) => {
-        if (viewUser) return; // Prevent editing when viewing someone else's data
+        if (viewUser && role !== 'admin') return; // Prevent editing when viewing someone else's data, unless admin
         
         const newStatus = contact.prescriberType === 'prescripteur' ? 'non prescripteur' : 'prescripteur';
         try {
             const token = localStorage.getItem('token');
             await axios.put('/api/doctors/update-status-by-name', 
-                { name: contact.name, prescriberType: newStatus },
+                { name: contact.name, prescriberType: newStatus, viewUser },
                 { headers: { 'x-auth-token': token } }
             );
 
@@ -219,10 +220,11 @@ export default function RepertoireView({ dashboardId, viewUser }) {
                                             </div>
                                         </td>
                                         <td className="px-6 py-4 text-center">
-                                            {item.type === 'Médecin' && !viewUser ? (
+                                            {item.type === 'Médecin' && (!viewUser || role === 'admin') ? (
                                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', alignItems: 'center' }}>
                                                     <button 
                                                         onClick={() => handleTogglePrescriber(item)}
+                                                        disabled={viewUser && role !== 'admin'}
                                                         className={`px-3 py-1.5 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all border shadow-sm active:scale-95 ${item.prescriberType === 'prescripteur' ? 'bg-red-500 border-red-600 text-white' : 'bg-slate-50 border-slate-200 text-slate-400 hover:bg-slate-100 hover:text-slate-600'}`}
                                                     >
                                                         {item.prescriberType === 'prescripteur' ? 'Prescripteur' : 'Non Prescripteur'}
@@ -260,6 +262,8 @@ export default function RepertoireView({ dashboardId, viewUser }) {
             {selectedDoctor && (
                 <DoctorMedicationModal
                     doctor={selectedDoctor}
+                    viewUser={viewUser}
+                    readOnly={!!viewUser}
                     onClose={() => setSelectedDoctor(null)}
                 />
             )}
