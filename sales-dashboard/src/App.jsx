@@ -261,7 +261,7 @@ const App = () => {
     });
   }, [liveFilteredData]);
 
-  const showComparativeTable = selectedClient !== 'All' && tempSelectedProducts.length === 1;
+
 
   const handleDownloadComparativePDF = () => {
     const doc = new jsPDF();
@@ -754,90 +754,56 @@ const App = () => {
             </>
           )}
 
-          {showComparativeTable ? (
-            <div className="table-container history-card" id="comparative-section">
-              <div className="section-header-with-action">
-                <div className="header-text">
-                  <h3>Comparatif Mensuel (2025 vs 2026)</h3>
-                  <span className="period-badge" style={{ marginTop: '0.5rem', display: 'inline-block' }}>{selectedClient} — {tempSelectedProducts[0]}</span>
-                </div>
-                <button className="pdf-btn" onClick={handleDownloadComparativePDF}>
-                  <span className="icon">📄</span> Télécharger PDF
-                </button>
-              </div>
-              <div className="table-wrapper">
-                <table id="comparative-table">
-                  <thead>
-                    <tr>
-                      <th>Mois</th>
-                      <th>Qté 2025</th>
-                      <th>Qté 2026</th>
-                      <th>Écart</th>
-                      <th>Évolution</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {comparativeTableData.map((row, idx) => (
-                      <tr key={idx}>
-                        <td>{row.monthName}</td>
-                        <td>{row.qty2025.toLocaleString()}</td>
-                        <td>{row.qty2026.toLocaleString()}</td>
-                        <td className={row.diff < 0 ? 'text-danger' : row.diff > 0 ? 'text-success' : ''}>
-                          {row.diff > 0 ? '+' : ''}{row.diff.toLocaleString()}
-                        </td>
-                        <td className={row.diff < 0 ? 'text-danger' : row.diff > 0 ? 'text-success' : ''}>
-                          {row.evolution}
-                        </td>
-                      </tr>
-                    ))}
-                    <tr style={{ fontWeight: 'bold', background: 'rgba(255,255,255,0.05)' }}>
-                      <td>TOTAL</td>
-                      <td>{comparativeTableData.reduce((sum, r) => sum + r.qty2025, 0).toLocaleString()}</td>
-                      <td>{comparativeTableData.reduce((sum, r) => sum + r.qty2026, 0).toLocaleString()}</td>
-                      <td className={comparativeTableData.reduce((sum, r) => sum + r.diff, 0) < 0 ? 'text-danger' : 'text-success'}>
-                        {comparativeTableData.reduce((sum, r) => sum + r.diff, 0) > 0 ? '+' : ''}{comparativeTableData.reduce((sum, r) => sum + r.diff, 0).toLocaleString()}
-                      </td>
-                      <td>-</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          ) : (
-            <div className="table-container history-card">
-              <div className="history-header">
-                <h3>Historique Global des Transactions</h3>
-                <span className="period-badge">
-                  {activeTab === 'biotech' ? "Toute l'année 2025 & 2026" : "Mars & Avril 2026"}
+          <div className="table-container history-card" id="comparative-section">
+            <div className="section-header-with-action">
+              <div className="header-text">
+                <h3>Comparatif Mensuel (2025 vs 2026)</h3>
+                <span className="period-badge" style={{ marginTop: '0.5rem', display: 'inline-block' }}>
+                  {selectedClient === 'All' ? 'Tous les Grossistes' : selectedClient} — {tempSelectedProducts.length === 0 ? 'Tous les Produits' : tempSelectedProducts.length === 1 ? tempSelectedProducts[0] : `${tempSelectedProducts.length} Produits sélectionnés`}
                 </span>
               </div>
-              <div className="table-wrapper">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Période</th>
-                      <th>Grossiste</th>
-                      <th>Produit</th>
-                      <th>Quantité</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {liveFilteredData.slice(0, 200).map((item, idx) => (
-                      <tr key={idx}>
-                        <td>{item.period}</td>
-                        <td>{item.nom_client}</td>
-                        <td>{item.libelle}</td>
-                        <td className={`qte-cell ${activeTab === 'biotech' ? 'blue' : 'green'}`}>{item.qte.toLocaleString()}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              {liveFilteredData.length > 200 && (
-                <p className="limit-footer">Affichage des 200 dernières transactions sur {liveFilteredData.length} au total.</p>
-              )}
+              <button className="pdf-btn" onClick={handleDownloadComparativePDF}>
+                <span className="icon">📄</span> Télécharger PDF
+              </button>
             </div>
-          )}
+            <div className="table-wrapper">
+              <table id="comparative-table">
+                <thead>
+                  <tr>
+                    <th>Mois</th>
+                    <th>Qté 2025</th>
+                    <th>Qté 2026</th>
+                    <th>Écart</th>
+                    <th>Évolution</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparativeTableData.map((row, idx) => (
+                    <tr key={idx}>
+                      <td>{row.monthName}</td>
+                      <td>{row.qty2025.toLocaleString()}</td>
+                      <td>{row.qty2026.toLocaleString()}</td>
+                      <td className={row.diff < 0 ? 'text-danger' : row.diff > 0 ? 'text-success' : ''}>
+                        {row.diff > 0 ? '+' : ''}{row.diff.toLocaleString()}
+                      </td>
+                      <td className={row.diff < 0 ? 'text-danger' : row.diff > 0 ? 'text-success' : ''}>
+                        {row.evolution}
+                      </td>
+                    </tr>
+                  ))}
+                  <tr style={{ fontWeight: 'bold', background: 'rgba(255,255,255,0.05)' }}>
+                    <td>TOTAL</td>
+                    <td>{comparativeTableData.reduce((sum, r) => sum + r.qty2025, 0).toLocaleString()}</td>
+                    <td>{comparativeTableData.reduce((sum, r) => sum + r.qty2026, 0).toLocaleString()}</td>
+                    <td className={comparativeTableData.reduce((sum, r) => sum + r.diff, 0) < 0 ? 'text-danger' : 'text-success'}>
+                      {comparativeTableData.reduce((sum, r) => sum + r.diff, 0) > 0 ? '+' : ''}{comparativeTableData.reduce((sum, r) => sum + r.diff, 0).toLocaleString()}
+                    </td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </section>
 
       </main>
