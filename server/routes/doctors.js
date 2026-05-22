@@ -177,11 +177,15 @@ router.post('/by-name/medications', auth, async (req, res) => {
         
         const trimmedMedName = medicationName.trim();
         
-        if (doctor.medications.some(m => m.name.toLowerCase() === trimmedMedName.toLowerCase())) {
+        if (doctor.medications.some(m => m && m.name && m.name.toLowerCase() === trimmedMedName.toLowerCase())) {
             return res.status(400).json({ msg: 'Médicament déjà assigné' });
         }
         
         doctor.medications.push({ name: trimmedMedName });
+        
+        // Clean up any legacy/malformed data before saving to prevent Mongoose validation errors
+        doctor.medications = doctor.medications.filter(m => m && m.name && m.name.trim() !== '');
+        
         await doctor.save();
         
         res.json({ prescribed: doctor.medications, doctorId: doctor._id });
@@ -210,7 +214,20 @@ router.delete('/by-name/medications/:medId', auth, async (req, res) => {
 
         const doctor = await getOrCreateDoctorByName(targetUserId, name);
         
-        doctor.medications = doctor.medications.filter(m => m._id.toString() !== req.params.medId);
+        doctor.medications = doctor.medications.filter(m => {
+            // Remove legacy/malformed data automatically
+            if (!m || !m.name || m.name.trim() === '') return false;
+            
+            // Remove the specific medication if an ID is provided
+            if (req.params.medId && req.params.medId !== 'undefined') {
+                if (m._id && m._id.toString() === req.params.medId) return false;
+            } else {
+                // If they clicked delete on "Inconnu", it passes undefined or an index.
+                // The malformed check above already removes them!
+            }
+            
+            return true;
+        });
         await doctor.save();
         
         res.json({ prescribed: doctor.medications, doctorId: doctor._id });
