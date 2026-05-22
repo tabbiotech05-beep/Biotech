@@ -1,32 +1,16 @@
 import mongoose from 'mongoose';
-import User from './server/models/User.js';
-import Congress from './server/models/Congress.js';
-import dotenv from 'dotenv';
-dotenv.config();
 
-const dbUri = process.env.MONGO_URI || 'mongodb://localhost:27017/biotech';
-
-async function checkData() {
-    await mongoose.connect(dbUri);
-    const count = await Congress.countDocuments();
-    console.log(`Total Congresses: ${count}`);
-    
-    if (count > 0) {
-        const congresses = await Congress.find().limit(5).populate('user', 'username');
-        congresses.forEach(c => {
-            console.log(`- Action: ${c.name}, User: ${c.user?.username}, Dashboard: ${c.dashboardId}`);
-        });
-    } else {
-        console.log("No congresses found.");
-    }
-    
-    const users = await User.find({}, 'username role').limit(10);
-    console.log(`Total Users (subset): ${users.length}`);
-    users.forEach(u => {
-        console.log(`- User: ${u.username}, Role: ${u.role}`);
-    });
-
-    await mongoose.disconnect();
+async function run() {
+  await mongoose.connect('mongodb://127.0.0.1:27017/ventes_et_stocks');
+  const db = mongoose.connection.db;
+  
+  const docs = await db.collection('doctors').find({ medications: { $exists: true, $not: { $size: 0 } } }).toArray();
+  console.log('Doctors with meds:', docs.length);
+  
+  const meds = await db.collection('medications').find().toArray();
+  console.log('Total meds:', meds.length);
+  
+  process.exit(0);
 }
 
-checkData();
+run();

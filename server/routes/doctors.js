@@ -124,7 +124,7 @@ const getOrCreateDoctorByName = async (userId, name, extraData = {}) => {
 };
 
 // @route   GET /api/doctors/by-name/medications
-// @desc    Get prescribed and not-prescribed medications for a doctor by name
+// @desc    Get prescribed medications for a doctor by name
 router.get('/by-name/medications', auth, async (req, res) => {
     try {
         const { name, specialty, governorate, address, prescriberType, viewUser } = req.query;
@@ -144,12 +144,7 @@ router.get('/by-name/medications', auth, async (req, res) => {
             specialty, governorate, address, prescriberType
         });
         
-        const populatedDoctor = await Doctor.findById(doctor._id).populate('medications');
-        const allMeds = await Medication.find().sort({ name: 1 });
-        const prescribedIds = new Set(populatedDoctor.medications.map(m => m._id.toString()));
-        const prescribed = populatedDoctor.medications;
-        const notPrescribed = allMeds.filter(m => !prescribedIds.has(m._id.toString()));
-        res.json({ prescribed, notPrescribed, doctorId: doctor._id });
+        res.json({ prescribed: doctor.medications || [], doctorId: doctor._id });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -160,8 +155,11 @@ router.get('/by-name/medications', auth, async (req, res) => {
 // @desc    Add a medication to a doctor's prescribed list by name
 router.post('/by-name/medications', auth, async (req, res) => {
     try {
-        const { name, medicationId, medicationName, specialty, governorate, address, prescriberType, viewUser } = req.body;
+        const { name, medicationName, specialty, governorate, address, prescriberType, viewUser } = req.body;
         if (!name) return res.status(400).json({ msg: 'Le nom du médecin est requis' });
+        if (!medicationName || !medicationName.trim()) {
+            return res.status(400).json({ msg: 'Le nom du médicament est requis' });
+        }
         
         let targetUserId = req.user.userId;
         if (viewUser && viewUser !== req.user.username) {
@@ -177,30 +175,16 @@ router.post('/by-name/medications', auth, async (req, res) => {
             specialty, governorate, address, prescriberType
         });
         
-        let medId = medicationId;
-        if (!medId) {
-            if (!medicationName) return res.status(400).json({ msg: 'ID ou nom du médicament requis' });
-            const trimmedMedName = medicationName.trim();
-            const escapeRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            let med = await Medication.findOne({ name: { $regex: new RegExp(`^${escapeRegExp(trimmedMedName)}$`, 'i') } });
-            if (!med) {
-                const generatedCode = 'MED-' + Date.now() + '-' + Math.random().toString(36).substr(2, 5);
-                med = new Medication({ name: trimmedMedName, code: generatedCode });
-                await med.save();
-            }
-            medId = med._id.toString();
-        }
+        const trimmedMedName = medicationName.trim();
         
-        if (doctor.medications.map(id => id.toString()).includes(medId)) {
+        if (doctor.medications.some(m => m.name.toLowerCase() === trimmedMedName.toLowerCase())) {
             return res.status(400).json({ msg: 'Médicament déjà assigné' });
         }
-        doctor.medications.push(medId);
+        
+        doctor.medications.push({ name: trimmedMedName });
         await doctor.save();
         
-        const updated = await Doctor.findById(doctor._id).populate('medications');
-        const allMeds = await Medication.find().sort({ name: 1 });
-        const prescribedIds = new Set(updated.medications.map(m => m._id.toString()));
-        res.json({ prescribed: updated.medications, notPrescribed: allMeds.filter(m => !prescribedIds.has(m._id.toString())), doctorId: doctor._id });
+        res.json({ prescribed: doctor.medications, doctorId: doctor._id });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -226,13 +210,10 @@ router.delete('/by-name/medications/:medId', auth, async (req, res) => {
 
         const doctor = await getOrCreateDoctorByName(targetUserId, name);
         
-        doctor.medications = doctor.medications.filter(id => id.toString() !== req.params.medId);
+        doctor.medications = doctor.medications.filter(m => m._id.toString() !== req.params.medId);
         await doctor.save();
         
-        const updated = await Doctor.findById(doctor._id).populate('medications');
-        const allMeds = await Medication.find().sort({ name: 1 });
-        const prescribedIds = new Set(updated.medications.map(m => m._id.toString()));
-        res.json({ prescribed: updated.medications, notPrescribed: allMeds.filter(m => !prescribedIds.has(m._id.toString())), doctorId: doctor._id });
+        res.json({ prescribed: doctor.medications, doctorId: doctor._id });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
@@ -337,36 +318,6 @@ router.put('/update-status-by-name', auth, async (req, res) => {
         );
 
         res.json({ msg: 'Status updated and synced', doctor });
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-});
-
-// @route   GET /api/doctors/medications/catalog
-// @desc    Get all medications in the catalog
-router.get('/medications/catalog', auth, async (req, res) => {
-    try {
-        const meds = await Medication.find().sort({ name: 1 });
-        res.json(meds);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-});
-
-// @route   POST /api/doctors/medications/catalog
-// @desc    Add a new medication to the catalog
-router.post('/medications/catalog', auth, async (req, res) => {
-    try {
-        const { name, code } = req.body;
-        if (!name) return res.status(400).json({ msg: 'Le nom du médicament est requis' });
-        const exists = await Medication.findOne({ name: { $regex: new RegExp(`^${name.trim()}$`, 'i') } });
-        if (exists) return res.status(400).json({ msg: 'Ce médicament existe déjà' });
-        const generatedCode = code && code.trim() ? code.trim() : 'MED-' + Date.now() + '-' + Math.random().toString(36).substr(2, 5);
-        const med = new Medication({ name: name.trim(), code: generatedCode });
-        await med.save();
-        res.json(med);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');

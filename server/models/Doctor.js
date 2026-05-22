@@ -10,7 +10,10 @@ const DoctorSchema = new mongoose.Schema({
     specialty: { type: String },
     governorate: { type: String },
     address: { type: String },
-    medications: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Medication' }],
+    medications: [{
+        name: { type: String, required: true },
+        addedAt: { type: Date, default: Date.now }
+    }],
     prescriberType: { type: String, enum: ['prescripteur', 'non prescripteur'], default: 'non prescripteur' }
 }, { timestamps: true });
 
