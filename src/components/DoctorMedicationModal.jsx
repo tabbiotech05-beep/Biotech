@@ -66,9 +66,10 @@ export default function DoctorMedicationModal({ doctor, viewUser, onClose, readO
         }
     };
 
-    const filteredPrescribed = prescribed.filter(m =>
-        m.name.toLowerCase().includes(searchPrescribed.toLowerCase())
-    );
+    const filteredPrescribed = prescribed.filter(m => {
+        const medName = typeof m === 'string' ? m : (m?.name || '');
+        return medName.toLowerCase().includes(searchPrescribed.toLowerCase());
+    });
 
     return (
         <div className="med-modal-overlay" onClick={onClose}>
@@ -141,20 +142,24 @@ export default function DoctorMedicationModal({ doctor, viewUser, onClose, readO
                                     {filteredPrescribed.length === 0 ? (
                                         <p className="med-empty">Aucun médicament dans la liste</p>
                                     ) : (
-                                        filteredPrescribed.map(med => (
-                                            <div key={med._id} className="med-item prescribed">
-                                                <span className="med-item-name">{med.name}</span>
-                                                {!readOnly && (
-                                                    <button
-                                                        className="med-item-btn remove"
-                                                        onClick={() => handleRemove(med._id)}
-                                                        title="Retirer"
-                                                    >
-                                                        ✕
-                                                    </button>
-                                                )}
-                                            </div>
-                                        ))
+                                        filteredPrescribed.map((med, idx) => {
+                                            const medName = typeof med === 'string' ? med : (med?.name || 'Inconnu');
+                                            const medId = typeof med === 'string' ? idx : (med?._id || idx);
+                                            return (
+                                                <div key={medId} className="med-item prescribed">
+                                                    <span className="med-item-name">{medName}</span>
+                                                    {!readOnly && (
+                                                        <button
+                                                            className="med-item-btn remove"
+                                                            onClick={() => handleRemove(typeof med === 'string' ? med : med._id)}
+                                                            title="Retirer"
+                                                        >
+                                                            ✕
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            );
+                                        })
                                     )}
                                 </div>
                             </div>
