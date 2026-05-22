@@ -31,6 +31,7 @@ const App = () => {
   const [tempSelectedProducts, setTempSelectedProducts] = useState([]);
   const [appliedProducts, setAppliedProducts] = useState([]);
   const [isChartGenerated, setIsChartGenerated] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState('04'); // default April
 
   // Tab navigation state
   const [activeTab, setActiveTab] = useState('biotech');
@@ -260,6 +261,35 @@ const App = () => {
       };
     });
   }, [liveFilteredData]);
+
+  const productComparativeData = useMemo(() => {
+    const clientData = data.filter(item => selectedClient === 'All' || item.nom_client === selectedClient);
+    const monthData = clientData.filter(item => item.mois.padStart(2, '0') === selectedMonth);
+    
+    const grouped = monthData.reduce((acc, item) => {
+      const prod = item.libelle;
+      if (!acc[prod]) acc[prod] = { qty2025: 0, qty2026: 0 };
+      if (item.annee === '2025') acc[prod].qty2025 += item.qte;
+      if (item.annee === '2026') acc[prod].qty2026 += item.qte;
+      return acc;
+    }, {});
+
+    const filteredProducts = Object.keys(grouped).filter(prod => 
+      tempSelectedProducts.length === 0 || tempSelectedProducts.includes(prod)
+    );
+
+    return filteredProducts.map(prod => {
+      const d = grouped[prod];
+      const diff = d.qty2026 - d.qty2025;
+      return {
+        product: prod,
+        qty2025: d.qty2025,
+        qty2026: d.qty2026,
+        diff: diff,
+        evolution: d.qty2025 ? ((diff / d.qty2025) * 100).toFixed(1) + '%' : '-'
+      };
+    }).sort((a, b) => b.qty2026 - a.qty2026);
+  }, [data, selectedClient, selectedMonth, tempSelectedProducts]);
 
 
 
@@ -800,6 +830,93 @@ const App = () => {
                     </td>
                     <td>-</td>
                   </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="table-container history-card" id="detailed-product-section" style={{ marginTop: '2rem' }}>
+            <div className="section-header-with-action">
+              <div className="header-text">
+                <h3>Comparatif Détaillé par Produit</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '0.5rem' }}>
+                  <span className="period-badge">
+                    {selectedClient === 'All' ? 'Tous les Grossistes' : selectedClient}
+                  </span>
+                  <select 
+                    value={selectedMonth} 
+                    onChange={(e) => setSelectedMonth(e.target.value)}
+                    style={{ 
+                      padding: '0.4rem', 
+                      borderRadius: '8px', 
+                      border: '1px solid var(--border)', 
+                      background: 'var(--bg-secondary)', 
+                      color: 'var(--text-primary)', 
+                      fontSize: '0.9rem', 
+                      fontWeight: '500', 
+                      outline: 'none' 
+                    }}
+                  >
+                    <option value="01">Janvier</option>
+                    <option value="02">Février</option>
+                    <option value="03">Mars</option>
+                    <option value="04">Avril</option>
+                    <option value="05">Mai</option>
+                    <option value="06">Juin</option>
+                    <option value="07">Juillet</option>
+                    <option value="08">Août</option>
+                    <option value="09">Septembre</option>
+                    <option value="10">Octobre</option>
+                    <option value="11">Novembre</option>
+                    <option value="12">Décembre</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className="table-wrapper">
+              <table id="detailed-product-table">
+                <thead>
+                  <tr>
+                    <th>Produit</th>
+                    <th>Qté 2025</th>
+                    <th>Qté 2026</th>
+                    <th>Écart</th>
+                    <th>Évolution</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {productComparativeData.length > 0 ? (
+                    productComparativeData.map((row, idx) => (
+                      <tr key={idx}>
+                        <td style={{ fontWeight: '500' }}>{row.product}</td>
+                        <td>{row.qty2025.toLocaleString()}</td>
+                        <td>{row.qty2026.toLocaleString()}</td>
+                        <td className={row.diff < 0 ? 'text-danger' : row.diff > 0 ? 'text-success' : ''}>
+                          {row.diff > 0 ? '+' : ''}{row.diff.toLocaleString()}
+                        </td>
+                        <td className={row.diff < 0 ? 'text-danger' : row.diff > 0 ? 'text-success' : ''}>
+                          {row.evolution}
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="5" style={{ textAlign: 'center', padding: '2rem', color: 'var(--text-secondary)' }}>
+                        Aucune donnée pour ce mois.
+                      </td>
+                    </tr>
+                  )}
+                  {productComparativeData.length > 0 && (
+                    <tr style={{ fontWeight: 'bold', background: 'rgba(255,255,255,0.05)' }}>
+                      <td>TOTAL</td>
+                      <td>{productComparativeData.reduce((sum, r) => sum + r.qty2025, 0).toLocaleString()}</td>
+                      <td>{productComparativeData.reduce((sum, r) => sum + r.qty2026, 0).toLocaleString()}</td>
+                      <td className={productComparativeData.reduce((sum, r) => sum + r.diff, 0) < 0 ? 'text-danger' : 'text-success'}>
+                        {productComparativeData.reduce((sum, r) => sum + r.diff, 0) > 0 ? '+' : ''}{productComparativeData.reduce((sum, r) => sum + r.diff, 0).toLocaleString()}
+                      </td>
+                      <td>-</td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
             </div>
