@@ -139,14 +139,15 @@ router.get('/summary', auth, async (req, res) => {
         // Build the Prompt
         const prompt = `
 Vous êtes un assistant IA pour un administrateur dans l'industrie pharmaceutique (BiotechpharmaMD).
-Générez un résumé structuré, professionnel et concis des activités et des ventes pour la période: ${period === 'day' ? "Aujourd'hui" : period === 'week' ? "Cette Semaine" : period === 'month' ? "Ce Mois" : "Général"}.
+Générez un rapport DÉTAILLÉ et EXHAUSTIF des activités et des ventes pour la période: ${period === 'day' ? "Aujourd'hui" : period === 'week' ? "Cette Semaine" : period === 'month' ? "Ce Mois" : "Général"}.
 
 Règles importantes:
 1. Séparez clairement le résumé en deux parties: ÉQUIPE BIOTECH et ÉQUIPE TENSHI.
-2. Mettez en évidence les points clés des rapports de visites des délégués (qui a fait quoi, chez qui, et pourquoi).
-3. Intégrez un bref aperçu des ventes du mois en cours basées sur les données fournies.
-4. Utilisez un format Markdown lisible avec des puces et des titres.
-5. Soyez analytique (ex: "forte activité chez les médecins", "bon volume sur tel produit").
+2. EXHAUSTIVITÉ OBLIGATOIRE : Vous DEVEZ analyser et inclure une sous-section pour CHAQUE délégué présent dans les données brutes ci-dessous. N'omettez absolument AUCUN délégué, même s'il a peu d'activité.
+3. Pour chaque délégué, détaillez ses visites (qui a fait quoi, chez qui, et pourquoi).
+4. Intégrez une analyse détaillée des ventes du mois en cours basées sur les données fournies.
+5. Utilisez un format Markdown lisible avec des puces et des titres.
+6. Soyez analytique (ex: "forte activité chez les médecins", "bon volume sur tel produit").
 
 Voici les données brutes:
 
@@ -166,12 +167,13 @@ Ventes (Mois en cours: ${salesData.month}):
 Quantité totale: ${salesData.tenshi?.totalQuantity}
 Top 5 produits: ${JSON.stringify(salesData.tenshi?.topProducts)}
 
-Rédigez le résumé maintenant:
+Rédigez le rapport détaillé maintenant:
 `;
 
         // Call Gemini
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+        // Using gemini-1.5-pro for better reasoning and long-context processing
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
         const result = await model.generateContent(prompt);
         const responseText = result.response.text();
 
