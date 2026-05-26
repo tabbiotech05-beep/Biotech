@@ -2,8 +2,8 @@ import express from 'express';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import Visit from '../models/Visit.js';
 import User from '../models/User.js';
+import LeaveRequest from '../models/LeaveRequest.js';
 import auth from '../middleware/auth.js';
-import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -233,6 +233,17 @@ router.get('/supervisor', auth, async (req, res) => {
         const period = req.query.period || 'month'; // day, week, month, all
         const { start, end } = getDateRange(period);
 
+        // Tunisian national holidays (fixed dates for simplicity, excluding variable religious holidays for now)
+        const tunisianHolidays = [
+            '01-01', // Nouvel an
+            '03-20', // Fête de l'Indépendance
+            '04-09', // Fête des Martyrs
+            '05-01', // Fête du Travail
+            '07-25', // Fête de la République
+            '08-13', // Fête de la Femme
+            '10-15'  // Fête de l'Évacuation
+        ];
+
         // Fetch all delegates
         const delegates = await User.find({ role: 'delegue' }).select('username allowedDashboards');
 
@@ -241,11 +252,51 @@ router.get('/supervisor', auth, async (req, res) => {
             start: { $gte: start, $lte: end }
         }).populate('user', 'username allowedDashboards');
 
+        // Fetch approved leave requests for the period
+        const leaves = await LeaveRequest.find({
+            status: 'approved',
+            $or: [
+                { startDate: { $lte: end }, endDate: { $gte: start } }
+            ]
+        });
+
+        // Calculate total possible days in period (excluding Sundays)
+        let totalPossibleDays = 0;
+        let currentDate = new Date(start);
+        while (currentDate <= end) {
+            const dayOfWeek = currentDate.getDay();
+            const monthDay = `${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(currentDate.getDate()).padStart(2, '0')}`;
+            
+            if (dayOfWeek !== 0 && !tunisianHolidays.includes(monthDay)) { // Exclude Sundays and Holidays
+                totalPossibleDays++;
+            }
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+
         // Build KPI data per delegate
         const kpiData = delegates.map(delegate => {
             const delegateVisits = visits.filter(v => 
                 v.user && v.user._id.toString() === delegate._id.toString()
             );
+
+            // Calculate delegate's specific leave days in the period
+            let delegateLeaveDays = 0;
+            const delegateLeaves = leaves.filter(l => l.user.toString() === delegate._id.toString());
+            delegateLeaves.forEach(leave => {
+                let leaveStart = new Date(Math.max(start, leave.startDate));
+                let leaveEnd = new Date(Math.min(end, leave.endDate));
+                while (leaveStart <= leaveEnd) {
+                    const dayOfWeek = leaveStart.getDay();
+                    const monthDay = `${String(leaveStart.getMonth() + 1).padStart(2, '0')}-${String(leaveStart.getDate()).padStart(2, '0')}`;
+                    if (dayOfWeek !== 0 && !tunisianHolidays.includes(monthDay)) {
+                        delegateLeaveDays++;
+                    }
+                    leaveStart.setDate(leaveStart.getDate() + 1);
+                }
+            });
+
+            const actualWorkingDays = Math.max(1, totalPossibleDays - delegateLeaveDays); // Avoid division by zero
+            const visitsPerWorkingDay = (delegateVisits.length / actualWorkingDays).toFixed(1);
 
             const team = delegate.allowedDashboards?.includes('dashboard2') ? 'Tenshi' : 'Biotech';
 
@@ -282,6 +333,9 @@ router.get('/supervisor', auth, async (req, res) => {
                 name: delegate.username,
                 team,
                 totalVisits: delegateVisits.length,
+                actualWorkingDays,
+                delegateLeaveDays,
+                visitsPerWorkingDay,
                 medecinVisits: medecinVisits.length,
                 pharmacieVisits: pharmacieVisits.length,
                 grossisteVisits: grossisteVisits.length,
@@ -299,16 +353,21 @@ router.get('/supervisor', auth, async (req, res) => {
         const biotechKPIs = kpiData.filter(k => k.team === 'Biotech');
         const tenshiKPIs = kpiData.filter(k => k.team === 'Tenshi');
 
-        const formatKPIs = (list) => {
+        const formatKPIs = (list, isTenshi) => {
             if (list.length === 0) return "Aucun délégué trouvé.";
             return list.map(k => {
-                return `Délégué: ${k.name}
-  - Visites totales: ${k.totalVisits}
+                let text = `Délégué: ${k.name}
+  - Jours de travail réels: ${k.actualWorkingDays} jours (Jours de congé/absences: ${k.delegateLeaveDays})
+  - Visites totales: ${k.totalVisits} (Fréquence moyenne: ${k.visitsPerWorkingDay} visites / jour)
   - Médecins: ${k.medecinVisits} (${k.uniqueDoctors} uniques) | Pharmacies: ${k.pharmacieVisits} (${k.uniquePharmacies} uniques) | Grossistes: ${k.grossisteVisits}
   - Prescripteurs: ${k.prescribers} | Non-prescripteurs: ${k.nonPrescribers}
   - Secteurs couverts: ${k.governorates.length > 0 ? k.governorates.join(', ') : 'Non renseigné'}
-  - Échantillons distribués: ${k.totalSamples}
-  - Qualité des rapports: ${k.detailRate}% des visites avec détails`;
+  - Qualité et Assiduité des rapports: ${k.detailRate}% des visites avec descriptions détaillées`;
+                
+                if (isTenshi) {
+                    text += `\n  - Échantillons distribués: ${k.totalSamples}`;
+                }
+                return text;
             }).join('\n\n');
         };
 
@@ -322,29 +381,27 @@ Période analysée: ${periodLabel}
 
 INSTRUCTIONS STRICTES:
 1. Analysez CHAQUE délégué individuellement — n'en omettez AUCUN.
-2. Attribuez un SCORE DE PERFORMANCE sur 100 à chaque délégué basé sur ces KPIs:
-   - Nombre total de visites (poids: 30%)
-   - Diversité des cibles (médecins + pharmacies + grossistes) (poids: 20%)
-   - Couverture géographique (nombre de secteurs/gouvernorats) (poids: 15%)
-   - Ratio prescripteurs vs non-prescripteurs (poids: 15%)
-   - Distribution d'échantillons (poids: 10%)
-   - Qualité des rapports de visite (% avec détails) (poids: 10%)
-3. Classez les délégués du MEILLEUR au MOINS BON dans chaque équipe.
-4. Identifiez clairement le statut de chaque délégué avec les mots: [PERFORMANT], [MOYEN], ou [EN DIFFICULTÉ].
-5. Pour chaque délégué en difficulté, donnez des recommandations d'amélioration concrètes.
+2. Évaluation de l'Équipe Biotech : NE PARLEZ PAS D'ÉCHANTILLONS, ils n'en ont pas. Évaluez-les sur la fréquence de visites, le ratio de prescripteurs, la couverture des secteurs et l'assiduité des rapports.
+3. Évaluation de l'Équipe Tenshi : Évaluez-les sur les mêmes critères PLUS la distribution d'échantillons.
+4. Pour chaque délégué, fournissez une analyse structurée :
+   - Statut : [PERFORMANT], [MOYEN] ou [EN DIFFICULTÉ]
+   - Fréquence de visite : Évaluez le nombre moyen de visites par jour travaillé (prenez en compte les jours de congés et fériés listés).
+   - Assiduité de rédaction : Jugez le taux de rapports contenant des détails.
+   - Points forts : Ce que le délégué fait de bien.
+   - Points faibles : Ce qu'il doit améliorer.
+5. Classez les délégués du MEILLEUR au MOINS BON dans chaque équipe.
 6. Séparez en deux sections: **ÉQUIPE BIOTECH** et **ÉQUIPE TENSHI**.
-7. Indiquez le secteur d'activité (gouvernorats) de chaque délégué.
-8. Terminez par un CLASSEMENT GÉNÉRAL combiné des deux équipes.
-9. FORMATAGE PDF-FRIENDLY : Utilisez UNIQUEMENT du texte, des titres (#) et des listes à puces (-).
-10. INTERDICTION STRICTE : NE CRÉEZ ABSOLUMENT AUCUN TABLEAU MARKDOWN (n'utilisez jamais le caractère |). N'utilisez AUCUN EMOJI ou caractère spécial.
+7. Terminez par un CLASSEMENT GÉNÉRAL.
+8. FORMATAGE PDF-FRIENDLY : Utilisez UNIQUEMENT du texte, des titres (#) et des listes à puces (-).
+9. INTERDICTION STRICTE : NE CRÉEZ ABSOLUMENT AUCUN TABLEAU MARKDOWN (n'utilisez jamais le caractère |). N'utilisez AUCUN EMOJI ou caractère spécial.
 
 DONNÉES KPI BRUTES:
 
 === ÉQUIPE BIOTECH (${biotechKPIs.length} délégués) ===
-${formatKPIs(biotechKPIs)}
+${formatKPIs(biotechKPIs, false)}
 
 === ÉQUIPE TENSHI (${tenshiKPIs.length} délégués) ===
-${formatKPIs(tenshiKPIs)}
+${formatKPIs(tenshiKPIs, true)}
 
 Rédigez votre rapport de supervision maintenant:
 `;
