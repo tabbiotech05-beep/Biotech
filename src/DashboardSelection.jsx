@@ -68,6 +68,12 @@ export default function DashboardSelection() {
     const [aiSummary, setAiSummary] = React.useState('');
     const [aiPeriod, setAiPeriod] = React.useState('day');
 
+    // Supervisor AI States
+    const [showSupervisorModal, setShowSupervisorModal] = React.useState(false);
+    const [supervisorLoading, setSupervisorLoading] = React.useState(false);
+    const [supervisorSummary, setSupervisorSummary] = React.useState('');
+    const [supervisorPeriod, setSupervisorPeriod] = React.useState('month');
+
     const generateAISummary = async (period = 'day') => {
         setAiPeriod(period);
         setAiLoading(true);
@@ -89,6 +95,112 @@ export default function DashboardSelection() {
         } finally {
             setAiLoading(false);
         }
+    };
+
+    const generateSupervisorReport = async (period = 'month') => {
+        setSupervisorPeriod(period);
+        setSupervisorLoading(true);
+        setSupervisorSummary('');
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch(`/api/ai/supervisor?period=${period}`, {
+                headers: { 'x-auth-token': token }
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                setSupervisorSummary(`Erreur: ${data.message || 'Une erreur est survenue'}`);
+            } else {
+                setSupervisorSummary(data.summary);
+            }
+        } catch (err) {
+            console.error(err);
+            setSupervisorSummary("Erreur de connexion à l'IA.");
+        } finally {
+            setSupervisorLoading(false);
+        }
+    };
+
+    const downloadAsPdf = (markdownText, title) => {
+        const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const margin = 15;
+        const maxWidth = pageWidth - margin * 2;
+        let y = 20;
+
+        // Header
+        doc.setFillColor(99, 102, 241);
+        doc.rect(0, 0, pageWidth, 12, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(9);
+        doc.setFont('helvetica', 'bold');
+        doc.text('BiotechpharmaMD', margin, 8);
+        const now = new Date();
+        doc.text(now.toLocaleDateString('fr-FR') + ' ' + now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }), pageWidth - margin, 8, { align: 'right' });
+
+        // Title
+        y = 22;
+        doc.setTextColor(30, 41, 59);
+        doc.setFontSize(16);
+        doc.setFont('helvetica', 'bold');
+        doc.text(title, margin, y);
+        y += 10;
+
+        // Parse markdown lines
+        const lines = markdownText.split('\n');
+        doc.setTextColor(51, 65, 85);
+
+        for (const line of lines) {
+            if (y > pageHeight - 20) {
+                doc.addPage();
+                y = 15;
+            }
+
+            const trimmed = line.trim();
+            if (!trimmed) { y += 4; continue; }
+
+            if (trimmed.startsWith('# ')) {
+                doc.setFontSize(14);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(30, 41, 59);
+                const wrapped = doc.splitTextToSize(trimmed.replace(/^#+\s*/, ''), maxWidth);
+                doc.text(wrapped, margin, y);
+                y += wrapped.length * 7 + 3;
+            } else if (trimmed.startsWith('## ')) {
+                doc.setFontSize(12);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(67, 56, 202);
+                const wrapped = doc.splitTextToSize(trimmed.replace(/^#+\s*/, ''), maxWidth);
+                doc.text(wrapped, margin, y);
+                y += wrapped.length * 6 + 2;
+            } else if (trimmed.startsWith('### ')) {
+                doc.setFontSize(11);
+                doc.setFont('helvetica', 'bold');
+                doc.setTextColor(79, 70, 229);
+                const wrapped = doc.splitTextToSize(trimmed.replace(/^#+\s*/, ''), maxWidth);
+                doc.text(wrapped, margin, y);
+                y += wrapped.length * 5.5 + 2;
+            } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+                doc.setFontSize(9);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(51, 65, 85);
+                const clean = trimmed.replace(/^[-*]\s*/, '').replace(/\*\*/g, '').replace(/\*/g, '');
+                const wrapped = doc.splitTextToSize('• ' + clean, maxWidth - 6);
+                doc.text(wrapped, margin + 4, y);
+                y += wrapped.length * 4.5 + 1;
+            } else {
+                doc.setFontSize(9);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(51, 65, 85);
+                const clean = trimmed.replace(/\*\*/g, '').replace(/\*/g, '');
+                const wrapped = doc.splitTextToSize(clean, maxWidth);
+                doc.text(wrapped, margin, y);
+                y += wrapped.length * 4.5 + 1;
+            }
+        }
+
+        const filename = `${title.replace(/\s+/g, '_')}_${now.toISOString().slice(0,10)}.pdf`;
+        doc.save(filename);
     };
 
     // Flatten all users into a single list
@@ -300,6 +412,17 @@ export default function DashboardSelection() {
                                 Assistant IA
                             </button>
                         )}
+                        {userRole === 'admin' && (
+                            <button
+                                onClick={() => { setShowSupervisorModal(true); if(!supervisorSummary) generateSupervisorReport('month'); }}
+                                className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-amber-700 bg-amber-50 border border-amber-200 shadow-sm hover:bg-amber-100 transition-all"
+                            >
+                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Superviseur IA
+                            </button>
+                        )}
                         {allowedDashboards.map(dash => (
                             <button
                                 key={dash}
@@ -447,9 +570,22 @@ export default function DashboardSelection() {
                                     <p className="text-xs font-bold text-slate-400">Résumé automatisé des activités et ventes</p>
                                 </div>
                             </div>
-                            <button onClick={() => setShowAIModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-200 text-slate-400 transition-colors">
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
-                            </button>
+                            <div className="flex items-center gap-2">
+                                {aiSummary && !aiLoading && (
+                                    <button
+                                        onClick={() => downloadAsPdf(aiSummary, 'Assistant_IA_Resume')}
+                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-indigo-600 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 transition-all"
+                                    >
+                                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                        </svg>
+                                        PDF
+                                    </button>
+                                )}
+                                <button onClick={() => setShowAIModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-slate-200 text-slate-400 transition-colors">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
+                                </button>
+                            </div>
                         </div>
                         
                         <div className="p-4 bg-white border-b border-slate-100 flex flex-wrap gap-2 justify-center">
@@ -482,6 +618,77 @@ export default function DashboardSelection() {
                             ) : (
                                 <div className="prose prose-sm md:prose-base prose-indigo max-w-none prose-headings:font-black prose-h1:text-2xl prose-h2:text-xl prose-p:font-medium prose-p:text-slate-600">
                                     <ReactMarkdown>{aiSummary}</ReactMarkdown>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Supervisor AI Modal */}
+            {showSupervisorModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in">
+                    <div className="bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden border border-amber-100">
+                        <div className="p-6 border-b border-amber-100 flex items-center justify-between" style={{ background: 'linear-gradient(135deg, #fffbeb, #fef3c7)' }}>
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h2 className="text-xl font-black text-slate-800">Superviseur IA</h2>
+                                    <p className="text-xs font-bold text-amber-600">Évaluation KPI & Classement des Délégués</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                {supervisorSummary && !supervisorLoading && (
+                                    <button
+                                        onClick={() => downloadAsPdf(supervisorSummary, 'Superviseur_IA_Rapport')}
+                                        className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-amber-700 bg-amber-50 border border-amber-200 hover:bg-amber-100 transition-all"
+                                    >
+                                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                        </svg>
+                                        PDF
+                                    </button>
+                                )}
+                                <button onClick={() => setShowSupervisorModal(false)} className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-amber-200 text-slate-400 transition-colors">
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" /></svg>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div className="p-4 bg-white border-b border-amber-100 flex flex-wrap gap-2 justify-center">
+                            {[
+                                { id: 'day', label: "Aujourd'hui" },
+                                { id: 'week', label: "Cette Semaine" },
+                                { id: 'month', label: "Ce Mois" },
+                                { id: 'all', label: "Général" }
+                            ].map(p => (
+                                <button
+                                    key={p.id}
+                                    onClick={() => generateSupervisorReport(p.id)}
+                                    className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all ${
+                                        supervisorPeriod === p.id
+                                            ? 'bg-amber-600 text-white shadow-md shadow-amber-200'
+                                            : 'bg-slate-100 text-slate-500 hover:bg-slate-200'
+                                    }`}
+                                >
+                                    {p.label}
+                                </button>
+                            ))}
+                        </div>
+
+                        <div className="p-6 overflow-y-auto flex-1 bg-amber-50/30">
+                            {supervisorLoading ? (
+                                <div className="flex flex-col items-center justify-center h-64 space-y-4">
+                                    <div className="w-12 h-12 border-4 border-amber-200 border-t-amber-600 rounded-full animate-spin"></div>
+                                    <p className="text-sm font-bold text-amber-500 animate-pulse">Le Superviseur IA évalue les performances...</p>
+                                </div>
+                            ) : (
+                                <div className="prose prose-sm md:prose-base prose-amber max-w-none prose-headings:font-black prose-h1:text-2xl prose-h2:text-xl prose-p:font-medium prose-p:text-slate-600">
+                                    <ReactMarkdown>{supervisorSummary}</ReactMarkdown>
                                 </div>
                             )}
                         </div>

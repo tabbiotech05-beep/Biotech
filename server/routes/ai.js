@@ -215,4 +215,184 @@ Rédigez le rapport détaillé maintenant:
     }
 });
 
+// ─── SUPERVISEUR AI ──────────────────────────────────────────────────────────
+// @route   GET api/ai/supervisor
+// @desc    Generate a strict KPI-based performance report for all delegates
+// @access  Private (Admin only)
+router.get('/supervisor', auth, async (req, res) => {
+    try {
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({ message: 'Accès refusé. Administrateurs uniquement.' });
+        }
+
+        if (!process.env.GEMINI_API_KEY) {
+            return res.status(500).json({ message: 'Clé API Gemini manquante dans le fichier .env' });
+        }
+
+        const period = req.query.period || 'month'; // day, week, month, all
+        const { start, end } = getDateRange(period);
+
+        // Fetch all delegates
+        const delegates = await User.find({ role: 'delegue' }).select('username allowedDashboards');
+
+        // Fetch all visits for the period
+        const visits = await Visit.find({
+            start: { $gte: start, $lte: end }
+        }).populate('user', 'username allowedDashboards');
+
+        // Build KPI data per delegate
+        const kpiData = delegates.map(delegate => {
+            const delegateVisits = visits.filter(v => 
+                v.user && v.user._id.toString() === delegate._id.toString()
+            );
+
+            const team = delegate.allowedDashboards?.includes('dashboard2') ? 'Tenshi' : 'Biotech';
+
+            // Count visit types
+            const medecinVisits = delegateVisits.filter(v => v.targetType === 'medecin');
+            const pharmacieVisits = delegateVisits.filter(v => v.targetType === 'pharmacie');
+            const grossisteVisits = delegateVisits.filter(v => v.targetType === 'grossiste');
+
+            // Unique doctors visited
+            const uniqueDoctors = new Set(medecinVisits.map(v => v.doctorName).filter(Boolean));
+            
+            // Unique pharmacies visited
+            const uniquePharmacies = new Set(pharmacieVisits.map(v => v.pharmacyName).filter(Boolean));
+
+            // Governorates (secteurs) covered
+            const governorates = new Set(delegateVisits.map(v => v.governorate).filter(Boolean));
+
+            // Prescribers ratio
+            const prescribers = medecinVisits.filter(v => v.prescriberType === 'prescripteur').length;
+
+            // Samples given
+            let totalSamples = 0;
+            delegateVisits.forEach(v => {
+                totalSamples += (v.givenSampleQty || 0);
+                if (v.givenSamples) {
+                    v.givenSamples.forEach(s => { totalSamples += (s.count || 0); });
+                }
+            });
+
+            // Visits with details filled (quality indicator)
+            const visitsWithDetails = delegateVisits.filter(v => v.details && v.details.trim().length > 10).length;
+
+            return {
+                name: delegate.username,
+                team,
+                totalVisits: delegateVisits.length,
+                medecinVisits: medecinVisits.length,
+                pharmacieVisits: pharmacieVisits.length,
+                grossisteVisits: grossisteVisits.length,
+                uniqueDoctors: uniqueDoctors.size,
+                uniquePharmacies: uniquePharmacies.size,
+                governorates: [...governorates],
+                prescribers,
+                nonPrescribers: medecinVisits.length - prescribers,
+                totalSamples,
+                visitsWithDetails,
+                detailRate: delegateVisits.length > 0 ? Math.round((visitsWithDetails / delegateVisits.length) * 100) : 0
+            };
+        });
+
+        const biotechKPIs = kpiData.filter(k => k.team === 'Biotech');
+        const tenshiKPIs = kpiData.filter(k => k.team === 'Tenshi');
+
+        const formatKPIs = (list) => {
+            if (list.length === 0) return "Aucun délégué trouvé.";
+            return list.map(k => {
+                return `Délégué: ${k.name}
+  - Visites totales: ${k.totalVisits}
+  - Médecins: ${k.medecinVisits} (${k.uniqueDoctors} uniques) | Pharmacies: ${k.pharmacieVisits} (${k.uniquePharmacies} uniques) | Grossistes: ${k.grossisteVisits}
+  - Prescripteurs: ${k.prescribers} | Non-prescripteurs: ${k.nonPrescribers}
+  - Secteurs couverts: ${k.governorates.length > 0 ? k.governorates.join(', ') : 'Non renseigné'}
+  - Échantillons distribués: ${k.totalSamples}
+  - Qualité des rapports: ${k.detailRate}% des visites avec détails`;
+            }).join('\n\n');
+        };
+
+        const periodLabel = period === 'day' ? "Aujourd'hui" : period === 'week' ? "Cette Semaine" : period === 'month' ? "Ce Mois" : "Général";
+
+        const prompt = `
+Vous êtes un SUPERVISEUR STRICT et ANALYTIQUE dans l'industrie pharmaceutique (BiotechpharmaMD).
+Votre rôle est d'évaluer la performance de chaque délégué médical de manière objective et exigeante.
+
+Période analysée: ${periodLabel}
+
+INSTRUCTIONS STRICTES:
+1. Analysez CHAQUE délégué individuellement — n'en omettez AUCUN.
+2. Attribuez un SCORE DE PERFORMANCE sur 100 à chaque délégué basé sur ces KPIs:
+   - Nombre total de visites (poids: 30%)
+   - Diversité des cibles (médecins + pharmacies + grossistes) (poids: 20%)
+   - Couverture géographique (nombre de secteurs/gouvernorats) (poids: 15%)
+   - Ratio prescripteurs vs non-prescripteurs (poids: 15%)
+   - Distribution d'échantillons (poids: 10%)
+   - Qualité des rapports de visite (% avec détails) (poids: 10%)
+3. Classez les délégués du MEILLEUR au MOINS BON dans chaque équipe.
+4. Identifiez clairement:
+   - 🟢 Les délégués performants
+   - 🟡 Les délégués moyens
+   - 🔴 Les délégués en difficulté ou inactifs
+5. Pour chaque délégué en difficulté, donnez des recommandations d'amélioration concrètes.
+6. Séparez en deux sections: **ÉQUIPE BIOTECH** et **ÉQUIPE TENSHI**.
+7. Indiquez le secteur d'activité (gouvernorats) de chaque délégué.
+8. Terminez par un CLASSEMENT GÉNÉRAL combiné des deux équipes.
+9. Utilisez un format Markdown professionnel.
+
+DONNÉES KPI BRUTES:
+
+=== ÉQUIPE BIOTECH (${biotechKPIs.length} délégués) ===
+${formatKPIs(biotechKPIs)}
+
+=== ÉQUIPE TENSHI (${tenshiKPIs.length} délégués) ===
+${formatKPIs(tenshiKPIs)}
+
+Rédigez votre rapport de supervision maintenant:
+`;
+
+        // Call Gemini with fallback
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        const modelsToTry = ['gemini-2.5-flash', 'gemini-2.0-flash'];
+        let responseText = null;
+        let lastError = null;
+
+        for (const modelName of modelsToTry) {
+            for (let attempt = 1; attempt <= 2; attempt++) {
+                try {
+                    console.log(`Supervisor AI: Trying ${modelName} (attempt ${attempt})...`);
+                    const model = genAI.getGenerativeModel({ model: modelName });
+                    const result = await model.generateContent(prompt);
+                    responseText = result.response.text();
+                    break;
+                } catch (e) {
+                    lastError = e;
+                    console.warn(`Supervisor AI: ${modelName} attempt ${attempt} failed: ${e.message}`);
+                    if (e.message?.includes('503') && attempt < 2) {
+                        await new Promise(r => setTimeout(r, 3000));
+                    } else {
+                        break;
+                    }
+                }
+            }
+            if (responseText) break;
+        }
+
+        if (!responseText) {
+            throw lastError || new Error('Tous les modèles IA sont indisponibles');
+        }
+
+        res.json({ summary: responseText });
+    } catch (err) {
+        console.error('Error generating Supervisor AI report:', err);
+        const isQuota = err.message?.includes('429') || err.message?.includes('quota');
+        const isOverloaded = err.message?.includes('503');
+        const userMessage = isQuota
+            ? "Quota API dépassé. Veuillez réessayer dans quelques minutes."
+            : isOverloaded
+            ? "Les serveurs IA sont temporairement surchargés. Veuillez réessayer."
+            : "Erreur lors de la génération du rapport de supervision";
+        res.status(500).json({ message: userMessage, error: err.message });
+    }
+});
+
 export default router;

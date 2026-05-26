@@ -1,9 +1,9 @@
 nohup: ignoring input
 🚀 Starting BioXtenshi Local Environment...
-✅ Local MongoDB running at: mongodb://127.0.0.1:58557/
+✅ Local MongoDB running at: mongodb://127.0.0.1:51638/
 📂 Data stored in: C:\Users\LENOVO\Desktop\ventes et stocks\data\db
 🌱 Seeding database...
-[dotenv@17.2.3] injecting env (5) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+[dotenv@17.2.3] injecting env (5) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
 ✅ Connected to MongoDB
 📊 Detected Feriel S1.xlsx, starting import for feriel...
 Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
@@ -13,7 +13,7 @@ Python was not found; run without arguments to install from the Microsoft Store,
 
 ✅ Official Seeding/Update Complete!
 💊 Seeding Stock...
-[dotenv@17.2.3] injecting env (5) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+[dotenv@17.2.3] injecting env (5) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
 MongoDB Connected
 Starting to seed 28 products...
 Skipping CELEBREX 200 MG CAP X 10 TUN (already exists with this batch)
@@ -47,18 +47,34 @@ Skipping Detrusitol Retard 4MG (already exists with this batch)
 Stock seeding completed successfully.
 ✅ Seeding finished.
 🔌 Starting Backend Server...
-📡 Backend process spawned with PID: 14568
+📡 Backend process spawned with PID: 30712
 🎨 Starting Frontend (Vite)...
-🌐 Frontend process spawned with PID: 16312
+🌐 Frontend process spawned with PID: 9864
 
 ✅ App ready!
    Frontend → http://0.0.0.0:5173
    Backend  → http://0.0.0.0:5000
 
-(node:23104) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(node:28880) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-  [32m[1mVITE[22m v7.2.7[39m  [2mready in [0m[1m335[22m[2m[0m ms[22m
+  [32m[1mVITE[22m v7.2.7[39m  [2mready in [0m[1m526[22m[2m[0m ms[22m
 Server is running on port 5000
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
 📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
 (WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
 📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
