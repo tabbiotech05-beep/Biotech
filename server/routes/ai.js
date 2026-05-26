@@ -146,8 +146,9 @@ Règles importantes:
 2. EXHAUSTIVITÉ OBLIGATOIRE : Vous DEVEZ analyser et inclure une sous-section pour CHAQUE délégué présent dans les données brutes ci-dessous. N'omettez absolument AUCUN délégué, même s'il a peu d'activité.
 3. Pour chaque délégué, détaillez ses visites (qui a fait quoi, chez qui, et pourquoi).
 4. Intégrez une analyse détaillée des ventes du mois en cours basées sur les données fournies.
-5. Utilisez un format Markdown lisible avec des puces et des titres.
-6. Soyez analytique (ex: "forte activité chez les médecins", "bon volume sur tel produit").
+5. FORMATAGE PDF-FRIENDLY : Utilisez UNIQUEMENT du texte, des titres (#) et des listes à puces (-).
+6. INTERDICTION STRICTE : NE CRÉEZ AUCUN TABLEAU MARKDOWN (n'utilisez jamais le caractère |). N'UTILISEZ AUCUN EMOJI.
+7. Soyez analytique (ex: "forte activité chez les médecins", "bon volume sur tel produit").
 
 Voici les données brutes:
 
@@ -329,15 +330,13 @@ INSTRUCTIONS STRICTES:
    - Distribution d'échantillons (poids: 10%)
    - Qualité des rapports de visite (% avec détails) (poids: 10%)
 3. Classez les délégués du MEILLEUR au MOINS BON dans chaque équipe.
-4. Identifiez clairement:
-   - 🟢 Les délégués performants
-   - 🟡 Les délégués moyens
-   - 🔴 Les délégués en difficulté ou inactifs
+4. Identifiez clairement le statut de chaque délégué avec les mots: [PERFORMANT], [MOYEN], ou [EN DIFFICULTÉ].
 5. Pour chaque délégué en difficulté, donnez des recommandations d'amélioration concrètes.
 6. Séparez en deux sections: **ÉQUIPE BIOTECH** et **ÉQUIPE TENSHI**.
 7. Indiquez le secteur d'activité (gouvernorats) de chaque délégué.
 8. Terminez par un CLASSEMENT GÉNÉRAL combiné des deux équipes.
-9. Utilisez un format Markdown professionnel.
+9. FORMATAGE PDF-FRIENDLY : Utilisez UNIQUEMENT du texte, des titres (#) et des listes à puces (-).
+10. INTERDICTION STRICTE : NE CRÉEZ ABSOLUMENT AUCUN TABLEAU MARKDOWN (n'utilisez jamais le caractère |). N'utilisez AUCUN EMOJI ou caractère spécial.
 
 DONNÉES KPI BRUTES:
 
