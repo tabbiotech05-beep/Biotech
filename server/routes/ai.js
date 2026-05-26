@@ -170,17 +170,48 @@ Top 5 produits: ${JSON.stringify(salesData.tenshi?.topProducts)}
 Rédigez le rapport détaillé maintenant:
 `;
 
-        // Call Gemini
+        // Call Gemini with fallback models and retry
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-        // Using gemini-1.5-pro for better reasoning and long-context processing
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
-        const result = await model.generateContent(prompt);
-        const responseText = result.response.text();
+        const modelsToTry = ['gemini-2.5-flash', 'gemini-2.0-flash'];
+        let responseText = null;
+        let lastError = null;
+
+        for (const modelName of modelsToTry) {
+            for (let attempt = 1; attempt <= 2; attempt++) {
+                try {
+                    console.log(`AI: Trying ${modelName} (attempt ${attempt})...`);
+                    const model = genAI.getGenerativeModel({ model: modelName });
+                    const result = await model.generateContent(prompt);
+                    responseText = result.response.text();
+                    break; // Success
+                } catch (e) {
+                    lastError = e;
+                    console.warn(`AI: ${modelName} attempt ${attempt} failed: ${e.message}`);
+                    if (e.message?.includes('503') && attempt < 2) {
+                        await new Promise(r => setTimeout(r, 3000)); // wait 3s before retry
+                    } else {
+                        break; // Try next model
+                    }
+                }
+            }
+            if (responseText) break; // Got a successful response
+        }
+
+        if (!responseText) {
+            throw lastError || new Error('Tous les modèles IA sont indisponibles');
+        }
 
         res.json({ summary: responseText });
     } catch (err) {
         console.error('Error generating AI summary:', err);
-        res.status(500).json({ message: 'Erreur lors de la génération du résumé', error: err.message });
+        const isQuota = err.message?.includes('429') || err.message?.includes('quota');
+        const isOverloaded = err.message?.includes('503');
+        const userMessage = isQuota
+            ? "Quota API dépassé. Veuillez réessayer dans quelques minutes ou passer à un plan payant Google AI."
+            : isOverloaded
+            ? "Les serveurs IA sont temporairement surchargés. Veuillez réessayer dans quelques secondes."
+            : "Erreur lors de la génération du résumé";
+        res.status(500).json({ message: userMessage, error: err.message });
     }
 });
 

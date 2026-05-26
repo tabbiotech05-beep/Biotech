@@ -1,17 +1,65 @@
 nohup: ignoring input
 🚀 Starting BioXtenshi Local Environment...
-Starting the MongoMemoryServer Instance failed, enable debug log for more information. Error:
- GenericMMSError: Instance failed to start within 10000ms
-    at Timeout.<anonymous> (C:\Users\LENOVO\Desktop\ventes et stocks\node_modules\mongodb-memory-server-core\lib\util\MongoInstance.js:149:29)
-    at listOnTimeout (node:internal/timers:605:17)
-    at process.processTimers (node:internal/timers:541:7)
-node:internal/process/promises:394
-    triggerUncaughtException(err, true /* fromPromise */);
-    ^
+✅ Local MongoDB running at: mongodb://127.0.0.1:58557/
+📂 Data stored in: C:\Users\LENOVO\Desktop\ventes et stocks\data\db
+🌱 Seeding database...
+[dotenv@17.2.3] injecting env (5) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+✅ Connected to MongoDB
+📊 Detected Feriel S1.xlsx, starting import for feriel...
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
+❌ Automation Error importing feriel cycle: Command failed: python3 -c "import pandas as pd; import json; df = pd.read_excel('Feriel S1.xlsx'); doctors = df[['nom', 'specialite', 'secteur', 'adresse']].fillna('').to_dict(orient='records'); print(json.dumps(doctors))"
+Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
 
-GenericMMSError: Instance failed to start within 10000ms
-    at Timeout.<anonymous> (C:\Users\LENOVO\Desktop\ventes et stocks\node_modules\mongodb-memory-server-core\lib\util\MongoInstance.js:149:29)
-    at listOnTimeout (node:internal/timers:605:17)
-    at process.processTimers (node:internal/timers:541:7)
 
-Node.js v24.11.1
+✅ Official Seeding/Update Complete!
+💊 Seeding Stock...
+[dotenv@17.2.3] injecting env (5) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+MongoDB Connected
+Starting to seed 28 products...
+Skipping CELEBREX 200 MG CAP X 10 TUN (already exists with this batch)
+Skipping CELEBREX 200 MG CAP X 20 TUN (already exists with this batch)
+Skipping CELEBREX 200MG BT 30 TUN (already exists with this batch)
+Skipping TAHOR 10 MG X 91 TUN (already exists with this batch)
+Skipping TAHOR 10 MG X 28 TUN (already exists with this batch)
+Skipping TAHOR 20 MG X 91 TUN (already exists with this batch)
+Skipping TAHOR 20MG X 28 (already exists with this batch)
+Skipping TAHOR 40MG X 28 TUN (already exists with this batch)
+Skipping TAHOR 40MG BT 91 TUN (already exists with this batch)
+Skipping ZOLOFT 50 B30 (already exists with this batch)
+Skipping ZOLOFT CP 50 MG X 15 TUN (already exists with this batch)
+Skipping LYRICA CAP 150MG 56BL TN PZR (already exists with this batch)
+Skipping LYRICA CAP 75MG 14BL TN PZR (already exists with this batch)
+Skipping LYRICA CAP 75MG 56BL TN PZR (already exists with this batch)
+Skipping EFFEXOR LP 37.5mg CAP 3x10 BLS TN/MA (already exists with this batch)
+Skipping XALACOM ED 50MCG/5MG/ML 2.5ML 1BT TN PZR (already exists with this batch)
+Skipping XALATAN ED 50MCG/ML 1X2.5MLBT TN PZR (already exists with this batch)
+Skipping VIAGRA TAB 100MG 4BL TN PZR (already exists with this batch)
+Skipping VIAGRA TAB 25MG 4BL TN PZR (already exists with this batch)
+Skipping VIAGRA TAB 50MG 4BL TN PZR (already exists with this batch)
+Skipping FLECAINE 100mg (already exists with this batch)
+Skipping FLECAINE LP 200mg (already exists with this batch)
+Skipping FLECAINE LP 50mg (already exists with this batch)
+Skipping FLECAINE LP 100mg (already exists with this batch)
+Skipping SOTALOL (already exists with this batch)
+Skipping VALPROATE Officine (already exists with this batch)
+Skipping Detrusitol Retard 2MG (already exists with this batch)
+Skipping Detrusitol Retard 4MG (already exists with this batch)
+Stock seeding completed successfully.
+✅ Seeding finished.
+🔌 Starting Backend Server...
+📡 Backend process spawned with PID: 14568
+🎨 Starting Frontend (Vite)...
+🌐 Frontend process spawned with PID: 16312
+
+✅ App ready!
+   Frontend → http://0.0.0.0:5173
+   Backend  → http://0.0.0.0:5000
+
+(node:23104) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+  [32m[1mVITE[22m v7.2.7[39m  [2mready in [0m[1m335[22m[2m[0m ms[22m
+Server is running on port 5000
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
+(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
