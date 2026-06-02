@@ -549,6 +549,400 @@
   </p>
 </div>
 
+<!-- ══════════════ ARCHITECTURE DIAGRAM ══════════════ -->
+<section style="max-width: 1300px;">
+  <div class="section-title">Vue Globale</div>
+  <div class="section-main-title">Diagramme d'Architecture Complet</div>
+
+  <div class="arch-diagram">
+    <!-- COLUMN 1: INPUTS -->
+    <div class="arch-col" id="col-inputs">
+      <div class="arch-col-title" style="color: var(--cyan);">📥 Données d'Entrée</div>
+      <div class="arch-node" data-color="#25D366" id="n-whatsapp">
+        <span>💬</span><span>WhatsApp</span>
+      </div>
+      <div class="arch-node" data-color="#E01E5A" id="n-slack">
+        <span>🔗</span><span>Slack</span>
+      </div>
+      <div class="arch-node" data-color="#3b82f6" id="n-calendar">
+        <span>📅</span><span>Calendriers</span>
+      </div>
+      <div class="arch-node" data-color="#f59e0b" id="n-grossiste">
+        <span>📦</span><span>Grossiste</span>
+      </div>
+      <div class="arch-node" data-color="#ec4899" id="n-marketing">
+        <span>🎯</span><span>Marketing</span>
+      </div>
+      <div class="arch-node" data-color="#06b6d4" id="n-stock">
+        <span>🏪</span><span>Stock</span>
+      </div>
+    </div>
+
+    <!-- ARROWS 1 -->
+    <div class="arch-arrows" id="arrows-1">
+      <svg class="arch-svg" id="svg-1" width="80" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.9"/>
+          </linearGradient>
+          <marker id="arrowhead1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#3b82f6" opacity="0.9"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- COLUMN 2: PROCESSING -->
+    <div class="arch-col arch-col-mid" id="col-processing">
+      <div class="arch-col-title" style="color: var(--blue);">⚙️ Traitement</div>
+      <div class="arch-proc-box">
+        <div class="arch-proc-icon">🔄</div>
+        <div class="arch-proc-title">Collecte &amp; Nettoyage</div>
+        <div class="arch-proc-desc">APIs, parseurs, normalisation des formats</div>
+      </div>
+      <div class="arch-proc-box">
+        <div class="arch-proc-icon">🗂️</div>
+        <div class="arch-proc-title">Indexation Vectorielle</div>
+        <div class="arch-proc-desc">Embeddings sémantiques pour recherche contextuelle</div>
+      </div>
+      <div class="arch-proc-box">
+        <div class="arch-proc-icon">📐</div>
+        <div class="arch-proc-title">Structuration du Contexte</div>
+        <div class="arch-proc-desc">Composition du prompt enrichi pour le LLM</div>
+      </div>
+    </div>
+
+    <!-- ARROWS 2 -->
+    <div class="arch-arrows" id="arrows-2">
+      <svg class="arch-svg" id="svg-2" width="80" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#8b5cf6" stop-opacity="1"/>
+          </linearGradient>
+          <marker id="arrowhead2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#8b5cf6"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- COLUMN 3: LLMs -->
+    <div class="arch-col arch-col-llm" id="col-llms">
+      <div class="arch-col-title" style="color: var(--purple);">🧠 Intelligence IA</div>
+
+      <div class="arch-llm-box analyste-box">
+        <div class="arch-llm-badge" style="background: rgba(59,130,246,0.15); color: var(--blue);">⚡ LLM Principal</div>
+        <div class="arch-llm-name" style="color: var(--blue);">Gemini Analyste</div>
+        <div class="arch-llm-tasks">
+          <span>📖 Compréhension</span>
+          <span>🔍 Tendances</span>
+          <span>📊 Corrélation</span>
+          <span>✍️ Rédaction</span>
+        </div>
+      </div>
+
+      <div class="arch-feedback-line">
+        <div class="arch-feedback-label">🔄 Boucle de validation</div>
+        <div class="arch-feedback-arrow"></div>
+      </div>
+
+      <div class="arch-llm-box supervisor-box">
+        <div class="arch-llm-badge" style="background: rgba(139,92,246,0.15); color: var(--purple);">🛡️ LLM Superviseur</div>
+        <div class="arch-llm-name" style="color: var(--purple);">Gemini Superviseur</div>
+        <div class="arch-llm-tasks">
+          <span>✅ Vérification</span>
+          <span>⚖️ Biais</span>
+          <span>🔔 Alertes</span>
+          <span>✔️ Validation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARROWS 3 -->
+    <div class="arch-arrows" id="arrows-3">
+      <svg class="arch-svg" id="svg-3" width="80" height="100%" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#10b981" stop-opacity="1"/>
+          </linearGradient>
+          <marker id="arrowhead3" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#10b981"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- COLUMN 4: OUTPUT -->
+    <div class="arch-col" id="col-outputs">
+      <div class="arch-col-title" style="color: var(--green);">📤 Rapports PDF</div>
+      <div class="arch-node" data-color="#3b82f6" id="n-daily">
+        <span>🗓️</span><span>Journalier</span>
+      </div>
+      <div class="arch-node" data-color="#8b5cf6" id="n-monthly">
+        <span>📆</span><span>Mensuel</span>
+      </div>
+      <div class="arch-node" data-color="#06b6d4" id="n-general">
+        <span>📋</span><span>Général</span>
+      </div>
+      <div class="arch-node" data-color="#ef4444" id="n-alerts">
+        <span>🔔</span><span>Alertes</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── ARCHITECTURE DIAGRAM ── */
+  .arch-diagram {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 2.5rem 1.5rem;
+    overflow: hidden;
+    position: relative;
+    min-height: 480px;
+  }
+
+  .arch-diagram::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(59,130,246,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .arch-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    z-index: 1;
+  }
+
+  .arch-col-mid {
+    flex: 1.2;
+    gap: 0.75rem;
+  }
+
+  .arch-col-llm {
+    flex: 1.3;
+    gap: 0.75rem;
+  }
+
+  .arch-col-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  .arch-node {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    cursor: default;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .arch-node:hover {
+    transform: scale(1.04);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  }
+
+  .arch-node::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    border-radius: 12px 0 0 12px;
+    background: attr(data-color);
+  }
+
+  .arch-proc-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .arch-proc-box:hover {
+    border-color: rgba(59,130,246,0.4);
+    transform: translateX(3px);
+    box-shadow: -3px 0 0 var(--blue);
+  }
+
+  .arch-proc-icon {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .arch-proc-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .arch-proc-desc {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .arch-llm-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .analyste-box:hover {
+    border-color: rgba(59,130,246,0.5);
+    box-shadow: 0 0 20px rgba(59,130,246,0.1);
+  }
+
+  .supervisor-box:hover {
+    border-color: rgba(139,92,246,0.5);
+    box-shadow: 0 0 20px rgba(139,92,246,0.1);
+  }
+
+  .arch-llm-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+  }
+
+  .arch-llm-name {
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin-bottom: 0.75rem;
+  }
+
+  .arch-llm-tasks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .arch-llm-tasks span {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .arch-feedback-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0;
+  }
+
+  .arch-feedback-label {
+    font-size: 0.72rem;
+    color: var(--purple);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .arch-feedback-arrow {
+    width: 2px;
+    height: 28px;
+    background: linear-gradient(to bottom, rgba(59,130,246,0.6), rgba(139,92,246,0.6));
+    position: relative;
+  }
+
+  .arch-feedback-arrow::before,
+  .arch-feedback-arrow::after {
+    content: '';
+    position: absolute;
+    left: -8px;
+    width: 18px;
+    height: 1px;
+    background: rgba(139,92,246,0.5);
+  }
+  .arch-feedback-arrow::before { top: 0; }
+  .arch-feedback-arrow::after { bottom: 0; }
+
+  /* ── SVG arrows between columns ── */
+  .arch-arrows {
+    width: 60px;
+    flex-shrink: 0;
+    position: relative;
+    align-self: stretch;
+    z-index: 1;
+  }
+
+  .arch-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* Animated data packets */
+  @keyframes travel {
+    0%   { stroke-dashoffset: 200; opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 0; }
+  }
+
+  .data-packet {
+    stroke-dasharray: 12 188;
+    stroke-dashoffset: 200;
+    animation: travel 2s linear infinite;
+  }
+
+  /* Colored left border for arch-node via JS */
+  .arch-node[data-color="#25D366"] { border-left: 3px solid #25D366; }
+  .arch-node[data-color="#E01E5A"] { border-left: 3px solid #E01E5A; }
+  .arch-node[data-color="#3b82f6"] { border-left: 3px solid #3b82f6; }
+  .arch-node[data-color="#f59e0b"] { border-left: 3px solid #f59e0b; }
+  .arch-node[data-color="#ec4899"] { border-left: 3px solid #ec4899; }
+  .arch-node[data-color="#06b6d4"] { border-left: 3px solid #06b6d4; }
+  .arch-node[data-color="#8b5cf6"] { border-left: 3px solid #8b5cf6; }
+  .arch-node[data-color="#ef4444"] { border-left: 3px solid #ef4444; }
+  .arch-node[data-color="#10b981"] { border-left: 3px solid #10b981; }
+
+  @media (max-width: 900px) {
+    .arch-diagram {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1.5rem;
+    }
+    .arch-arrows { display: none; }
+  }
+</style>
+
 <!-- ══════════════ PIPELINE OVERVIEW ══════════════ -->
 <section>
   <div class="section-title">Architecture Globale</div>
@@ -888,12 +1282,96 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.step-card, .input-card, .llm-card, .output-card').forEach(el => {
+  document.querySelectorAll('.step-card, .input-card, .llm-card, .output-card, .arch-node, .arch-proc-box, .arch-llm-box').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
   });
+
+  // Draw SVG arrows between diagram columns
+  function drawDiagramArrows() {
+    const diagram = document.querySelector('.arch-diagram');
+    if (!diagram) return;
+    const diagramRect = diagram.getBoundingClientRect();
+
+    function drawArrows(svgId, leftColId, rightColId, gradId, arrowheadId, color) {
+      const svg = document.getElementById(svgId);
+      const leftCol = document.getElementById(leftColId);
+      const rightCol = document.getElementById(rightColId);
+      if (!svg || !leftCol || !rightCol) return;
+
+      const svgRect = svg.getBoundingClientRect();
+      const svgH = svgRect.height;
+      const svgW = svgRect.width;
+
+      const leftNodes = leftCol.querySelectorAll('.arch-node, .arch-proc-box, .arch-llm-box');
+      const rightNodes = rightCol.querySelectorAll('.arch-node, .arch-proc-box, .arch-llm-box');
+
+      // Clear previous
+      while (svg.children.length > 1) svg.removeChild(svg.lastChild);
+
+      const fromPoints = [];
+      leftNodes.forEach(n => {
+        const r = n.getBoundingClientRect();
+        fromPoints.push(r.top + r.height / 2 - svgRect.top);
+      });
+
+      const toPoints = [];
+      rightNodes.forEach(n => {
+        const r = n.getBoundingClientRect();
+        toPoints.push(r.top + r.height / 2 - svgRect.top);
+      });
+
+      // Draw fan-out lines from each source to the right center
+      const midY = svgH / 2;
+
+      fromPoints.forEach((y, i) => {
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const d = `M 0 ${y} C ${svgW * 0.4} ${y}, ${svgW * 0.6} ${midY}, ${svgW} ${midY}`;
+        path.setAttribute('d', d);
+        path.setAttribute('stroke', `url(#${gradId})`);
+        path.setAttribute('stroke-width', '1.5');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('opacity', '0.5');
+        svg.appendChild(path);
+
+        // animated data packet
+        const pkt = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        pkt.setAttribute('d', d);
+        pkt.setAttribute('stroke', color);
+        pkt.setAttribute('stroke-width', '3');
+        pkt.setAttribute('fill', 'none');
+        pkt.setAttribute('class', 'data-packet');
+        pkt.style.animationDelay = `${i * 0.35}s`;
+        svg.appendChild(pkt);
+      });
+
+      // Fan-in from center to each target
+      toPoints.forEach((y, i) => {
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const d = `M 0 ${midY} C ${svgW * 0.4} ${midY}, ${svgW * 0.6} ${y}, ${svgW} ${y}`;
+        path.setAttribute('d', d);
+        path.setAttribute('stroke', `url(#${gradId})`);
+        path.setAttribute('stroke-width', '1.5');
+        path.setAttribute('fill', 'none');
+        path.setAttribute('marker-end', `url(#${arrowheadId})`);
+        path.setAttribute('opacity', '0.5');
+        svg.appendChild(path);
+      });
+    }
+
+    // Small debounce for layout settling
+    setTimeout(() => {
+      drawArrows('svg-1', 'col-inputs', 'col-processing', 'grad1', 'arrowhead1', '#3b82f6');
+      drawArrows('svg-2', 'col-processing', 'col-llms', 'grad2', 'arrowhead2', '#8b5cf6');
+      drawArrows('svg-3', 'col-llms', 'col-outputs', 'grad3', 'arrowhead3', '#10b981');
+    }, 100);
+  }
+
+  window.addEventListener('load', drawDiagramArrows);
+  window.addEventListener('resize', drawDiagramArrows);
 </script>
+
 </body>
 </html>
