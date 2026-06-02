@@ -1,0 +1,335 @@
+[
+  {
+    "brand": "VALPROATE Officine",
+    "totalOpenQty": 56000,
+    "poEntries": [
+      {
+        "poNo": "25GP10I0138",
+        "qty": 56000
+      }
+    ]
+  },
+  {
+    "brand": "ZOLPIDEM",
+    "totalOpenQty": 3600,
+    "poEntries": [
+      {
+        "poNo": "25GP10I0138",
+        "qty": 3600
+      }
+    ]
+  },
+  {
+    "brand": "DOBUTAMINE",
+    "totalOpenQty": 7200,
+    "poEntries": [
+      {
+        "poNo": "26AO50I0025",
+        "qty": 7200
+      }
+    ]
+  },
+  {
+    "brand": "METHOTREXATE 100mg/ml (5G)",
+    "totalOpenQty": 60,
+    "poEntries": [
+      {
+        "poNo": "26AO50I0025",
+        "qty": 60
+      }
+    ]
+  },
+  {
+    "brand": "SUFENTANIL 10µg/2ml",
+    "totalOpenQty": 6500,
+    "poEntries": [
+      {
+        "poNo": "25AO50I0012",
+        "qty": 6500
+      }
+    ]
+  },
+  {
+    "brand": "SUFENTANIL 50µg/10ml",
+    "totalOpenQty": 2280,
+    "poEntries": [
+      {
+        "poNo": "26AO50I0041",
+        "qty": 1140
+      },
+      {
+        "poNo": "26AO50I0042",
+        "qty": 1140
+      }
+    ]
+  },
+  {
+    "brand": "FLECAINE 100mg",
+    "totalOpenQty": 10000,
+    "poEntries": [
+      {
+        "poNo": "25GG10I0110",
+        "qty": 10000
+      }
+    ]
+  },
+  {
+    "brand": "FLECAINE LP 200mg",
+    "totalOpenQty": 9000,
+    "poEntries": [
+      {
+        "poNo": "25GP10I0177",
+        "qty": 9000
+      }
+    ]
+  },
+  {
+    "brand": "FLECAINE LP 50mg",
+    "totalOpenQty": 9000,
+    "poEntries": [
+      {
+        "poNo": "25GP10I0114",
+        "qty": 4000
+      },
+      {
+        "poNo": "25GP10I0177",
+        "qty": 5000
+      }
+    ]
+  },
+  {
+    "brand": "FLECAINE LP 100mg",
+    "totalOpenQty": null,
+    "poEntries": []
+  },
+  {
+    "brand": "XANAX RETARD 0.5mg",
+    "totalOpenQty": 30000,
+    "poEntries": [
+      {
+        "poNo": "26MP10I0014",
+        "qty": 30000
+      }
+    ]
+  },
+  {
+    "brand": "XANAX RETARD 1mg",
+    "totalOpenQty": 16718,
+    "poEntries": [
+      {
+        "poNo": "25GP10I0089",
+        "qty": 6000
+      },
+      {
+        "poNo": "25GP10I0161",
+        "qty": 10718
+      }
+    ]
+  },
+  {
+    "brand": "XANAX 0.75mg/ml Gttes.Buv.",
+    "totalOpenQty": 40000,
+    "poEntries": [
+      {
+        "poNo": "25GP10I0089 ",
+        "qty": 30000
+      },
+      {
+        "poNo": "25GP10I0161",
+        "qty": 10000
+      }
+    ]
+  },
+  {
+    "brand": "EFEXOR. XL 150mg Gél. LP",
+    "totalOpenQty": 600,
+    "poEntries": [
+      {
+        "poNo": "26MP10I0002",
+        "qty": 600
+      }
+    ]
+  },
+  {
+    "brand": "LYRICA 75mg Gél. Bt56",
+    "totalOpenQty": 2500,
+    "poEntries": [
+      {
+        "poNo": "26MP10I0002",
+        "qty": 2500
+      }
+    ]
+  },
+  {
+    "brand": "EFFEXOR LP 37.5mg Gél. LP ",
+    "totalOpenQty": 8000,
+    "poEntries": [
+      {
+        "poNo": "25GG10I0087",
+        "qty": 2000
+      },
+      {
+        "poNo": "25GG10I0126",
+        "qty": 6000
+      }
+    ]
+  },
+  {
+    "brand": "EFFEXOR LP 75mg Gél. LP",
+    "totalOpenQty": 34748,
+    "poEntries": [
+      {
+        "poNo": "25GG10I0087",
+        "qty": 1748
+      },
+      {
+        "poNo": "25GG10I0126",
+        "qty": 33000
+      }
+    ]
+  },
+  {
+    "brand": "XALATAN 50mcg/ml Collyre ",
+    "totalOpenQty": 12000,
+    "poEntries": [
+      {
+        "poNo": "25GG10I0126",
+        "qty": 12000
+      }
+    ]
+  },
+  {
+    "brand": "CADUET 10mg/10mg Comp.Pell.",
+    "totalOpenQty": 6850,
+    "poEntries": [
+      {
+        "poNo": "24GG10I0147",
+        "qty": 1250
+      },
+      {
+        "poNo": "25GG10I0087",
+        "qty": 4900
+      },
+      {
+        "poNo": "25GG10I0126",
+        "qty": 700
+      }
+    ]
+  },
+  {
+    "brand": "CADUET 5mg/10mg Comp.Pell. ",
+    "totalOpenQty": 3200,
+    "poEntries": [
+      {
+        "poNo": "25GG10I0087",
+        "qty": 1600
+      },
+      {
+        "poNo": "25GG10I0126",
+        "qty": 1600
+      }
+    ]
+  },
+  {
+    "brand": "LYRICA 150mg Gél. ",
+    "totalOpenQty": 3000,
+    "poEntries": [
+      {
+        "poNo": "25GG10I0087",
+        "qty": 1350
+      },
+      {
+        "poNo": "25GG10I0126",
+        "qty": 1650
+      }
+    ]
+  },
+  {
+    "brand": "LYRICA 75mg Gél. Bt14",
+    "totalOpenQty": 2400,
+    "poEntries": [
+      {
+        "poNo": "25GG10I0087 ",
+        "qty": 2400
+      }
+    ]
+  },
+  {
+    "brand": "XALACOM 50mcg + 5mg/ml Collyre",
+    "totalOpenQty": 12000,
+    "poEntries": [
+      {
+        "poNo": "25GG10I0126",
+        "qty": 12000
+      }
+    ]
+  },
+  {
+    "brand": "TAHOR 80mg Comp.Pell. ",
+    "totalOpenQty": 1000,
+    "poEntries": [
+      {
+        "poNo": "25GP10I0160",
+        "qty": 1000
+      }
+    ]
+  },
+  {
+    "brand": "VIAGRA 25mg Comp.Pell. ",
+    "totalOpenQty": 3200,
+    "poEntries": [
+      {
+        "poNo": "25GP10I0160",
+        "qty": 1920
+      },
+      {
+        "poNo": "UG25GP10I0160",
+        "qty": 1280
+      }
+    ]
+  },
+  {
+    "brand": "VIAGRA 50mg Comp.Pell. ",
+    "totalOpenQty": 24000,
+    "poEntries": [
+      {
+        "poNo": "25GP10I0102 ",
+        "qty": 4875
+      },
+      {
+        "poNo": "UG25GP10I0102",
+        "qty": 3125
+      },
+      {
+        "poNo": "25GP10I0160",
+        "qty": 10400
+      },
+      {
+        "poNo": "UG25GP10I0160",
+        "qty": 5600
+      }
+    ]
+  },
+  {
+    "brand": "VIAGRA 100mg Comp.Pell. ",
+    "totalOpenQty": 40925,
+    "poEntries": [
+      {
+        "poNo": "25GP10I0102 ",
+        "qty": 9410
+      },
+      {
+        "poNo": "UG25GP10I0102 ",
+        "qty": 5515
+      },
+      {
+        "poNo": "25GP10I0160",
+        "qty": 16900
+      },
+      {
+        "poNo": "UG25GP10I0160",
+        "qty": 9100
+      }
+    ]
+  }
+]

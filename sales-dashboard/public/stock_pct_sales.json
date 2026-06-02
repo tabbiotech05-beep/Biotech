@@ -1,0 +1,1147 @@
+[
+  {
+    "title": "PCT Sales Data 2025",
+    "months": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+      "Total 2025"
+    ],
+    "products": [
+      {
+        "brand": "VALPROATE Officine",
+        "months": {
+          "Jan": 4394,
+          "Feb": 6941,
+          "Mar": 6587,
+          "Apr": 6771,
+          "May": 5755,
+          "Jun": 3979,
+          "Jul": 5714,
+          "Aug": 4923,
+          "Sep": 7638,
+          "Oct": 7898,
+          "Nov": 9207,
+          "Dec": 6236,
+          "Total 2025": 76043
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "ZOLPIDEM",
+        "months": {
+          "Jan": 1680,
+          "Feb": 2050,
+          "Mar": 1620,
+          "Apr": 1985,
+          "May": 1970,
+          "Jun": 1280,
+          "Jul": 2990,
+          "Aug": 1450,
+          "Sep": 1370,
+          "Oct": 2160,
+          "Nov": 1620,
+          "Dec": 1705,
+          "Total 2025": 21880
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "METHYLPREDNISOLONE",
+        "months": {
+          "Jan": 0,
+          "Feb": 0,
+          "Apr": 0,
+          "May": 13,
+          "Jun": 216,
+          "Jul": 305,
+          "Aug": 148,
+          "Sep": 100,
+          "Oct": 44,
+          "Nov": 10,
+          "Dec": 0,
+          "Total 2025": 836
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "METHOTREXATE 5mg/2ml",
+        "months": {
+          "Jan": 6,
+          "Feb": 0,
+          "Mar": 0,
+          "Apr": 64,
+          "May": 340,
+          "Jun": 79,
+          "Jul": 772,
+          "Aug": 465,
+          "Sep": 393,
+          "Oct": 288,
+          "Nov": 19,
+          "Dec": 0,
+          "Total 2025": 2426
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "DOBUTAMINE",
+        "months": {
+          "Jan": 1,
+          "Feb": 513,
+          "Mar": 366,
+          "Apr": 624,
+          "May": 327,
+          "Jun": 423,
+          "Jul": 169,
+          "Aug": 333,
+          "Sep": 216,
+          "Oct": 321,
+          "Nov": 263,
+          "Dec": 132,
+          "Total 2025": 3688
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "METHOTREXATE 25mg/20ml",
+        "months": {
+          "Jan": 0,
+          "Feb": 0,
+          "Mar": 0,
+          "May": 0,
+          "Jun": 0,
+          "Jul": 0,
+          "Aug": 0,
+          "Sep": 0,
+          "Oct": 0,
+          "Dec": 0,
+          "Total 2025": 0
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "METHOTREXATE 50mg/2ml",
+        "months": {
+          "Jan": 0,
+          "Feb": 0,
+          "Mar": 0,
+          "Apr": 0,
+          "May": 0,
+          "Jun": 17,
+          "Jul": 105,
+          "Aug": 49,
+          "Sep": 103,
+          "Oct": 93,
+          "Nov": 165,
+          "Dec": 153,
+          "Total 2025": 685
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "AZATHIOPRINE ",
+        "months": {
+          "Jan": 4623,
+          "Feb": 8190,
+          "Mar": 5251,
+          "Apr": 6149,
+          "May": 6237,
+          "Jun": 7149,
+          "Jul": 5327,
+          "Aug": 6123,
+          "Sep": 6188,
+          "Oct": 5481,
+          "Nov": 5818,
+          "Dec": 6592,
+          "Total 2025": 73128
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "METHOTREXATE 100mg/ml (5G)",
+        "months": {
+          "Dec": 0,
+          "Total 2025": 0
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "SUFENTANIL 10µg/2ml",
+        "months": {
+          "Jan": 685,
+          "Feb": 327,
+          "Mar": 147,
+          "Apr": 9,
+          "May": 0,
+          "Jun": 23,
+          "Jul": 1035,
+          "Aug": 1565,
+          "Sep": 1309,
+          "Oct": 1531,
+          "Nov": 1322,
+          "Dec": 1088,
+          "Total 2025": 9041
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "CAPECITABINE",
+        "months": {
+          "Jan": 4,
+          "Feb": 5,
+          "Mar": 0,
+          "Apr": 2,
+          "May": 0,
+          "Jun": 0,
+          "Jul": 0,
+          "Aug": 0,
+          "Sep": 45,
+          "Oct": 157,
+          "Nov": 474,
+          "Dec": 666,
+          "Total 2025": 1353
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "SUFENTANIL 50µg/10ml",
+        "months": {
+          "Jan": 510,
+          "Feb": 342,
+          "Mar": 377,
+          "Apr": 186,
+          "May": 263,
+          "Jun": 422,
+          "Jul": 936,
+          "Aug": 609,
+          "Sep": 698,
+          "Oct": 525,
+          "Nov": 551,
+          "Dec": 439,
+          "Total 2025": 5858
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "PIPER/TAZO 2g/250mg",
+        "months": {
+          "Jan": 1150,
+          "Feb": 715,
+          "Mar": 20,
+          "Apr": 435,
+          "May": 300,
+          "Jun": 110,
+          "Jul": 794,
+          "Aug": 326,
+          "Sep": 401,
+          "Oct": 279,
+          "Nov": 100,
+          "Dec": 0,
+          "Total 2025": 4630
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "PIPER/TAZO 4g/500mg",
+        "months": {
+          "Jan": 0,
+          "Feb": 25,
+          "Mar": 0,
+          "May": 0,
+          "Jun": 0,
+          "Jul": 0,
+          "Aug": 0,
+          "Sep": 0,
+          "Oct": 0,
+          "Nov": 0,
+          "Dec": 0,
+          "Total 2025": 25
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "LEPONEX 25mg",
+        "months": {
+          "Jan": 305,
+          "Feb": 248,
+          "Mar": 105,
+          "Apr": 33,
+          "May": 0,
+          "Jun": 1387,
+          "Jul": 676,
+          "Aug": 593,
+          "Sep": 88,
+          "Oct": 38,
+          "Nov": 5,
+          "Dec": 0,
+          "Total 2025": 3478
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "LEPONEX 100mg",
+        "months": {
+          "Jan": 244,
+          "Feb": 926,
+          "Mar": 5441,
+          "Apr": 3183,
+          "May": 4063,
+          "Jun": 3310,
+          "Jul": 1890,
+          "Aug": 690,
+          "Sep": 1175,
+          "Oct": 234,
+          "Nov": 5,
+          "Dec": 36,
+          "Total 2025": 21197
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "FLECAINE 100mg",
+        "months": {
+          "Jan": 5013,
+          "Feb": 7203,
+          "Mar": 3296,
+          "Apr": 1856,
+          "May": 1817,
+          "Jun": 2779,
+          "Jul": 1566,
+          "Aug": 3182,
+          "Sep": 3374,
+          "Oct": 3499,
+          "Nov": 3464,
+          "Dec": 3075,
+          "Total 2025": 40124
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "FLECAINE LP 200mg",
+        "months": {
+          "Jan": 1421,
+          "Feb": 1953,
+          "Mar": 1046,
+          "Apr": 655,
+          "May": 1670,
+          "Jun": 1860,
+          "Jul": 945,
+          "Aug": 2106,
+          "Sep": 2615,
+          "Oct": 1816,
+          "Nov": 1968,
+          "Dec": 1734,
+          "Total 2025": 19789
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "FLECAINE LP 50mg",
+        "months": {
+          "Jan": 487,
+          "Feb": 835,
+          "Mar": 961,
+          "Apr": 790,
+          "May": 1120,
+          "Jun": 1625,
+          "Jul": 1323,
+          "Aug": 1356,
+          "Sep": 1522,
+          "Oct": 1859,
+          "Nov": 1379,
+          "Dec": 1799,
+          "Total 2025": 15056
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "FLECAINE LP 100mg",
+        "months": {
+          "Jan": 2222,
+          "Feb": 3575,
+          "Mar": 2977,
+          "Apr": 2970,
+          "May": 4790,
+          "Jun": 3796,
+          "Jul": 2941,
+          "Aug": 5262,
+          "Sep": 5774,
+          "Oct": 4917,
+          "Nov": 3897,
+          "Dec": 5012,
+          "Total 2025": 48133
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "XANAX RETARD 0.5mg",
+        "months": {
+          "Jan": 4647,
+          "Feb": 259,
+          "Mar": 3376,
+          "Apr": 2993,
+          "May": 3663,
+          "Jun": 4251,
+          "Jul": 3849,
+          "Aug": 1833,
+          "Sep": 3243,
+          "Oct": 5116,
+          "Nov": 5728,
+          "Dec": 4978,
+          "Total 2025": 43936
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "XANAX RETARD 1mg",
+        "months": {
+          "Jan": 7066,
+          "Feb": 5718,
+          "Mar": 6787,
+          "Apr": 4961,
+          "May": 5031,
+          "Jun": 3953,
+          "Jul": 3852,
+          "Aug": 5496,
+          "Sep": 5939,
+          "Oct": 5162,
+          "Nov": 6419,
+          "Dec": 5246,
+          "Total 2025": 65630
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "XANAX 0.75mg/ml Gttes.Buv.",
+        "months": {
+          "Jan": 10899,
+          "Feb": 95,
+          "Mar": 3891,
+          "Apr": 2668,
+          "May": 4579,
+          "Jun": 4460,
+          "Jul": 5578,
+          "Aug": 2012,
+          "Sep": 46,
+          "Oct": 10069,
+          "Nov": 6768,
+          "Dec": 3712,
+          "Total 2025": 54777
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "EFEXOR. XL 150mg Gél. LP",
+        "months": {
+          "Jan": 63,
+          "Feb": 105,
+          "Mar": 102,
+          "Apr": 46,
+          "May": 83,
+          "Jun": 119,
+          "Jul": 85,
+          "Aug": 187,
+          "Sep": 135,
+          "Oct": 32,
+          "Nov": 107,
+          "Dec": 42,
+          "Total 2025": 1106
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "LYRICA 75mg Gél. Bt56",
+        "months": {
+          "Jan": 234,
+          "Feb": 336,
+          "Mar": 222,
+          "Apr": 336,
+          "May": 456,
+          "Jun": 372,
+          "Jul": 282,
+          "Aug": 450,
+          "Sep": 402,
+          "Oct": 468,
+          "Nov": 312,
+          "Dec": 306,
+          "Total 2025": 4176
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "EFFEXOR LP 37.5mg Gél. LP ",
+        "months": {
+          "Jan": 1060,
+          "Feb": 960,
+          "Mar": 1290,
+          "Apr": 1681,
+          "May": 1565,
+          "Jun": 1470,
+          "Jul": 1640,
+          "Aug": 1696,
+          "Sep": 1872,
+          "Oct": 1760,
+          "Nov": 1270,
+          "Dec": 819,
+          "Total 2025": 17083
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "EFFEXOR LP 75mg Gél. LP",
+        "months": {
+          "Jan": 3858,
+          "Feb": 5085,
+          "Mar": 5391,
+          "Apr": 3651,
+          "May": 5177,
+          "Jun": 6003,
+          "Jul": 5259,
+          "Aug": 5823,
+          "Sep": 6733,
+          "Oct": 7032,
+          "Nov": 5098,
+          "Dec": 3744,
+          "Total 2025": 62854
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "XALATAN 50mcg/ml Collyre ",
+        "months": {
+          "Jan": 7352,
+          "Feb": 8107,
+          "Mar": 4663,
+          "Apr": 6145,
+          "May": 7317,
+          "Jun": 7243,
+          "Jul": 6829,
+          "Aug": 7443,
+          "Sep": 8137,
+          "Oct": 7000,
+          "Nov": 6360,
+          "Dec": 5510,
+          "Total 2025": 82106
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "CADUET 10mg/10mg Comp.Pell.",
+        "months": {
+          "Jan": 540,
+          "Feb": 209,
+          "Mar": 485,
+          "Apr": 332,
+          "May": -9,
+          "Jun": 415,
+          "Jul": 757,
+          "Aug": 429,
+          "Sep": 334,
+          "Oct": 313,
+          "Nov": 293,
+          "Dec": 211,
+          "Total 2025": 4309
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "CADUET 5mg/10mg Comp.Pell. ",
+        "months": {
+          "Jan": 780,
+          "Feb": 640,
+          "Mar": 1155,
+          "Apr": 570,
+          "May": 530,
+          "Jun": 1040,
+          "Jul": 984,
+          "Aug": 660,
+          "Sep": 620,
+          "Oct": 680,
+          "Nov": 884,
+          "Dec": 670,
+          "Total 2025": 9213
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "LYRICA 150mg Gél. ",
+        "months": {
+          "Jan": 594,
+          "Feb": 576,
+          "Mar": 596,
+          "Apr": 378,
+          "May": 618,
+          "Jun": 660,
+          "Jul": 258,
+          "Aug": 630,
+          "Sep": 468,
+          "Oct": 642,
+          "Nov": 642,
+          "Dec": 336,
+          "Total 2025": 6398
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "LYRICA 75mg Gél. Bt14",
+        "months": {
+          "Jan": 871,
+          "Feb": 875,
+          "Mar": 920,
+          "Apr": 480,
+          "May": 792,
+          "Jun": 660,
+          "Jul": 660,
+          "Aug": 762,
+          "Sep": 910,
+          "Oct": 630,
+          "Nov": 782,
+          "Dec": 720,
+          "Total 2025": 9062
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "XALACOM 50mcg + 5mg/ml Collyre",
+        "months": {
+          "Jan": 9088,
+          "Feb": 6495,
+          "Mar": 6027,
+          "Apr": 7170,
+          "May": 8377,
+          "Jun": 9736,
+          "Jul": 3814,
+          "Aug": 8219,
+          "Sep": 8045,
+          "Oct": 8548,
+          "Nov": 6778,
+          "Dec": 5125,
+          "Total 2025": 87422
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "TAHOR 80mg Comp.Pell. ",
+        "months": {
+          "Jan": 419,
+          "Feb": 110,
+          "Mar": 83,
+          "Apr": 241,
+          "May": 132,
+          "Jun": 127,
+          "Jul": 125,
+          "Aug": 309,
+          "Sep": 119,
+          "Oct": 284,
+          "Nov": 303,
+          "Dec": 179,
+          "Total 2025": 2431
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "VIAGRA 25mg Comp.Pell. ",
+        "months": {
+          "Jan": 910,
+          "Feb": 960,
+          "Mar": 630,
+          "Apr": 470,
+          "May": 892,
+          "Jun": 661,
+          "Jul": 610,
+          "Aug": 1285,
+          "Sep": 1060,
+          "Oct": 890,
+          "Nov": 750,
+          "Dec": 525,
+          "Total 2025": 9643
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "VIAGRA 50mg Comp.Pell. ",
+        "months": {
+          "Jan": 5420,
+          "Feb": 4110,
+          "Mar": 2140,
+          "Apr": 2410,
+          "May": 3890,
+          "Jun": 4210,
+          "Jul": 3890,
+          "Aug": 4890,
+          "Sep": 4710,
+          "Oct": 4540,
+          "Nov": 3350,
+          "Dec": 3480,
+          "Total 2025": 47040
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "VIAGRA 100mg Comp.Pell. ",
+        "months": {
+          "Jan": 7330,
+          "Feb": 7390,
+          "Mar": 3850,
+          "Apr": 4140,
+          "May": 6160,
+          "Jun": 7520,
+          "Jul": 6860,
+          "Aug": 6910,
+          "Sep": 7730,
+          "Oct": 6960,
+          "Nov": 5240,
+          "Dec": 4570,
+          "Total 2025": 74660
+        },
+        "compareRatio": null
+      }
+    ]
+  },
+  {
+    "title": "PCT Sales Data 2026",
+    "months": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+      "Total 2026"
+    ],
+    "products": [
+      {
+        "brand": "VALPROATE Officine",
+        "months": {
+          "Jan": 4372,
+          "Feb": 5192,
+          "Mar": 1721,
+          "Apr": 2650,
+          "May": 3700,
+          "Total 2026": 17635
+        },
+        "compareRatio": 23.2
+      },
+      {
+        "brand": "ZOLPIDEM",
+        "months": {
+          "Jan": 1900,
+          "Feb": 1740,
+          "Mar": 1580,
+          "Apr": 1280,
+          "May": 2080,
+          "Total 2026": 8580
+        },
+        "compareRatio": 39.2
+      },
+      {
+        "brand": "METHYLPREDNISOLONE",
+        "months": {
+          "Feb": 0,
+          "Mar": 0,
+          "Total 2026": 0
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "METHOTREXATE 5mg/2ml",
+        "months": {
+          "Feb": 0,
+          "Mar": 0,
+          "Total 2026": 0
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "DOBUTAMINE",
+        "months": {
+          "Jan": 13,
+          "Feb": 1528,
+          "Mar": 527,
+          "Apr": 317,
+          "May": 307,
+          "Total 2026": 2692
+        },
+        "compareRatio": 73.0
+      },
+      {
+        "brand": "METHOTREXATE 25mg/20ml",
+        "months": {
+          "Total 2026": 0
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "METHOTREXATE 50mg/2ml",
+        "months": {
+          "Jan": 208,
+          "Feb": 51,
+          "Mar": 124,
+          "Apr": 112,
+          "May": 18,
+          "Total 2026": 513
+        },
+        "compareRatio": 74.9
+      },
+      {
+        "brand": "AZATHIOPRINE ",
+        "months": {
+          "Jan": 4246,
+          "Feb": 7769,
+          "Mar": 5560,
+          "Apr": 6153,
+          "May": 5677,
+          "Total 2026": 29405
+        },
+        "compareRatio": 40.2
+      },
+      {
+        "brand": "METHOTREXATE 100mg/ml (5G)",
+        "months": {
+          "Mar": 0,
+          "Total 2026": 0
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "SUFENTANIL 10µg/2ml",
+        "months": {
+          "Jan": 627,
+          "Feb": 0,
+          "Mar": 0,
+          "Total 2026": 627
+        },
+        "compareRatio": 6.9
+      },
+      {
+        "brand": "CAPECITABINE",
+        "months": {
+          "Jan": 940,
+          "Feb": 513,
+          "Mar": 580,
+          "Apr": 719,
+          "May": 625,
+          "Total 2026": 3377
+        },
+        "compareRatio": 249.6
+      },
+      {
+        "brand": "SUFENTANIL 50µg/10ml",
+        "months": {
+          "Jan": 557,
+          "Feb": 713,
+          "Mar": 549,
+          "Apr": 216,
+          "May": 188,
+          "Total 2026": 2223
+        },
+        "compareRatio": 37.9
+      },
+      {
+        "brand": "PIPER/TAZO 2g/250mg",
+        "months": {
+          "Jan": 200,
+          "Feb": 300,
+          "Mar": 0,
+          "Total 2026": 500
+        },
+        "compareRatio": 10.8
+      },
+      {
+        "brand": "PIPER/TAZO 4g/500mg",
+        "months": {
+          "Jan": 0,
+          "Feb": 0,
+          "Total 2026": 0
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "LEPONEX 25mg",
+        "months": {
+          "Jan": 1,
+          "Feb": 1,
+          "Mar": 0,
+          "Total 2026": 2
+        },
+        "compareRatio": 0.1
+      },
+      {
+        "brand": "LEPONEX 100mg",
+        "months": {
+          "Feb": 0,
+          "Mar": 0,
+          "Total 2026": 0
+        },
+        "compareRatio": null
+      },
+      {
+        "brand": "FLECAINE 100mg",
+        "months": {
+          "Jan": 3279,
+          "Feb": 3486,
+          "Mar": 3262,
+          "Apr": 2357,
+          "May": 4323,
+          "Total 2026": 16707
+        },
+        "compareRatio": 41.6
+      },
+      {
+        "brand": "FLECAINE LP 200mg",
+        "months": {
+          "Jan": 2032,
+          "Feb": 2506,
+          "Mar": 1192,
+          "Apr": 2744,
+          "May": 2660,
+          "Total 2026": 11134
+        },
+        "compareRatio": 56.3
+      },
+      {
+        "brand": "FLECAINE LP 50mg",
+        "months": {
+          "Jan": 1777,
+          "Feb": 2141,
+          "Mar": 1314,
+          "Apr": 148,
+          "May": 2921,
+          "Total 2026": 8301
+        },
+        "compareRatio": 55.1
+      },
+      {
+        "brand": "FLECAINE LP 100mg",
+        "months": {
+          "Jan": 4514,
+          "Feb": 5157,
+          "Mar": 5981,
+          "Apr": 3763,
+          "May": 6405,
+          "Total 2026": 25820
+        },
+        "compareRatio": 53.6
+      },
+      {
+        "brand": "XANAX RETARD 0.5mg",
+        "months": {
+          "Jan": 3373,
+          "Feb": 3668,
+          "Mar": 3669,
+          "Apr": 4774,
+          "May": 3264,
+          "Total 2026": 18748
+        },
+        "compareRatio": 42.7
+      },
+      {
+        "brand": "XANAX RETARD 1mg",
+        "months": {
+          "Jan": 3593,
+          "Feb": 4854,
+          "Mar": 2327,
+          "Apr": 6280,
+          "May": 6056,
+          "Total 2026": 23110
+        },
+        "compareRatio": 35.2
+      },
+      {
+        "brand": "XANAX 0.75mg/ml Gttes.Buv.",
+        "months": {
+          "Jan": 2576,
+          "Feb": 4650,
+          "Mar": 2211,
+          "Apr": 3390,
+          "May": 3392,
+          "Total 2026": 16219
+        },
+        "compareRatio": 29.6
+      },
+      {
+        "brand": "EFEXOR. XL 150mg Gél. LP",
+        "months": {
+          "Jan": 34,
+          "Feb": 23,
+          "Mar": 3,
+          "Apr": 229,
+          "May": 144,
+          "Total 2026": 433
+        },
+        "compareRatio": 39.2
+      },
+      {
+        "brand": "LYRICA 75mg Gél. Bt56",
+        "months": {
+          "Jan": 288,
+          "Feb": 372,
+          "Mar": 246,
+          "Apr": 265,
+          "May": 155,
+          "Total 2026": 1326
+        },
+        "compareRatio": 31.8
+      },
+      {
+        "brand": "EFFEXOR LP 37.5mg Gél. LP ",
+        "months": {
+          "Jan": 788,
+          "Feb": 2360,
+          "Mar": 1210,
+          "Apr": 1290,
+          "May": 1250,
+          "Total 2026": 6898
+        },
+        "compareRatio": 40.4
+      },
+      {
+        "brand": "EFFEXOR LP 75mg Gél. LP",
+        "months": {
+          "Jan": 4334,
+          "Feb": 6251,
+          "Mar": 5266,
+          "Apr": 4986,
+          "May": 5796,
+          "Total 2026": 26633
+        },
+        "compareRatio": 42.4
+      },
+      {
+        "brand": "XALATAN 50mcg/ml Collyre ",
+        "months": {
+          "Jan": 5820,
+          "Feb": 6799,
+          "Mar": 5123,
+          "Apr": 4416,
+          "May": 6629,
+          "Total 2026": 28787
+        },
+        "compareRatio": 35.1
+      },
+      {
+        "brand": "CADUET 10mg/10mg Comp.Pell.",
+        "months": {
+          "Jan": 224,
+          "Feb": 260,
+          "Mar": 347,
+          "Apr": 280,
+          "May": 391,
+          "Total 2026": 1502
+        },
+        "compareRatio": 34.9
+      },
+      {
+        "brand": "CADUET 5mg/10mg Comp.Pell. ",
+        "months": {
+          "Jan": 670,
+          "Feb": 838,
+          "Mar": 654,
+          "Apr": 620,
+          "May": 760,
+          "Total 2026": 3542
+        },
+        "compareRatio": 38.4
+      },
+      {
+        "brand": "LYRICA 150mg Gél. ",
+        "months": {
+          "Jan": 765,
+          "Feb": 528,
+          "Mar": 564,
+          "Apr": 504,
+          "May": 462,
+          "Total 2026": 2823
+        },
+        "compareRatio": 44.1
+      },
+      {
+        "brand": "LYRICA 75mg Gél. Bt14",
+        "months": {
+          "Jan": 450,
+          "Feb": 630,
+          "Mar": 330,
+          "Apr": 590,
+          "May": 484,
+          "Total 2026": 2484
+        },
+        "compareRatio": 27.4
+      },
+      {
+        "brand": "XALACOM 50mcg + 5mg/ml Collyre",
+        "months": {
+          "Jan": 5651,
+          "Feb": 7077,
+          "Mar": 4609,
+          "Apr": 3942,
+          "May": 5136,
+          "Total 2026": 26415
+        },
+        "compareRatio": 30.2
+      },
+      {
+        "brand": "TAHOR 80mg Comp.Pell. ",
+        "months": {
+          "Jan": 162,
+          "Feb": 371,
+          "Mar": 119,
+          "Apr": 73,
+          "May": 293,
+          "Total 2026": 1018
+        },
+        "compareRatio": 41.9
+      },
+      {
+        "brand": "VIAGRA 25mg Comp.Pell. ",
+        "months": {
+          "Jan": 420,
+          "Feb": 1335,
+          "Mar": 280,
+          "Apr": 600,
+          "May": 650,
+          "Total 2026": 3285
+        },
+        "compareRatio": 34.1
+      },
+      {
+        "brand": "VIAGRA 50mg Comp.Pell. ",
+        "months": {
+          "Jan": 4290,
+          "Feb": 3910,
+          "Mar": 1380,
+          "Apr": 3010,
+          "May": 3660,
+          "Total 2026": 16250
+        },
+        "compareRatio": 34.5
+      },
+      {
+        "brand": "VIAGRA 100mg Comp.Pell. ",
+        "months": {
+          "Jan": 6670,
+          "Feb": 5580,
+          "Mar": 2460,
+          "Apr": 5340,
+          "May": 6112,
+          "Total 2026": 26162
+        },
+        "compareRatio": 35.0
+      }
+    ]
+  }
+]

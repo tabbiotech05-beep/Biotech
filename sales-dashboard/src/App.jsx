@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import StockCommandeView from './StockCommandeView';
 import {
   LineChart,
   Line,
@@ -468,11 +469,27 @@ const App = () => {
           >
             🏡 Produits Locaux
           </button>
+          <button 
+            className={`tab-btn ${activeTab === 'stock' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('stock');
+              setSelectedClient('All');
+              setTempSelectedProducts([]);
+              setAppliedProducts([]);
+              setIsChartGenerated(false);
+            }}
+          >
+            📦 Stock et commande
+          </button>
         </div>
 
         <div className="nav-spacer" style={{ width: '180px' }} />
       </div>
 
+      {activeTab === 'stock' ? (
+        <StockCommandeView />
+      ) : (
+        <>
       <header className={`dashboard-header ${activeTab === 'biotech' ? 'biotech-header' : 'local-header'}`}>
         <div className="header-content">
           <h1>
@@ -482,29 +499,6 @@ const App = () => {
               <>Produits <span className="highlight green">Locaux</span></>
             )}
           </h1>
-          {activeTab === 'biotech' && (
-            <p className="subtitle">
-              Analyse des Ventes 2025 - 2026
-            </p>
-          )}
-        </div>
-        <div className="stats-grid">
-          <div className="stat-card">
-            <span className="stat-label">Quantité Réelle Totale</span>
-            <span className="stat-value">{stats.totalQte.toLocaleString()}</span>
-          </div>
-          <div className="stat-card">
-            <span className="stat-label">Consommation Moyenne (CM)</span>
-            <span className="stat-value text-pink">{Math.round(currentCM).toLocaleString()}</span>
-          </div>
-          <div className="stat-card">
-            <span className="stat-label">Grossistes</span>
-            <span className="stat-value">{stats.uniqueClients}</span>
-          </div>
-          <div className="stat-card">
-            <span className="stat-label">Produits</span>
-            <span className="stat-value">{stats.uniqueProducts}</span>
-          </div>
         </div>
       </header>
 
@@ -924,6 +918,8 @@ const App = () => {
         </section>
 
       </main>
+        </>
+      )}
 
     </div>
   );

@@ -1,0 +1,641 @@
+[
+  {
+    "viatrisCode": null,
+    "pctCode": "105528",
+    "description": "CADUET 10mg/10mg Comp.Pell. Bt 30",
+    "totalOrderedQty": 6850,
+    "deliveries": [
+      {
+        "qty": 1250,
+        "poOrDate": "24GG10I0147"
+      },
+      {
+        "qty": 4900,
+        "poOrDate": "25GG10I0087"
+      },
+      {
+        "qty": 700,
+        "poOrDate": "25GG10I0126"
+      },
+      {
+        "qty": 500,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 750,
+        "poOrDate": "july-26"
+      },
+      {
+        "qty": 700,
+        "poOrDate": "august-27"
+      },
+      {
+        "qty": 750,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 750,
+        "poOrDate": "Sep 2026"
+      },
+      {
+        "qty": 750,
+        "poOrDate": "Nov 2026"
+      },
+      {
+        "qty": 750,
+        "poOrDate": "Jan 2027"
+      },
+      {
+        "qty": 704,
+        "poOrDate": "march-27"
+      },
+      {
+        "qty": 948,
+        "poOrDate": "may-27"
+      },
+      {
+        "qty": 248,
+        "poOrDate": "august-27"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105529",
+    "description": "CADUET 5mg/10mg Comp.Pell. Bt 30",
+    "totalOrderedQty": 3200,
+    "deliveries": [
+      {
+        "qty": 1600,
+        "poOrDate": "25GG10I0087"
+      },
+      {
+        "qty": 1600,
+        "poOrDate": "25GG10I0126"
+      },
+      {
+        "qty": 1600,
+        "poOrDate": "june-26"
+      },
+      {
+        "qty": 1600,
+        "poOrDate": "august-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105522",
+    "description": "EFEXOR. XL 150mg Gél. LP Bt 28",
+    "totalOrderedQty": 600,
+    "deliveries": [
+      {
+        "qty": 600,
+        "poOrDate": "26MP10I0002"
+      },
+      {
+        "qty": 600,
+        "poOrDate": "july-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105525",
+    "description": "EFFEXOR 37,5 LP BT 30",
+    "totalOrderedQty": 8000,
+    "deliveries": [
+      {
+        "qty": 2000,
+        "poOrDate": "25GG10I0087"
+      },
+      {
+        "qty": 6000,
+        "poOrDate": "25GG10I0126"
+      },
+      {
+        "qty": 2000,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 4000,
+        "poOrDate": "june-26"
+      },
+      {
+        "qty": 2000,
+        "poOrDate": "august-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105526",
+    "description": "EFFEXOR 75 LP BT 30",
+    "totalOrderedQty": 34748,
+    "deliveries": [
+      {
+        "qty": 1748,
+        "poOrDate": "25GG10I0087"
+      },
+      {
+        "qty": 33000,
+        "poOrDate": "25GG10I0126"
+      },
+      {
+        "qty": 1748,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 16252,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 16748,
+        "poOrDate": "july-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105531",
+    "description": "LYRICA 150mg Gél. Bt 56",
+    "totalOrderedQty": 3000,
+    "deliveries": [
+      {
+        "qty": 1350,
+        "poOrDate": "25GG10I0087"
+      },
+      {
+        "qty": 1650,
+        "poOrDate": "25GG10I0126"
+      },
+      {
+        "qty": 1350,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 1650,
+        "poOrDate": "may-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105532",
+    "description": "LYRICA 75mg Gél. Bt 14",
+    "totalOrderedQty": 2400,
+    "deliveries": [
+      {
+        "qty": 2400,
+        "poOrDate": "25GG10I0087 "
+      },
+      {
+        "qty": 844,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 1556,
+        "poOrDate": "june-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105523",
+    "description": "LYRICA 75mg Gél. Bt 56",
+    "totalOrderedQty": 2500,
+    "deliveries": [
+      {
+        "qty": 2500,
+        "poOrDate": "26MP10I0002"
+      },
+      {
+        "qty": 2500,
+        "poOrDate": "may-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105535",
+    "description": "TAHOR 80mg Comp pell. Bt 28",
+    "totalOrderedQty": 1000,
+    "deliveries": [
+      {
+        "qty": 1000,
+        "poOrDate": "25GP10I0160"
+      },
+      {
+        "qty": 1000,
+        "poOrDate": "may-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105540",
+    "description": "VIAGRA 100mg Comp.Pell. Bt 4",
+    "totalOrderedQty": 40925,
+    "deliveries": [
+      {
+        "qty": 9410,
+        "poOrDate": "25GP10I0102 "
+      },
+      {
+        "qty": 5515,
+        "poOrDate": "UG25GP10I0102 "
+      },
+      {
+        "qty": 16900,
+        "poOrDate": "25GP10I0160"
+      },
+      {
+        "qty": 9100,
+        "poOrDate": "UG25GP10I0160"
+      },
+      {
+        "qty": 6200,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 3800,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 16900,
+        "poOrDate": "july-26"
+      },
+      {
+        "qty": 9100,
+        "poOrDate": "july-26"
+      },
+      {
+        "qty": 3210,
+        "poOrDate": "june-26"
+      },
+      {
+        "qty": 1715,
+        "poOrDate": "june-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105538",
+    "description": "VIAGRA 25mg Comp. Pell. Bt 4",
+    "totalOrderedQty": 3200,
+    "deliveries": [
+      {
+        "qty": 1920,
+        "poOrDate": "25GP10I0160"
+      },
+      {
+        "qty": 1280,
+        "poOrDate": "UG25GP10I0160"
+      },
+      {
+        "qty": 1920,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 1280,
+        "poOrDate": "may-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105539",
+    "description": "VIAGRA 50mg Comp.Pell. Bt 4",
+    "totalOrderedQty": 24000,
+    "deliveries": [
+      {
+        "qty": 4875,
+        "poOrDate": "25GP10I0102 "
+      },
+      {
+        "qty": 3125,
+        "poOrDate": "UG25GP10I0102"
+      },
+      {
+        "qty": 10400,
+        "poOrDate": "25GP10I0160"
+      },
+      {
+        "qty": 5600,
+        "poOrDate": "UG25GP10I0160"
+      },
+      {
+        "qty": 4875,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 3125,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 5200,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 2800,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 5200,
+        "poOrDate": "july-26"
+      },
+      {
+        "qty": 2800,
+        "poOrDate": "july-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105533",
+    "description": "XALACOM ",
+    "totalOrderedQty": 12000,
+    "deliveries": [
+      {
+        "qty": 12000,
+        "poOrDate": "25GG10I0126"
+      },
+      {
+        "qty": 12000,
+        "poOrDate": "Sep 2026"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "105527",
+    "description": "XALATAN 50mcg/ml Collyre Fl 2.5ml (F)",
+    "totalOrderedQty": 12000,
+    "deliveries": [
+      {
+        "qty": 12000,
+        "poOrDate": "25GG10I0126"
+      },
+      {
+        "qty": 12000,
+        "poOrDate": "july-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "106742",
+    "description": "XANAX RETARD 0.5mg Comp. LP Bt 30",
+    "totalOrderedQty": 30000,
+    "deliveries": [
+      {
+        "qty": 30000,
+        "poOrDate": "26MP10I0014"
+      },
+      {
+        "qty": 20000,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 10000,
+        "poOrDate": "june-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "106743",
+    "description": "XANAX RETARD 1mg Comp. LP Bt 30",
+    "totalOrderedQty": 16718,
+    "deliveries": [
+      {
+        "qty": 6000,
+        "poOrDate": "25GP10I0089"
+      },
+      {
+        "qty": 10718,
+        "poOrDate": "25GP10I0161"
+      },
+      {
+        "qty": 6000,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 6000,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 13282,
+        "poOrDate": "august-26"
+      },
+      {
+        "qty": 4718,
+        "poOrDate": "Nov 2026"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "106744",
+    "description": "XANAX 0.75mg/ml Gttes.Buv. Fl 20ml",
+    "totalOrderedQty": 40000,
+    "deliveries": [
+      {
+        "qty": 30000,
+        "poOrDate": "25GP10I0089 "
+      },
+      {
+        "qty": 10000,
+        "poOrDate": "25GP10I0161"
+      },
+      {
+        "qty": 30000,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 10000,
+        "poOrDate": "august-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": 400507696,
+    "pctCode": "104607",
+    "description": "VALPROATE TAB ER 500MG 30BT FR VIA",
+    "totalOrderedQty": 56000,
+    "deliveries": [
+      {
+        "qty": 56000,
+        "poOrDate": "25GP10I0138"
+      },
+      {
+        "qty": 28000,
+        "poOrDate": "june-26"
+      },
+      {
+        "qty": 14000,
+        "poOrDate": "Sep 2026"
+      },
+      {
+        "qty": 14000,
+        "poOrDate": "Nov 2026"
+      }
+    ]
+  },
+  {
+    "viatrisCode": 400005933,
+    "pctCode": "104691",
+    "description": "ZOLPIDEM TAB 10MG 14BL FR VIA",
+    "totalOrderedQty": 3600,
+    "deliveries": [
+      {
+        "qty": 3600,
+        "poOrDate": "25GP10I0138"
+      },
+      {
+        "qty": 3600,
+        "poOrDate": "june-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "502651",
+    "description": "DOBUTAMINE Viatris 250mg/20ml S° Inj Bt10/20ml",
+    "totalOrderedQty": 7200,
+    "deliveries": [
+      {
+        "qty": 7200,
+        "poOrDate": "26AO50I0025"
+      },
+      {
+        "qty": 7200,
+        "poOrDate": "may-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "502652",
+    "description": "METHOTREXATE Viatris 100mg/ml (5G) ",
+    "totalOrderedQty": 60,
+    "deliveries": [
+      {
+        "qty": 60,
+        "poOrDate": "26AO50I0025"
+      },
+      {
+        "qty": 60,
+        "poOrDate": "august-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": 400005851,
+    "pctCode": "505180",
+    "description": "SUFENTANIL SOL 0.01MG/2ML 20AMP FR VIA",
+    "totalOrderedQty": 6500,
+    "deliveries": [
+      {
+        "qty": 6500,
+        "poOrDate": "25AO50I0012"
+      },
+      {
+        "qty": 6500,
+        "poOrDate": "june-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": null,
+    "pctCode": "505678",
+    "description": "SUFENTANIL Viatris 50µg/10ml S° Inj Bt20 Fl 10ml",
+    "totalOrderedQty": 2280,
+    "deliveries": [
+      {
+        "qty": 1140,
+        "poOrDate": "26AO50I0041"
+      },
+      {
+        "qty": 1140,
+        "poOrDate": "26AO50I0042"
+      },
+      {
+        "qty": 1140,
+        "poOrDate": "feb-27"
+      },
+      {
+        "qty": 1140,
+        "poOrDate": "feb-27"
+      }
+    ]
+  },
+  {
+    "viatrisCode": 400545344,
+    "pctCode": "103320",
+    "description": "FLECAINE TAB 100MG 30BL FR MDA",
+    "totalOrderedQty": 10000,
+    "deliveries": [
+      {
+        "qty": 10000,
+        "poOrDate": "25GG10I0110"
+      },
+      {
+        "qty": 10000,
+        "poOrDate": "june-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": 400545875,
+    "pctCode": "104408",
+    "description": "FLECAINE CAP PR 200MG 30BL FR MDA",
+    "totalOrderedQty": 9000,
+    "deliveries": [
+      {
+        "qty": 9000,
+        "poOrDate": "25GP10I0177"
+      },
+      {
+        "qty": 5000,
+        "poOrDate": "july-26"
+      },
+      {
+        "qty": 4000,
+        "poOrDate": "Sep 2026"
+      }
+    ]
+  },
+  {
+    "viatrisCode": 400545872,
+    "pctCode": "104474",
+    "description": "FLECAINIDE CAP PR 50MG 30BL FR MY",
+    "totalOrderedQty": 9000,
+    "deliveries": [
+      {
+        "qty": 4000,
+        "poOrDate": "25GP10I0114"
+      },
+      {
+        "qty": 5000,
+        "poOrDate": "25GP10I0177"
+      },
+      {
+        "qty": 4000,
+        "poOrDate": "may-26"
+      },
+      {
+        "qty": 5000,
+        "poOrDate": "may-26"
+      }
+    ]
+  },
+  {
+    "viatrisCode": 400545871,
+    "pctCode": "104475",
+    "description": "FLECAINIDE CAP PR 100MG 30BL FR MY",
+    "totalOrderedQty": 0,
+    "deliveries": []
+  }
+]
