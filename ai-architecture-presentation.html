@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biotech AI Intelligence System – Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050a14;
+      --surface: #0e1624;
+      --card: #131f35;
+      --border: #1e3055;
+      --blue: #3b82f6;
+      --purple: #8b5cf6;
+      --cyan: #06b6d4;
+      --green: #10b981;
+      --orange: #f59e0b;
+      --pink: #ec4899;
+      --text: #e8f0fe;
+      --muted: #7c9cbf;
+      --gradient-main: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      --gradient-input: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+      --gradient-output: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+      --gradient-orange: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND PARTICLES ── */
+    .bg-particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.08;
+      animation: drift linear infinite;
+    }
+    @keyframes drift {
+      0% { transform: translateY(110vh) scale(0.5); opacity: 0; }
+      10% { opacity: 0.08; }
+      90% { opacity: 0.06; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      line-height: 1.7;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-main-title {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── PIPELINE DIAGRAM ── */
+    .pipeline {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 4rem;
+    }
+
+    .pipeline-step {
+      flex: 1;
+      min-width: 200px;
+      max-width: 280px;
+      position: relative;
+    }
+
+    .step-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+
+    .step-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .step-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Arrow connector */
+    .pipeline-arrow {
+      display: flex;
+      align-items: center;
+      padding: 0 0.75rem;
+      flex-shrink: 0;
+    }
+    .pipeline-arrow svg {
+      width: 32px;
+      height: 32px;
+      opacity: 0.5;
+    }
+    @media (max-width: 768px) {
+      .pipeline-arrow { display: none; }
+    }
+
+    /* ── INPUT GRID ── */
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .input-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .input-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .input-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.1);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    .input-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .input-category {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .input-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .input-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── LLM CARDS ── */
+    .llm-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .llm-grid { grid-template-columns: 1fr; }
+    }
+
+    .llm-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .llm-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    }
+
+    .llm-card.main-llm::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top left, rgba(59,130,246,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .llm-card.supervisor-llm::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top right, rgba(139,92,246,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .llm-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.25rem;
+    }
+
+    .llm-title {
+      font-size: 1.7rem;
+      font-weight: 900;
+      margin-bottom: 0.5rem;
+    }
+
+    .llm-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .llm-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .llm-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .llm-features li span.bullet {
+      width: 22px;
+      height: 22px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── OUTPUT CARDS ── */
+    .outputs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .output-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .output-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+
+    .output-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+      filter: drop-shadow(0 0 12px currentColor);
+    }
+
+    .output-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .output-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .output-badge {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 1rem 0;
+    }
+
+    /* ── FLOW DIAGRAM ── */
+    .flow-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flow-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse, rgba(59,130,246,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .flow-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .flow-box {
+      padding: 1rem 1.75rem;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-align: center;
+      border: 1px solid;
+      transition: all 0.3s ease;
+    }
+
+    .flow-box:hover { transform: scale(1.05); }
+
+    .flow-line {
+      font-size: 1.5rem;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem 2rem 4rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer .logo {
+      font-size: 1.5rem;
+      font-weight: 900;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── GLOW SEPARATOR ── */
+    .section-glow-sep {
+      text-align: center;
+      font-size: 2rem;
+      margin: 1rem auto 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .section-glow-sep .line {
+      flex: 1;
+      max-width: 200px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border));
+    }
+    .section-glow-sep .line.right {
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    /* ── PULSE ANIMATION ── */
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(59,130,246,0.4); }
+      70% { box-shadow: 0 0 0 16px rgba(59,130,246,0); }
+      100% { box-shadow: 0 0 0 0 rgba(59,130,246,0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .pulse { animation: pulse-ring 2.5s infinite; }
+    .float { animation: float 4s ease-in-out infinite; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--blue); }
+  </style>
+</head>
+<body>
+
+<!-- Animated background particles -->
+<div class="bg-particles" id="particles"></div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<div class="hero">
+  <div class="hero-badge">
+    <span>🤖</span> Intelligence Artificielle · Biotech CRM
+  </div>
+  <h1>Système d'Intelligence<br/>Décisionnelle IA</h1>
+  <p class="hero-subtitle">
+    Un pipeline d'intelligence artificielle de nouvelle génération qui agrège vos données terrain, les analyse et génère des rapports stratégiques automatiquement — propulsé par Gemini.
+  </p>
+</div>
+
+<!-- ══════════════ PIPELINE OVERVIEW ══════════════ -->
+<section>
+  <div class="section-title">Architecture Globale</div>
+  <div class="section-main-title">Comment ça fonctionne ?</div>
+
+  <div class="pipeline">
+    <!-- STEP 1 -->
+    <div class="pipeline-step">
+      <div class="step-card">
+        <div class="step-icon float" style="background: rgba(6,182,212,0.15);">📥</div>
+        <div class="step-label" style="color: var(--cyan);">Étape 1</div>
+        <div class="step-title">Collecte des Données</div>
+        <div class="step-desc">
+          Agrégation automatique de toutes vos sources : WhatsApp, Slack, calendriers, données Grossistes et actions marketing.
+        </div>
+      </div>
+    </div>
+
+    <div class="pipeline-arrow">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 16h20M18 9l8 7-8 7" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="pipeline-step">
+      <div class="step-card">
+        <div class="step-icon float" style="background: rgba(59,130,246,0.15); animation-delay: 0.5s;">⚙️</div>
+        <div class="step-label" style="color: var(--blue);">Étape 2</div>
+        <div class="step-title">Traitement & Indexation</div>
+        <div class="step-desc">
+          Structuration, nettoyage et embeddings vectoriels pour rendre toutes vos données « intelligibles » par le LLM.
+        </div>
+      </div>
+    </div>
+
+    <div class="pipeline-arrow">
+      <svg viewBox="0 0 32 32" fill="none">
+        <path d="M6 16h20M18 9l8 7-8 7" stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="pipeline-step">
+      <div class="step-card" style="border-color: rgba(139,92,246,0.3);">
+        <div class="step-icon pulse float" style="background: rgba(139,92,246,0.15); animation-delay: 1s;">🧠</div>
+        <div class="step-label" style="color: var(--purple);">Étape 3</div>
+        <div class="step-title">Analyse par Gemini LLM</div>
+        <div class="step-desc">
+          Deux LLMs coopèrent : l'Analyste génère des insights profonds, le Superviseur valide et contrôle la qualité.
+        </div>
+      </div>
+    </div>
+
+    <div class="pipeline-arrow">
+      <svg viewBox="0 0 32 32" fill="none">
+        <path d="M6 16h20M18 9l8 7-8 7" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="pipeline-step">
+      <div class="step-card">
+        <div class="step-icon float" style="background: rgba(16,185,129,0.15); animation-delay: 1.5s;">📊</div>
+        <div class="step-label" style="color: var(--green);">Étape 4</div>
+        <div class="step-title">Génération des Rapports</div>
+        <div class="step-desc">
+          Rapports PDF journaliers, mensuels ou généraux, avec KPIs, tendances et recommandations concrètes.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ INPUTS ══════════════ -->
+<section>
+  <div class="section-glow-sep">
+    <div class="line"></div>
+    <span>📥</span>
+    <div class="line right"></div>
+  </div>
+  <div class="section-title">Sources d'Entrée</div>
+  <div class="section-main-title">Les données qui alimentent le modèle</div>
+
+  <div class="input-grid">
+    <!-- WhatsApp -->
+    <div class="input-card" style="border-top: 3px solid #25D366;">
+      <div class="input-icon-wrap" style="background: rgba(37,211,102,0.12);">💬</div>
+      <div class="input-category" style="color: #25D366;">Communication Terrain</div>
+      <div class="input-name">Groupes WhatsApp</div>
+      <div class="input-desc">Messages des équipes commerciales, retours terrain, informations clients et incidents en temps réel.</div>
+    </div>
+
+    <!-- Slack -->
+    <div class="input-card" style="border-top: 3px solid #E01E5A;">
+      <div class="input-icon-wrap" style="background: rgba(224,30,90,0.12);">🔗</div>
+      <div class="input-category" style="color: #E01E5A;">Communication Interne</div>
+      <div class="input-name">Canaux Slack</div>
+      <div class="input-desc">Discussions des différentes sections métier (ventes, marketing, logistique) organisées par thème.</div>
+    </div>
+
+    <!-- Calendrier -->
+    <div class="input-card" style="border-top: 3px solid var(--blue);">
+      <div class="input-icon-wrap" style="background: rgba(59,130,246,0.12);">📅</div>
+      <div class="input-category" style="color: var(--blue);">Planification</div>
+      <div class="input-name">Calendrier des Délégués</div>
+      <div class="input-desc">Visites planifiées, réunions, rendez-vous médecins/pharmacies et couverture géographique de chaque délégué.</div>
+    </div>
+
+    <!-- Grossiste -->
+    <div class="input-card" style="border-top: 3px solid var(--orange);">
+      <div class="input-icon-wrap" style="background: rgba(245,158,11,0.12);">📦</div>
+      <div class="input-category" style="color: var(--orange);">Données Commerciales</div>
+      <div class="input-name">Section Grossiste</div>
+      <div class="input-desc">Open orders, ventes Viatris & PCT, inventaire mensuel, commandes et stock de produits importés.</div>
+    </div>
+
+    <!-- Marketing -->
+    <div class="input-card" style="border-top: 3px solid var(--pink);">
+      <div class="input-icon-wrap" style="background: rgba(236,72,153,0.12);">🎯</div>
+      <div class="input-category" style="color: var(--pink);">Marketing & Événements</div>
+      <div class="input-name">Conférences & Actions Marketing</div>
+      <div class="input-desc">Comptes rendus d'événements, présentations produits, engagement médecins et résultats des campagnes promotionnelles.</div>
+    </div>
+
+    <!-- Stock / Inventaire -->
+    <div class="input-card" style="border-top: 3px solid var(--cyan);">
+      <div class="input-icon-wrap" style="background: rgba(6,182,212,0.12);">🏪</div>
+      <div class="input-category" style="color: var(--cyan);">Logistique</div>
+      <div class="input-name">Données Stock & Inventaire</div>
+      <div class="input-desc">AMC, MOH, niveaux critiques, ordres d'achat PCT-Viatris et prévisions de rupture de stock.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ LLMs ══════════════ -->
+<section>
+  <div class="section-glow-sep">
+    <div class="line"></div>
+    <span>🧠</span>
+    <div class="line right"></div>
+  </div>
+  <div class="section-title">Architecture Intelligente</div>
+  <div class="section-main-title">Deux LLMs en synergie</div>
+
+  <div class="llm-grid">
+    <!-- ANALYSTE -->
+    <div class="llm-card main-llm">
+      <div class="llm-badge" style="background: rgba(59,130,246,0.12); color: var(--blue); border: 1px solid rgba(59,130,246,0.3);">
+        ⚡ LLM Principal
+      </div>
+      <div class="llm-title" style="background: var(--gradient-input); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Gemini Analyste</div>
+      <div class="llm-subtitle">Analyse, compréhension et génération d'insights</div>
+      <ul class="llm-features">
+        <li>
+          <span class="bullet" style="background: rgba(59,130,246,0.15); color: var(--blue);">📖</span>
+          <span><strong>Compréhension contextuelle</strong> — Lit et comprend le sens des messages (WhatsApp, Slack) même informels pour en extraire des signaux business.</span>
+        </li>
+        <li>
+          <span class="bullet" style="background: rgba(59,130,246,0.15); color: var(--blue);">🔍</span>
+          <span><strong>Analyse des tendances</strong> — Détecte les variations de ventes, les baisses d'activité délégués et les opportunités commerciales.</span>
+        </li>
+        <li>
+          <span class="bullet" style="background: rgba(59,130,246,0.15); color: var(--blue);">📊</span>
+          <span><strong>Corrélation multi-sources</strong> — Croise données Grossiste, activités terrain et résultats marketing pour des analyses holistiques.</span>
+        </li>
+        <li>
+          <span class="bullet" style="background: rgba(59,130,246,0.15); color: var(--blue);">✍️</span>
+          <span><strong>Rédaction automatique</strong> — Génère le contenu structuré du rapport en langage naturel clair et professionnel.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SUPERVISEUR -->
+    <div class="llm-card supervisor-llm">
+      <div class="llm-badge" style="background: rgba(139,92,246,0.12); color: var(--purple); border: 1px solid rgba(139,92,246,0.3);">
+        🛡️ LLM Superviseur
+      </div>
+      <div class="llm-title" style="background: linear-gradient(135deg, #8b5cf6, #ec4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Gemini Superviseur</div>
+      <div class="llm-subtitle">Contrôle qualité, validation et cohérence</div>
+      <ul class="llm-features">
+        <li>
+          <span class="bullet" style="background: rgba(139,92,246,0.15); color: var(--purple);">✅</span>
+          <span><strong>Vérification des faits</strong> — Valide que les chiffres et conclusions du rapport Analyste sont cohérents avec les données sources brutes.</span>
+        </li>
+        <li>
+          <span class="bullet" style="background: rgba(139,92,246,0.15); color: var(--purple);">⚖️</span>
+          <span><strong>Détection des biais</strong> — Identifie les conclusions trop optimistes ou alarmistes et les recalibre vers une analyse neutre et objective.</span>
+        </li>
+        <li>
+          <span class="bullet" style="background: rgba(139,92,246,0.15); color: var(--purple);">🔄</span>
+          <span><strong>Feedback loop</strong> — Renvoie des corrections à l'Analyste avant finalisation, garantissant un rapport de haute fiabilité.</span>
+        </li>
+        <li>
+          <span class="bullet" style="background: rgba(139,92,246,0.15); color: var(--purple);">🔔</span>
+          <span><strong>Alertes critiques</strong> — Identifie et remonte en priorité les situations nécessitant une action immédiate (rupture stock, chute de ventes…).</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Feedback loop visual -->
+  <div class="flow-container">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <span style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted);">Boucle de collaboration</span>
+    </div>
+    <div class="flow-row">
+      <div class="flow-box" style="background: rgba(6,182,212,0.1); border-color: rgba(6,182,212,0.3); color: var(--cyan);">
+        📥 Données agrégées
+      </div>
+      <div class="flow-line">→</div>
+      <div class="flow-box" style="background: rgba(59,130,246,0.1); border-color: rgba(59,130,246,0.3); color: var(--blue);">
+        🧠 Gemini Analyste<br/><small style="opacity:0.7;">génère un brouillon</small>
+      </div>
+      <div class="flow-line">→</div>
+      <div class="flow-box" style="background: rgba(139,92,246,0.1); border-color: rgba(139,92,246,0.3); color: var(--purple);">
+        🛡️ Gemini Superviseur<br/><small style="opacity:0.7;">valide & corrige</small>
+      </div>
+      <div class="flow-line">→</div>
+      <div class="flow-box" style="background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.3); color: var(--green);">
+        📄 Rapport final PDF
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted);">
+      ↩️ Le Superviseur peut renvoyer le rapport à l'Analyste pour affinage avant publication
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ OUTPUTS ══════════════ -->
+<section>
+  <div class="section-glow-sep">
+    <div class="line"></div>
+    <span>📤</span>
+    <div class="line right"></div>
+  </div>
+  <div class="section-title">Sorties Générées</div>
+  <div class="section-main-title">Des rapports PDF intelligents</div>
+
+  <div class="outputs-grid">
+    <div class="output-card" style="border-top: 3px solid var(--blue);">
+      <span class="output-icon">🗓️</span>
+      <div class="output-name">Rapport Journalier</div>
+      <div class="output-desc">Activité des délégués, messages critiques, anomalies stock du jour, résumé des interactions terrain.</div>
+      <div class="output-badge" style="background: rgba(59,130,246,0.15); color: var(--blue);">Chaque jour</div>
+    </div>
+
+    <div class="output-card" style="border-top: 3px solid var(--purple);">
+      <span class="output-icon">📆</span>
+      <div class="output-name">Rapport Mensuel</div>
+      <div class="output-desc">Tendances de ventes, performance globale par produit, couverture terrain, efficacité des actions marketing.</div>
+      <div class="output-badge" style="background: rgba(139,92,246,0.15); color: var(--purple);">Fin de mois</div>
+    </div>
+
+    <div class="output-card" style="border-top: 3px solid var(--cyan);">
+      <span class="output-icon">📋</span>
+      <div class="output-name">Rapport Général</div>
+      <div class="output-desc">Vue d'ensemble complète sur une période donnée : état actuel du marché, analyse concurrentielle et recommandations stratégiques.</div>
+      <div class="output-badge" style="background: rgba(6,182,212,0.15); color: var(--cyan);">Sur demande</div>
+    </div>
+
+    <div class="output-card" style="border-top: 3px solid var(--orange);">
+      <span class="output-icon">🔔</span>
+      <div class="output-name">Alertes Immédiates</div>
+      <div class="output-desc">Notifications push détectant les ruptures de stock imminentes, chutes anormales de ventes ou inactivité d'un délégué.</div>
+      <div class="output-badge" style="background: rgba(245,158,11,0.15); color: var(--orange);">Temps réel</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ KEY BENEFITS ══════════════ -->
+<section>
+  <div class="section-glow-sep">
+    <div class="line"></div>
+    <span>✨</span>
+    <div class="line right"></div>
+  </div>
+  <div class="section-title">Bénéfices Clés</div>
+  <div class="section-main-title">Pourquoi ce système change tout ?</div>
+
+  <div class="input-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+    <div class="input-card" style="border-top: 3px solid var(--green);">
+      <div class="input-icon-wrap" style="background: rgba(16,185,129,0.12);">⚡</div>
+      <div class="input-name">Gain de temps immense</div>
+      <div class="input-desc">Ce qui prenait des jours de traitement manuel prend désormais quelques minutes. Les managers se concentrent sur les décisions, pas la saisie.</div>
+    </div>
+    <div class="input-card" style="border-top: 3px solid var(--blue);">
+      <div class="input-icon-wrap" style="background: rgba(59,130,246,0.12);">🎯</div>
+      <div class="input-name">Zéro données manquées</div>
+      <div class="input-desc">Aucune information ne se perd entre les canaux. L'IA capture systématiquement les signaux critiques dans WhatsApp, Slack et le CRM.</div>
+    </div>
+    <div class="input-card" style="border-top: 3px solid var(--purple);">
+      <div class="input-icon-wrap" style="background: rgba(139,92,246,0.12);">🤖</div>
+      <div class="input-name">Fiabilité Supervisée</div>
+      <div class="input-desc">Grâce au LLM Superviseur, chaque rapport est relu et validé automatiquement, supprimant les erreurs d'analyse humaine.</div>
+    </div>
+    <div class="input-card" style="border-top: 3px solid var(--pink);">
+      <div class="input-icon-wrap" style="background: rgba(236,72,153,0.12);">📈</div>
+      <div class="input-name">Décisions stratégiques éclairées</div>
+      <div class="input-desc">Des recommandations basées sur des données réelles et fraîches, permettant à la direction d'agir vite et avec confiance.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="logo">Biotech AI Intelligence System</div>
+  <p style="margin-bottom: 0.25rem;">Propulsé par <strong>Google Gemini</strong> · Architecture LLM multi-agents</p>
+  <p style="font-size: 0.8rem; opacity: 0.5;">Présentation confidentielle — © Biotech 2026</p>
+</footer>
+
+<script>
+  // Generate floating particles
+  const container = document.getElementById('particles');
+  const colors = ['#3b82f6','#8b5cf6','#06b6d4','#10b981','#f59e0b','#ec4899'];
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 80 + 20;
+    p.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      left: ${Math.random() * 100}%;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      animation-duration: ${Math.random() * 20 + 15}s;
+      animation-delay: ${Math.random() * 15}s;
+    `;
+    container.appendChild(p);
+  }
+
+  // Intersection Observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.step-card, .input-card, .llm-card, .output-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
