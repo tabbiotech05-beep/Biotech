@@ -177,7 +177,7 @@ router.patch('/:id/approve', auth, async (req, res) => {
             return res.status(403).json({ msg: 'Accès administrateur requis' });
         }
 
-        const { isApproved, comment } = req.body;
+        const { isApproved, comment, participant, amount } = req.body;
         const congress = await Congress.findById(req.params.id);
 
         if (!congress) return res.status(404).json({ msg: 'Action marketing introuvable' });
@@ -189,6 +189,12 @@ router.patch('/:id/approve', auth, async (req, res) => {
         if (comment !== undefined) {
             congress.comment = comment;
             congress.adminCommentAuthor = req.user.username;
+        }
+        if (participant !== undefined) {
+            congress.participant = participant;
+        }
+        if (amount !== undefined) {
+            congress.amount = amount;
         }
 
         await congress.save();

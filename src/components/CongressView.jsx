@@ -30,18 +30,24 @@ export default function CongressView({ dashboardId }) {
     const [selectedCongress, setSelectedCongress] = useState(null);
     const [panelAdminComment, setPanelAdminComment] = useState('');
     const [panelDelegateComment, setPanelDelegateComment] = useState('');
+    const [panelParticipant, setPanelParticipant] = useState('');
+    const [panelAmount, setPanelAmount] = useState('');
     const [isSavingPanelComment, setIsSavingPanelComment] = useState(false);
 
     const openDetailPanel = (congress) => {
         setSelectedCongress(congress);
         setPanelAdminComment(congress.comment || '');
         setPanelDelegateComment(congress.delegateComment || '');
+        setPanelParticipant(congress.participant || '');
+        setPanelAmount(congress.amount || '');
     };
 
     const closeDetailPanel = () => {
         setSelectedCongress(null);
         setPanelAdminComment('');
         setPanelDelegateComment('');
+        setPanelParticipant('');
+        setPanelAmount('');
     };
 
     const savePanelComment = async () => {
@@ -54,7 +60,12 @@ export default function CongressView({ dashboardId }) {
                 const res = await fetch(`/api/congress/${selectedCongress._id}/approve`, {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
-                    body: JSON.stringify({ isApproved: selectedCongress.isApproved, comment: panelAdminComment })
+                    body: JSON.stringify({ 
+                        isApproved: selectedCongress.isApproved, 
+                        comment: panelAdminComment,
+                        participant: panelParticipant,
+                        amount: panelAmount
+                    })
                 });
                 if (res.ok) {
                     const updated = await res.json();
@@ -100,7 +111,16 @@ export default function CongressView({ dashboardId }) {
                 headers: { 'x-auth-token': token }
             });
             const data = await res.json();
-            setCongresses(data);
+            
+            const now = new Date();
+            const processedData = data.map(c => {
+                if (c.endDate && new Date(c.endDate) < now && c.status !== 'terminé') {
+                    return { ...c, status: 'terminé' };
+                }
+                return c;
+            });
+            
+            setCongresses(processedData);
         } catch (err) {
             console.error('Error fetching congresses:', err);
         }
@@ -648,16 +668,36 @@ export default function CongressView({ dashboardId }) {
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <span className="text-lg leading-none">🧑‍⚕️</span>
-                                    <div>
+                                    <div className="flex-1">
                                         <p className="text-xs text-gray-400 font-medium">Participant(s)</p>
-                                        <p className="font-semibold">{selectedCongress.participant}</p>
+                                        {isAdmin ? (
+                                            <input 
+                                                type="text" 
+                                                value={panelParticipant} 
+                                                onChange={e => setPanelParticipant(e.target.value)} 
+                                                onClick={e => e.stopPropagation()}
+                                                className="w-full mt-1 border border-gray-300 rounded px-2 py-1 text-sm font-semibold focus:outline-none focus:border-blue-400"
+                                            />
+                                        ) : (
+                                            <p className="font-semibold">{selectedCongress.participant}</p>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-3">
                                     <span className="text-lg leading-none">💰</span>
-                                    <div>
-                                        <p className="text-xs text-gray-400 font-medium">Budget</p>
-                                        <p className="font-semibold text-emerald-700">{Number(selectedCongress.amount).toLocaleString()} TND</p>
+                                    <div className="flex-1">
+                                        <p className="text-xs text-gray-400 font-medium">Budget (TND)</p>
+                                        {isAdmin ? (
+                                            <input 
+                                                type="number" 
+                                                value={panelAmount} 
+                                                onChange={e => setPanelAmount(e.target.value)} 
+                                                onClick={e => e.stopPropagation()}
+                                                className="w-full mt-1 border border-gray-300 rounded px-2 py-1 text-sm font-semibold text-emerald-700 focus:outline-none focus:border-blue-400"
+                                            />
+                                        ) : (
+                                            <p className="font-semibold text-emerald-700">{Number(selectedCongress.amount).toLocaleString()} TND</p>
+                                        )}
                                     </div>
                                 </div>
                             </div>

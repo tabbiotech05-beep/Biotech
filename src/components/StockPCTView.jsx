@@ -67,7 +67,7 @@ export default function StockPCTView() {
             <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                     <div>
-                        <h2 className="text-2xl font-black text-slate-900 mb-1">Stock PCT</h2>
+                        <h2 className="text-2xl font-black text-slate-900 mb-1">PCT</h2>
                         <p className="text-slate-500 text-sm">Vue globale des produits et des ventes</p>
                     </div>
                     <div className="relative w-full md:w-96">

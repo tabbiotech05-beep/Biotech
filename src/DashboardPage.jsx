@@ -437,7 +437,7 @@ export default function DashboardPage() {
         { id: 'calendar', label: 'Calendrier', icon: <IconCalendar /> },
         { id: 'cycle', label: 'Cycle', icon: <IconCycle /> },
         { id: 'samples', label: 'Échantillons', icon: <IconSamples /> },
-        { id: 'stockpct', label: 'Stock PCT', icon: <IconPCT /> },
+        { id: 'stockpct', label: 'PCT', icon: <IconPCT /> },
         { id: 'congress', label: 'Action marketing', icon: <IconCongress /> },
         { id: 'leave', label: leavePendingCount > 0 ? `Congés (${leavePendingCount})` : 'Congés', icon: <IconLeave /> },
         { id: 'expense', label: 'Note de Frais', icon: <IconExpense /> },
@@ -446,7 +446,7 @@ export default function DashboardPage() {
 
     let displayedTabs = [...delegateTabs];
 
-    // Logic: for dashboard1 (Biotech), only amal and rania can see Stock PCT.
+    // Logic: for dashboard1 (Biotech), only amal and rania can see PCT.
     // Others in dashboard1 have it hidden.
     if (role === 'delegue' && dashboardId === 'dashboard1') {
         const allowedUsers = ['amal', 'rania'];
