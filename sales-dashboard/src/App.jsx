@@ -577,9 +577,14 @@ const App = () => {
             </div>
             <div className="live-stat">
               <span className="live-label">Volume total (Historique) :</span>
-              <span className={`live-value ${activeTab === 'biotech' ? 'blue' : 'green'}`}>
-                {liveFilteredData.reduce((sum, item) => sum + item.qte, 0).toLocaleString()} units
-              </span>
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <span className={`live-value ${activeTab === 'biotech' ? 'blue' : 'green'}`} style={{ fontSize: '1.1rem' }}>
+                  2025 : {liveFilteredData.reduce((sum, item) => String(item.annee) === '2025' ? sum + item.qte : sum, 0).toLocaleString()} units
+                </span>
+                <span className={`live-value ${activeTab === 'biotech' ? 'blue' : 'green'}`} style={{ fontSize: '1.1rem' }}>
+                  2026 : {liveFilteredData.reduce((sum, item) => String(item.annee) === '2026' ? sum + item.qte : sum, 0).toLocaleString()} units
+                </span>
+              </div>
             </div>
           </div>
 
