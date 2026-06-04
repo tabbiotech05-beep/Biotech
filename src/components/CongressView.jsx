@@ -102,6 +102,15 @@ export default function CongressView({ dashboardId }) {
         fetchCongresses();
     }, [dashboardId]);
 
+    const processCongressStatus = (congress) => {
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+        if (congress.endDate && new Date(congress.endDate) < now && congress.status !== 'terminé') {
+            return { ...congress, status: 'terminé' };
+        }
+        return congress;
+    };
+
     const fetchCongresses = async () => {
         const token = localStorage.getItem('token');
         if (!token) return;
@@ -112,13 +121,7 @@ export default function CongressView({ dashboardId }) {
             });
             const data = await res.json();
             
-            const now = new Date();
-            const processedData = data.map(c => {
-                if (c.endDate && new Date(c.endDate) < now && c.status !== 'terminé') {
-                    return { ...c, status: 'terminé' };
-                }
-                return c;
-            });
+            const processedData = data.map(processCongressStatus);
             
             setCongresses(processedData);
         } catch (err) {
@@ -168,7 +171,7 @@ export default function CongressView({ dashboardId }) {
             });
 
             if (res.ok) {
-                const savedCongress = await res.json();
+                const savedCongress = processCongressStatus(await res.json());
 
                 if (editingId) {
                     setCongresses(congresses.map(c => c._id === editingId ? savedCongress : c));
