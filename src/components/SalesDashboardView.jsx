@@ -18,6 +18,8 @@ import './SalesDashboardView.css';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 
+const LOCAL_PRODUCTS_ALLOWED = ['Amlor', 'Tahor', 'Celebrex', 'Zoloft'];
+
 const SalesDashboardView = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -67,7 +69,16 @@ const SalesDashboardView = () => {
           setLoading(false);
           return;
         }
-        const processed = json.map(item => ({
+        let filtered = json;
+        // For local tab, only show the 4 allowed products
+        if (activeSalesTab === 'local') {
+          filtered = json.filter(item =>
+            LOCAL_PRODUCTS_ALLOWED.some(p =>
+              item.libelle?.toLowerCase().includes(p.toLowerCase())
+            )
+          );
+        }
+        const processed = filtered.map(item => ({
           ...item,
           period: `${item.annee || ''}-${(item.mois || '').toString().padStart(2, '0')}`,
           qte: Number(item.qte) || 0
