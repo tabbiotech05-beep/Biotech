@@ -12,6 +12,9 @@ export default function ExpenseView({ dashboardId }) {
     const [loading, setLoading] = useState(true);
     const [editingExpense, setEditingExpense] = useState(null);
 
+    const role = localStorage.getItem('role');
+    const isAdmin = role === 'admin';
+
     // Form inputs
     const [year, setYear] = useState(new Date().getFullYear());
     const [month, setMonth] = useState(new Date().getMonth() + 1);
@@ -234,11 +237,12 @@ export default function ExpenseView({ dashboardId }) {
         doc.setTextColor(30, 30, 30);
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
-        doc.text(`Annee: ${exp.year}    Mois: ${MONTHS[(exp.month || 1) - 1]}`, 14, 38);
-        doc.text(`Voiture: ${exp.carModel || '-'}    Immatriculation: ${exp.licensePlate || '-'}`, 14, 46);
+        doc.text(`Créé par: ${exp.user?.username || 'Inconnu'}`, 14, 32);
+        doc.text(`Annee: ${exp.year}    Mois: ${MONTHS[(exp.month || 1) - 1]}`, 14, 40);
+        doc.text(`Voiture: ${exp.carModel || '-'}    Immatriculation: ${exp.licensePlate || '-'}`, 14, 48);
         doc.setFont('helvetica', 'bold');
         doc.setTextColor(220, 38, 38);
-        doc.text(`Kilometrage: ${exp.kilometrage}`, 14, 54);
+        doc.text(`Kilometrage: ${exp.kilometrage}`, 14, 56);
         doc.setTextColor(30, 30, 30);
         doc.setFont('helvetica', 'normal');
 
@@ -454,6 +458,7 @@ export default function ExpenseView({ dashboardId }) {
                             <table className="w-full text-left whitespace-nowrap">
                                 <thead>
                                     <tr className="bg-gray-50 border-b border-gray-100 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                        {isAdmin && <th className="py-3 px-4">Créé par</th>}
                                         <th className="py-3 px-4">Période</th>
                                         <th className="py-3 px-4">Voiture / Immat.</th>
                                         <th className="py-3 px-4">Kms</th>
@@ -464,6 +469,11 @@ export default function ExpenseView({ dashboardId }) {
                                 <tbody>
                                     {expenses.map((exp) => (
                                         <tr key={exp._id} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                                            {isAdmin && (
+                                                <td className="py-3 px-4 font-bold text-gray-800">
+                                                    {exp.user?.username || 'Inconnu'}
+                                                </td>
+                                            )}
                                             <td className="py-3 px-4 font-bold text-gray-800">
                                                 {MONTHS[(exp.month || 1) - 1]} {exp.year}
                                             </td>
