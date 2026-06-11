@@ -1,0 +1,56 @@
+[
+  {
+    "Unnamed: 0": "Invoice value without taxes",
+    "Unnamed: 1": "Option 1",
+    "Unnamed: 2": "Option 2",
+    "Unnamed: 3": "Option 3"
+  },
+  {
+    "Unnamed: 0": "≤6000TND",
+    "Unnamed: 1": "Immediate payment ",
+    "Unnamed: 2": "",
+    "Unnamed: 3": ""
+  },
+  {
+    "Unnamed: 0": "from 6001 TND to 20 000 TND",
+    "Unnamed: 1": "Immediate payment  + 3% discount",
+    "Unnamed: 2": "",
+    "Unnamed: 3": ""
+  },
+  {
+    "Unnamed: 0": "from 20 001 TND to 40 000 TND",
+    "Unnamed: 1": "Immediate payment  + 3% discount",
+    "Unnamed: 2": "Differed payment of 60 days+ 1% discount",
+    "Unnamed: 3": "Differed payment of 30 days+ 2% discount"
+  },
+  {
+    "Unnamed: 0": "from 40 001 TND to 60 000 TND",
+    "Unnamed: 1": "Immediate payment  + 3% discount",
+    "Unnamed: 2": "Differed payment of 90 days+1% discount",
+    "Unnamed: 3": "Differed payment of 60 days+ 2% discount"
+  },
+  {
+    "Unnamed: 0": "from 60 001 TND to 80 000 TND",
+    "Unnamed: 1": "Immediate payment  + 3% discount",
+    "Unnamed: 2": "Differed payment of 90 days+ 1.5% discount",
+    "Unnamed: 3": "Differed payment of 75 days+ 2% discount"
+  },
+  {
+    "Unnamed: 0": "from 80 001 TND to 100 000 TND",
+    "Unnamed: 1": "Immediate payment  + 3% discount",
+    "Unnamed: 2": "Differed payment of 120 days+ 1% discount",
+    "Unnamed: 3": "Differed payment of 90 days+ 2% discount"
+  },
+  {
+    "Unnamed: 0": "from 100 001 TND to 150 000 TND",
+    "Unnamed: 1": "Immediate payment  + 3% discount",
+    "Unnamed: 2": "Differed payment of 150 days+ 1% discount",
+    "Unnamed: 3": "Differed payment of 120 days+ 2% discount"
+  },
+  {
+    "Unnamed: 0": " >150 000 TND",
+    "Unnamed: 1": "Immediate payment  + 3% discount",
+    "Unnamed: 2": "Differed payment of 150 days+ 2% discount",
+    "Unnamed: 3": ""
+  }
+]

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import StockCommandeView from './StockCommandeView';
+import AvantageCommerciauxView from './AvantageCommerciauxView';
 import {
   LineChart,
   Line,
@@ -492,6 +493,18 @@ const App = () => {
           >
             📦 Stock et commande
           </button>
+          <button 
+            className={`tab-btn ${activeTab === 'avantage' ? 'active' : ''}`}
+            onClick={() => {
+              setActiveTab('avantage');
+              setSelectedClient('All');
+              setTempSelectedProducts([]);
+              setAppliedProducts([]);
+              setIsChartGenerated(false);
+            }}
+          >
+            💼 Avantages commerciaux
+          </button>
         </div>
 
         <div className="nav-spacer" style={{ width: '180px' }} />
@@ -499,6 +512,8 @@ const App = () => {
 
       {activeTab === 'stock' ? (
         <StockCommandeView />
+      ) : activeTab === 'avantage' ? (
+        <AvantageCommerciauxView />
       ) : (
         <>
       <header className={`dashboard-header ${activeTab === 'biotech' ? 'biotech-header' : 'local-header'}`}>
