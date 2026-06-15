@@ -530,18 +530,21 @@ export default function DashboardPage() {
         });
         
         // Sectorisation
-        if (role === 'admin') {
-            displayedTabs.push({
-                id: 'sectorisation-admin',
-                label: 'Sectorisation',
-                icon: <IconMap />
-            });
-        } else if (role === 'delegue') {
-            displayedTabs.push({
-                id: 'sectorisation-delegue',
-                label: 'Ma Sectorisation',
-                icon: <IconMap />
-            });
+        const sectorisationTab = role === 'admin' ? {
+            id: 'sectorisation-admin',
+            label: 'Sectorisation',
+            icon: <IconMap />
+        } : {
+            id: 'sectorisation-delegue',
+            label: 'Ma Sectorisation',
+            icon: <IconMap />
+        };
+        
+        const calIndex = displayedTabs.findIndex(t => t.id === 'calendar');
+        if (calIndex > -1) {
+            displayedTabs.splice(calIndex + 1, 0, sectorisationTab);
+        } else {
+            displayedTabs.push(sectorisationTab);
         }
     }
 

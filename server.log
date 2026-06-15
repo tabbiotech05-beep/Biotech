@@ -1,8 +1,8 @@
 🚀 Starting BioXtenshi Local Environment...
-✅ Local MongoDB running at: mongodb://127.0.0.1:41040/
+✅ Local MongoDB running at: mongodb://127.0.0.1:11063/
 📂 Data stored in: C:\Users\LENOVO\Desktop\ventes et stocks\data\db
 🌱 Seeding database...
-[dotenv@17.2.3] injecting env (5) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
+[dotenv@17.2.3] injecting env (5) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
 ✅ Connected to MongoDB
 📊 Detected Feriel S1.xlsx, starting import for feriel...
 Python was not found; run without arguments to install from the Microsoft Store, or disable this shortcut from Settings > Apps > Advanced app settings > App execution aliases.
@@ -12,7 +12,7 @@ Python was not found; run without arguments to install from the Microsoft Store,
 
 ✅ Official Seeding/Update Complete!
 💊 Seeding Stock...
-[dotenv@17.2.3] injecting env (5) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+[dotenv@17.2.3] injecting env (5) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
 MongoDB Connected
 Starting to seed 28 products...
 Skipping CELEBREX 200 MG CAP X 10 TUN (already exists with this batch)
@@ -46,46 +46,21 @@ Skipping Detrusitol Retard 4MG (already exists with this batch)
 Stock seeding completed successfully.
 ✅ Seeding finished.
 🔌 Starting Backend Server...
-📡 Backend process spawned with PID: 25804
+📡 Backend process spawned with PID: 19088
 🎨 Starting Frontend (Vite)...
-🌐 Frontend process spawned with PID: 36724
+🌐 Frontend process spawned with PID: 39472
 
 ✅ App ready!
    Frontend → http://0.0.0.0:5173
    Backend  → http://0.0.0.0:5000
 
-(node:44936) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(node:45168) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
 (Use `node --trace-deprecation ...` to show where the warning was created)
-  [32m[1mVITE[22m v7.2.7[39m  [2mready in [0m[1m494[22m[2m[0m ms[22m
+  [32m[1mVITE[22m v7.2.7[39m  [2mready in [0m[1m499[22m[2m[0m ms[22m
 Server is running on port 5000
 📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
 (WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
-[2m6:23:28 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/dashboard-users[39m
-AggregateError [ETIMEDOUT]: 
-[2m6:23:29 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/auth/dashboard-users[39m
-AggregateError [ETIMEDOUT]: 
-📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
-(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
-📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
-(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
-📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
-(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
-📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
-(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
-📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
-(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
-📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
-(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
-[2m6:26:06 PM[22m [31m[1m[vite][22m[39m [31mhttp proxy error: /api/leave/all[39m
-Error: read ECONNRESET
-📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
-(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
-📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
-(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
-📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
-(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
-📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
-(WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
+[APP-USAGE] [15/06/2026 18:33:58] L'utilisateur mahmoud a fermé l'application
 📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
 (WhatsApp → ⋮ → Appareils connectés → Connecter un appareil)
 📱 WHATSAPP BOT — Scannez ce QR code avec +216 56 129 196 :
