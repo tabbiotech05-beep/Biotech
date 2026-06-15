@@ -20,6 +20,7 @@ import expenseRoutes from './routes/expenses.js';
 import magicSearchRoutes from './routes/magic-search.js';
 import contactRoutes from './routes/contacts.js';
 import medListRoutes from './routes/med-list.js';
+import sectorisationRoutes from './routes/sectorisation.js';
 import aiRoutes from './routes/ai.js';
 import startExpiryJob from './jobs/expiryJob.js';
 import { initWhatsAppBot } from './utils/whatsappBot.js';
@@ -64,6 +65,7 @@ app.use('/api/magic-search', magicSearchRoutes);
 app.use('/api/contacts', contactRoutes);
 app.use('/api/med-list', medListRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/sectorisation', sectorisationRoutes);
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // ─── Sales Dashboard (Grossiste) — served as static files ────────────────────
