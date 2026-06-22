@@ -6,6 +6,7 @@ import LeaveRequest from '../models/LeaveRequest.js';
 import auth from '../middleware/auth.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -448,6 +449,121 @@ Rédigez votre rapport de supervision maintenant:
             ? "Les serveurs IA sont temporairement surchargés. Veuillez réessayer."
             : "Erreur lors de la génération du rapport de supervision";
         res.status(500).json({ message: userMessage, error: err.message });
+    }
+});
+
+// ─── ANALYSE GROSSISTE AI ────────────────────────────────────────────────────────
+// @route   GET api/ai/grossiste
+// @desc    Generate a strict report comparing local sales to CM
+// @access  Private (Admin only)
+router.get('/grossiste', auth, async (req, res) => {
+    try {
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({ message: 'Accès refusé. Administrateurs uniquement.' });
+        }
+
+        if (!process.env.GEMINI_API_KEY) {
+            return res.status(500).json({ message: 'Clé API Gemini manquante dans le fichier .env' });
+        }
+
+        const tenshiPath = path.join(__dirname, '../../sales-dashboard/public/local_sales_data.json');
+        const cmPath = path.join(__dirname, '../../sales-dashboard/public/cm_data.json');
+        
+        if (!fs.existsSync(tenshiPath) || !fs.existsSync(cmPath)) {
+            return res.status(500).json({ message: "Les fichiers de données (ventes locales ou CM) sont introuvables." });
+        }
+
+        const localSales = JSON.parse(fs.readFileSync(tenshiPath, 'utf-8'));
+        const cmData = JSON.parse(fs.readFileSync(cmPath, 'utf-8'));
+
+        // Filter local products to only include Tenshi products
+        const LOCAL_PRODUCTS_ALLOWED = ['Amlor', 'Tahor', 'Celebrex', 'Zoloft'];
+        const currentMonthStr = String(new Date().getMonth() + 1).padStart(2, '0');
+        
+        const filteredSales = localSales.filter(item => 
+            item.mois === currentMonthStr &&
+            LOCAL_PRODUCTS_ALLOWED.some(p => item.libelle?.toLowerCase().includes(p.toLowerCase()))
+        );
+
+        // Aggregate by Grossiste -> Product -> Quantity
+        const grossisteData = {};
+        filteredSales.forEach(item => {
+            if (!grossisteData[item.nom_client]) {
+                grossisteData[item.nom_client] = {};
+            }
+            grossisteData[item.nom_client][item.libelle] = (grossisteData[item.nom_client][item.libelle] || 0) + (Number(item.qte) || 0);
+        });
+
+        // Format data for the prompt
+        let reportData = `Rapport des ventes locales (Mois: ${currentMonthStr}) par grossiste:\n\n`;
+        let totalGap = 0;
+
+        for (const [grossiste, products] of Object.entries(grossisteData)) {
+            reportData += `**Grossiste: ${grossiste}**\n`;
+            for (const [product, qty] of Object.entries(products)) {
+                const cm = cmData[product] || 0;
+                const diff = qty - cm;
+                totalGap += diff;
+                reportData += `  - ${product} : Vendu = ${qty} | CM = ${cm} | Écart = ${diff > 0 ? '+' : ''}${diff}\n`;
+            }
+            reportData += '\n';
+        }
+
+        const prompt = `
+Vous êtes un DIRECTEUR COMMERCIAL TRÈS STRICT dans l'industrie pharmaceutique (BiotechpharmaMD).
+Vous vous adressez à l'équipe de délégués "Tenshi" concernant les ventes des produits locaux chez les Grossistes.
+
+Contexte:
+Les ventes des produits locaux (Amlor, Tahor, Celebrex, Zoloft) sont en forte baisse par rapport à la Consommation Moyenne (CM).
+Votre rôle est de secouer l'équipe, de faire une analyse sans concession des chiffres ci-dessous, et d'exiger des plans d'action immédiats.
+
+Règles importantes:
+1. Adoptez un ton FERME, EXIGEANT et STRICT. Ne soyez pas complaisant.
+2. Pointez du doigt les produits et les grossistes où l'écart avec la CM est le plus critique (négatif).
+3. Exigez des explications et des actions correctives claires pour les délégués en charge de ces secteurs.
+4. FORMATAGE PDF-FRIENDLY : Utilisez UNIQUEMENT du texte, des titres (#) et des listes à puces (-).
+5. INTERDICTION STRICTE : NE CRÉEZ AUCUN TABLEAU MARKDOWN (n'utilisez jamais le caractère |). N'UTILISEZ AUCUN EMOJI.
+
+Voici les données réelles du mois en cours:
+${reportData}
+
+Rédigez votre analyse stricte maintenant:
+`;
+
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        const modelsToTry = ['gemini-2.5-flash', 'gemini-2.0-flash'];
+        let responseText = null;
+        let lastError = null;
+
+        for (const modelName of modelsToTry) {
+            for (let attempt = 1; attempt <= 2; attempt++) {
+                try {
+                    console.log(`Grossiste AI: Trying ${modelName} (attempt ${attempt})...`);
+                    const model = genAI.getGenerativeModel({ model: modelName });
+                    const result = await model.generateContent(prompt);
+                    responseText = result.response.text();
+                    break;
+                } catch (e) {
+                    lastError = e;
+                    console.warn(`Grossiste AI: ${modelName} attempt ${attempt} failed: ${e.message}`);
+                    if (e.message?.includes('503') && attempt < 2) {
+                        await new Promise(r => setTimeout(r, 3000));
+                    } else {
+                        break;
+                    }
+                }
+            }
+            if (responseText) break;
+        }
+
+        if (!responseText) {
+            throw lastError || new Error('Tous les modèles IA sont indisponibles');
+        }
+
+        res.json({ summary: responseText });
+    } catch (err) {
+        console.error('Error generating Grossiste AI report:', err);
+        res.status(500).json({ message: "Erreur lors de l'analyse grossiste", error: err.message });
     }
 });
 
