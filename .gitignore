@@ -27,4 +27,3 @@ data/db/*
 # *.xlsx
 app.pid
 # *.log
-.env
