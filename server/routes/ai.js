@@ -454,7 +454,7 @@ Rédigez votre rapport de supervision maintenant:
 
 // ─── ANALYSE GROSSISTE AI ────────────────────────────────────────────────────────
 // @route   GET api/ai/grossiste
-// @desc    Generate a strict report comparing local sales to CM
+// @desc    Generate a strict, detailed report on local sales vs CM and vs previous month
 // @access  Private (Admin only)
 router.get('/grossiste', auth, async (req, res) => {
     try {
@@ -468,7 +468,7 @@ router.get('/grossiste', auth, async (req, res) => {
 
         const tenshiPath = path.join(__dirname, '../../sales-dashboard/public/local_sales_data.json');
         const cmPath = path.join(__dirname, '../../sales-dashboard/public/cm_data.json');
-        
+
         if (!fs.existsSync(tenshiPath) || !fs.existsSync(cmPath)) {
             return res.status(500).json({ message: "Les fichiers de données (ventes locales ou CM) sont introuvables." });
         }
@@ -476,58 +476,150 @@ router.get('/grossiste', auth, async (req, res) => {
         const localSales = JSON.parse(fs.readFileSync(tenshiPath, 'utf-8'));
         const cmData = JSON.parse(fs.readFileSync(cmPath, 'utf-8'));
 
-        // Filter local products to only include Tenshi products
-        const LOCAL_PRODUCTS_ALLOWED = ['Amlor', 'Tahor', 'Celebrex', 'Zoloft'];
-        const currentMonthStr = String(new Date().getMonth() + 1).padStart(2, '0');
-        
-        const filteredSales = localSales.filter(item => 
-            item.mois === currentMonthStr &&
-            LOCAL_PRODUCTS_ALLOWED.some(p => item.libelle?.toLowerCase().includes(p.toLowerCase()))
-        );
+        const LOCAL_PRODUCTS_ALLOWED = ['amlor', 'tahor', 'celebrex', 'zoloft'];
 
-        // Aggregate by Grossiste -> Product -> Quantity
-        const grossisteData = {};
-        filteredSales.forEach(item => {
-            if (!grossisteData[item.nom_client]) {
-                grossisteData[item.nom_client] = {};
-            }
-            grossisteData[item.nom_client][item.libelle] = (grossisteData[item.nom_client][item.libelle] || 0) + (Number(item.qte) || 0);
+        // Find the 2 most recent months in the data
+        const allMonths = [...new Set(
+            localSales
+                .filter(item => LOCAL_PRODUCTS_ALLOWED.some(p => item.libelle?.toLowerCase().includes(p)))
+                .map(item => `${item.annee}-${item.mois}`)
+        )].sort();
+
+        const currentMonthKey = allMonths[allMonths.length - 1];
+        const prevMonthKey = allMonths[allMonths.length - 2] || null;
+        const [currentYear, currentMonth] = currentMonthKey.split('-');
+        const [prevYear, prevMonth] = prevMonthKey ? prevMonthKey.split('-') : [null, null];
+
+        // Helper: aggregate sales for a given year+month
+        const aggregateSales = (year, month) => {
+            const result = {}; // { clientName: { product: qty, _total: n } }
+            localSales
+                .filter(item =>
+                    item.annee === year &&
+                    item.mois === month &&
+                    LOCAL_PRODUCTS_ALLOWED.some(p => item.libelle?.toLowerCase().includes(p))
+                )
+                .forEach(item => {
+                    if (!result[item.nom_client]) result[item.nom_client] = { _total: 0 };
+                    result[item.nom_client][item.libelle] = (result[item.nom_client][item.libelle] || 0) + (Number(item.qte) || 0);
+                    result[item.nom_client]._total += (Number(item.qte) || 0);
+                });
+            return result;
+        };
+
+        const currentSales = aggregateSales(currentYear, currentMonth);
+        const prevSales = prevYear ? aggregateSales(prevYear, prevMonth) : {};
+
+        // All known clients (historically active)
+        const allKnownClients = [...new Set(
+            localSales
+                .filter(item => LOCAL_PRODUCTS_ALLOWED.some(p => item.libelle?.toLowerCase().includes(p)))
+                .map(item => item.nom_client)
+        )].filter(c => c && c !== 'INCONNU').sort();
+
+        const activeClientsThisMonth = Object.keys(currentSales).filter(c => c !== 'INCONNU');
+
+        // --- CATEGORY 1: Inactive this month (bought before, not now) ---
+        const inactiveClients = allKnownClients.filter(c => !activeClientsThisMonth.includes(c));
+
+        // --- CATEGORY 2: Active this month - compare to previous month & CM ---
+        const activeAnalysis = activeClientsThisMonth.map(client => {
+            const current = currentSales[client];
+            const prev = prevSales[client];
+            const currentTotal = current._total || 0;
+            const prevTotal = prev ? prev._total || 0 : 0;
+            const diff = prevTotal > 0 ? currentTotal - prevTotal : null;
+            const diffPct = prevTotal > 0 ? ((diff / prevTotal) * 100).toFixed(1) : null;
+
+            // CM comparison: sum CM of all products present this month
+            let totalCM = 0;
+            Object.keys(current).filter(k => k !== '_total').forEach(product => {
+                totalCM += cmData[product] || 0;
+            });
+            const cmGap = currentTotal - totalCM;
+
+            // Product detail
+            const productLines = Object.entries(current)
+                .filter(([k]) => k !== '_total')
+                .map(([product, qty]) => {
+                    const cm = cmData[product] || 0;
+                    const gap = qty - cm;
+                    return `${product}: Vendu=${qty}, CM=${cm}, Écart=${gap >= 0 ? '+' : ''}${gap}`;
+                });
+
+            return { client, currentTotal, prevTotal, diff, diffPct, totalCM, cmGap, productLines, status: cmGap < 0 ? 'SOUS CM' : 'AU-DESSUS CM', trend: diff === null ? 'NOUVEAU' : diff < 0 ? 'EN BAISSE' : diff > 0 ? 'EN HAUSSE' : 'STABLE' };
         });
 
-        // Format data for the prompt
-        let reportData = `Rapport des ventes locales (Mois: ${currentMonthStr}) par grossiste:\n\n`;
-        let totalGap = 0;
+        // Sort by CM gap (worst first)
+        activeAnalysis.sort((a, b) => a.cmGap - b.cmGap);
+        const declining = activeAnalysis.filter(a => a.trend === 'EN BAISSE');
+        const underCM = activeAnalysis.filter(a => a.status === 'SOUS CM');
+        const overCM = activeAnalysis.filter(a => a.status === 'AU-DESSUS CM');
 
-        for (const [grossiste, products] of Object.entries(grossisteData)) {
-            reportData += `**Grossiste: ${grossiste}**\n`;
-            for (const [product, qty] of Object.entries(products)) {
-                const cm = cmData[product] || 0;
-                const diff = qty - cm;
-                totalGap += diff;
-                reportData += `  - ${product} : Vendu = ${qty} | CM = ${cm} | Écart = ${diff > 0 ? '+' : ''}${diff}\n`;
-            }
-            reportData += '\n';
-        }
+        // --- Build the detailed prompt ---
+        const monthLabel = (m) => {
+            const months = { '01':'Janvier','02':'Février','03':'Mars','04':'Avril','05':'Mai','06':'Juin','07':'Juillet','08':'Août','09':'Septembre','10':'Octobre','11':'Novembre','12':'Décembre' };
+            return months[m] || m;
+        };
+
+        let promptData = `
+== CONTEXTE ==
+Mois analysé : ${monthLabel(currentMonth)} ${currentYear}
+Mois de comparaison : ${prevMonth ? monthLabel(prevMonth) + ' ' + prevYear : 'N/A'}
+Nombre total de grossistes actifs historiquement : ${allKnownClients.length}
+Grossistes actifs ce mois : ${activeClientsThisMonth.length}
+Grossistes inactifs ce mois : ${inactiveClients.length}
+
+== GROSSISTES N'AYANT PAS COMMANDE CE MOIS (${inactiveClients.length} grossistes) ==
+${inactiveClients.map(c => `- ${c}`).join('\n')}
+
+== GROSSISTES EN BAISSE vs MOIS PRECEDENT (${declining.length} grossistes) ==
+${declining.map(a => `- ${a.client}: ${a.prevTotal} -> ${a.currentTotal} (${a.diffPct}%)`).join('\n') || 'Aucun'}
+
+== GROSSISTES SOUS LA CM (${underCM.length} grossistes) ==
+${underCM.map(a => `- ${a.client}: Total vendu=${a.currentTotal}, CM cible=${a.totalCM}, Écart=${a.cmGap}`).join('\n') || 'Aucun'}
+
+== GROSSISTES AU-DESSUS DE LA CM (${overCM.length} grossistes) ==
+${overCM.map(a => `- ${a.client}: Total vendu=${a.currentTotal}, CM cible=${a.totalCM}, Écart=+${a.cmGap}`).join('\n') || 'Aucun'}
+
+== DETAIL PAR GROSSISTE ACTIF ==
+${activeAnalysis.map(a => `${a.client} [${a.trend} / ${a.status}]\n${a.productLines.map(l => '  - ' + l).join('\n')}`).join('\n\n')}
+`;
 
         const prompt = `
-Vous êtes un DIRECTEUR COMMERCIAL TRÈS STRICT dans l'industrie pharmaceutique (BiotechpharmaMD).
-Vous vous adressez à l'équipe de délégués "Tenshi" concernant les ventes des produits locaux chez les Grossistes.
+Vous êtes un DIRECTEUR COMMERCIAL EXPÉRIMENTÉ et EXIGEANT dans l'industrie pharmaceutique, responsable de l'équipe de ventes "Tenshi".
+Vous rédigez un compte-rendu de performance mensuelle sur les ventes des produits locaux (Amlor, Tahor, Celebrex, Zoloft) auprès des grossistes.
 
-Contexte:
-Les ventes des produits locaux (Amlor, Tahor, Celebrex, Zoloft) sont en forte baisse par rapport à la Consommation Moyenne (CM).
-Votre rôle est de secouer l'équipe, de faire une analyse sans concession des chiffres ci-dessous, et d'exiger des plans d'action immédiats.
+Votre analyse doit couvrir OBLIGATOIREMENT les sections suivantes dans cet ordre:
 
-Règles importantes:
-1. Adoptez un ton FERME, EXIGEANT et STRICT. Ne soyez pas complaisant.
-2. Pointez du doigt les produits et les grossistes où l'écart avec la CM est le plus critique (négatif).
-3. Exigez des explications et des actions correctives claires pour les délégués en charge de ces secteurs.
-4. FORMATAGE PDF-FRIENDLY : Utilisez UNIQUEMENT du texte, des titres (#) et des listes à puces (-).
-5. INTERDICTION STRICTE : NE CRÉEZ AUCUN TABLEAU MARKDOWN (n'utilisez jamais le caractère |). N'UTILISEZ AUCUN EMOJI.
+# 1. BILAN GÉNÉRAL
+Donnez un bilan global chiffré du mois : nombre de grossistes actifs vs inactifs, ratio sous/au-dessus CM, tendance globale vs mois précédent. Soyez direct et sans concession.
 
-Voici les données réelles du mois en cours:
-${reportData}
+# 2. LISTE ROUGE - GROSSISTES INACTIFS CE MOIS
+Nommez EXPLICITEMENT chaque grossiste qui n'a pas passé commande ce mois. Insistez sur la gravité de cette situation et exigez une visite obligatoire de l'équipe de ventes pour chacun d'eux.
 
-Rédigez votre analyse stricte maintenant:
+# 3. GROSSISTES EN BAISSE
+Analysez les grossistes dont le volume a baissé vs le mois précédent. Pour chaque un, quantifiez la perte et formulez une question directe à l'équipe de ventes pour expliquer cette baisse.
+
+# 4. GROSSISTES SOUS LA CONSOMMATION MOYENNE (CM)
+Listez les grossistes qui commandent en deçà de la CM. C'est inacceptable. Exigez un plan d'action chiffré.
+
+# 5. POINTS POSITIFS (Grossistes au-dessus de la CM)
+Mentionnez brièvement les bons résultats pour équilibrer le bilan, mais restez concis.
+
+# 6. PLAN D'ACTION EXIGÉ
+Formulez 5 actions concrètes et immédiates que l'équipe de ventes doit mettre en place cette semaine.
+
+Règles de forme:
+- Ton FERME et EXIGEANT, jamais complaisant
+- Citez les noms des grossistes explicitement dans chaque section
+- FORMATAGE: Uniquement du texte, des titres (#) et des listes à puces (-)
+- INTERDIT: Tableaux markdown (caractère |) et emojis
+
+DONNÉES BRUTES:
+${promptData}
+
+Rédigez votre rapport maintenant:
 `;
 
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
