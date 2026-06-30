@@ -791,16 +791,14 @@ router.post('/chat', auth, async (req, res) => {
             const grouped = {};
             visits.forEach(v => {
                 const name = v.user?.username || 'Inconnu';
-                if (!grouped[name]) grouped[name] = { total: 0, types: {}, recent: [] };
+                if (!grouped[name]) grouped[name] = { total: 0, types: {}, all: [] };
                 grouped[name].total++;
                 const type = v.targetType || 'autre';
                 grouped[name].types[type] = (grouped[name].types[type] || 0) + 1;
-                if (grouped[name].recent.length < 5) {
-                    grouped[name].recent.push(`${v.targetType} chez ${v.doctorName || v.pharmacyName || v.wholesalerName || '?'} (${new Date(v.start).toLocaleDateString('fr-FR')})`);
-                }
+                grouped[name].all.push(`[${new Date(v.start).toLocaleDateString('fr-FR')}] ${v.targetType} chez ${v.doctorName || v.pharmacyName || v.wholesalerName || '?'}`);
             });
             return Object.entries(grouped).map(([name, d]) =>
-                `- ${name}: ${d.total} visites (Détails types: ${Object.entries(d.types).map(([t,n])=>`${t}:${n}`).join(', ')}). Exemples récents: ${d.recent.join(' | ')}`
+                `\n- ${name}: ${d.total} visites (Types: ${Object.entries(d.types).map(([t,n])=>`${t}:${n}`).join(', ')}).\n  Détail de TOUTES les visites sur 180 jours:\n    ${d.all.join('\n    ')}`
             ).join('\n');
         })();
 
