@@ -647,7 +647,24 @@ Rédigez votre rapport maintenant:
                         await new Promise(r => setTimeout(r, 3000));
                     } else {
                         break;
-        // ─── CHAT IA CONTEXTUEL ──────────────────────────────────────────────────────
+                    }
+                }
+            }
+            if (responseText) break;
+        }
+
+        if (!responseText) {
+            throw lastError || new Error('Tous les modèles IA sont indisponibles');
+        }
+
+        res.json({ summary: responseText });
+    } catch (err) {
+        console.error('Error generating Grossiste AI report:', err);
+        res.status(500).json({ message: "Erreur lors de l'analyse grossiste", error: err.message });
+    }
+});
+
+// ─── CHAT IA CONTEXTUEL ──────────────────────────────────────────────────────
 // @route   POST api/ai/chat
 // @desc    Answer any admin question with full access to all project data
 // @access  Private (Admin only)
