@@ -716,18 +716,13 @@ router.post('/chat', auth, async (req, res) => {
 
         // 6. DB: Sectorisation
         const sectorisations = await Sectorisation.find({})
-            .populate('delegue', 'username')
+            .populate('delegueId', 'username')
             .lean();
 
         // 7. DB: Sample History
-        const sampleHistory = await SampleHistory.find({ date: { $gte: since180 } })
-            .populate('user', 'username')
-            .select('user date medication quantity action')
-            .lean();
-
-        // 8. DB: Cycles (Planning)
-        const cycles = await Cycle.find({ startDate: { $gte: since180 } })
-            .populate('delegue', 'username')
+        const sampleHistory = await SampleHistory.find({ dateGiven: { $gte: since180 } })
+            .populate('delegateId', 'username')
+            .select('delegateId delegateName dateGiven stockName count')
             .lean();
 
         // 9. Sales JSON files
@@ -827,16 +822,16 @@ router.post('/chat', auth, async (req, res) => {
 
         // Sectorisation summary
         const sectorSummary = sectorisations.map(s => 
-            `- ${s.delegue?.username || 'Inconnu'}: Semaines [${s.weeks.join(',')}] - Secteur: ${s.sectorInfo}`
+            `- ${s.delegueName || 'Inconnu'}: Semaine du ${new Date(s.weekStart).toLocaleDateString('fr-FR')} - Secteur: ${s.secteur}`
         ).join('\n');
 
         // Samples summary
         const sampleSum = (() => {
             const grouped = {};
             sampleHistory.forEach(s => {
-                const name = s.user?.username || 'Inconnu';
+                const name = s.delegateName || 'Inconnu';
                 if (!grouped[name]) grouped[name] = {};
-                grouped[name][s.medication] = (grouped[name][s.medication] || 0) + (s.action === 'distributed' ? Number(s.quantity) : 0);
+                grouped[name][s.stockName] = (grouped[name][s.stockName] || 0) + (Number(s.count) || 0);
             });
             return Object.entries(grouped).map(([name, meds]) => 
                 `- ${name} a distribué: ${Object.entries(meds).map(([m,q])=>`${m}(${q})`).join(', ')}`
