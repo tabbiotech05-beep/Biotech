@@ -3,6 +3,11 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import Visit from '../models/Visit.js';
 import User from '../models/User.js';
 import LeaveRequest from '../models/LeaveRequest.js';
+import Expense from '../models/Expense.js';
+import Congress from '../models/Congress.js';
+import Sectorisation from '../models/Sectorisation.js';
+import SampleHistory from '../models/SampleHistory.js';
+import Cycle from '../models/Cycle.js';
 import auth from '../middleware/auth.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -642,24 +647,7 @@ Rédigez votre rapport maintenant:
                         await new Promise(r => setTimeout(r, 3000));
                     } else {
                         break;
-                    }
-                }
-            }
-            if (responseText) break;
-        }
-
-        if (!responseText) {
-            throw lastError || new Error('Tous les modèles IA sont indisponibles');
-        }
-
-        res.json({ summary: responseText });
-    } catch (err) {
-        console.error('Error generating Grossiste AI report:', err);
-        res.status(500).json({ message: "Erreur lors de l'analyse grossiste", error: err.message });
-    }
-});
-
-// ─── CHAT IA CONTEXTUEL ──────────────────────────────────────────────────────
+        // ─── CHAT IA CONTEXTUEL ──────────────────────────────────────────────────────
 // @route   POST api/ai/chat
 // @desc    Answer any admin question with full access to all project data
 // @access  Private (Admin only)
@@ -680,30 +668,60 @@ router.post('/chat', auth, async (req, res) => {
         // ─── Gather all available context ────────────────────────────────────
         const now = new Date();
         const monthStr = String(now.getMonth() + 1).padStart(2, '0');
+        const since180 = new Date(now); since180.setDate(since180.getDate() - 180);
 
         // 1. DB: All delegates
         const delegates = await User.find({ role: 'delegue' }).select('username allowedDashboards').lean();
 
         // 2. DB: Recent visits (last 180 days)
-        const since60 = new Date(now); since60.setDate(since60.getDate() - 180);
-        const visits = await Visit.find({ start: { $gte: since60 } })
+        const visits = await Visit.find({ start: { $gte: since180 } })
             .populate('user', 'username')
             .select('user targetType doctorName pharmacyName wholesalerName details start governorate dashboardId')
             .lean();
 
-        // 3. DB: Leave requests (all pending + recent)
+        // 3. DB: Leave requests
         const leaves = await LeaveRequest.find({})
             .populate('user', 'username')
             .select('user status startDate endDate reason')
             .lean();
 
-        // 4. Sales JSON files
+        // 4. DB: Expenses
+        const expenses = await Expense.find({ date: { $gte: since180 } })
+            .populate('user', 'username')
+            .select('user date totalAmount status')
+            .lean();
+
+        // 5. DB: Congresses
+        const congresses = await Congress.find({})
+            .populate('participants', 'username')
+            .select('name location startDate endDate participants status')
+            .lean();
+
+        // 6. DB: Sectorisation
+        const sectorisations = await Sectorisation.find({})
+            .populate('delegue', 'username')
+            .lean();
+
+        // 7. DB: Sample History
+        const sampleHistory = await SampleHistory.find({ date: { $gte: since180 } })
+            .populate('user', 'username')
+            .select('user date medication quantity action')
+            .lean();
+
+        // 8. DB: Cycles (Planning)
+        const cycles = await Cycle.find({ startDate: { $gte: since180 } })
+            .populate('delegue', 'username')
+            .lean();
+
+        // 9. Sales JSON files
         const paths = {
             localSales: path.join(__dirname, '../../sales-dashboard/public/local_sales_data.json'),
+            biotechSales: path.join(__dirname, '../../sales-dashboard/public/sales_data.json'),
             cm: path.join(__dirname, '../../sales-dashboard/public/cm_data.json'),
         };
 
         let localSalesSummary = 'Non disponible';
+        let biotechSalesSummary = 'Non disponible';
         let cmSummary = 'Non disponible';
 
         if (fs.existsSync(paths.localSales) && fs.existsSync(paths.cm)) {
@@ -711,7 +729,6 @@ router.post('/chat', auth, async (req, res) => {
             const cmData = JSON.parse(fs.readFileSync(paths.cm, 'utf-8'));
             const LOCAL_PRODUCTS = ['amlor', 'tahor', 'celebrex', 'zoloft'];
 
-            // Find latest month in data
             const allMonths = [...new Set(localSalesRaw
                 .filter(d => LOCAL_PRODUCTS.some(p => d.libelle?.toLowerCase().includes(p)))
                 .map(d => `${d.annee}-${d.mois}`)
@@ -719,7 +736,6 @@ router.post('/chat', auth, async (req, res) => {
             const latestMonth = allMonths[allMonths.length - 1] || `2026-${monthStr}`;
             const [ly, lm] = latestMonth.split('-');
 
-            // Aggregate by client for latest month
             const clientTotals = {};
             const allClients = new Set();
             localSalesRaw
@@ -736,15 +752,29 @@ router.post('/chat', auth, async (req, res) => {
             const activeClients = Object.keys(clientTotals).filter(c => c !== 'INCONNU');
             const inactiveClients = [...allClients].filter(c => c !== 'INCONNU' && !activeClients.includes(c));
 
-            localSalesSummary = `
-Mois analysé (produits locaux): ${latestMonth}
-Grossistes actifs: ${activeClients.length} | Inactifs: ${inactiveClients.length}
-Grossistes n'ayant pas commandé: ${inactiveClients.join(', ')}
-Top clients actifs: ${Object.entries(clientTotals).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([c,q])=>`${c}(${q})`).join(', ')}
-CM par produit: ${Object.entries(cmData).map(([p,cm])=>`${p}:${cm}`).join(', ')}`;
+            localSalesSummary = `Mois analysé: ${latestMonth}. Grossistes actifs: ${activeClients.length}. Inactifs: ${inactiveClients.length} (${inactiveClients.join(', ')}). Top clients actifs: ${Object.entries(clientTotals).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([c,q])=>`${c}(${q})`).join(', ')}`;
+            cmSummary = Object.entries(cmData).map(([p,cm])=>`${p}:${cm}`).join(', ');
         }
 
-        // 5. Format visit summaries
+        if (fs.existsSync(paths.biotechSales)) {
+            const biotechSalesRaw = JSON.parse(fs.readFileSync(paths.biotechSales, 'utf-8'));
+            const allMonths = [...new Set(biotechSalesRaw.map(d => `${d.annee}-${d.mois}`))].sort();
+            const latestMonth = allMonths[allMonths.length - 1] || `2026-${monthStr}`;
+            const [ly, lm] = latestMonth.split('-');
+
+            let totalQty = 0;
+            const topProducts = {};
+            biotechSalesRaw.filter(d => d.annee === ly && d.mois === lm).forEach(d => {
+                totalQty += Number(d.qte) || 0;
+                if (!topProducts[d.libelle]) topProducts[d.libelle] = 0;
+                topProducts[d.libelle] += Number(d.qte) || 0;
+            });
+            biotechSalesSummary = `Mois analysé: ${latestMonth}. Quantité totale vendue: ${totalQty}. Top produits: ${Object.entries(topProducts).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([p,q])=>`${p}(${q})`).join(', ')}`;
+        }
+
+        // ─── Formatting all the summaries for the prompt ────────────────────────
+        
+        // Format visit summaries
         const visitSummary = (() => {
             const grouped = {};
             visits.forEach(v => {
@@ -753,65 +783,108 @@ CM par produit: ${Object.entries(cmData).map(([p,cm])=>`${p}:${cm}`).join(', ')}
                 grouped[name].total++;
                 const type = v.targetType || 'autre';
                 grouped[name].types[type] = (grouped[name].types[type] || 0) + 1;
-                if (grouped[name].recent.length < 3) {
+                if (grouped[name].recent.length < 5) {
                     grouped[name].recent.push(`${v.targetType} chez ${v.doctorName || v.pharmacyName || v.wholesalerName || '?'} (${new Date(v.start).toLocaleDateString('fr-FR')})`);
                 }
             });
             return Object.entries(grouped).map(([name, d]) =>
-                `${name}: ${d.total} visites | Types: ${Object.entries(d.types).map(([t,n])=>`${t}(${n})`).join(',')} | Exemples: ${d.recent.join(' | ')}`
+                `- ${name}: ${d.total} visites (Détails types: ${Object.entries(d.types).map(([t,n])=>`${t}:${n}`).join(', ')}). Exemples récents: ${d.recent.join(' | ')}`
             ).join('\n');
         })();
 
-        // 6. Leave summary
+        // Expenses summary
+        const expenseSummary = (() => {
+            const grouped = {};
+            expenses.forEach(e => {
+                const name = e.user?.username || 'Inconnu';
+                if (!grouped[name]) grouped[name] = 0;
+                grouped[name] += Number(e.totalAmount) || 0;
+            });
+            return Object.entries(grouped).map(([name, total]) => `- ${name}: ${total.toFixed(2)} DT`).join('\n');
+        })();
+
+        // Congress summary
+        const congressSummary = congresses.map(c => 
+            `- ${c.name} à ${c.location} (${new Date(c.startDate).toLocaleDateString('fr-FR')} - ${new Date(c.endDate).toLocaleDateString('fr-FR')}). Statut: ${c.status}. Participants: ${c.participants?.map(p => p.username).join(', ')}`
+        ).join('\n');
+
+        // Sectorisation summary
+        const sectorSummary = sectorisations.map(s => 
+            `- ${s.delegue?.username || 'Inconnu'}: Semaines [${s.weeks.join(',')}] - Secteur: ${s.sectorInfo}`
+        ).join('\n');
+
+        // Samples summary
+        const sampleSum = (() => {
+            const grouped = {};
+            sampleHistory.forEach(s => {
+                const name = s.user?.username || 'Inconnu';
+                if (!grouped[name]) grouped[name] = {};
+                grouped[name][s.medication] = (grouped[name][s.medication] || 0) + (s.action === 'distributed' ? Number(s.quantity) : 0);
+            });
+            return Object.entries(grouped).map(([name, meds]) => 
+                `- ${name} a distribué: ${Object.entries(meds).map(([m,q])=>`${m}(${q})`).join(', ')}`
+            ).join('\n');
+        })();
+
+        // Leaves summary
         const pendingLeaves = leaves.filter(l => l.status === 'pending');
         const approvedLeaves = leaves.filter(l => l.status === 'approved');
         const leaveSummary = `
 Congés en attente (${pendingLeaves.length}): ${pendingLeaves.map(l => `${l.user?.username}: ${new Date(l.startDate).toLocaleDateString('fr-FR')} - ${new Date(l.endDate).toLocaleDateString('fr-FR')}`).join(' | ')}
-Congés approuvés récents: ${approvedLeaves.slice(0,5).map(l => `${l.user?.username}: ${new Date(l.startDate).toLocaleDateString('fr-FR')}`).join(' | ')}`;
+Congés approuvés: ${approvedLeaves.slice(-10).map(l => `${l.user?.username}: ${new Date(l.startDate).toLocaleDateString('fr-FR')}`).join(' | ')}`;
 
-        // 7. Delegates list
-        const delegatesSummary = delegates.map(d =>
-            `${d.username} (${d.allowedDashboards?.includes('dashboard2') ? 'Tenshi' : 'Biotech'})`
-        ).join(', ');
+        const delegatesSummary = delegates.map(d => `${d.username} (${d.allowedDashboards?.includes('dashboard2') ? 'Tenshi' : 'Biotech'})`).join(', ');
 
-        // ─── Build conversation history for context ───────────────────────────
-        const historyText = history
-            .slice(-6) // last 3 exchanges
-            .map(m => `${m.role === 'user' ? 'Question' : 'Réponse'}: ${m.content}`)
-            .join('\n');
+        const historyText = history.slice(-6).map(m => `${m.role === 'user' ? 'Question' : 'Réponse'}: ${m.content}`).join('\n');
 
         // ─── Build the master prompt ──────────────────────────────────────────
         const prompt = `
-Vous êtes un ASSISTANT IA EXPERT de l'entreprise pharmaceutique BiotechpharmaMD / Tenshi.
-Vous avez accès à TOUTES les données de l'entreprise listées ci-dessous.
-Répondez de manière précise, concise et utile à la question de l'administrateur.
-Si la réponse implique des noms, des chiffres ou des listes, soyez exhaustif.
-Utilisez du markdown léger (gras, listes à puces) pour structurer votre réponse si nécessaire.
+Vous êtes l'ASSISTANT IA EXPERT OMNISCIENT de l'entreprise pharmaceutique BiotechpharmaMD / Tenshi.
+Vous avez accès à une vue à 360 degrés sur TOUTES les données de l'entreprise.
+Votre but est d'analyser ces données pour répondre aux questions de l'administrateur avec une précision absolue.
+N'hésitez pas à croiser les données (ex: visites vs frais, visites vs échantillons).
+Si l'administrateur demande de faire une analyse d'équipe, soyez pointu, chiffré et n'hésitez pas à jouer le rôle d'un manager si la question l'exige.
+FORMATAGE: Utilisez du Markdown (listes, gras) pour rendre vos réponses très lisibles.
 
 === DONNÉES DISPONIBLES ===
 
 --- DÉLÉGUÉS (${delegates.length} au total) ---
 ${delegatesSummary}
 
---- VISITES (60 derniers jours) ---
+--- VISITES (180 derniers jours) ---
 ${visitSummary || 'Aucune visite enregistrée.'}
+
+--- NOTES DE FRAIS (Totaux sur 180 jours) ---
+${expenseSummary || 'Aucune note de frais.'}
+
+--- CONGRÈS ---
+${congressSummary || 'Aucun congrès.'}
+
+--- SECTORISATION (Affectations par délégué) ---
+${sectorSummary || 'Aucune sectorisation définie.'}
+
+--- ÉCHANTILLONS DISTRIBUÉS (180 jours) ---
+${sampleSum || 'Aucun échantillon distribué.'}
 
 --- CONGÉS ---
 ${leaveSummary}
 
---- VENTES LOCALES / GROSSISTES ---
+--- VENTES LOCALES / GROSSISTES (TENSHI) ---
 ${localSalesSummary}
 
 --- CM (Consommation Moyenne par produit) ---
 ${cmSummary}
 
+--- VENTES BIOTECH ---
+${biotechSalesSummary}
+
 === HISTORIQUE DE LA CONVERSATION ===
 ${historyText || 'Début de conversation.'}
 
-=== QUESTION ACTUELLE ===
+=== QUESTION ACTUELLE DE L'ADMIN ===
 ${question}
 
-Répondez maintenant de manière précise et utile:`;
+Analysez ces données pour répondre de la manière la plus complète possible:`;
 
         // ─── Call Gemini ──────────────────────────────────────────────────────
         const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
