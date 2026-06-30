@@ -710,8 +710,8 @@ router.post('/chat', auth, async (req, res) => {
 
         // 5. DB: Congresses
         const congresses = await Congress.find({})
-            .populate('participants', 'username')
-            .select('name location startDate endDate participants status')
+            .populate('user', 'username')
+            .select('name location startDate endDate participant status user')
             .lean();
 
         // 6. DB: Sectorisation
@@ -822,7 +822,7 @@ router.post('/chat', auth, async (req, res) => {
 
         // Congress summary
         const congressSummary = congresses.map(c => 
-            `- ${c.name} à ${c.location} (${new Date(c.startDate).toLocaleDateString('fr-FR')} - ${new Date(c.endDate).toLocaleDateString('fr-FR')}). Statut: ${c.status}. Participants: ${c.participants?.map(p => p.username).join(', ')}`
+            `- ${c.name} à ${c.location} (${new Date(c.startDate).toLocaleDateString('fr-FR')} - ${new Date(c.endDate).toLocaleDateString('fr-FR')}). Statut: ${c.status}. Participant: ${c.participant || (c.user && c.user.username)}`
         ).join('\n');
 
         // Sectorisation summary
