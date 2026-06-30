@@ -215,10 +215,10 @@ const AIChatWidget = ({ accent = '#6366f1' }) => {
                                     background: msg.role === 'user'
                                         ? `linear-gradient(135deg, ${accent}, #8b5cf6)`
                                         : 'rgba(255,255,255,0.07)',
-                                    border: msg.role === 'user' ? 'none' : '1px solid rgba(255,255,255,0.1)',
+                                    border: msg.role === 'user' ? 'none' : '1px solid rgba(0,0,0,0.1)',
                                     fontSize: '13px',
                                     lineHeight: '1.6',
-                                    color: msg.role === 'user' ? 'white' : 'rgba(255,255,255,0.9)'
+                                    color: msg.role === 'user' ? 'white' : '#111827'
                                 }}>
                                     {msg.role === 'assistant' ? (
                                         <div className="ai-chat-markdown">
@@ -358,9 +358,9 @@ const AIChatWidget = ({ accent = '#6366f1' }) => {
                 .ai-chat-markdown ul, .ai-chat-markdown ol { padding-left: 18px; margin: 6px 0; }
                 .ai-chat-markdown li { margin: 3px 0; }
                 .ai-chat-markdown h1, .ai-chat-markdown h2, .ai-chat-markdown h3 {
-                    font-weight: 800; margin: 8px 0 4px 0; color: white;
+                    font-weight: 800; margin: 8px 0 4px 0; color: #111827;
                 }
-                .ai-chat-markdown strong { color: white; font-weight: 700; }
+                .ai-chat-markdown strong { color: #111827; font-weight: 700; }
                 .ai-chat-markdown code {
                     background: rgba(255,255,255,0.1); padding: 1px 5px;
                     border-radius: 4px; font-size: 12px;
