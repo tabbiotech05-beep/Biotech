@@ -684,8 +684,8 @@ router.post('/chat', auth, async (req, res) => {
         // 1. DB: All delegates
         const delegates = await User.find({ role: 'delegue' }).select('username allowedDashboards').lean();
 
-        // 2. DB: Recent visits (last 60 days)
-        const since60 = new Date(now); since60.setDate(since60.getDate() - 60);
+        // 2. DB: Recent visits (last 180 days)
+        const since60 = new Date(now); since60.setDate(since60.getDate() - 180);
         const visits = await Visit.find({ start: { $gte: since60 } })
             .populate('user', 'username')
             .select('user targetType doctorName pharmacyName wholesalerName details start governorate dashboardId')
