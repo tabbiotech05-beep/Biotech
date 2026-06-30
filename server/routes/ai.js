@@ -659,4 +659,196 @@ Rédigez votre rapport maintenant:
     }
 });
 
+// ─── CHAT IA CONTEXTUEL ──────────────────────────────────────────────────────
+// @route   POST api/ai/chat
+// @desc    Answer any admin question with full access to all project data
+// @access  Private (Admin only)
+router.post('/chat', auth, async (req, res) => {
+    try {
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({ message: 'Accès refusé. Administrateurs uniquement.' });
+        }
+        if (!process.env.GEMINI_API_KEY) {
+            return res.status(500).json({ message: 'Clé API Gemini manquante dans le fichier .env' });
+        }
+
+        const { question, history = [] } = req.body;
+        if (!question || !question.trim()) {
+            return res.status(400).json({ message: 'Question vide.' });
+        }
+
+        // ─── Gather all available context ────────────────────────────────────
+        const now = new Date();
+        const monthStr = String(now.getMonth() + 1).padStart(2, '0');
+
+        // 1. DB: All delegates
+        const delegates = await User.find({ role: 'delegue' }).select('username allowedDashboards').lean();
+
+        // 2. DB: Recent visits (last 60 days)
+        const since60 = new Date(now); since60.setDate(since60.getDate() - 60);
+        const visits = await Visit.find({ start: { $gte: since60 } })
+            .populate('user', 'username')
+            .select('user targetType doctorName pharmacyName wholesalerName details start governorate dashboardId')
+            .lean();
+
+        // 3. DB: Leave requests (all pending + recent)
+        const leaves = await LeaveRequest.find({})
+            .populate('user', 'username')
+            .select('user status startDate endDate reason')
+            .lean();
+
+        // 4. Sales JSON files
+        const paths = {
+            localSales: path.join(__dirname, '../../sales-dashboard/public/local_sales_data.json'),
+            cm: path.join(__dirname, '../../sales-dashboard/public/cm_data.json'),
+        };
+
+        let localSalesSummary = 'Non disponible';
+        let cmSummary = 'Non disponible';
+
+        if (fs.existsSync(paths.localSales) && fs.existsSync(paths.cm)) {
+            const localSalesRaw = JSON.parse(fs.readFileSync(paths.localSales, 'utf-8'));
+            const cmData = JSON.parse(fs.readFileSync(paths.cm, 'utf-8'));
+            const LOCAL_PRODUCTS = ['amlor', 'tahor', 'celebrex', 'zoloft'];
+
+            // Find latest month in data
+            const allMonths = [...new Set(localSalesRaw
+                .filter(d => LOCAL_PRODUCTS.some(p => d.libelle?.toLowerCase().includes(p)))
+                .map(d => `${d.annee}-${d.mois}`)
+            )].sort();
+            const latestMonth = allMonths[allMonths.length - 1] || `2026-${monthStr}`;
+            const [ly, lm] = latestMonth.split('-');
+
+            // Aggregate by client for latest month
+            const clientTotals = {};
+            const allClients = new Set();
+            localSalesRaw
+                .filter(d => LOCAL_PRODUCTS.some(p => d.libelle?.toLowerCase().includes(p)))
+                .forEach(d => allClients.add(d.nom_client));
+
+            localSalesRaw
+                .filter(d => d.annee === ly && d.mois === lm && LOCAL_PRODUCTS.some(p => d.libelle?.toLowerCase().includes(p)))
+                .forEach(d => {
+                    if (!clientTotals[d.nom_client]) clientTotals[d.nom_client] = 0;
+                    clientTotals[d.nom_client] += Number(d.qte) || 0;
+                });
+
+            const activeClients = Object.keys(clientTotals).filter(c => c !== 'INCONNU');
+            const inactiveClients = [...allClients].filter(c => c !== 'INCONNU' && !activeClients.includes(c));
+
+            localSalesSummary = `
+Mois analysé (produits locaux): ${latestMonth}
+Grossistes actifs: ${activeClients.length} | Inactifs: ${inactiveClients.length}
+Grossistes n'ayant pas commandé: ${inactiveClients.join(', ')}
+Top clients actifs: ${Object.entries(clientTotals).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([c,q])=>`${c}(${q})`).join(', ')}
+CM par produit: ${Object.entries(cmData).map(([p,cm])=>`${p}:${cm}`).join(', ')}`;
+        }
+
+        // 5. Format visit summaries
+        const visitSummary = (() => {
+            const grouped = {};
+            visits.forEach(v => {
+                const name = v.user?.username || 'Inconnu';
+                if (!grouped[name]) grouped[name] = { total: 0, types: {}, recent: [] };
+                grouped[name].total++;
+                const type = v.targetType || 'autre';
+                grouped[name].types[type] = (grouped[name].types[type] || 0) + 1;
+                if (grouped[name].recent.length < 3) {
+                    grouped[name].recent.push(`${v.targetType} chez ${v.doctorName || v.pharmacyName || v.wholesalerName || '?'} (${new Date(v.start).toLocaleDateString('fr-FR')})`);
+                }
+            });
+            return Object.entries(grouped).map(([name, d]) =>
+                `${name}: ${d.total} visites | Types: ${Object.entries(d.types).map(([t,n])=>`${t}(${n})`).join(',')} | Exemples: ${d.recent.join(' | ')}`
+            ).join('\n');
+        })();
+
+        // 6. Leave summary
+        const pendingLeaves = leaves.filter(l => l.status === 'pending');
+        const approvedLeaves = leaves.filter(l => l.status === 'approved');
+        const leaveSummary = `
+Congés en attente (${pendingLeaves.length}): ${pendingLeaves.map(l => `${l.user?.username}: ${new Date(l.startDate).toLocaleDateString('fr-FR')} - ${new Date(l.endDate).toLocaleDateString('fr-FR')}`).join(' | ')}
+Congés approuvés récents: ${approvedLeaves.slice(0,5).map(l => `${l.user?.username}: ${new Date(l.startDate).toLocaleDateString('fr-FR')}`).join(' | ')}`;
+
+        // 7. Delegates list
+        const delegatesSummary = delegates.map(d =>
+            `${d.username} (${d.allowedDashboards?.includes('dashboard2') ? 'Tenshi' : 'Biotech'})`
+        ).join(', ');
+
+        // ─── Build conversation history for context ───────────────────────────
+        const historyText = history
+            .slice(-6) // last 3 exchanges
+            .map(m => `${m.role === 'user' ? 'Question' : 'Réponse'}: ${m.content}`)
+            .join('\n');
+
+        // ─── Build the master prompt ──────────────────────────────────────────
+        const prompt = `
+Vous êtes un ASSISTANT IA EXPERT de l'entreprise pharmaceutique BiotechpharmaMD / Tenshi.
+Vous avez accès à TOUTES les données de l'entreprise listées ci-dessous.
+Répondez de manière précise, concise et utile à la question de l'administrateur.
+Si la réponse implique des noms, des chiffres ou des listes, soyez exhaustif.
+Utilisez du markdown léger (gras, listes à puces) pour structurer votre réponse si nécessaire.
+
+=== DONNÉES DISPONIBLES ===
+
+--- DÉLÉGUÉS (${delegates.length} au total) ---
+${delegatesSummary}
+
+--- VISITES (60 derniers jours) ---
+${visitSummary || 'Aucune visite enregistrée.'}
+
+--- CONGÉS ---
+${leaveSummary}
+
+--- VENTES LOCALES / GROSSISTES ---
+${localSalesSummary}
+
+--- CM (Consommation Moyenne par produit) ---
+${cmSummary}
+
+=== HISTORIQUE DE LA CONVERSATION ===
+${historyText || 'Début de conversation.'}
+
+=== QUESTION ACTUELLE ===
+${question}
+
+Répondez maintenant de manière précise et utile:`;
+
+        // ─── Call Gemini ──────────────────────────────────────────────────────
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+        const modelsToTry = ['gemini-2.5-flash', 'gemini-2.0-flash'];
+        let answer = null;
+        let lastError = null;
+
+        for (const modelName of modelsToTry) {
+            for (let attempt = 1; attempt <= 2; attempt++) {
+                try {
+                    const model = genAI.getGenerativeModel({ model: modelName });
+                    const result = await model.generateContent(prompt);
+                    answer = result.response.text();
+                    break;
+                } catch (e) {
+                    lastError = e;
+                    if (e.message?.includes('503') && attempt < 2) {
+                        await new Promise(r => setTimeout(r, 2000));
+                    } else { break; }
+                }
+            }
+            if (answer) break;
+        }
+
+        if (!answer) throw lastError || new Error('IA indisponible');
+
+        res.json({ answer });
+    } catch (err) {
+        console.error('Chat AI error:', err);
+        const isQuota = err.message?.includes('429') || err.message?.includes('quota');
+        res.status(500).json({
+            message: isQuota
+                ? 'Quota API dépassé. Réessayez dans quelques minutes.'
+                : 'Erreur lors de la réponse IA.',
+            error: err.message
+        });
+    }
+});
+
 export default router;

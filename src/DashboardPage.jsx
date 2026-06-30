@@ -27,6 +27,7 @@ import MedListView from './components/MedListView';
 import AssignmentView from './components/AssignmentView';
 import SectorisationAdminView from './components/SectorisationAdminView';
 import SectorisationDelegueView from './components/SectorisationDelegueView';
+import AIChatWidget from './components/AIChatWidget';
 import axios from 'axios';
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -624,6 +625,9 @@ export default function DashboardPage() {
                     {activeTab === 'sectorisation-delegue' && <SectorisationDelegueView />}
                 </div>
             </main>
+
+            {/* Floating AI Chat — Admin only */}
+            {role === 'admin' && <AIChatWidget accent={accent} />}
         </div>
     );
 }
