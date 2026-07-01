@@ -393,6 +393,7 @@ export default function DashboardPage() {
             { id: 'assignment', label: 'Attribution', icon: <IconAssignment /> },
             { id: 'stock', label: 'Stock', icon: <IconStock /> },
             { id: 'history', label: 'Historique', icon: <IconHistory /> },
+            { id: 'expense', label: 'Note de Frais', icon: <IconExpense /> },
             { id: 'profile', label: 'Mon Profil', icon: <IconProfile /> },
         ];
 
@@ -431,6 +432,7 @@ export default function DashboardPage() {
                         {pharmaTab === 'assignment' && <PharmacienneView />}
                         {pharmaTab === 'stock' && <StockView />}
                         {pharmaTab === 'history' && <SampleHistoryView />}
+                        {pharmaTab === 'expense' && <ExpenseView />}
                         {pharmaTab === 'profile' && <ProfileView />}
                     </div>
                 </main>
