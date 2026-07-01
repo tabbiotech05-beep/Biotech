@@ -236,17 +236,20 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                         <button onClick={() => setShowAddModal(true)} className={`px-4 py-2 text-sm text-white rounded-xl ${theme.bg} ${theme.bgHover} shadow-lg shadow-blue-500/20 transition-all`}>
                             + Nouveau Médecin
                         </button>
-                        <button
-                            onClick={downloadCycleReport}
-                            className="px-4 py-2 text-sm bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 border border-emerald-700 transition-all font-bold flex items-center gap-2 shadow-md shadow-emerald-500/20"
-                        >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                            Télécharger Rapport Cycle
-                        </button>
                     </div>
                 )}
+                {userRole === 'admin' && (
+                    <button
+                        onClick={downloadCycleReport}
+                        className="px-4 py-2 text-sm bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 border border-emerald-700 transition-all font-bold flex items-center gap-2 shadow-md shadow-emerald-500/20"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Télécharger Rapport Cycle
+                    </button>
+                )}
+
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[calc(100vh-250px)]">
