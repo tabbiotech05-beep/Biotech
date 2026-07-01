@@ -571,5 +571,78 @@ router.put('/:id/assign', auth, async (req, res) => {
     }
 });
 
+// @route   GET api/visits/admin/cycle-report
+// @desc    Get all visits of all delegues for admin cycle report download
+// @access  Admin only
+router.get('/admin/cycle-report', auth, async (req, res) => {
+    if (req.user.role !== 'admin') {
+        return res.status(403).json({ msg: 'Accès réservé aux administrateurs' });
+    }
+    const dashboardId = req.query.dashboardId;
+    if (!dashboardId) return res.status(400).json({ msg: 'dashboardId requis' });
+
+    try {
+        // Get all users (delegues)
+        const users = await User.find({ role: 'delegue' }).select('_id username').lean();
+
+        // Get all visits for this dashboard, populate user
+        const allVisits = await Visit.find({ dashboardId })
+            .populate('user', 'username')
+            .sort({ start: 1 })
+            .lean();
+
+        // Build report per delegate
+        const report = users.map(u => {
+            const userVisits = allVisits.filter(v => v.user?._id?.toString() === u._id.toString());
+
+            // All unique grossistes
+            const grossistesSet = new Set();
+            userVisits.forEach(v => {
+                if (v.targetType === 'grossiste' && v.wholesalerName) {
+                    grossistesSet.add(v.wholesalerName.trim());
+                }
+            });
+
+            // Group governorates by week
+            const weekMap = {};
+            userVisits.forEach(v => {
+                if (!v.start) return;
+                const d = new Date(v.start);
+                let day = d.getDay();
+                if (day === 0) day = 7;
+                const monday = new Date(d);
+                monday.setHours(0,0,0,0);
+                monday.setDate(d.getDate() - (day - 1));
+                const sunday = new Date(monday);
+                sunday.setDate(monday.getDate() + 6);
+                const fmt = (dt) => dt.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' });
+                const weekKey = `S. du ${fmt(monday)} au ${fmt(sunday)}`;
+
+                if (!weekMap[weekKey]) weekMap[weekKey] = { timestamp: monday.getTime(), govs: new Set() };
+                if (v.governorate) weekMap[weekKey].govs.add(v.governorate.trim());
+            });
+
+            // Sort weeks chronologically
+            const weeks = Object.entries(weekMap)
+                .sort((a, b) => a[1].timestamp - b[1].timestamp)
+                .map(([label, data]) => ({
+                    label,
+                    governorates: [...data.govs].join(', ') || '-'
+                }));
+
+            return {
+                delegue: u.username,
+                grossistes: [...grossistesSet].join(' | ') || '-',
+                weeks
+            };
+        });
+
+        res.json(report);
+    } catch (err) {
+        console.error('[cycle-report] Error:', err.message);
+        res.status(500).json({ msg: 'Erreur serveur' });
+    }
+});
+
 export default router;
 

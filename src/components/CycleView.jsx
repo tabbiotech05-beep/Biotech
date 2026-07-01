@@ -110,6 +110,53 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
         }
     };
 
+    const downloadCycleReport = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch(`/api/visits/admin/cycle-report?dashboardId=${dashboardId}`, {
+                headers: { 'x-auth-token': token }
+            });
+            if (!res.ok) throw new Error('Erreur lors du chargement du rapport');
+            const report = await res.json();
+
+            // Collect all unique week labels across all delegates (in order)
+            const allWeekLabels = [];
+            const seen = new Set();
+            report.forEach(r => r.weeks.forEach(w => {
+                if (!seen.has(w.label)) { seen.add(w.label); allWeekLabels.push(w.label); }
+            }));
+
+            // Header row
+            const headers = ['Délégué', 'Grossistes Visités', ...allWeekLabels.map(w => `Gouvernorats – ${w}`)];
+
+            const csvRows = [headers.join(';')];
+            report.forEach(r => {
+                const row = [
+                    `"${r.delegue}"`,
+                    `"${r.grossistes}"`
+                ];
+                allWeekLabels.forEach(wLabel => {
+                    const weekEntry = r.weeks.find(w => w.label === wLabel);
+                    row.push(`"${weekEntry ? weekEntry.governorates : '-'}"`);
+                });
+                csvRows.push(row.join(';'));
+            });
+
+            const csvContent = '\uFEFF' + csvRows.join('\n'); // BOM for Excel UTF-8
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `rapport_cycle_${dashboardId}_${new Date().toLocaleDateString('fr-FR').replace(/\//g, '-')}.csv`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        } catch (err) {
+            alert('Erreur lors du téléchargement : ' + err.message);
+        }
+    };
+
     const handleSyncAll = async () => {
         if (!window.confirm("Synchroniser tous les médecins depuis les visites de TOUS les délégués ?")) return;
         try {
@@ -188,6 +235,15 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                         </button>
                         <button onClick={() => setShowAddModal(true)} className={`px-4 py-2 text-sm text-white rounded-xl ${theme.bg} ${theme.bgHover} shadow-lg shadow-blue-500/20 transition-all`}>
                             + Nouveau Médecin
+                        </button>
+                        <button
+                            onClick={downloadCycleReport}
+                            className="px-4 py-2 text-sm bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 border border-emerald-700 transition-all font-bold flex items-center gap-2 shadow-md shadow-emerald-500/20"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Télécharger Rapport Cycle
                         </button>
                     </div>
                 )}
