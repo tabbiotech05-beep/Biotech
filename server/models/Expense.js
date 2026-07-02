@@ -19,7 +19,7 @@ const expenseSchema = new mongoose.Schema({
     },
     dashboardId: {
         type: String,
-        required: true
+        default: 'none'
     },
     year: {
         type: Number,
