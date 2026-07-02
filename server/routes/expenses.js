@@ -57,8 +57,8 @@ router.post('/', auth, async (req, res) => {
             dashboardId, year, month, carModel, licensePlate, kilometrage, entries = [] 
         } = req.body;
 
-        if (!dashboardId || !year || !month || kilometrage == null) {
-            return res.status(400).json({ msg: 'Please provide dashboardId, year, month, and kilometrage' });
+        if (!year || !month || kilometrage == null) {
+            return res.status(400).json({ msg: 'Please provide year, month, and kilometrage' });
         }
 
         // Calculate total amount
@@ -89,7 +89,7 @@ router.post('/', auth, async (req, res) => {
 
         const newExpense = new Expense({
             user: req.user.userId,
-            dashboardId,
+            dashboardId: dashboardId || 'none',
             year,
             month,
             carModel: finalCarModel || '',
