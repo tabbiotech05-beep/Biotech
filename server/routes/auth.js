@@ -413,6 +413,87 @@ router.post('/batch-assign-samples', auth, async (req, res) => {
 });
 
 
+// @route   POST api/auth/return-samples
+// @desc    Return samples from a delegate to the main stock
+// @access  Private (Pharmacienne/Admin)
+router.post('/return-samples', auth, async (req, res) => {
+    try {
+        const { delegateId, sampleName, batchNumber, itemType, returnCount } = req.body;
+        
+        if (!delegateId || !sampleName || !returnCount || returnCount <= 0) {
+            return res.status(400).json({ message: 'Données invalides pour la restitution' });
+        }
+
+        const user = await User.findById(delegateId);
+        if (!user || user.role !== 'delegue') {
+            return res.status(404).json({ message: 'Délégué non trouvé' });
+        }
+
+        const sampleIndex = user.samples.findIndex(s => 
+            s.name === sampleName && 
+            s.batchNumber === (batchNumber || null) && 
+            (s.itemType || 'sample') === (itemType || 'sample')
+        );
+
+        if (sampleIndex === -1 || user.samples[sampleIndex].count < returnCount) {
+            return res.status(400).json({ message: 'Quantité insuffisante dans l\'inventaire du délégué' });
+        }
+
+        // Deduct from delegate
+        user.samples[sampleIndex].count -= returnCount;
+        user.samples[sampleIndex].lastUpdated = Date.now();
+        
+        if (user.samples[sampleIndex].count === 0) {
+            user.samples.splice(sampleIndex, 1);
+        }
+        await user.save();
+
+        // Add back to global stock
+        const query = { name: sampleName };
+        if (batchNumber) query.batchNumber = batchNumber;
+        if (itemType) query.type = itemType;
+
+        let stockItem = await Stock.findOne(query);
+        if (stockItem) {
+            stockItem.quantity += returnCount;
+            await stockItem.save();
+        } else {
+            // Recreate stock if it doesn't exist anymore
+            stockItem = new Stock({
+                name: sampleName,
+                batchNumber: batchNumber || 'N/A',
+                quantity: returnCount,
+                type: itemType || 'sample'
+            });
+            await stockItem.save();
+        }
+
+        // Record history
+        try {
+            const historyEntry = new SampleHistory({
+                delegateId: user._id,
+                delegateName: user.username,
+                stockId: stockItem._id,
+                stockName: sampleName,
+                batchNumber: batchNumber || 'N/A',
+                itemType: itemType || 'sample',
+                count: returnCount,
+                action: 'return',
+                givenBy: req.user.userId
+            });
+            await historyEntry.save();
+        } catch (historyErr) {
+            console.error('Failed to save history for return:', historyErr);
+        }
+
+        res.json({ message: 'Restitution effectuée avec succès' });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+
 // @route   POST api/auth/reset-samples
 // @desc    Clear samples for all delegates
 // @access  Private (Pharmacienne/Admin)
