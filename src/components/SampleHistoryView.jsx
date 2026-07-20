@@ -162,7 +162,7 @@ export default function SampleHistoryView() {
                 new Date(h.dateGiven).toLocaleString('fr-FR'),
                 h.delegateName,
                 h.stockName,
-                h.count
+                h.action === 'return' ? `-${h.count} (Restitué)` : `+${h.count}`
             ]);
 
             if (distributionRows.length === 0) {
@@ -333,7 +333,9 @@ export default function SampleHistoryView() {
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-gray-900 font-medium">{item.stockName}</td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-gray-500">{item.batchNumber}</td>
-                                                <td className="px-6 py-4 whitespace-nowrap text-gray-900 font-bold">{item.count}</td>
+                                                <td className={`px-6 py-4 whitespace-nowrap font-bold ${item.action === 'return' ? 'text-red-600' : 'text-green-600'}`}>
+                                                    {item.action === 'return' ? `-${item.count}` : `+${item.count}`}
+                                                </td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -490,7 +492,9 @@ export default function SampleHistoryView() {
                                                         <p className="text-xs text-gray-500">{new Date(h.dateGiven).toLocaleString('fr-FR')}</p>
                                                     </div>
                                                     <div className="text-right">
-                                                        <span className="block text-green-600 font-bold">+{h.count}</span>
+                                                        <span className={`block font-bold ${h.action === 'return' ? 'text-red-600' : 'text-green-600'}`}>
+                                                            {h.action === 'return' ? `-${h.count}` : `+${h.count}`}
+                                                        </span>
                                                         <span className="text-xs text-gray-400">{h.stockName}</span>
                                                     </div>
                                                 </div>
