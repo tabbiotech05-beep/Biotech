@@ -8,6 +8,7 @@ const SampleHistorySchema = new mongoose.Schema({
     batchNumber: { type: String },
     itemType: { type: String, enum: ['sample', 'material'], default: 'sample' },
     count: { type: Number, required: true },
+    action: { type: String, enum: ['assign', 'return'], default: 'assign' },
     dateGiven: { type: Date, default: Date.now },
     givenBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
