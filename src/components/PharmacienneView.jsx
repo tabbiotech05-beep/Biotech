@@ -12,6 +12,18 @@ export default function PharmacienneView() {
     const [loading, setLoading] = useState(false);
     const [activeAssignmentTab, setActiveAssignmentTab] = useState('sample'); // 'sample' or 'material'
 
+    // Return Modal State
+    const [returnModal, setReturnModal] = useState({
+        isOpen: false,
+        delegateId: null,
+        delegateName: '',
+        sampleName: '',
+        batchNumber: '',
+        itemType: 'sample',
+        maxCount: 0,
+        returnCount: ''
+    });
+
     useEffect(() => {
         fetchDelegues();
         fetchStock();
@@ -155,6 +167,67 @@ export default function PharmacienneView() {
         } finally {
             setLoading(false);
             setTimeout(() => setMessage(''), 3000);
+        }
+    };
+
+    const handleOpenReturnModal = (delegate, sample) => {
+        setReturnModal({
+            isOpen: true,
+            delegateId: delegate._id,
+            delegateName: delegate.username,
+            sampleName: sample.name,
+            batchNumber: sample.batchNumber,
+            itemType: sample.itemType || 'sample',
+            maxCount: sample.count,
+            returnCount: sample.count // Default to returning all
+        });
+    };
+
+    const handleCloseReturnModal = () => {
+        setReturnModal(prev => ({ ...prev, isOpen: false }));
+    };
+
+    const handleReturnSubmit = async (e) => {
+        e.preventDefault();
+        const count = parseInt(returnModal.returnCount, 10);
+        if (isNaN(count) || count <= 0 || count > returnModal.maxCount) {
+            alert('Veuillez entrer une quantité valide.');
+            return;
+        }
+
+        setLoading(true);
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch(`/api/auth/return-samples`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': token
+                },
+                body: JSON.stringify({
+                    delegateId: returnModal.delegateId,
+                    sampleName: returnModal.sampleName,
+                    batchNumber: returnModal.batchNumber,
+                    itemType: returnModal.itemType,
+                    returnCount: count
+                })
+            });
+
+            if (res.ok) {
+                setMessage('✅ Restitution effectuée avec succès !');
+                handleCloseReturnModal();
+                fetchDelegues();
+                fetchStock();
+            } else {
+                const errorData = await res.json();
+                alert(errorData.message || 'Erreur lors de la restitution.');
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Erreur serveur.');
+        } finally {
+            setLoading(false);
+            setTimeout(() => setMessage(''), 5000);
         }
     };
 
@@ -321,18 +394,28 @@ export default function PharmacienneView() {
                                                             {samples.length > 0 && (
                                                                 <div className="flex flex-wrap gap-1">
                                                                     {samples.map((s, idx) => (
-                                                                        <span key={idx} className="inline-block px-1.5 py-0.5 rounded text-[10px] font-bold bg-green-50 text-green-700 border border-green-200">
-                                                                            {s.name}: {s.count}
-                                                                        </span>
+                                                                        <button 
+                                                                            key={idx} 
+                                                                            onClick={() => handleOpenReturnModal(user, s)}
+                                                                            title="Cliquer pour restituer ce produit"
+                                                                            className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-green-50 text-green-700 border border-green-200 hover:bg-green-100 hover:border-green-300 transition-colors"
+                                                                        >
+                                                                            {s.name}: {s.count} <span className="text-[8px] opacity-70 ml-0.5">↺</span>
+                                                                        </button>
                                                                     ))}
                                                                 </div>
                                                             )}
                                                             {materials.length > 0 && (
                                                                 <div className="flex flex-wrap gap-1">
                                                                     {materials.map((m, idx) => (
-                                                                        <span key={idx} className="inline-block px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
-                                                                            {m.name}: {m.count}
-                                                                        </span>
+                                                                        <button 
+                                                                            key={idx} 
+                                                                            onClick={() => handleOpenReturnModal(user, m)}
+                                                                            title="Cliquer pour restituer ce matériel"
+                                                                            className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 hover:border-blue-300 transition-colors"
+                                                                        >
+                                                                            {m.name}: {m.count} <span className="text-[8px] opacity-70 ml-0.5">↺</span>
+                                                                        </button>
                                                                     ))}
                                                                 </div>
                                                             )}
@@ -362,6 +445,56 @@ export default function PharmacienneView() {
                     Réinitialiser tous les inventaires
                 </button>
             </div>
+
+            {/* Return Modal Overlay */}
+            {returnModal.isOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+                    <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-fade-in-up">
+                        <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                            <h3 className="font-bold text-gray-800 text-lg">Restituer au stock</h3>
+                            <button onClick={handleCloseReturnModal} className="text-gray-400 hover:text-gray-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <form onSubmit={handleReturnSubmit} className="p-6">
+                            <div className="mb-4">
+                                <p className="text-sm text-gray-600 mb-1">Délégué : <strong className="text-gray-900">{returnModal.delegateName}</strong></p>
+                                <p className="text-sm text-gray-600 mb-1">Produit : <strong className="text-gray-900">{returnModal.sampleName}</strong> {returnModal.batchNumber && <span className="text-xs text-gray-500 font-mono">(Lot: {returnModal.batchNumber})</span>}</p>
+                                <p className="text-sm text-gray-600 mb-4">Quantité possédée : <strong className="text-indigo-600">{returnModal.maxCount}</strong></p>
+                                
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Quantité à restituer</label>
+                                <input 
+                                    type="number" 
+                                    min="1" 
+                                    max={returnModal.maxCount}
+                                    value={returnModal.returnCount}
+                                    onChange={(e) => setReturnModal({...returnModal, returnCount: e.target.value})}
+                                    className="w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border p-3"
+                                    required
+                                />
+                            </div>
+                            <div className="flex gap-3 justify-end mt-6">
+                                <button 
+                                    type="button" 
+                                    onClick={handleCloseReturnModal}
+                                    className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 font-medium transition-colors"
+                                >
+                                    Annuler
+                                </button>
+                                <button 
+                                    type="submit" 
+                                    disabled={loading}
+                                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium transition-colors flex items-center shadow-sm disabled:opacity-70 disabled:cursor-not-allowed"
+                                >
+                                    {loading ? 'Traitement...' : 'Confirmer restitution'}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
