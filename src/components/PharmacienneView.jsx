@@ -24,6 +24,13 @@ export default function PharmacienneView() {
         returnCount: ''
     });
 
+    const [expiryEditModal, setExpiryEditModal] = useState({
+        isOpen: false,
+        stockId: null,
+        stockName: '',
+        currentExpiry: ''
+    });
+
     useEffect(() => {
         fetchDelegues();
         fetchStock();
@@ -231,6 +238,52 @@ export default function PharmacienneView() {
         }
     };
 
+    const handleOpenExpiryEdit = (stock) => {
+        setExpiryEditModal({
+            isOpen: true,
+            stockId: stock._id,
+            stockName: stock.name,
+            currentExpiry: stock.expiryDate ? new Date(stock.expiryDate).toISOString().split('T')[0] : ''
+        });
+    };
+
+    const handleCloseExpiryEdit = () => {
+        setExpiryEditModal({ ...expiryEditModal, isOpen: false });
+    };
+
+    const handleExpirySubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch(`/api/stock/${expiryEditModal.stockId}/expiry`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': token
+                },
+                body: JSON.stringify({
+                    expiryDate: expiryEditModal.currentExpiry
+                })
+            });
+
+            if (res.ok) {
+                setMessage('✅ Date de péremption modifiée avec succès !');
+                handleCloseExpiryEdit();
+                fetchStock();
+            } else {
+                const errorData = await res.json();
+                alert(errorData.message || 'Erreur lors de la modification.');
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Erreur serveur.');
+        } finally {
+            setLoading(false);
+            setTimeout(() => setMessage(''), 5000);
+        }
+    };
+
     // Derived states
     const filteredStocks = stocks.filter(s => (s.type || 'sample') === activeAssignmentTab && s.quantity > 0);
 
@@ -318,7 +371,23 @@ export default function PharmacienneView() {
                                                 <tr key={stock._id} className="border-b last:border-0 hover:bg-gray-50">
                                                     <td className="px-4 py-3">
                                                         <div className="text-sm font-bold text-gray-800">{stock.name}</div>
-                                                        {activeAssignmentTab === 'sample' && <div className="text-xs text-gray-500 font-mono">Lot: {stock.batchNumber}</div>}
+                                                        {activeAssignmentTab === 'sample' && (
+                                                            <div className="text-xs text-gray-500 font-mono mt-1 flex flex-col gap-1">
+                                                                <span>Lot: {stock.batchNumber}</span>
+                                                                <span className="flex items-center gap-2">
+                                                                    Péremption: {stock.expiryDate ? new Date(stock.expiryDate).toLocaleDateString('fr-FR') : 'N/A'}
+                                                                    <button 
+                                                                        onClick={() => handleOpenExpiryEdit(stock)}
+                                                                        className="text-indigo-600 hover:text-indigo-800 transition-colors bg-indigo-50 hover:bg-indigo-100 p-1 rounded"
+                                                                        title="Modifier la date de péremption"
+                                                                    >
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+                                                                            <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                                                        </svg>
+                                                                    </button>
+                                                                </span>
+                                                            </div>
+                                                        )}
                                                     </td>
                                                     <td className="px-4 py-3 text-sm text-gray-600 font-medium">
                                                         {stock.quantity}
@@ -489,6 +558,52 @@ export default function PharmacienneView() {
                                     className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium transition-colors flex items-center shadow-sm disabled:opacity-70 disabled:cursor-not-allowed"
                                 >
                                     {loading ? 'Traitement...' : 'Confirmer restitution'}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+
+            {/* Expiry Edit Modal Overlay */}
+            {expiryEditModal.isOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+                    <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-fade-in-up">
+                        <div className="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                            <h3 className="font-bold text-gray-800 text-lg">Modifier la Péremption</h3>
+                            <button onClick={handleCloseExpiryEdit} className="text-gray-400 hover:text-gray-600">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                        <form onSubmit={handleExpirySubmit} className="p-6">
+                            <div className="mb-4">
+                                <p className="text-sm text-gray-600 mb-4">Produit : <strong className="text-gray-900">{expiryEditModal.stockName}</strong></p>
+                                
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Nouvelle Date de Péremption</label>
+                                <input 
+                                    type="date"
+                                    value={expiryEditModal.currentExpiry}
+                                    onChange={(e) => setExpiryEditModal({...expiryEditModal, currentExpiry: e.target.value})}
+                                    className="w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border p-3"
+                                    required
+                                />
+                            </div>
+                            <div className="flex gap-3 justify-end mt-6">
+                                <button 
+                                    type="button" 
+                                    onClick={handleCloseExpiryEdit}
+                                    className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 font-medium transition-colors"
+                                >
+                                    Annuler
+                                </button>
+                                <button 
+                                    type="submit" 
+                                    disabled={loading}
+                                    className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 font-medium transition-colors flex items-center shadow-sm disabled:opacity-70 disabled:cursor-not-allowed"
+                                >
+                                    {loading ? 'Traitement...' : 'Enregistrer'}
                                 </button>
                             </div>
                         </form>
