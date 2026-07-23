@@ -59,4 +59,23 @@ router.delete('/:id', auth, async (req, res) => {
     }
 });
 
+// @route   PUT api/stock/:id/expiry
+// @desc    Update stock expiry date
+// @access  Private
+router.put('/:id/expiry', auth, async (req, res) => {
+    try {
+        const { expiryDate } = req.body;
+        const stock = await Stock.findById(req.params.id);
+        if (!stock) {
+            return res.status(404).json({ message: 'Stock item not found' });
+        }
+        stock.expiryDate = expiryDate;
+        await stock.save();
+        res.json(stock);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 export default router;
