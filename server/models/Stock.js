@@ -30,6 +30,10 @@ const stockSchema = new mongoose.Schema({
     notified6Months: {
         type: Boolean,
         default: false
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false
     }
 }, { timestamps: true });
 
