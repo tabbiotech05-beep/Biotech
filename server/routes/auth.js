@@ -466,9 +466,15 @@ router.post('/return-samples', auth, async (req, res) => {
                 type: itemType || 'sample'
             };
             if ((itemType || 'sample') === 'sample') {
-                const nextYear = new Date();
-                nextYear.setFullYear(nextYear.getFullYear() + 1);
-                newStockData.expiryDate = nextYear;
+                // Look for another stock with the same batch number to inherit the correct expiry date
+                const sameBatchStock = await Stock.findOne({ batchNumber: batchNumber });
+                if (sameBatchStock && sameBatchStock.expiryDate) {
+                    newStockData.expiryDate = sameBatchStock.expiryDate;
+                } else {
+                    const nextYear = new Date();
+                    nextYear.setFullYear(nextYear.getFullYear() + 1);
+                    newStockData.expiryDate = nextYear;
+                }
             }
             stockItem = new Stock(newStockData);
             await stockItem.save();
