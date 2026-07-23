@@ -9,7 +9,7 @@ const router = express.Router();
 // @access  Private (Admin/Pharmacienne)
 router.get('/', auth, async (req, res) => {
     try {
-        const stocks = await Stock.find().sort({ expiryDate: 1 });
+        const stocks = await Stock.find({ isDeleted: { $ne: true } }).sort({ expiryDate: 1 });
         res.json(stocks);
     } catch (err) {
         console.error(err.message);
@@ -50,7 +50,8 @@ router.delete('/:id', auth, async (req, res) => {
         if (!stock) {
             return res.status(404).json({ message: 'Stock item not found' });
         }
-        await stock.deleteOne();
+        stock.isDeleted = true;
+        await stock.save();
         res.json({ message: 'Item removed' });
     } catch (err) {
         console.error(err.message);
