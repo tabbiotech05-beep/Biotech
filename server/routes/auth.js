@@ -199,7 +199,7 @@ router.post('/users/:id/samples', auth, async (req, res) => {
             await stockItem.save();
         } else {
             // Fallback to FIFO by name (for backward compatibility if needed)
-            const stocks = await Stock.find({ name: name, quantity: { $gt: 0 } }).sort({ expiryDate: 1 });
+            const stocks = await Stock.find({ name: name, quantity: { $gt: 0 }, isDeleted: { $ne: true } }).sort({ expiryDate: 1 });
             const totalStock = stocks.reduce((acc, s) => acc + s.quantity, 0);
 
             if (totalStock < requestedQty) {
@@ -314,7 +314,7 @@ router.post('/batch-assign-samples', auth, async (req, res) => {
                 }
             } else {
                 // Fallback to FIFO
-                const stocks = await Stock.find({ name: assign.name, quantity: { $gt: 0 } });
+                const stocks = await Stock.find({ name: assign.name, quantity: { $gt: 0 }, isDeleted: { $ne: true } });
                 const totalStock = stocks.reduce((acc, s) => acc + s.quantity, 0);
                 if (totalStock < requestedTotalQty) {
                     return res.status(400).json({ 
@@ -332,7 +332,7 @@ router.post('/batch-assign-samples', auth, async (req, res) => {
                 stockItem.quantity -= requestedTotalQty;
                 await stockItem.save();
             } else {
-                const stocks = await Stock.find({ name: assign.name, quantity: { $gt: 0 } }).sort({ expiryDate: 1 });
+                const stocks = await Stock.find({ name: assign.name, quantity: { $gt: 0 }, isDeleted: { $ne: true } }).sort({ expiryDate: 1 });
                 let remainingToDeduct = requestedTotalQty;
                 for (const stockItem of stocks) {
                     if (remainingToDeduct <= 0) break;
@@ -456,6 +456,7 @@ router.post('/return-samples', auth, async (req, res) => {
         let stockItem = await Stock.findOne(query);
         if (stockItem) {
             stockItem.quantity += returnCount;
+            stockItem.isDeleted = false;
             await stockItem.save();
         } else {
             // Recreate stock if it doesn't exist anymore
