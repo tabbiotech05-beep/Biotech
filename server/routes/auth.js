@@ -459,12 +459,18 @@ router.post('/return-samples', auth, async (req, res) => {
             await stockItem.save();
         } else {
             // Recreate stock if it doesn't exist anymore
-            stockItem = new Stock({
+            const newStockData = {
                 name: sampleName,
                 batchNumber: batchNumber || 'N/A',
                 quantity: returnCount,
                 type: itemType || 'sample'
-            });
+            };
+            if ((itemType || 'sample') === 'sample') {
+                const nextYear = new Date();
+                nextYear.setFullYear(nextYear.getFullYear() + 1);
+                newStockData.expiryDate = nextYear;
+            }
+            stockItem = new Stock(newStockData);
             await stockItem.save();
         }
 
