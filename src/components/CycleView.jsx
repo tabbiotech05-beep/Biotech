@@ -1,5 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+let DefaultIcon = L.icon({
+    iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+});
+L.Marker.prototype.options.icon = DefaultIcon;
+
+const TUNISIA_GOVERNORATES = {
+    'Tunis': [36.8065, 10.1815],
+    'Ariana': [36.8625, 10.1956],
+    'Ben Arous': [36.7531, 10.2222],
+    'Manouba': [36.8080, 10.1010],
+    'Nabeul': [36.4561, 10.7376],
+    'Zaghouan': [36.4011, 10.1423],
+    'Bizerte': [37.2744, 9.8739],
+    'Béja': [36.7333, 9.1833],
+    'Jendouba': [36.5011, 8.7802],
+    'Le Kef': [36.1742, 8.7049],
+    'Siliana': [36.0818, 9.3708],
+    'Sousse': [35.8254, 10.6369],
+    'Monastir': [35.7770, 10.8262],
+    'Mahdia': [35.5047, 11.0622],
+    'Sfax': [34.7406, 10.7603],
+    'Kairouan': [35.6781, 10.0963],
+    'Kasserine': [35.1676, 8.8365],
+    'Sidi Bouzid': [35.0382, 9.4849],
+    'Gabès': [33.8815, 10.0982],
+    'Medenine': [33.3549, 10.5055],
+    'Tataouine': [32.9211, 10.4509],
+    'Gafsa': [34.4250, 8.7842],
+    'Tozeur': [33.9197, 8.1335],
+    'Kebili': [33.7044, 8.9690]
+};
 
 export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
     const isDelegue = userRole === 'delegue';
@@ -675,8 +714,50 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                             </div>
                         </div>
                     </div>
-                )
-            }
+                )}
+                
+                {sidebarTab === 'tasks' && pastWeeks.length > 0 && activeWeekLabel && (
+                    <div className="mt-8 bg-white p-6 rounded-3xl shadow-sm border border-gray-100 mb-12">
+                        <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                            <span>🗺️</span> Carte des Visites (Semaine active)
+                        </h3>
+                        <div style={{ height: '450px', width: '100%', borderRadius: '1rem', overflow: 'hidden', border: '1px solid #eee' }}>
+                            <MapContainer center={[35.0, 9.5]} zoom={6} style={{ height: '100%', width: '100%', zIndex: 0 }}>
+                                <TileLayer
+                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                    attribution="&copy; OpenStreetMap contributors"
+                                />
+                                {pastWeeks.find(w => w.label === activeWeekLabel)?.items.map((visit, idx) => {
+                                    if (visit.governorate && TUNISIA_GOVERNORATES[visit.governorate]) {
+                                        const [lat, lng] = TUNISIA_GOVERNORATES[visit.governorate];
+                                        // Jitter to prevent perfect overlap
+                                        const jitterLat = lat + (Math.random() - 0.5) * 0.05;
+                                        const jitterLng = lng + (Math.random() - 0.5) * 0.05;
+                                        
+                                        let name = visit.title;
+                                        if (visit.targetType === 'medecin') name = `Dr. ${visit.doctorName}`;
+                                        else if (visit.targetType === 'pharmacie') name = visit.pharmacyName;
+                                        else if (visit.targetType === 'grossiste') name = visit.wholesalerName;
+
+                                        return (
+                                            <Marker key={idx} position={[jitterLat, jitterLng]}>
+                                                <Popup>
+                                                    <div className="font-bold text-sm text-gray-900">{name}</div>
+                                                    <div className="text-xs text-gray-600 mt-1">📍 {visit.governorate}</div>
+                                                    <div className="text-[10px] text-gray-500 mt-1">
+                                                        {new Date(visit.start).toLocaleDateString('fr-FR')} {visit.visitTime && `à ${visit.visitTime}`}
+                                                    </div>
+                                                </Popup>
+                                            </Marker>
+                                        );
+                                    }
+                                    return null;
+                                })}
+                            </MapContainer>
+                        </div>
+                    </div>
+                )}
+            
         </div >
     );
 }
