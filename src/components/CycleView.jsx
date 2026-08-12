@@ -40,6 +40,38 @@ const TUNISIA_GOVERNORATES = {
     'Kebili': [33.7044, 8.9690]
 };
 
+// Fuzzy match: case-insensitive, partial, accent-insensitive
+const normalize = (str) => str?.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[-_,;.]/g, ' ').trim();
+
+const resolveCoords = (governorate) => {
+    if (!governorate) return null;
+    const normInput = normalize(governorate);
+    // 1. Exact match first
+    for (const [key, coords] of Object.entries(TUNISIA_GOVERNORATES)) {
+        if (normalize(key) === normInput) return coords;
+    }
+    // 2. Partial match: dictionary key contains input OR input contains key
+    for (const [key, coords] of Object.entries(TUNISIA_GOVERNORATES)) {
+        const normKey = normalize(key);
+        if (normInput.includes(normKey) || normKey.includes(normInput)) return coords;
+    }
+    return null;
+};
+
+// Deterministic jitter from a string seed (avoids markers jumping on re-render)
+const seededJitter = (seed, scale = 0.04) => {
+    let hash = 0;
+    for (let i = 0; i < seed.length; i++) {
+        hash = (hash << 5) - hash + seed.charCodeAt(i);
+        hash |= 0;
+    }
+    const lat = ((hash % 1000) / 1000) * scale - scale / 2;
+    const lng = (((hash >> 10) % 1000) / 1000) * scale - scale / 2;
+    return [lat, lng];
+};
+
 export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
     const isDelegue = userRole === 'delegue';
     const isReadOnly = !!viewUser;
@@ -501,10 +533,12 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                                     attribution="&copy; OpenStreetMap contributors"
                                                 />
                                                 {activeWeekData.items.map((visit, idx) => {
-                                                    if (!visit.governorate || !TUNISIA_GOVERNORATES[visit.governorate]) return null;
-                                                    const [lat, lng] = TUNISIA_GOVERNORATES[visit.governorate];
-                                                    const jitterLat = lat + (Math.random() - 0.5) * 0.04;
-                                                    const jitterLng = lng + (Math.random() - 0.5) * 0.04;
+                                                    const coords = resolveCoords(visit.governorate);
+                                                    if (!coords) return null;
+                                                    const [baseLat, baseLng] = coords;
+                                                    // Deterministic jitter based on visit ID to avoid flickering
+                                                    const seed = (visit._id || String(idx)) + String(idx);
+                                                    const [dLat, dLng] = seededJitter(seed);
 
                                                     let name = visit.title;
                                                     if (visit.targetType === 'medecin') name = `Dr. ${visit.doctorName}`;
@@ -512,7 +546,7 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                                     else if (visit.targetType === 'grossiste') name = visit.wholesalerName;
 
                                                     return (
-                                                        <Marker key={idx} position={[jitterLat, jitterLng]}>
+                                                        <Marker key={visit._id || idx} position={[baseLat + dLat, baseLng + dLng]}>
                                                             <Popup>
                                                                 <div style={{ fontWeight: 'bold', fontSize: '13px' }}>{name}</div>
                                                                 <div style={{ fontSize: '11px', color: '#555', marginTop: '4px' }}>📍 {visit.governorate}</div>
