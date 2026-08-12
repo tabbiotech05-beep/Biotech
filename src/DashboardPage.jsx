@@ -16,6 +16,7 @@ import StockPCTView from './components/StockPCTView';
 import LeaveView from './components/LeaveView';
 import LeaveAdminView from './components/LeaveAdminView';
 import ExpenseView from './components/ExpenseView';
+import ExpenseAdminArchiveView from './components/ExpenseAdminArchiveView';
 import ProfileView from './components/ProfileView';
 import PrixVenteView from './components/PrixVenteView';
 import MagicSearchView from './components/MagicSearchView';
@@ -500,12 +501,17 @@ export default function DashboardPage() {
         });
     }
 
-    // Admin-only: add congé management tab
+    // Admin-only: add congé management tab and expense archive
     if (role === 'admin') {
         displayedTabs.push({
             id: 'leave-admin',
             label: leavePendingCount > 0 ? `Congés (${leavePendingCount})` : 'Congés',
             icon: <IconLeave />
+        });
+        displayedTabs.push({
+            id: 'expense-archive',
+            label: 'Archives Frais',
+            icon: <IconExpense />
         });
     }
 
@@ -615,6 +621,7 @@ export default function DashboardPage() {
                     {activeTab === 'leave' && <LeaveView />}
                     {activeTab === 'leave-admin' && <LeaveAdminView />}
                     {activeTab === 'expense' && <ExpenseView dashboardId={dashboardId} />}
+                    {activeTab === 'expense-archive' && <ExpenseAdminArchiveView dashboardId={dashboardId} />}
                     {activeTab === 'prix-vente' && <PrixVenteView />}
                     {activeTab === 'magic-search' && <MagicSearchView />}
                     {activeTab === 'listing' && <ListingView />}
