@@ -31,7 +31,7 @@ export default function ExpenseAdminArchiveView({ dashboardId }) {
             if (res.ok) {
                 let data = await res.json();
                 if (dashboardId) {
-                    data = data.filter(e => e.dashboardId === dashboardId);
+                    data = data.filter(e => e.dashboardId === dashboardId || e.dashboardId === 'none' || e.dashboardId === 'undefined');
                 }
                 setExpenses(data);
             }
