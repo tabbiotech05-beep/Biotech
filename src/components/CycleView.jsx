@@ -486,6 +486,47 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                                         </tbody>
                                     </table>
                                 </div>
+                                {/* Carte interactive de la semaine active */}
+                                {activeWeekData && activeWeekData.items.length > 0 && (
+                                    <div className="mt-8 bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                                        <div className="px-6 py-4 border-b border-gray-100 flex items-center gap-2">
+                                            <span className="text-xl">🗺️</span>
+                                            <h3 className="text-base font-bold text-gray-800">Carte des Visites — {activeWeekLabel}</h3>
+                                            <span className="ml-auto text-xs text-gray-400 italic">Affiche les visites avec gouvernorat</span>
+                                        </div>
+                                        <div style={{ height: '400px', width: '100%' }}>
+                                            <MapContainer center={[35.0, 9.5]} zoom={6} style={{ height: '100%', width: '100%', zIndex: 0 }}>
+                                                <TileLayer
+                                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                                                    attribution="&copy; OpenStreetMap contributors"
+                                                />
+                                                {activeWeekData.items.map((visit, idx) => {
+                                                    if (!visit.governorate || !TUNISIA_GOVERNORATES[visit.governorate]) return null;
+                                                    const [lat, lng] = TUNISIA_GOVERNORATES[visit.governorate];
+                                                    const jitterLat = lat + (Math.random() - 0.5) * 0.04;
+                                                    const jitterLng = lng + (Math.random() - 0.5) * 0.04;
+
+                                                    let name = visit.title;
+                                                    if (visit.targetType === 'medecin') name = `Dr. ${visit.doctorName}`;
+                                                    else if (visit.targetType === 'pharmacie') name = visit.pharmacyName;
+                                                    else if (visit.targetType === 'grossiste') name = visit.wholesalerName;
+
+                                                    return (
+                                                        <Marker key={idx} position={[jitterLat, jitterLng]}>
+                                                            <Popup>
+                                                                <div style={{ fontWeight: 'bold', fontSize: '13px' }}>{name}</div>
+                                                                <div style={{ fontSize: '11px', color: '#555', marginTop: '4px' }}>📍 {visit.governorate}</div>
+                                                                <div style={{ fontSize: '10px', color: '#999', marginTop: '2px' }}>
+                                                                    {new Date(visit.start).toLocaleDateString('fr-FR')}{visit.visitTime ? ` à ${visit.visitTime}` : ''}
+                                                                </div>
+                                                            </Popup>
+                                                        </Marker>
+                                                    );
+                                                })}
+                                            </MapContainer>
+                                        </div>
+                                    </div>
+                                )}
                             </>
                         )}
                     </div>
@@ -715,49 +756,6 @@ export default function CycleView({ dashboardId, theme, userRole, viewUser }) {
                         </div>
                     </div>
                 )}
-                
-                {sidebarTab === 'tasks' && pastWeeks.length > 0 && activeWeekLabel && (
-                    <div className="mt-8 bg-white p-6 rounded-3xl shadow-sm border border-gray-100 mb-12">
-                        <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
-                            <span>🗺️</span> Carte des Visites (Semaine active)
-                        </h3>
-                        <div style={{ height: '450px', width: '100%', borderRadius: '1rem', overflow: 'hidden', border: '1px solid #eee' }}>
-                            <MapContainer center={[35.0, 9.5]} zoom={6} style={{ height: '100%', width: '100%', zIndex: 0 }}>
-                                <TileLayer
-                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                                    attribution="&copy; OpenStreetMap contributors"
-                                />
-                                {pastWeeks.find(w => w.label === activeWeekLabel)?.items.map((visit, idx) => {
-                                    if (visit.governorate && TUNISIA_GOVERNORATES[visit.governorate]) {
-                                        const [lat, lng] = TUNISIA_GOVERNORATES[visit.governorate];
-                                        // Jitter to prevent perfect overlap
-                                        const jitterLat = lat + (Math.random() - 0.5) * 0.05;
-                                        const jitterLng = lng + (Math.random() - 0.5) * 0.05;
-                                        
-                                        let name = visit.title;
-                                        if (visit.targetType === 'medecin') name = `Dr. ${visit.doctorName}`;
-                                        else if (visit.targetType === 'pharmacie') name = visit.pharmacyName;
-                                        else if (visit.targetType === 'grossiste') name = visit.wholesalerName;
-
-                                        return (
-                                            <Marker key={idx} position={[jitterLat, jitterLng]}>
-                                                <Popup>
-                                                    <div className="font-bold text-sm text-gray-900">{name}</div>
-                                                    <div className="text-xs text-gray-600 mt-1">📍 {visit.governorate}</div>
-                                                    <div className="text-[10px] text-gray-500 mt-1">
-                                                        {new Date(visit.start).toLocaleDateString('fr-FR')} {visit.visitTime && `à ${visit.visitTime}`}
-                                                    </div>
-                                                </Popup>
-                                            </Marker>
-                                        );
-                                    }
-                                    return null;
-                                })}
-                            </MapContainer>
-                        </div>
-                    </div>
-                )}
-            
         </div >
     );
 }
