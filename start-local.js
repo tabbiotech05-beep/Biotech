@@ -123,15 +123,31 @@ async function start() {
             }, 3000);
         });
 
+        // 4. Start Frontend (Vite dev server)
+        console.log('🎨 Starting Frontend (Vite)...');
+        const frontProcess = spawn('npx', ['vite', '--port', '5173', '--host', '0.0.0.0'], {
+            env,
+            stdio: ['ignore', 'pipe', 'pipe'],
+            cwd: __dirname,
+            shell: true
+        });
+
+        frontProcess.stdout.on('data', (data) => filterLogs(data, false));
+        frontProcess.stderr.on('data', (data) => filterLogs(data, true));
+
+        console.log(`🌐 Frontend process spawned with PID: ${frontProcess.pid}`);
         console.log(`\n✅ App ready!`);
-        console.log(`   Frontend → http://0.0.0.0:5000`);
+        console.log(`   Frontend → http://0.0.0.0:5173`);
         console.log(`   Backend  → http://0.0.0.0:5000\n`);
 
-        // 5. No separate frontend server needed — Express serves dist/ on port 5000
+        frontProcess.on('error', (err) => {
+            console.error('❌ Failed to start frontend:', err);
+        });
 
         // Graceful shutdown on SIGINT (Ctrl+C) or SIGTERM (./arreter.sh)
         const shutdown = async (signal) => {
             console.log(`\n🛑 Signal ${signal} reçu — arrêt propre en cours...`);
+            frontProcess.kill('SIGTERM');
             serverProcess.kill('SIGTERM');
             await mongod.stop();
             console.log('✅ MongoDB arrêté proprement.');
