@@ -49,6 +49,19 @@ async function start() {
 
         console.log('✅ Seeding finished.');
 
+        // 3. Build Frontend (one-time, ensures no HMR/auto-refresh)
+        console.log('🔨 Building Frontend (production build)...');
+        try {
+            execSync('npx vite build', {
+                env,
+                stdio: 'inherit',
+                cwd: __dirname
+            });
+            console.log('✅ Frontend built → dist/');
+        } catch (e) {
+            console.warn('⚠️  Frontend build warning (non-fatal):', e.message);
+        }
+
         // Function to filter logs
         const filterLogs = (data, isError = false) => {
             const lines = data.toString().split('\n');
@@ -75,7 +88,7 @@ async function start() {
             }
         };
 
-        // 3. Start Backend Server
+        // 4. Start Backend Server
         console.log('🔌 Starting Backend Server...');
         const serverProcess = spawn('node', ['server/index.js'], {
             env,
@@ -110,31 +123,15 @@ async function start() {
             }, 3000);
         });
 
-        // 4. Start Frontend (Vite dev server)
-        console.log('🎨 Starting Frontend (Vite)...');
-        const frontProcess = spawn('npx', ['vite', '--port', '5173', '--host', '0.0.0.0'], {
-            env,
-            stdio: ['ignore', 'pipe', 'pipe'],
-            cwd: __dirname,
-            shell: true
-        });
-
-        frontProcess.stdout.on('data', (data) => filterLogs(data, false));
-        frontProcess.stderr.on('data', (data) => filterLogs(data, true));
-
-        console.log(`🌐 Frontend process spawned with PID: ${frontProcess.pid}`);
         console.log(`\n✅ App ready!`);
-        console.log(`   Frontend → http://0.0.0.0:5173`);
+        console.log(`   Frontend → http://0.0.0.0:5000`);
         console.log(`   Backend  → http://0.0.0.0:5000\n`);
 
-        frontProcess.on('error', (err) => {
-            console.error('❌ Failed to start frontend:', err);
-        });
+        // 5. No separate frontend server needed — Express serves dist/ on port 5000
 
         // Graceful shutdown on SIGINT (Ctrl+C) or SIGTERM (./arreter.sh)
         const shutdown = async (signal) => {
             console.log(`\n🛑 Signal ${signal} reçu — arrêt propre en cours...`);
-            frontProcess.kill('SIGTERM');
             serverProcess.kill('SIGTERM');
             await mongod.stop();
             console.log('✅ MongoDB arrêté proprement.');
