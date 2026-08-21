@@ -76,14 +76,8 @@ app.use('/grossiste', (req, res) => {
     res.sendFile(path.join(salesDashDist, 'index.html'));
 });
 
-// ─── Main Frontend (production build from dist/) ─────────────────────────────
-const frontDist = path.join(__dirname, '../dist');
-app.use(express.static(frontDist));
-// SPA fallback — toute route non-API renvoie index.html
-app.get('*', (req, res) => {
-    if (!req.path.startsWith('/api') && !req.path.startsWith('/grossiste') && !req.path.startsWith('/uploads')) {
-        res.sendFile(path.join(frontDist, 'index.html'));
-    }
+app.get('/', (req, res) => {
+    res.send('API is running...');
 });
 
 app.listen(PORT, () => {
