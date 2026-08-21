@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     host: true,          // écoute sur toutes les interfaces
     allowedHosts: true,  // autorise tous les hosts (Vite 7)
+    hmr: false,          // désactive le Hot Module Replacement (évite les rechargements auto)
     proxy: {
       // tout ce qui commence par /api sera redirigé vers le backend
       '/api': {
