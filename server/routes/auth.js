@@ -128,12 +128,12 @@ router.post('/logout', auth, async (req, res) => {
 });
 
 // @route   GET api/auth/dashboard-users
-// @desc    Get users grouped by dashboard
+// @desc    Get users grouped by dashboard (excludes hidden users)
 // @access  Private
 router.get('/dashboard-users', auth, async (req, res) => {
     try {
-        // Fetch all users with their allowedDashboards and profileImage
-        const users = await User.find({}, 'username allowedDashboards profileImage');
+        // Exclude hidden users from the public list
+        const users = await User.find({ isHidden: { $ne: true } }, 'username allowedDashboards profileImage');
 
         const dashboardUsers = {
             'dashboard1': [],
@@ -157,6 +157,63 @@ router.get('/dashboard-users', auth, async (req, res) => {
         });
 
         res.json(dashboardUsers);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   GET api/auth/all-dashboard-users
+// @desc    Get ALL users grouped by dashboard (including hidden) — admin only
+// @access  Private (Admin)
+router.get('/all-dashboard-users', auth, async (req, res) => {
+    try {
+        if (req.user.role !== 'admin') return res.status(403).json({ message: 'Accès refusé' });
+
+        const users = await User.find({}, 'username allowedDashboards profileImage isHidden');
+
+        const dashboardUsers = {
+            'dashboard1': [],
+            'dashboard2': []
+        };
+
+        users.forEach(user => {
+            if (user.allowedDashboards && user.allowedDashboards.length === 1) {
+                const dash = user.allowedDashboards[0];
+                const userData = {
+                    username: user.username,
+                    profileImage: user.profileImage,
+                    isHidden: user.isHidden || false
+                };
+                if (dashboardUsers[dash]) {
+                    dashboardUsers[dash].push(userData);
+                } else {
+                    dashboardUsers[dash] = [userData];
+                }
+            }
+        });
+
+        res.json(dashboardUsers);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   PATCH api/auth/users/:username/hide
+// @desc    Toggle isHidden for a user — admin only
+// @access  Private (Admin)
+router.patch('/users/:username/hide', auth, async (req, res) => {
+    try {
+        if (req.user.role !== 'admin') return res.status(403).json({ message: 'Accès refusé' });
+
+        const user = await User.findOne({ username: req.params.username });
+        if (!user) return res.status(404).json({ message: 'Utilisateur introuvable' });
+
+        user.isHidden = !user.isHidden;
+        await user.save();
+
+        res.json({ username: user.username, isHidden: user.isHidden });
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
