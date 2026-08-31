@@ -28,6 +28,7 @@ import MedListView from './components/MedListView';
 import AssignmentView from './components/AssignmentView';
 import SectorisationAdminView from './components/SectorisationAdminView';
 import SectorisationDelegueView from './components/SectorisationDelegueView';
+import GrossisteView from './components/GrossisteView';
 import AIChatWidget from './components/AIChatWidget';
 import axios from 'axios';
 
@@ -224,12 +225,8 @@ function Sidebar({ tabs, activeTab, setActiveTab, accent, accentLight, logo, das
                             label={tab.label}
                             active={activeTab === tab.id}
                             onClick={() => {
-                                if (tab.id === 'grossiste') {
-                                    window.location.href = SALES_DASHBOARD_URL;
-                                } else {
-                                    setActiveTab(tab.id);
-                                    setSidebarOpen(false);
-                                }
+                                setActiveTab(tab.id);
+                                setSidebarOpen(false);
                             }}
                             accent={accent}
                         />
@@ -632,6 +629,7 @@ export default function DashboardPage() {
                     {activeTab === 'profile' && <ProfileView />}
                     {activeTab === 'sectorisation-admin' && <SectorisationAdminView />}
                     {activeTab === 'sectorisation-delegue' && <SectorisationDelegueView />}
+                    {activeTab === 'grossiste' && <GrossisteView />}
                 </div>
             </main>
 
