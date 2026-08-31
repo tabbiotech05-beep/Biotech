@@ -61,6 +61,42 @@ export default function DashboardSelection() {
 
     const [searchQuery, setSearchQuery] = React.useState('');
     const [downloading, setDownloading] = React.useState(false);
+    const [manageMode, setManageMode] = React.useState(false);
+    const [allDashboardUsers, setAllDashboardUsers] = React.useState({});
+    const [togglingUser, setTogglingUser] = React.useState(null);
+
+    const fetchAllUsers = React.useCallback(async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch('/api/auth/all-dashboard-users', {
+                headers: { 'x-auth-token': token }
+            });
+            const data = await res.json();
+            setAllDashboardUsers(data);
+        } catch (err) {
+            console.error('Error fetching all users:', err);
+        }
+    }, []);
+
+    const toggleHideUser = async (username) => {
+        setTogglingUser(username);
+        try {
+            const token = localStorage.getItem('token');
+            await fetch(`/api/auth/users/${username}/hide`, {
+                method: 'PATCH',
+                headers: { 'x-auth-token': token }
+            });
+            // Refresh both lists
+            await fetchAllUsers();
+            const res2 = await fetch('/api/auth/dashboard-users', { headers: { 'x-auth-token': token } });
+            const data2 = await res2.json();
+            setDashboardUsers(data2);
+        } catch (err) {
+            console.error('Error toggling user:', err);
+        } finally {
+            setTogglingUser(null);
+        }
+    };
 
     // AI Assistant States
     const [showAIModal, setShowAIModal] = React.useState(false);
@@ -230,28 +266,24 @@ export default function DashboardSelection() {
         doc.save(filename);
     };
 
-    // Flatten all users into a single list
+    // Flatten all users into a single list (use allDashboardUsers in manage mode)
     const allUsers = React.useMemo(() => {
+        const source = manageMode ? allDashboardUsers : dashboardUsers;
         const list = [];
-        Object.entries(dashboardUsers).forEach(([dashId, users]) => {
+        Object.entries(source).forEach(([dashId, users]) => {
             if (Array.isArray(users)) {
                 users.forEach(userObj => {
-                    // Handle both old (string) and new (object) formats defensively
                     const username = typeof userObj === 'string' ? userObj : userObj?.username;
                     const profileImage = typeof userObj === 'string' ? null : userObj?.profileImage;
-                    
+                    const isHidden = typeof userObj === 'object' ? (userObj?.isHidden || false) : false;
                     if (username) {
-                        list.push({ 
-                            username, 
-                            profileImage,
-                            dashboardId: dashId 
-                        });
+                        list.push({ username, profileImage, isHidden, dashboardId: dashId });
                     }
                 });
             }
         });
         return list.sort((a, b) => a.username.localeCompare(b.username));
-    }, [dashboardUsers]);
+    }, [dashboardUsers, allDashboardUsers, manageMode]);
 
     const filteredUsers = allUsers.filter(u =>
         u.username?.toLowerCase().includes(searchQuery.toLowerCase())
@@ -259,6 +291,7 @@ export default function DashboardSelection() {
 
     const biotechUsers = filteredUsers.filter(u => u.dashboardId === 'dashboard1');
     const tenshiUsers = filteredUsers.filter(u => u.dashboardId === 'dashboard2');
+
 
     const downloadAllExpenses = async () => {
         setDownloading(true);
@@ -461,6 +494,25 @@ export default function DashboardSelection() {
                                 Analyse Grossiste
                             </button>
                         )}
+                        {userRole === 'admin' && (
+                            <button
+                                onClick={() => {
+                                    if (!manageMode) fetchAllUsers();
+                                    setManageMode(m => !m);
+                                }}
+                                className={`flex items-center gap-2 px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest border shadow-sm transition-all ${
+                                    manageMode
+                                        ? 'text-white bg-slate-700 border-slate-700 hover:bg-slate-800'
+                                        : 'text-slate-600 bg-slate-50 border-slate-200 hover:bg-slate-100'
+                                }`}
+                            >
+                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                {manageMode ? 'Quitter Gérer' : 'Gérer'}
+                            </button>
+                        )}
                         {allowedDashboards.map(dash => (
                             <button
                                 key={dash}
@@ -499,8 +551,23 @@ export default function DashboardSelection() {
                                     <button
                                         key={`bt-${idx}`}
                                         onClick={() => navigate(`/dashboard/dashboard1?viewUser=${u.username}`)}
-                                        className="group relative flex flex-col items-center p-4 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+                                        className={`group relative flex flex-col items-center p-4 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden ${u.isHidden ? 'opacity-50 grayscale hover:opacity-100 hover:grayscale-0' : ''}`}
                                     >
+                                        {manageMode && (
+                                            <div
+                                                onClick={(e) => { e.stopPropagation(); toggleHideUser(u.username); }}
+                                                className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center hover:bg-slate-200 transition-colors cursor-pointer border border-slate-200 shadow-sm"
+                                                title={u.isHidden ? "Réafficher l'utilisateur" : "Masquer l'utilisateur"}
+                                            >
+                                                {togglingUser === u.username ? (
+                                                    <span className="w-4 h-4 border-2 border-slate-400 border-t-transparent rounded-full animate-spin" />
+                                                ) : u.isHidden ? (
+                                                    <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                                ) : (
+                                                    <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.29 3.29m0 0a10.05 10.05 0 015.71-2.29c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" /></svg>
+                                                )}
+                                            </div>
+                                        )}
                                         <div className="relative mb-3">
                                             <div className="w-14 h-14 rounded-2xl flex items-center justify-center font-black text-white text-lg shadow-xl overflow-hidden transition-transform duration-500 group-hover:scale-110"
                                                 style={{ background: `linear-gradient(135deg, ${cfg.accent}, #059669)` }}>
@@ -553,8 +620,23 @@ export default function DashboardSelection() {
                                     <button
                                         key={`tn-${idx}`}
                                         onClick={() => navigate(`/dashboard/dashboard2?viewUser=${u.username}`)}
-                                        className="group relative flex flex-col items-center p-4 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+                                        className={`group relative flex flex-col items-center p-4 bg-white border border-slate-100 rounded-[2rem] shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 hover:-translate-y-2 overflow-hidden ${u.isHidden ? 'opacity-50 grayscale hover:opacity-100 hover:grayscale-0' : ''}`}
                                     >
+                                        {manageMode && (
+                                            <div
+                                                onClick={(e) => { e.stopPropagation(); toggleHideUser(u.username); }}
+                                                className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center hover:bg-slate-200 transition-colors cursor-pointer border border-slate-200 shadow-sm"
+                                                title={u.isHidden ? "Réafficher l'utilisateur" : "Masquer l'utilisateur"}
+                                            >
+                                                {togglingUser === u.username ? (
+                                                    <span className="w-4 h-4 border-2 border-slate-400 border-t-transparent rounded-full animate-spin" />
+                                                ) : u.isHidden ? (
+                                                    <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                                ) : (
+                                                    <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.29 3.29m0 0a10.05 10.05 0 015.71-2.29c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" /></svg>
+                                                )}
+                                            </div>
+                                        )}
                                         <div className="relative mb-3">
                                             <div className="w-14 h-14 rounded-2xl flex items-center justify-center font-black text-white text-lg shadow-xl overflow-hidden transition-transform duration-500 group-hover:scale-110"
                                                 style={{ background: `linear-gradient(135deg, ${cfg.accent}, #3b82f6)` }}>
