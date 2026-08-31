@@ -46,6 +46,10 @@ const userSchema = new mongoose.Schema({
     totalLeaveDays: {
         type: Number,
         default: 25
+    },
+    isHidden: {
+        type: Boolean,
+        default: false
     }
 }, { timestamps: true });
 
