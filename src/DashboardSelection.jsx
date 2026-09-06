@@ -61,6 +61,7 @@ export default function DashboardSelection() {
 
     const [searchQuery, setSearchQuery] = React.useState('');
     const [downloading, setDownloading] = React.useState(false);
+    const [exportingSpecialties, setExportingSpecialties] = React.useState(false);
     const [manageMode, setManageMode] = React.useState(false);
     const [allDashboardUsers, setAllDashboardUsers] = React.useState({});
     const [togglingUser, setTogglingUser] = React.useState(null);
@@ -397,6 +398,35 @@ export default function DashboardSelection() {
         }
     };
 
+    const downloadSpecialtiesReport = async () => {
+        setExportingSpecialties(true);
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch('/api/visits/export-specialty-report-2026', {
+                headers: { 'x-auth-token': token }
+            });
+            if (!res.ok) {
+                const errData = await res.json().catch(() => ({ msg: 'Erreur serveur' }));
+                alert(errData.msg || 'Erreur lors du téléchargement du fichier Excel.');
+                return;
+            }
+            const blob = await res.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Visites_Specialites_2026.xlsx';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        } catch (err) {
+            console.error('Erreur export spécialités:', err);
+            alert('Erreur réseau lors de la génération du rapport.');
+        } finally {
+            setExportingSpecialties(false);
+        }
+    };
+
     const configMap = {
         dashboard1: { name: 'BiotechpharmaMD', accent: '#10b981', light: 'rgba(16, 185, 129, 0.1)' },
         dashboard2: { name: 'Tenshi', accent: '#6366f1', light: 'rgba(99, 102, 241, 0.1)' }
@@ -445,7 +475,7 @@ export default function DashboardSelection() {
                     <span className="text-xs font-black text-slate-400 uppercase tracking-widest">
                         {filteredUsers.length} Délégués trouvés
                     </span>
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-3">
                         <button
                             onClick={downloadAllExpenses}
                             disabled={downloading}
@@ -461,6 +491,23 @@ export default function DashboardSelection() {
                             )}
                             Télécharger Notes de Frais
                         </button>
+                        {userRole === 'admin' && (
+                            <button
+                                onClick={downloadSpecialtiesReport}
+                                disabled={exportingSpecialties}
+                                className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-emerald-800 bg-emerald-50 border border-emerald-300 shadow-sm hover:bg-emerald-100 transition-all disabled:opacity-60"
+                                title="Télécharger le fichier Excel des pourcentages de visites par spécialité pour chaque semaine de 2026"
+                            >
+                                {exportingSpecialties ? (
+                                    <span className="w-3 h-3 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin" />
+                                ) : (
+                                    <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                )}
+                                Export Spécialités 2026
+                            </button>
+                        )}
                         {userRole === 'admin' && (
                             <button
                                 onClick={() => { setShowAIModal(true); if(!aiSummary) generateAISummary('day'); }}
