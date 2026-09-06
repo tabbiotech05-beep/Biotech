@@ -5,6 +5,7 @@ import Doctor from '../models/Doctor.js';
 import Pharmacy from '../models/Pharmacy.js';
 import Wholesaler from '../models/Wholesaler.js';
 import auth from '../middleware/auth.js';
+import XLSX from 'xlsx';
 
 const router = express.Router();
 
@@ -641,6 +642,185 @@ router.get('/admin/cycle-report', auth, async (req, res) => {
     } catch (err) {
         console.error('[cycle-report] Error:', err.message);
         res.status(500).json({ msg: 'Erreur serveur' });
+    }
+});
+// @route   GET api/visits/export-specialty-report-2026
+// @desc    Export Excel report: 2026 months (4 weeks each) vs delegates with specialty visit percentages
+// @access  Private (Admin only)
+router.get('/export-specialty-report-2026', auth, async (req, res) => {
+    try {
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({ msg: 'Accès non autorisé: administrateur uniquement.' });
+        }
+
+        const months = [
+            'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+            'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+        ];
+
+        // 1. Fetch all delegates
+        const delegates = await User.find({
+            role: { $in: ['delegue', null, undefined] }
+        }).select('_id username allowedDashboards role').sort({ username: 1 }).lean();
+
+        // 2. Fetch all visits for 2026
+        const startOfYear = new Date('2026-01-01T00:00:00.000Z');
+        const endOfYear = new Date('2026-12-31T23:59:59.999Z');
+
+        const visits = await Visit.find({
+            start: { $gte: startOfYear, $lte: endOfYear }
+        }).select('user delegateName start specialty targetType').lean();
+
+        // 3. Prepare data structure: delegateId -> month (0..11) -> week (0..3) -> { specialties: {}, total: 0 }
+        const stats = {};
+        const createEmptyMonthWeeks = () => Array.from({ length: 12 }, () =>
+            Array.from({ length: 4 }, () => ({ specialties: {}, total: 0 }))
+        );
+
+        delegates.forEach(d => {
+            stats[d._id.toString()] = createEmptyMonthWeeks();
+        });
+
+        // Track any unexpected delegate names
+        const extraUsersMap = new Map();
+
+        visits.forEach(v => {
+            if (!v.start) return;
+            const d = new Date(v.start);
+            if (isNaN(d.getTime()) || d.getFullYear() !== 2026) return;
+
+            const month = d.getMonth(); // 0 to 11
+            const day = d.getDate(); // 1 to 31
+            let week = 0;
+            if (day <= 7) week = 0;
+            else if (day <= 14) week = 1;
+            else if (day <= 21) week = 2;
+            else week = 3;
+
+            const userId = v.user ? v.user.toString() : null;
+            if (!userId) return;
+
+            if (!stats[userId]) {
+                stats[userId] = createEmptyMonthWeeks();
+                if (!extraUsersMap.has(userId)) {
+                    extraUsersMap.set(userId, v.delegateName || 'Délégué');
+                }
+            }
+
+            // Determine specialty
+            let spec = (v.specialty || '').trim();
+            if (!spec) {
+                if (v.targetType === 'pharmacie') spec = 'Pharmacie';
+                else if (v.targetType === 'grossiste') spec = 'Grossiste';
+                else if (v.targetType === 'medecin') spec = 'Médecin (Non précisé)';
+                else spec = 'Non spécifié';
+            }
+            const formattedSpec = spec.charAt(0).toUpperCase() + spec.slice(1);
+
+            stats[userId][month][week].total += 1;
+            stats[userId][month][week].specialties[formattedSpec] =
+                (stats[userId][month][week].specialties[formattedSpec] || 0) + 1;
+        });
+
+        const allDelegatesList = [...delegates];
+        extraUsersMap.forEach((name, id) => {
+            allDelegatesList.push({
+                _id: id,
+                username: name,
+                allowedDashboards: []
+            });
+        });
+
+        // 4. Build Excel structure
+        // Header Row 0: Month names (merged across 4 cols each)
+        const row0 = ['Délégué'];
+        // Header Row 1: S1, S2, S3, S4 for each month
+        const row1 = [''];
+
+        const merges = [
+            { s: { r: 0, c: 0 }, e: { r: 1, c: 0 } } // Délégué A1:A2
+        ];
+
+        months.forEach((m, mIdx) => {
+            const startCol = 1 + mIdx * 4;
+            row0.push(`${m} 2026`, '', '', '');
+            row1.push('S1', 'S2', 'S3', 'S4');
+            merges.push({
+                s: { r: 0, c: startCol },
+                e: { r: 0, c: startCol + 3 }
+            });
+        });
+
+        const dataRows = [];
+        const weeklyTotals = Array.from({ length: 48 }, () => 0);
+
+        allDelegatesList.forEach(d => {
+            const dId = d._id.toString();
+            const team = d.allowedDashboards?.includes('dashboard1')
+                ? 'BioTech'
+                : d.allowedDashboards?.includes('dashboard2')
+                ? 'Tenshi'
+                : '';
+
+            const delegateLabel = team ? `${d.username} (${team})` : d.username;
+            const row = [delegateLabel];
+
+            for (let m = 0; m < 12; m++) {
+                for (let w = 0; w < 4; w++) {
+                    const colIndex = m * 4 + w;
+                    const cellData = stats[dId]?.[m]?.[w];
+
+                    if (!cellData || cellData.total === 0) {
+                        row.push('-');
+                    } else {
+                        weeklyTotals[colIndex] += cellData.total;
+                        const entries = Object.entries(cellData.specialties);
+                        entries.sort((a, b) => b[1] - a[1]);
+
+                        const lines = entries.map(([specName, count]) => {
+                            const pct = Math.round((count / cellData.total) * 100);
+                            return `${specName}: ${pct}% (${count})`;
+                        });
+                        lines.push(`Total: ${cellData.total}`);
+                        row.push(lines.join('\n'));
+                    }
+                }
+            }
+            dataRows.push(row);
+        });
+
+        // Summary row at the bottom
+        const summaryRow = ['TOTAL VISITES EQUIPE'];
+        weeklyTotals.forEach(tot => {
+            summaryRow.push(tot > 0 ? `${tot} visite${tot > 1 ? 's' : ''}` : '-');
+        });
+        dataRows.push(summaryRow);
+
+        // 5. Construct sheet and workbook
+        const wsData = [row0, row1, ...dataRows];
+        const ws = XLSX.utils.aoa_to_sheet(wsData);
+        ws['!merges'] = merges;
+        ws['!cols'] = [{ wch: 25 }, ...Array(48).fill({ wch: 28 })];
+
+        const rowHeights = [
+            { hpt: 26 },
+            { hpt: 20 },
+            ...allDelegatesList.map(() => ({ hpt: 65 })),
+            { hpt: 25 }
+        ];
+        ws['!rows'] = rowHeights;
+
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Spécialités 2026');
+
+        const buffer = XLSX.write(wb, { type: 'buffer', bookType: 'xlsx' });
+
+        res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        res.setHeader('Content-Disposition', 'attachment; filename="Visites_Specialites_2026.xlsx"');
+        return res.send(buffer);
+    } catch (err) {
+        console.error('[export-specialty-report-2026] Error:', err);
+        res.status(500).json({ msg: 'Erreur lors de la génération du fichier Excel', error: err.message });
     }
 });
 
