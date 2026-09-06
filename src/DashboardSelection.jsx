@@ -62,6 +62,7 @@ export default function DashboardSelection() {
     const [searchQuery, setSearchQuery] = React.useState('');
     const [downloading, setDownloading] = React.useState(false);
     const [exportingSpecialties, setExportingSpecialties] = React.useState(false);
+    const [exportingLocations, setExportingLocations] = React.useState(false);
     const [manageMode, setManageMode] = React.useState(false);
     const [allDashboardUsers, setAllDashboardUsers] = React.useState({});
     const [togglingUser, setTogglingUser] = React.useState(null);
@@ -427,6 +428,35 @@ export default function DashboardSelection() {
         }
     };
 
+    const downloadLocationsReport = async () => {
+        setExportingLocations(true);
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch('/api/visits/export-location-report-2026', {
+                headers: { 'x-auth-token': token }
+            });
+            if (!res.ok) {
+                const errData = await res.json().catch(() => ({ msg: 'Erreur serveur' }));
+                alert(errData.msg || 'Erreur lors du téléchargement du fichier Excel.');
+                return;
+            }
+            const blob = await res.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Visites_Villes_Gouvernorats_2026.xlsx';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        } catch (err) {
+            console.error('Erreur export villes et gouvernorats:', err);
+            alert('Erreur réseau lors de la génération du rapport.');
+        } finally {
+            setExportingLocations(false);
+        }
+    };
+
     const configMap = {
         dashboard1: { name: 'BiotechpharmaMD', accent: '#10b981', light: 'rgba(16, 185, 129, 0.1)' },
         dashboard2: { name: 'Tenshi', accent: '#6366f1', light: 'rgba(99, 102, 241, 0.1)' }
@@ -506,6 +536,24 @@ export default function DashboardSelection() {
                                     </svg>
                                 )}
                                 Export Spécialités 2026
+                            </button>
+                        )}
+                        {userRole === 'admin' && (
+                            <button
+                                onClick={downloadLocationsReport}
+                                disabled={exportingLocations}
+                                className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-teal-800 bg-teal-50 border border-teal-300 shadow-sm hover:bg-teal-100 transition-all disabled:opacity-60"
+                                title="Télécharger le fichier Excel des pourcentages de visites par ville et gouvernorat pour chaque semaine de 2026"
+                            >
+                                {exportingLocations ? (
+                                    <span className="w-3 h-3 border-2 border-teal-600 border-t-transparent rounded-full animate-spin" />
+                                ) : (
+                                    <svg className="w-3.5 h-3.5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                )}
+                                Export Villes & Gouv. 2026
                             </button>
                         )}
                         {userRole === 'admin' && (
