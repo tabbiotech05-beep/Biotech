@@ -3,36 +3,281 @@
     "annee": "2026",
     "mois": "03",
     "nom_client": "CABDEPHAR",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 504
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "CABDEPHAR",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 720
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "CABDEPHAR",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
     "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "CABDEPHAR",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 1200
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "CABDEPHAR",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 600
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "CABDEPHAR",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 600
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "CABDEPHAR",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "CABDEPHAR",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "COGEPHA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
   },
   {
     "annee": "2026",
     "mois": "03",
     "nom_client": "COGEPHA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "COGEPHA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "03",
-    "nom_client": "COPHADIS",
+    "nom_client": "COGEPHA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "COGEPHA",
     "libelle": "CELEBREX 200mg B/20 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "03",
+    "nom_client": "COGEPHA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "COGEPHA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 50
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "COGEPHA",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "COPHADIS",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "COPHADIS",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "COPHADIS",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "EASY PHARMA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "EASY PHARMA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GO PHARMA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GO PHARMA",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GO PHARMA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GO PHARMA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GO PHARMA",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GO PHARMA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GO PHARMA",
+    "libelle": "TAHOR 10 mg B/91",
+    "qte": 3
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
     "nom_client": "GO PHARMA",
     "libelle": "TAHOR 10MG FCT 4x7 BLST TN",
-    "qte": 5
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GO PHARMA",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 3
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GO PHARMA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 192
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GO PHARMA",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GZ PHARMA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
   },
   {
     "annee": "2026",
     "mois": "03",
     "nom_client": "GZ PHARMA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
-    "qte": 60
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GZ PHARMA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GZ PHARMA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GZ PHARMA",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GZ PHARMA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GZ PHARMA",
+    "libelle": "TAHOR 20MG FCT 4X7 BLST TN",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GZ PHARMA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 100
   },
   {
     "annee": "2026",
@@ -115,78 +360,918 @@
     "annee": "2026",
     "mois": "03",
     "nom_client": "KIPROPHA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "KIPROPHA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
-    "qte": 120
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "KIPROPHA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "KIPROPHA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 480
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "KIPROPHA",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "KIPROPHA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "KIPROPHA",
+    "libelle": "TAHOR 10 mg B/91",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "KIPROPHA",
+    "libelle": "TAHOR 20MG FCT 4X7 BLST TN",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "KIPROPHA",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 12
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "KIPROPHA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "KIPROPHA",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 168
   },
   {
     "annee": "2026",
     "mois": "03",
     "nom_client": "LIDIAL PHARMA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
-    "qte": 40
-  },
-  {
-    "annee": "2026",
-    "mois": "03",
-    "nom_client": "MCHIRGUI PHARMA",
-    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
-    "qte": 30
-  },
-  {
-    "annee": "2026",
-    "mois": "03",
-    "nom_client": "MEDICA CENTRE",
-    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
-    "qte": 120
-  },
-  {
-    "annee": "2026",
-    "mois": "03",
-    "nom_client": "MEDIPHARM",
-    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
     "qte": 80
   },
   {
     "annee": "2026",
     "mois": "03",
-    "nom_client": "OMNIPHARM REPARTITION",
-    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "nom_client": "LIDIAL PHARMA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "03",
-    "nom_client": "PHARMA SERVICES S.A",
-    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
-    "qte": 20
-  },
-  {
-    "annee": "2026",
-    "mois": "03",
-    "nom_client": "PHARMAGROS",
-    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
-    "qte": 60
-  },
-  {
-    "annee": "2026",
-    "mois": "03",
-    "nom_client": "PROPHADIS",
+    "nom_client": "LIDIAL PHARMA",
     "libelle": "CELEBREX 200mg B/20 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "03",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "LIDIAL PHARMA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 40
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MCHIRGUI PHARMA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDICA CENTRE",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDICA CENTRE",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDICA CENTRE",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDICA CENTRE",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDICA CENTRE",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDICA CENTRE",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDICA CENTRE",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 50
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDIPHARM",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDIPHARM",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 160
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDIPHARM",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDIPHARM",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDIPHARM",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDIPHARM",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDIPHARM",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 80
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "MEDIPHARM",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 336
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 480
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 12
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMA SERVICES S.A",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 80
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMA SERVICES S.A",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 40
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMA SERVICES S.A",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMA SERVICES S.A",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMA SERVICES S.A",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 90
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMA SERVICES S.A",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMA SERVICES S.A",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
     "qte": 20
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMA SERVICES S.A",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 50
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMAGROS",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMAGROS",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMAGROS",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMAGROS",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMAGROS",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMAGROS",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMAGROS",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 50
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMASUD",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMASUD",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 480
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMASUD",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMASUD",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMASUD",
+    "libelle": "DEBRIDAT 200 MG B/15",
+    "qte": 600
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMASUD",
+    "libelle": "LINCOCINE 600MG AMP",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMASUD",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 96
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHADIS",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHADIS",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHADIS",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHADIS",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 96
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 40
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 24
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 40
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "DEBRIDAT 200 MG B/15",
+    "qte": 600
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "DIFLUCAN 150MG B/1",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "DIFLUCAN 150MG B/4",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "TAHOR 10 mg B/91",
+    "qte": 4
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 4
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "VIBRAMYCINE 100MG B/10",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "VIBRAMYCINE 200MG B/8",
+    "qte": 24
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PROPHASUD",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 48
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "RUSPINA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "RUSPINA",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 80
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "RUSPINA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "RUSPINA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "RUSPINA",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "RUSPINA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "RUSPINA",
+    "libelle": "DIFLUCAN 150MG B/4",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "RUSPINA",
+    "libelle": "TAHOR 40MG B/28",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "RUSPINA",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "RUSPINA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 40
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "RUSPINA",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 20
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 336
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 90
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "DEBRIDAT 100 MG B/30",
+    "qte": 336
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "DIFLUCAN 150MG B/1",
+    "qte": 20
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "FELDENE 20MG B/10",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "FELDENE 20MG B/20",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 12
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "VIBRAMYCINE 100MG B/10",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "VIBRAMYCINE 200MG B/8",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "ZITHROMAX 500MG B/3",
+    "qte": 672
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "GALIEN",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 80
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "DEBRIDAT 200 MG B/15",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "DIFLUCAN 150MG B/4",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "FELDENE 20MG B/10",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "FELDENE 20MG B/20",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "TAHOR 40MG B/28",
+    "qte": 6
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "TAHOR 80MG CP B/28",
+    "qte": 6
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "ZITHROMAX 500MG B/3",
+    "qte": 336
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "AVICENNE",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 100
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "UNIVERS PHARMA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
   },
   {
     "annee": "2026",
     "mois": "03",
     "nom_client": "UNIVERS PHARMA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
-    "qte": 30
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "UNIVERS PHARMA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "UNIVERS PHARMA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "UNIVERS PHARMA",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "UNIVERS PHARMA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "UNIVERS PHARMA",
+    "libelle": "TAHOR 10 mg B/91",
+    "qte": 2
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "UNIVERS PHARMA",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 2
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "UNIVERS PHARMA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 168
   },
   {
     "annee": "2026",
@@ -464,56 +1549,56 @@
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COGEPHA AVRIL1",
+    "nom_client": "COGEPHA",
     "libelle": "AMLOR 5mg B/30 CP",
     "qte": 168
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COGEPHA AVRIL1",
+    "nom_client": "COGEPHA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COGEPHA AVRIL1",
+    "nom_client": "COGEPHA",
     "libelle": "Amlor 10mg HFC 2X15 BLST TN",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COGEPHA AVRIL1",
+    "nom_client": "COGEPHA",
     "libelle": "CELEBREX 200mg B/10 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COGEPHA AVRIL1",
+    "nom_client": "COGEPHA",
     "libelle": "CELEBREX 200mg B/20 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COGEPHA AVRIL1",
+    "nom_client": "COGEPHA",
     "libelle": "CELEBREX 200mg B/30 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COGEPHA AVRIL1",
+    "nom_client": "COGEPHA",
     "libelle": "TAHOR 20MG B/91",
     "qte": 4
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COGEPHA AVRIL1",
+    "nom_client": "COGEPHA",
     "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
     "qte": 80
   },
@@ -583,63 +1668,63 @@
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COPROPHA AVRIL1",
+    "nom_client": "COPROPHA",
     "libelle": "AMLOR 5mg B/30 CP",
     "qte": 504
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COPROPHA AVRIL1",
+    "nom_client": "COPROPHA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COPROPHA AVRIL1",
+    "nom_client": "COPROPHA",
     "libelle": "Amlor 10mg HFC 2X15 BLST TN",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COPROPHA AVRIL1",
+    "nom_client": "COPROPHA",
     "libelle": "CELEBREX 200mg B/10 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COPROPHA AVRIL1",
+    "nom_client": "COPROPHA",
     "libelle": "CELEBREX 200mg B/20 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COPROPHA AVRIL1",
+    "nom_client": "COPROPHA",
     "libelle": "CELEBREX 200mg B/30 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COPROPHA AVRIL1",
+    "nom_client": "COPROPHA",
     "libelle": "TAHOR 40MG B/28",
     "qte": 10
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COPROPHA AVRIL1",
+    "nom_client": "COPROPHA",
     "libelle": "TAHOR 40MG B/91",
     "qte": 12
   },
   {
     "annee": "2026",
     "mois": "04",
-    "nom_client": "COPROPHA AVRIL1",
+    "nom_client": "COPROPHA",
     "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
     "qte": 150
   },
@@ -1478,6 +2563,944 @@
   },
   {
     "annee": "2026",
+    "mois": "05",
+    "nom_client": "BIOTECH PHARMA MD",
+    "libelle": "AMLOR 10mg B/30 GELULES SAMPLE",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "BIOTECH PHARMA MD",
+    "libelle": "AMLOR 5mg B/30 CP SAMPLE",
+    "qte": 504
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "BIOTECH PHARMA MD",
+    "libelle": "TAHOR 10mg B/28 CP SAMPLE",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "BIOTECH PHARMA MD",
+    "libelle": "TAHOR 40MG B/28 SAMPLE",
+    "qte": 114
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "BIOTECH PHARMA MD",
+    "libelle": "ZOLOFT 50mg B/15 CP SAMPLE",
+    "qte": 336
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "CENTRANORD PHARMA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 80
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "CENTRANORD PHARMA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "CENTRANORD PHARMA",
+    "libelle": "TAHOR 10 mg B/91",
+    "qte": 8
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "CENTRANORD PHARMA",
+    "libelle": "TAHOR 40MG B/28",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "CENTRANORD PHARMA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "CENTRANORD PHARMA",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "COGEMED",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "COGEMED",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "COGEMED",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "COGEMED",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 20
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "COGEPHA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 504
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "COGEPHA",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "COGEPHA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "COGEPHA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "COGEPHA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 80
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "COGEPHA",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 35
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DISTRI MED",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 504
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DISTRI MED",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DISTRI MED",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DISTRI MED",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 600
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DISTRI MED",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DISTRI MED",
+    "libelle": "TAHOR 10 mg B/91",
+    "qte": 20
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DISTRI MED",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 24
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DISTRI MED",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 200
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DMK",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 612
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DMK",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DMK",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DMK",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DMK",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DMK",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DMK",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "DMK",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 40
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "TAHOR 10 mg B/91",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "TAHOR 20MG B/91",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "TAHOR 20MG FCT 4X7 BLST TN",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "TAHOR 40MG B/28",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "EXPRESS PHARMA",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "FERIANI ABDELAZIZ - DEPHANORD BEJA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 336
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "FERIANI ABDELAZIZ - DEPHANORD BEJA",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "FERIANI ABDELAZIZ - DEPHANORD BEJA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "FERIANI ABDELAZIZ - DEPHANORD BEJA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "FERIANI ABDELAZIZ - DEPHANORD BEJA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "FERIANI ABDELAZIZ - DEPHANORD BEJA",
+    "libelle": "TAHOR 20MG FCT 4X7 BLST TN",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "FERIANI ABDELAZIZ - DEPHANORD BEJA",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "FERIANI ABDELAZIZ - DEPHANORD BEJA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 50
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "FERIANI ABDELAZIZ - DEPHANORD BEJA",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 50
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "GALIEN",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 600
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "GALIEN",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "GALIEN",
+    "libelle": "TAHOR 20MG FCT 4X7 BLST TN",
+    "qte": 24
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "KPROPHARMA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 336
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "KPROPHARMA",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "KPROPHARMA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "KPROPHARMA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "KPROPHARMA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "KPROPHARMA",
+    "libelle": "TAHOR 10MG FCT 4x7 BLST TN",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "KPROPHARMA",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 36
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 50
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 50
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MCHIRGUI PHARMA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDICA SERVICES",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDICA SERVICES",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDICA SERVICES",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDICA SERVICES",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDICA SERVICES",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDICA SERVICES",
+    "libelle": "TAHOR 40MG B/28",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDICA SERVICES",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDICA SERVICES",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDIGROS",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 72
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDIKA KAIROUAN",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 336
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDIKA KAIROUAN",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDIKA KAIROUAN",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDIKA KAIROUAN",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 720
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDIKA KAIROUAN",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDIKA KAIROUAN",
+    "libelle": "TAHOR 40MG B/28",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDIKA KAIROUAN",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 24
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "MEDIKA KAIROUAN",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OKBA KAIROUAN",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 336
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OKBA KAIROUAN",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 90
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OKBA KAIROUAN",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 480
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OKBA KAIROUAN",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OKBA KAIROUAN",
+    "libelle": "TAHOR 10 mg B/91",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OKBA KAIROUAN",
+    "libelle": "TAHOR 20MG FCT 4X7 BLST TN",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OKBA KAIROUAN",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 80
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 50
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "TAHOR 20MG B/91",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "TAHOR 20MG FCT 4X7 BLST TN",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "TAHOR 40MG B/28",
+    "qte": 10
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "OMNIPHARM REPARTITION",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PHARMAGROS",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PHARMAGROS",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PHARMAGROS",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PHARMAGROS",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 60
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PHARMAGROS",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 80
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PHARMAGROS",
+    "libelle": "TAHOR 40MG B/28",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PHARMASPRINT",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 336
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PHARMASPRINT",
+    "libelle": "TAHOR 20MG B/91",
+    "qte": 12
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PHARMASPRINT",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 12
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PHARMASPRINT",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PRO PHA SUD",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PRO PHA SUD",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 24
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PRO PHA SUD",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PRO PHA SUD",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 43
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PRO PHA SUD",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PRO PHA SUD",
+    "libelle": "TAHOR 10 mg B/91",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PRO PHA SUD",
+    "libelle": "TAHOR 10MG FCT 4x7 BLST TN",
+    "qte": 5
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PRO PHA SUD",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 3
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PRO PHA SUD",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 168
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PROPHADIS",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PROPHADIS",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 160
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "PROPHADIS",
+    "libelle": "TAHOR 40MG B/28",
+    "qte": 15
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "SOPROPHA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 336
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "SOPROPHA",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 600
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "SOPROPHA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 120
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "SOPROPHA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 600
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "SOPROPHA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 240
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "SOPROPHA",
+    "libelle": "TAHOR 20MG B/91",
+    "qte": 12
+  },
+  {
+    "annee": "2026",
+    "mois": "05",
+    "nom_client": "SOPROPHA",
+    "libelle": "TAHOR 40MG B/91",
+    "qte": 24
+  },
+  {
+    "annee": "2026",
     "mois": "08",
     "nom_client": "COMPTOIR MEDITERRANEE DES PRODUITS",
     "libelle": "CELEBREX 200mg B/20 GELULES",
@@ -2053,70 +4076,70 @@
   {
     "annee": "2026",
     "mois": "08",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "08",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "TAHOR 10 mg B/91",
     "qte": 48
   },
   {
     "annee": "2026",
     "mois": "08",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "CELEBREX 200mg B/20 GELULES",
     "qte": 900
   },
   {
     "annee": "2026",
     "mois": "08",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "Amlor 10mg HFC 2X15 BLST TN",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "08",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "TAHOR 20MG FCT 4X7 BLST TN",
     "qte": 57
   },
   {
     "annee": "2026",
     "mois": "08",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "AMLOR 5mg B/30 CP",
     "qte": 504
   },
   {
     "annee": "2026",
     "mois": "08",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "CELEBREX 200mg B/10 GELULES",
     "qte": 600
   },
   {
     "annee": "2026",
     "mois": "08",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "TAHOR 20MG B/91",
     "qte": 24
   },
   {
     "annee": "2026",
     "mois": "08",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "CELEBREX 200mg B/30 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "08",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
     "qte": 96
   },
@@ -2690,70 +4713,70 @@
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "TAHOR 40MG B/28",
     "qte": 57
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "Amlor 10mg HFC 2X15 BLST TN",
     "qte": 360
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "TAHOR 20MG FCT 4X7 BLST TN",
     "qte": 57
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "CELEBREX 200mg B/10 GELULES",
     "qte": 600
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "TAHOR 20MG B/91",
     "qte": 12
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "CELEBREX 200mg B/30 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "TAHOR 40MG B/91",
     "qte": 24
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "ZOLOFT 50mg B/15 CP",
     "qte": 240
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
     "qte": 480
   },
@@ -2907,35 +4930,35 @@
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
     "qte": 50
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "Amlor 10mg HFC 2X15 BLST TN",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "TAHOR 40MG B/91",
     "qte": 5
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "ZOLOFT 50mg B/15 CP",
     "qte": 20
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
     "qte": 30
   },
@@ -3404,49 +5427,49 @@
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "CELEBREX 200mg B/20 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "AMLOR 5mg B/30 CP",
     "qte": 168
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "DALIA PHARMA",
+    "nom_client": "DALIA",
     "libelle": "CELEBREX 200mg B/20 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "DALIA PHARMA",
+    "nom_client": "DALIA",
     "libelle": "CELEBREX 200mg B/10 GELULES",
     "qte": 240
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "DALIA PHARMA",
+    "nom_client": "DALIA",
     "libelle": "CELEBREX 200mg B/30 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "DALIA PHARMA",
+    "nom_client": "DALIA",
     "libelle": "ZOLOFT 50mg B/15 CP",
     "qte": 10
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "DALIA PHARMA",
+    "nom_client": "DALIA",
     "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
     "qte": 30
   },
@@ -3754,35 +5777,35 @@
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "TAHOR 10MG FCT 4x7 BLST TN",
     "qte": 20
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
     "qte": 50
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "CELEBREX 200mg B/20 GELULES",
     "qte": 240
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "Amlor 10mg HFC 2X15 BLST TN",
     "qte": 30
   },
   {
     "annee": "2026",
     "mois": "07",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
     "qte": 50
   },
@@ -4139,42 +6162,42 @@
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
     "qte": 50
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "TAHOR 40MG B/28",
     "qte": 3
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "AMLOR 5mg B/30 CP",
     "qte": 168
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "CELEBREX 200mg B/10 GELULES",
     "qte": 240
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "TAHOR 40MG B/91",
     "qte": 5
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "RUSPINA PHARMA",
+    "nom_client": "RUSPINA",
     "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
     "qte": 30
   },
@@ -4566,70 +6589,70 @@
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "TAHOR 10MG FCT 4x7 BLST TN",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "TAHOR 10 mg B/91",
     "qte": 48
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "TAHOR 40MG B/28",
     "qte": 57
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "Amlor 10mg HFC 2X15 BLST TN",
     "qte": 240
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "AMLOR 5mg B/30 CP",
     "qte": 504
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "CELEBREX 200mg B/10 GELULES",
     "qte": 720
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "CELEBREX 200mg B/30 GELULES",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "ZOLOFT 50mg B/15 CP",
     "qte": 120
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "MEDIGROS SARL",
+    "nom_client": "MEDIGROS",
     "libelle": "CELEBREX 200mg B/20 GELULES",
     "qte": 60
   },
@@ -4937,49 +6960,49 @@
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "TAHOR 10MG FCT 4x7 BLST TN",
     "qte": 10
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
     "qte": 240
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "Amlor 10mg HFC 2X15 BLST TN",
     "qte": 60
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "AMLOR 5mg B/30 CP",
     "qte": 336
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "CELEBREX 200mg B/30 GELULES",
     "qte": 240
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "ZOLOFT 50mg B/15 CP",
     "qte": 60
   },
   {
     "annee": "2026",
     "mois": "06",
-    "nom_client": "AVENIR PHARMA GROS",
+    "nom_client": "AVENIR PHARMA",
     "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
     "qte": 30
   },
@@ -5213,5 +7236,68 @@
     "nom_client": "PHARMAGROS",
     "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
     "qte": 30
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "SOPROPHA",
+    "libelle": "Amlor 10mg HFC 2X15 BLST TN",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "SOPROPHA",
+    "libelle": "AMLOR 5mg B/30 CP",
+    "qte": 504
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "SOPROPHA",
+    "libelle": "AMLOR 5mg TAB 15x6 BLST TN",
+    "qte": 480
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "SOPROPHA",
+    "libelle": "CELEBREX 200mg B/10 GELULES",
+    "qte": 360
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "SOPROPHA",
+    "libelle": "CELEBREX 200mg B/20 GELULES",
+    "qte": 480
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "SOPROPHA",
+    "libelle": "CELEBREX 200mg B/30 GELULES",
+    "qte": 600
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "SOPROPHA",
+    "libelle": "TAHOR 40MG B/28",
+    "qte": 57
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "SOPROPHA",
+    "libelle": "ZOLOFT 50 MG BOITE DE 30 CPS",
+    "qte": 480
+  },
+  {
+    "annee": "2026",
+    "mois": "03",
+    "nom_client": "PHARMASUD",
+    "libelle": "ZOLOFT 50mg B/15 CP",
+    "qte": 60
   }
 ]
