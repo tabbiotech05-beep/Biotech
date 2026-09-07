@@ -40,6 +40,7 @@ const App = () => {
 
   // Tab navigation state
   const [activeTab, setActiveTab] = useState('biotech');
+  const [exportingGrossistes, setExportingGrossistes] = useState(false);
 
   // CM Data state
   const [cmData, setCmData] = useState({});
@@ -520,7 +521,42 @@ const App = () => {
           </button>
         </div>
 
-        <div className="nav-spacer" style={{ width: '180px' }} />
+        <button
+          className="tab-btn"
+          style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)', color: '#fff', fontWeight: 'bold', fontSize: '11px', padding: '6px 14px', border: 'none', borderRadius: '10px', display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer' }}
+          disabled={exportingGrossistes}
+          onClick={async () => {
+            setExportingGrossistes(true);
+            try {
+              const token = localStorage.getItem('token');
+              const res = await fetch('/api/wholesalers/export-local-sales', {
+                headers: { 'x-auth-token': token }
+              });
+              if (!res.ok) {
+                const errData = await res.json().catch(() => ({ msg: 'Erreur serveur' }));
+                alert(errData.msg || 'Erreur lors du téléchargement du fichier Excel.');
+                return;
+              }
+              const blob = await res.blob();
+              const url = window.URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = 'Ventes_Grossistes_Produits_Locaux_2026.xlsx';
+              document.body.appendChild(a);
+              a.click();
+              window.URL.revokeObjectURL(url);
+              document.body.removeChild(a);
+            } catch (err) {
+              console.error('Erreur export grossistes:', err);
+              alert('Erreur réseau lors du téléchargement.');
+            } finally {
+              setExportingGrossistes(false);
+            }
+          }}
+          title="Exporter la matrice Excel des ventes des grossistes pour les produits locaux"
+        >
+          {exportingGrossistes ? '⏳ Export...' : '📊 Export Excel Grossistes'}
+        </button>
       </div>
 
       {activeTab === 'stock' ? (
