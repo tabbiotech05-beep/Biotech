@@ -63,6 +63,7 @@ export default function DashboardSelection() {
     const [downloading, setDownloading] = React.useState(false);
     const [exportingSpecialties, setExportingSpecialties] = React.useState(false);
     const [exportingLocations, setExportingLocations] = React.useState(false);
+    const [exportingGrossistes, setExportingGrossistes] = React.useState(false);
     const [manageMode, setManageMode] = React.useState(false);
     const [allDashboardUsers, setAllDashboardUsers] = React.useState({});
     const [togglingUser, setTogglingUser] = React.useState(null);
@@ -457,6 +458,35 @@ export default function DashboardSelection() {
         }
     };
 
+    const downloadGrossistesSalesReport = async () => {
+        setExportingGrossistes(true);
+        try {
+            const token = localStorage.getItem('token');
+            const res = await fetch('/api/wholesalers/export-local-sales', {
+                headers: { 'x-auth-token': token }
+            });
+            if (!res.ok) {
+                const errData = await res.json().catch(() => ({ msg: 'Erreur serveur' }));
+                alert(errData.msg || 'Erreur lors du téléchargement du fichier Excel.');
+                return;
+            }
+            const blob = await res.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Ventes_Grossistes_Produits_Locaux_2026.xlsx';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        } catch (err) {
+            console.error('Erreur export ventes grossistes:', err);
+            alert('Erreur réseau lors de la génération du rapport.');
+        } finally {
+            setExportingGrossistes(false);
+        }
+    };
+
     const configMap = {
         dashboard1: { name: 'BiotechpharmaMD', accent: '#10b981', light: 'rgba(16, 185, 129, 0.1)' },
         dashboard2: { name: 'Tenshi', accent: '#6366f1', light: 'rgba(99, 102, 241, 0.1)' }
@@ -554,6 +584,23 @@ export default function DashboardSelection() {
                                     </svg>
                                 )}
                                 Export Villes & Gouv. 2026
+                            </button>
+                        )}
+                        {userRole === 'admin' && (
+                            <button
+                                onClick={downloadGrossistesSalesReport}
+                                disabled={exportingGrossistes}
+                                className="flex items-center gap-2 px-3 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest text-amber-900 bg-amber-50 border border-amber-300 shadow-sm hover:bg-amber-100 transition-all disabled:opacity-60"
+                                title="Télécharger le fichier Excel des ventes des grossistes par produit local"
+                            >
+                                {exportingGrossistes ? (
+                                    <span className="w-3 h-3 border-2 border-amber-600 border-t-transparent rounded-full animate-spin" />
+                                ) : (
+                                    <svg className="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                )}
+                                Export Ventes Grossistes
                             </button>
                         )}
                         {userRole === 'admin' && (
