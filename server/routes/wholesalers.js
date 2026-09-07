@@ -63,10 +63,24 @@ router.get('/export-local-sales', auth, async (req, res) => {
 
         const rawData = JSON.parse(fs.readFileSync(tenshiPath, 'utf8'));
 
+        const nameMap = {
+            'STE AVICENNE': 'AVICENNE',
+            'SOCIETE GALIEN': 'GALIEN',
+            'RUSPINA PHARMA': 'RUSPINA',
+            'MEDIGROS SARL': 'MEDIGROS',
+            'DALIA PHARMA': 'DALIA',
+            'AVENIR PHARMA GROS': 'AVENIR PHARMA',
+            'COGEPHA AVRIL1': 'COGEPHA',
+            'COPROPHA AVRIL1': 'COPROPHA'
+        };
+
         const LOCAL_PRODUCTS_ALLOWED = ['amlor', 'tahor', 'celebrex', 'zoloft'];
         const filtered = rawData.filter(item =>
             LOCAL_PRODUCTS_ALLOWED.some(p => item.libelle?.toLowerCase().includes(p))
-        );
+        ).map(d => ({
+            ...d,
+            nom_client: nameMap[d.nom_client?.trim()] || d.nom_client?.trim()
+        }));
 
         if (filtered.length === 0) {
             return res.status(400).json({ msg: 'Aucune donnée de vente locale trouvée.' });
