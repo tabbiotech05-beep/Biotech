@@ -189,27 +189,28 @@ export default function SampleHistoryView() {
                 const date = new Date(h.start).toLocaleDateString('fr-FR');
                 const delegate = h.delegateName || (h.user ? h.user.username : 'Inconnu');
                 const target = h.doctorName ? `Dr. ${h.doctorName}` : (h.pharmacyName || h.wholesalerName || 'N/A');
+                const specialty = h.specialty || '-';
                 
                 // Use original author names if they exist (for traceability)
 
                 // Check sample
                 if (h.givenSampleBatch === batchData.batchNumber) {
-                    offeredRows.push([date, delegate, target, h.givenSampleName, h.givenSampleQty || 1]);
+                    offeredRows.push([date, delegate, target, specialty, h.givenSampleName, h.givenSampleQty || 1]);
                 }
                 // Check legacy material
                 if (h.givenMaterialBatch === batchData.batchNumber) {
-                    offeredRows.push([date, delegate, target, h.givenMaterialName, h.givenMaterialQty || 1]);
+                    offeredRows.push([date, delegate, target, specialty, h.givenMaterialName, h.givenMaterialQty || 1]);
                 }
                 // Check materials array
                 (h.givenMaterials || []).forEach(m => {
                     if (m.batch === batchData.batchNumber) {
-                        offeredRows.push([date, delegate, target, m.name, m.count || 1]);
+                        offeredRows.push([date, delegate, target, specialty, m.name, m.count || 1]);
                     }
                 });
                 // Check samples array
                 (h.givenSamples || []).forEach(s => {
                     if (s.batch === batchData.batchNumber) {
-                        offeredRows.push([date, delegate, target, s.name, s.count || 1]);
+                        offeredRows.push([date, delegate, target, specialty, s.name, s.count || 1]);
                     }
                 });
             });
@@ -220,7 +221,7 @@ export default function SampleHistoryView() {
             } else {
                 autoTable(doc, {
                     startY: currentY + 5,
-                    head: [['Date', 'Délégué', 'Médecin/Cible', 'Produit', 'Qté']],
+                    head: [['Date', 'Délégué', 'Médecin/Cible', 'Spécialité', 'Produit', 'Qté']],
                     body: offeredRows,
                     theme: 'striped',
                     headStyles: { fillColor: [255, 193, 7] },
@@ -416,6 +417,7 @@ export default function SampleHistoryView() {
                                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
                                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Délégué</th>
                                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Médecin / Cible</th>
+                                                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Spécialité</th>
                                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Produit</th>
                                                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantité</th>
                                                 </tr>
@@ -425,22 +427,23 @@ export default function SampleHistoryView() {
                                                     const date = new Date(h.start).toLocaleDateString('fr-FR');
                                                     const delegate = h.delegateName || (h.user ? h.user.username : 'Inconnu');
                                                     const target = h.doctorName ? `Dr. ${h.doctorName}` : (h.pharmacyName || h.wholesalerName || 'N/A');
+                                                    const specialty = h.specialty || '-';
 
                                                     const rows = [];
                                                     if (h.givenSampleBatch === batchData.batchNumber) {
-                                                        rows.push({ id: `${h._id}-s`, date, delegate, target, item: h.givenSampleName, qty: h.givenSampleQty || 1 });
+                                                        rows.push({ id: `${h._id}-s`, date, delegate, target, specialty, item: h.givenSampleName, qty: h.givenSampleQty || 1 });
                                                     }
                                                     if (h.givenMaterialBatch === batchData.batchNumber) {
-                                                        rows.push({ id: `${h._id}-m`, date, delegate, target, item: h.givenMaterialName, qty: h.givenMaterialQty || 1 });
+                                                        rows.push({ id: `${h._id}-m`, date, delegate, target, specialty, item: h.givenMaterialName, qty: h.givenMaterialQty || 1 });
                                                     }
                                                     (h.givenMaterials || []).forEach((m, idx) => {
                                                         if (m.batch === batchData.batchNumber) {
-                                                            rows.push({ id: `${h._id}-gm-${idx}`, date, delegate, target, item: m.name, qty: m.count || 1 });
+                                                            rows.push({ id: `${h._id}-gm-${idx}`, date, delegate, target, specialty, item: m.name, qty: m.count || 1 });
                                                         }
                                                     });
                                                     (h.givenSamples || []).forEach((s, idx) => {
                                                         if (s.batch === batchData.batchNumber) {
-                                                            rows.push({ id: `${h._id}-gs-${idx}`, date, delegate, target, item: s.name, qty: s.count || 1 });
+                                                            rows.push({ id: `${h._id}-gs-${idx}`, date, delegate, target, specialty, item: s.name, qty: s.count || 1 });
                                                         }
                                                     });
 
@@ -449,6 +452,7 @@ export default function SampleHistoryView() {
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{r.date}</td>
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{r.delegate}</td>
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{r.target}</td>
+                                                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{r.specialty}</td>
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{r.item}</td>
                                                             <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-orange-600">{r.qty}</td>
                                                         </tr>
