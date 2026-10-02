@@ -3,6 +3,7 @@ import SampleHistory from '../models/SampleHistory.js';
 import Stock from '../models/Stock.js';
 import User from '../models/User.js';
 import Visit from '../models/Visit.js';
+import Doctor from '../models/Doctor.js';
 import auth from '../middleware/auth.js';
 
 const router = express.Router();
@@ -113,7 +114,24 @@ router.get('/batch/:batchNumber', auth, async (req, res) => {
             ]
         })
             .populate('user', 'username') // Fallback if delegateName is missing (e.g. before backfill)
-            .sort({ start: -1 });
+            .sort({ start: -1 })
+            .lean();
+
+        // Enrich specialty if missing from visit and doctor exists
+        const docsWithoutSpec = offeredHistory.filter(v => v.doctorName && !v.specialty);
+        if (docsWithoutSpec.length > 0) {
+            const docNames = [...new Set(docsWithoutSpec.map(v => v.doctorName.trim()))];
+            const foundDoctors = await Doctor.find({ name: { $in: docNames } }).select('name specialty').lean();
+            const docMap = {};
+            foundDoctors.forEach(d => {
+                if (d.specialty) docMap[d.name.toLowerCase()] = d.specialty;
+            });
+            offeredHistory.forEach(v => {
+                if (v.doctorName && !v.specialty && docMap[v.doctorName.trim().toLowerCase()]) {
+                    v.specialty = docMap[v.doctorName.trim().toLowerCase()];
+                }
+            });
+        }
 
         res.json({
             batchNumber,
