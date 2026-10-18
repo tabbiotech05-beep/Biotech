@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import StockCommandeView from './StockCommandeView';
+import ImportedProductsPctView from './ImportedProductsPctView';
 import {
   LineChart,
   Line,
@@ -383,32 +383,16 @@ const SalesDashboardView = () => {
           >
             🏡 Produits Locaux
           </button>
-          <button 
-            className={`tab-btn ${activeSalesTab === 'stock' ? 'active' : ''}`}
-            onClick={() => {
-              setActiveSalesTab('stock');
-              setSelectedClient('All');
-              setTempSelectedProducts([]);
-              setAppliedProducts([]);
-              setIsChartGenerated(false);
-            }}
-          >
-            📦 Stock et commande
-          </button>
         </div>
 
-        {activeSalesTab === 'stock' ? (
-          <StockCommandeView />
+        {activeSalesTab === 'biotech' ? (
+          <ImportedProductsPctView />
         ) : (
           <>
-        <header className={`dashboard-header ${activeSalesTab === 'biotech' ? 'biotech-header' : 'local-header'}`}>
+        <header className="dashboard-header local-header">
           <div className="header-content">
             <h1>
-              {activeSalesTab === 'biotech' ? (
-                <>Produit <span className="highlight blue">Importé</span></>
-              ) : (
-                <>Produits <span className="highlight green">Locaux</span></>
-              )}
+              Produits <span className="highlight green">Locaux</span>
             </h1>
           </div>
         </header>
