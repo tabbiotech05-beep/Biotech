@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import StockCommandeView from './StockCommandeView';
+import ImportedProductsPctView from './ImportedProductsPctView';
 import AvantageCommerciauxView from './AvantageCommerciauxView';
 import SuiviCommandesView from './SuiviCommandesView';
 import {
@@ -484,18 +484,6 @@ const App = () => {
             🏡 Produits Locaux
           </button>
           <button 
-            className={`tab-btn ${activeTab === 'stock' ? 'active' : ''}`}
-            onClick={() => {
-              setActiveTab('stock');
-              setSelectedClient('All');
-              setTempSelectedProducts([]);
-              setAppliedProducts([]);
-              setIsChartGenerated(false);
-            }}
-          >
-            📦 Stock et commande
-          </button>
-          <button 
             className={`tab-btn ${activeTab === 'avantage' ? 'active' : ''}`}
             onClick={() => {
               setActiveTab('avantage');
@@ -559,22 +547,18 @@ const App = () => {
         </button>
       </div>
 
-      {activeTab === 'stock' ? (
-        <StockCommandeView />
+      {activeTab === 'biotech' ? (
+        <ImportedProductsPctView />
       ) : activeTab === 'avantage' ? (
         <AvantageCommerciauxView />
       ) : activeTab === 'suivi' ? (
         <SuiviCommandesView />
       ) : (
         <>
-      <header className={`dashboard-header ${activeTab === 'biotech' ? 'biotech-header' : 'local-header'}`}>
+      <header className="dashboard-header local-header">
         <div className="header-content">
           <h1>
-            {activeTab === 'biotech' ? (
-              <>Produit <span className="highlight blue">Importé</span></>
-            ) : (
-              <>Produits <span className="highlight green">Locaux</span></>
-            )}
+            Produits <span className="highlight green">Locaux</span>
           </h1>
         </div>
       </header>
