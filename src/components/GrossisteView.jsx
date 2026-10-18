@@ -1,9 +1,8 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import ImportedProductsPctView from './ImportedProductsPctView';
 
 const IconImport = () => (<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10" /></svg>);
 const IconLocal = () => (<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>);
-const IconStockG = () => (<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" /></svg>);
-const IconOrder = () => (<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>);
 const IconAvantage = () => (<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>);
 const IconSuivi = () => (<svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>);
 
@@ -134,16 +133,14 @@ function ExternalDashLink({ label }) {
 }
 
 const SUB_TABS = [
-    { id: 'produits-importes', label: 'Produits Importés', icon: <IconImport /> },
+    { id: 'produits-importes', label: 'Produits Importés (PCT)', icon: <IconImport /> },
     { id: 'produits-locaux',   label: 'Produits Locaux',   icon: <IconLocal /> },
-    { id: 'stock',             label: 'Stock',             icon: <IconStockG /> },
-    { id: 'commandes',         label: 'Commandes',         icon: <IconOrder /> },
     { id: 'avantages',         label: 'Avantages Commerciaux', icon: <IconAvantage /> },
     { id: 'suivi-commandes',   label: 'Suivi Commandes',   icon: <IconSuivi /> },
 ];
 
 export default function GrossisteView() {
-    const [activeTab, setActiveTab] = useState('suivi-commandes');
+    const [activeTab, setActiveTab] = useState('produits-importes');
 
     return (
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm min-h-[600px] overflow-hidden">
@@ -166,12 +163,10 @@ export default function GrossisteView() {
                 </div>
             </div>
             <div className="p-6">
-                {activeTab === 'suivi-commandes' && <SuiviCommandesView />}
-                {activeTab === 'produits-importes' && <ExternalDashLink label="Produits Importés" />}
+                {activeTab === 'produits-importes' && <ImportedProductsPctView />}
                 {activeTab === 'produits-locaux' && <ExternalDashLink label="Produits Locaux" />}
-                {activeTab === 'stock' && <PlaceholderTab icon={<IconStockG />} title="Stock Grossiste" description="Visualisation du stock actuel par produit et par dépôt." />}
-                {activeTab === 'commandes' && <PlaceholderTab icon={<IconOrder />} title="Commandes" description="Historique et gestion des commandes grossiste." />}
                 {activeTab === 'avantages' && <PlaceholderTab icon={<IconAvantage />} title="Avantages Commerciaux" description="Conditions commerciales, remises et avantages accordés aux grossistes." />}
+                {activeTab === 'suivi-commandes' && <SuiviCommandesView />}
             </div>
         </div>
     );
