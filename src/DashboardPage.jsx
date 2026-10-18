@@ -26,9 +26,6 @@ import RepertoireView from './components/RepertoireView';
 import TenshiSearchView from './components/TenshiSearchView';
 import MedListView from './components/MedListView';
 import AssignmentView from './components/AssignmentView';
-import SectorisationAdminView from './components/SectorisationAdminView';
-import SectorisationDelegueView from './components/SectorisationDelegueView';
-import GrossisteView from './components/GrossisteView';
 import AIChatWidget from './components/AIChatWidget';
 import axios from 'axios';
 
@@ -144,11 +141,6 @@ const IconGrossiste = () => (
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
     </svg>
 );
-const IconMap = () => (
-    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-    </svg>
-);
 
 // ─── Grossiste View removed (Direct redirect) ──────────────────────────────────
 
@@ -225,8 +217,12 @@ function Sidebar({ tabs, activeTab, setActiveTab, accent, accentLight, logo, das
                             label={tab.label}
                             active={activeTab === tab.id}
                             onClick={() => {
-                                setActiveTab(tab.id);
-                                setSidebarOpen(false);
+                                if (tab.id === 'grossiste') {
+                                    window.location.href = SALES_DASHBOARD_URL;
+                                } else {
+                                    setActiveTab(tab.id);
+                                    setSidebarOpen(false);
+                                }
                             }}
                             accent={accent}
                         />
@@ -534,24 +530,6 @@ export default function DashboardPage() {
             label: 'Grossiste',
             icon: <IconGrossiste />
         });
-        
-        // Sectorisation
-        const sectorisationTab = role === 'admin' ? {
-            id: 'sectorisation-admin',
-            label: 'Sectorisation',
-            icon: <IconMap />
-        } : {
-            id: 'sectorisation-delegue',
-            label: 'Ma Sectorisation',
-            icon: <IconMap />
-        };
-        
-        const calIndex = displayedTabs.findIndex(t => t.id === 'calendar');
-        if (calIndex > -1) {
-            displayedTabs.splice(calIndex + 1, 0, sectorisationTab);
-        } else {
-            displayedTabs.push(sectorisationTab);
-        }
     }
 
     const delegateActions = (
@@ -627,9 +605,6 @@ export default function DashboardPage() {
                     {activeTab === 'tenshi-search' && <TenshiSearchView />}
                     {activeTab === 'med-list' && <MedListView />}
                     {activeTab === 'profile' && <ProfileView />}
-                    {activeTab === 'sectorisation-admin' && <SectorisationAdminView />}
-                    {activeTab === 'sectorisation-delegue' && <SectorisationDelegueView />}
-                    {activeTab === 'grossiste' && <GrossisteView />}
                 </div>
             </main>
 
