@@ -652,7 +652,7 @@ const SalesDashboardView = () => {
               <div className="history-header">
                 <h3>Historique Global des Transactions</h3>
                 <span className="period-badge">
-                  {activeSalesTab === 'biotech' ? "Toute l'année 2025 & 2026" : "Mars & Avril 2026"}
+                  {activeSalesTab === 'biotech' ? "Toute l'année 2025 & 2026" : "Mars à Septembre 2026"}
                 </span>
               </div>
               <div className="table-wrapper">
