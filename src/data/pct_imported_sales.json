@@ -1,0 +1,1428 @@
+{
+  "months": [
+    "Janvier",
+    "Février",
+    "Mars",
+    "Avril",
+    "Mai",
+    "Juin",
+    "Juillet",
+    "Août",
+    "Septembre",
+    "Octobre",
+    "Novembre",
+    "Décembre"
+  ],
+  "data2025": [
+    {
+      "brand": "METHYLPREDNISOLONE",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 13,
+        "Juin": 216,
+        "Juillet": 305,
+        "Août": 148,
+        "Septembre": 100,
+        "Octobre": 44,
+        "Novembre": 10,
+        "Décembre": 0
+      },
+      "total": 836
+    },
+    {
+      "brand": "METHOTREXATE 5mg/2ml",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 6,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 64,
+        "Mai": 340,
+        "Juin": 79,
+        "Juillet": 772,
+        "Août": 465,
+        "Septembre": 393,
+        "Octobre": 288,
+        "Novembre": 19,
+        "Décembre": 0
+      },
+      "total": 2426
+    },
+    {
+      "brand": "METHOTREXATE 25mg/20ml",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 0
+    },
+    {
+      "brand": "METHOTREXATE 50mg/2ml",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 17,
+        "Juillet": 105,
+        "Août": 49,
+        "Septembre": 103,
+        "Octobre": 93,
+        "Novembre": 165,
+        "Décembre": 153
+      },
+      "total": 685
+    },
+    {
+      "brand": "METHOTREXATE 100mg/ml (5G)",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 0
+    },
+    {
+      "brand": "AZATHIOPRINE",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 4623,
+        "Février": 8190,
+        "Mars": 5251,
+        "Avril": 6149,
+        "Mai": 6237,
+        "Juin": 7149,
+        "Juillet": 5327,
+        "Août": 6123,
+        "Septembre": 6188,
+        "Octobre": 5481,
+        "Novembre": 5818,
+        "Décembre": 6592
+      },
+      "total": 73128
+    },
+    {
+      "brand": "CAPECITABINE",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 4,
+        "Février": 5,
+        "Mars": 0,
+        "Avril": 2,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 45,
+        "Octobre": 157,
+        "Novembre": 474,
+        "Décembre": 666
+      },
+      "total": 1353
+    },
+    {
+      "brand": "SUFENTANIL 10µg/2ml",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 685,
+        "Février": 327,
+        "Mars": 147,
+        "Avril": 9,
+        "Mai": 0,
+        "Juin": 23,
+        "Juillet": 1035,
+        "Août": 1565,
+        "Septembre": 1309,
+        "Octobre": 1531,
+        "Novembre": 1322,
+        "Décembre": 1088
+      },
+      "total": 9041
+    },
+    {
+      "brand": "SUFENTANIL 50µg/10ml",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 510,
+        "Février": 342,
+        "Mars": 377,
+        "Avril": 186,
+        "Mai": 263,
+        "Juin": 422,
+        "Juillet": 936,
+        "Août": 609,
+        "Septembre": 698,
+        "Octobre": 525,
+        "Novembre": 551,
+        "Décembre": 439
+      },
+      "total": 5858
+    },
+    {
+      "brand": "PIPER/TAZO 2g/250mg",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 1150,
+        "Février": 715,
+        "Mars": 20,
+        "Avril": 435,
+        "Mai": 300,
+        "Juin": 110,
+        "Juillet": 794,
+        "Août": 326,
+        "Septembre": 401,
+        "Octobre": 279,
+        "Novembre": 100,
+        "Décembre": 0
+      },
+      "total": 4630
+    },
+    {
+      "brand": "PIPER/TAZO 4g/500mg",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 25,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 25
+    },
+    {
+      "brand": "LEPONEX 25mg",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 305,
+        "Février": 248,
+        "Mars": 105,
+        "Avril": 33,
+        "Mai": 0,
+        "Juin": 1387,
+        "Juillet": 676,
+        "Août": 593,
+        "Septembre": 88,
+        "Octobre": 38,
+        "Novembre": 5,
+        "Décembre": 0
+      },
+      "total": 3478
+    },
+    {
+      "brand": "LEPONEX 100mg",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 244,
+        "Février": 926,
+        "Mars": 5441,
+        "Avril": 3183,
+        "Mai": 4063,
+        "Juin": 3310,
+        "Juillet": 1890,
+        "Août": 690,
+        "Septembre": 1175,
+        "Octobre": 234,
+        "Novembre": 5,
+        "Décembre": 36
+      },
+      "total": 21197
+    },
+    {
+      "brand": "DOBUTAMINE",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 1,
+        "Février": 513,
+        "Mars": 366,
+        "Avril": 624,
+        "Mai": 327,
+        "Juin": 423,
+        "Juillet": 169,
+        "Août": 333,
+        "Septembre": 216,
+        "Octobre": 321,
+        "Novembre": 263,
+        "Décembre": 132
+      },
+      "total": 3688
+    },
+    {
+      "brand": "VALPROATE Officine",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 4394,
+        "Février": 6941,
+        "Mars": 6587,
+        "Avril": 6771,
+        "Mai": 5755,
+        "Juin": 3979,
+        "Juillet": 5714,
+        "Août": 4923,
+        "Septembre": 7638,
+        "Octobre": 7898,
+        "Novembre": 9207,
+        "Décembre": 6236
+      },
+      "total": 76043
+    },
+    {
+      "brand": "ZOLPIDEM",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 1680,
+        "Février": 2050,
+        "Mars": 1620,
+        "Avril": 1985,
+        "Mai": 1970,
+        "Juin": 1280,
+        "Juillet": 2990,
+        "Août": 1450,
+        "Septembre": 1370,
+        "Octobre": 2160,
+        "Novembre": 1620,
+        "Décembre": 1705
+      },
+      "total": 21880
+    },
+    {
+      "brand": "FLECAINE 100mg",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 5013,
+        "Février": 7203,
+        "Mars": 3296,
+        "Avril": 1856,
+        "Mai": 1817,
+        "Juin": 2779,
+        "Juillet": 1566,
+        "Août": 3182,
+        "Septembre": 3374,
+        "Octobre": 3499,
+        "Novembre": 3464,
+        "Décembre": 3075
+      },
+      "total": 40124
+    },
+    {
+      "brand": "FLECAINE LP 200mg",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 1421,
+        "Février": 1953,
+        "Mars": 1046,
+        "Avril": 655,
+        "Mai": 1670,
+        "Juin": 1860,
+        "Juillet": 945,
+        "Août": 2106,
+        "Septembre": 2615,
+        "Octobre": 1816,
+        "Novembre": 1968,
+        "Décembre": 1734
+      },
+      "total": 19789
+    },
+    {
+      "brand": "FLECAINE LP 50mg",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 487,
+        "Février": 835,
+        "Mars": 961,
+        "Avril": 790,
+        "Mai": 1120,
+        "Juin": 1625,
+        "Juillet": 1323,
+        "Août": 1356,
+        "Septembre": 1522,
+        "Octobre": 1859,
+        "Novembre": 1379,
+        "Décembre": 1799
+      },
+      "total": 15056
+    },
+    {
+      "brand": "FLECAINE LP 100mg",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 2222,
+        "Février": 3575,
+        "Mars": 2977,
+        "Avril": 2970,
+        "Mai": 4790,
+        "Juin": 3796,
+        "Juillet": 2941,
+        "Août": 5262,
+        "Septembre": 5774,
+        "Octobre": 4917,
+        "Novembre": 3897,
+        "Décembre": 5012
+      },
+      "total": 48133
+    },
+    {
+      "brand": "TAHOR 80mg Comp.Pell.",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 419,
+        "Février": 110,
+        "Mars": 83,
+        "Avril": 241,
+        "Mai": 132,
+        "Juin": 127,
+        "Juillet": 125,
+        "Août": 309,
+        "Septembre": 119,
+        "Octobre": 284,
+        "Novembre": 303,
+        "Décembre": 179
+      },
+      "total": 2431
+    },
+    {
+      "brand": "XANAX RETARD 0.5mg",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 4647,
+        "Février": 259,
+        "Mars": 3376,
+        "Avril": 2993,
+        "Mai": 3663,
+        "Juin": 4251,
+        "Juillet": 3849,
+        "Août": 1833,
+        "Septembre": 3243,
+        "Octobre": 5116,
+        "Novembre": 5728,
+        "Décembre": 4978
+      },
+      "total": 43936
+    },
+    {
+      "brand": "XANAX RETARD 1mg",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 7066,
+        "Février": 5718,
+        "Mars": 6787,
+        "Avril": 4961,
+        "Mai": 5031,
+        "Juin": 3953,
+        "Juillet": 3852,
+        "Août": 5496,
+        "Septembre": 5939,
+        "Octobre": 5162,
+        "Novembre": 6419,
+        "Décembre": 5246
+      },
+      "total": 65630
+    },
+    {
+      "brand": "XANAX 0.75mg/ml Gttes.Buv.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 10899,
+        "Février": 95,
+        "Mars": 3891,
+        "Avril": 2668,
+        "Mai": 4579,
+        "Juin": 4460,
+        "Juillet": 5578,
+        "Août": 2012,
+        "Septembre": 46,
+        "Octobre": 10069,
+        "Novembre": 6768,
+        "Décembre": 3712
+      },
+      "total": 54777
+    },
+    {
+      "brand": "EFEXOR. XL 150mg Gél. LP",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 63,
+        "Février": 105,
+        "Mars": 102,
+        "Avril": 46,
+        "Mai": 83,
+        "Juin": 119,
+        "Juillet": 85,
+        "Août": 187,
+        "Septembre": 135,
+        "Octobre": 32,
+        "Novembre": 107,
+        "Décembre": 42
+      },
+      "total": 1106
+    },
+    {
+      "brand": "EFFEXOR LP 37.5mg Gél. LP",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 1060,
+        "Février": 960,
+        "Mars": 1290,
+        "Avril": 1681,
+        "Mai": 1565,
+        "Juin": 1470,
+        "Juillet": 1640,
+        "Août": 1696,
+        "Septembre": 1872,
+        "Octobre": 1760,
+        "Novembre": 1270,
+        "Décembre": 819
+      },
+      "total": 17083
+    },
+    {
+      "brand": "EFFEXOR LP 75mg Gél. LP",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 3858,
+        "Février": 5085,
+        "Mars": 5391,
+        "Avril": 3651,
+        "Mai": 5177,
+        "Juin": 6003,
+        "Juillet": 5259,
+        "Août": 5823,
+        "Septembre": 6733,
+        "Octobre": 7032,
+        "Novembre": 5098,
+        "Décembre": 3744
+      },
+      "total": 62854
+    },
+    {
+      "brand": "XALATAN 50mcg/ml Collyre",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 7352,
+        "Février": 8107,
+        "Mars": 4663,
+        "Avril": 6145,
+        "Mai": 7317,
+        "Juin": 7243,
+        "Juillet": 6829,
+        "Août": 7443,
+        "Septembre": 8137,
+        "Octobre": 7000,
+        "Novembre": 6360,
+        "Décembre": 5510
+      },
+      "total": 82106
+    },
+    {
+      "brand": "CADUET 10mg/10mg Comp.Pell.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 540,
+        "Février": 209,
+        "Mars": 485,
+        "Avril": 332,
+        "Mai": -9,
+        "Juin": 415,
+        "Juillet": 757,
+        "Août": 429,
+        "Septembre": 334,
+        "Octobre": 313,
+        "Novembre": 293,
+        "Décembre": 211
+      },
+      "total": 4309
+    },
+    {
+      "brand": "CADUET 5mg/10mg Comp.Pell.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 780,
+        "Février": 640,
+        "Mars": 1155,
+        "Avril": 570,
+        "Mai": 530,
+        "Juin": 1040,
+        "Juillet": 984,
+        "Août": 660,
+        "Septembre": 620,
+        "Octobre": 680,
+        "Novembre": 884,
+        "Décembre": 670
+      },
+      "total": 9213
+    },
+    {
+      "brand": "LYRICA 75mg Gél. Bt56",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 234,
+        "Février": 336,
+        "Mars": 222,
+        "Avril": 336,
+        "Mai": 456,
+        "Juin": 372,
+        "Juillet": 282,
+        "Août": 450,
+        "Septembre": 402,
+        "Octobre": 468,
+        "Novembre": 312,
+        "Décembre": 306
+      },
+      "total": 4176
+    },
+    {
+      "brand": "LYRICA 150mg Gél.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 594,
+        "Février": 576,
+        "Mars": 596,
+        "Avril": 378,
+        "Mai": 618,
+        "Juin": 660,
+        "Juillet": 258,
+        "Août": 630,
+        "Septembre": 468,
+        "Octobre": 642,
+        "Novembre": 642,
+        "Décembre": 336
+      },
+      "total": 6398
+    },
+    {
+      "brand": "LYRICA 75mg Gél. Bt14",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 871,
+        "Février": 875,
+        "Mars": 920,
+        "Avril": 480,
+        "Mai": 792,
+        "Juin": 660,
+        "Juillet": 660,
+        "Août": 762,
+        "Septembre": 910,
+        "Octobre": 630,
+        "Novembre": 782,
+        "Décembre": 720
+      },
+      "total": 9062
+    },
+    {
+      "brand": "XALACOM 50mcg + 5mg/ml Collyre",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 9088,
+        "Février": 6495,
+        "Mars": 6027,
+        "Avril": 7170,
+        "Mai": 8377,
+        "Juin": 9736,
+        "Juillet": 3814,
+        "Août": 8219,
+        "Septembre": 8045,
+        "Octobre": 8548,
+        "Novembre": 6778,
+        "Décembre": 5125
+      },
+      "total": 87422
+    },
+    {
+      "brand": "VIAGRA 25mg Comp.Pell.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 910,
+        "Février": 960,
+        "Mars": 630,
+        "Avril": 470,
+        "Mai": 892,
+        "Juin": 661,
+        "Juillet": 610,
+        "Août": 1285,
+        "Septembre": 1060,
+        "Octobre": 890,
+        "Novembre": 750,
+        "Décembre": 525
+      },
+      "total": 9643
+    },
+    {
+      "brand": "VIAGRA 50mg Comp.Pell.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 5420,
+        "Février": 4110,
+        "Mars": 2140,
+        "Avril": 2410,
+        "Mai": 3890,
+        "Juin": 4210,
+        "Juillet": 3890,
+        "Août": 4890,
+        "Septembre": 4710,
+        "Octobre": 4540,
+        "Novembre": 3350,
+        "Décembre": 3480
+      },
+      "total": 47040
+    },
+    {
+      "brand": "VIAGRA 100mg Comp.Pell.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 7330,
+        "Février": 7390,
+        "Mars": 3850,
+        "Avril": 4140,
+        "Mai": 6160,
+        "Juin": 7520,
+        "Juillet": 6860,
+        "Août": 6910,
+        "Septembre": 7730,
+        "Octobre": 6960,
+        "Novembre": 5240,
+        "Décembre": 4570
+      },
+      "total": 74660
+    }
+  ],
+  "data2026": [
+    {
+      "brand": "METHYLPREDNISOLONE",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 0
+    },
+    {
+      "brand": "METHOTREXATE 5mg/2ml",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 0
+    },
+    {
+      "brand": "METHOTREXATE 25mg/20ml",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 0
+    },
+    {
+      "brand": "METHOTREXATE 50mg/2ml",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 208,
+        "Février": 51,
+        "Mars": 124,
+        "Avril": 112,
+        "Mai": 18,
+        "Juin": 2,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 515
+    },
+    {
+      "brand": "METHOTREXATE 100mg/ml (5G)",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 5,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 11,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 16
+    },
+    {
+      "brand": "AZATHIOPRINE",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 4246,
+        "Février": 7769,
+        "Mars": 5560,
+        "Avril": 6153,
+        "Mai": 5677,
+        "Juin": 5728,
+        "Juillet": 6344,
+        "Août": 4970,
+        "Septembre": 1384,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 47831
+    },
+    {
+      "brand": "CAPECITABINE",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 940,
+        "Février": 513,
+        "Mars": 580,
+        "Avril": 719,
+        "Mai": 625,
+        "Juin": 596,
+        "Juillet": 714,
+        "Août": 589,
+        "Septembre": 695,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 5971
+    },
+    {
+      "brand": "SUFENTANIL 10µg/2ml",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 627,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 2647,
+        "Août": 0,
+        "Septembre": 830,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 4104
+    },
+    {
+      "brand": "SUFENTANIL 50µg/10ml",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 1229,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 1229
+    },
+    {
+      "brand": "PIPER/TAZO 2g/250mg",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 200,
+        "Février": 300,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 500
+    },
+    {
+      "brand": "PIPER/TAZO 4g/500mg",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 0
+    },
+    {
+      "brand": "LEPONEX 25mg",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 1,
+        "Février": 1,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 2
+    },
+    {
+      "brand": "LEPONEX 100mg",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 0,
+        "Février": 0,
+        "Mars": 0,
+        "Avril": 0,
+        "Mai": 0,
+        "Juin": 0,
+        "Juillet": 0,
+        "Août": 0,
+        "Septembre": 0,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 0
+    },
+    {
+      "brand": "DOBUTAMINE",
+      "lab": "Tendor",
+      "monthly": {
+        "Janvier": 13,
+        "Février": 1528,
+        "Mars": 527,
+        "Avril": 317,
+        "Mai": 307,
+        "Juin": 301,
+        "Juillet": 305,
+        "Août": 217,
+        "Septembre": 391,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 3906
+    },
+    {
+      "brand": "VALPROATE Officine",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 4372,
+        "Février": 5192,
+        "Mars": 1721,
+        "Avril": 2650,
+        "Mai": 3700,
+        "Juin": 4369,
+        "Juillet": 3022,
+        "Août": 3731,
+        "Septembre": 4408,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 33165
+    },
+    {
+      "brand": "ZOLPIDEM",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 1900,
+        "Février": 1740,
+        "Mars": 1580,
+        "Avril": 1280,
+        "Mai": 2080,
+        "Juin": 2410,
+        "Juillet": 2330,
+        "Août": 1650,
+        "Septembre": 1440,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 16410
+    },
+    {
+      "brand": "FLECAINE 100mg",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 3279,
+        "Février": 3486,
+        "Mars": 3262,
+        "Avril": 2357,
+        "Mai": 4323,
+        "Juin": 3047,
+        "Juillet": 4374,
+        "Août": 3140,
+        "Septembre": 3877,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 31145
+    },
+    {
+      "brand": "FLECAINE LP 200mg",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 2032,
+        "Février": 2506,
+        "Mars": 1192,
+        "Avril": 2744,
+        "Mai": 2660,
+        "Juin": 1636,
+        "Juillet": 2745,
+        "Août": 2318,
+        "Septembre": 2427,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 20260
+    },
+    {
+      "brand": "FLECAINE LP 50mg",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 1777,
+        "Février": 2141,
+        "Mars": 1314,
+        "Avril": 148,
+        "Mai": 2921,
+        "Juin": 845,
+        "Juillet": 3899,
+        "Août": 2799,
+        "Septembre": 2285,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 18129
+    },
+    {
+      "brand": "FLECAINE LP 100mg",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 4514,
+        "Février": 5157,
+        "Mars": 5981,
+        "Avril": 3763,
+        "Mai": 6405,
+        "Juin": 4994,
+        "Juillet": 5696,
+        "Août": 4948,
+        "Septembre": 5282,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 46740
+    },
+    {
+      "brand": "TAHOR 80mg Comp.Pell.",
+      "lab": "Viatris Retail",
+      "monthly": {
+        "Janvier": 162,
+        "Février": 371,
+        "Mars": 119,
+        "Avril": 73,
+        "Mai": 293,
+        "Juin": 146,
+        "Juillet": 131,
+        "Août": 206,
+        "Septembre": 250,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 1751
+    },
+    {
+      "brand": "XANAX RETARD 0.5mg",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 3373,
+        "Février": 3668,
+        "Mars": 3669,
+        "Avril": 4774,
+        "Mai": 3264,
+        "Juin": 2888,
+        "Juillet": 5994,
+        "Août": 4229,
+        "Septembre": 5728,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 37587
+    },
+    {
+      "brand": "XANAX RETARD 1mg",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 3593,
+        "Février": 4854,
+        "Mars": 2327,
+        "Avril": 6280,
+        "Mai": 6056,
+        "Juin": 4888,
+        "Juillet": 6835,
+        "Août": 4513,
+        "Septembre": 5580,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 44926
+    },
+    {
+      "brand": "XANAX 0.75mg/ml Gttes.Buv.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 2576,
+        "Février": 4650,
+        "Mars": 2211,
+        "Avril": 3390,
+        "Mai": 3392,
+        "Juin": 3618,
+        "Juillet": 6149,
+        "Août": 4057,
+        "Septembre": 4494,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 34537
+    },
+    {
+      "brand": "EFEXOR. XL 150mg Gél. LP",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 34,
+        "Février": 23,
+        "Mars": 3,
+        "Avril": 229,
+        "Mai": 144,
+        "Juin": 45,
+        "Juillet": 122,
+        "Août": 246,
+        "Septembre": 219,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 1065
+    },
+    {
+      "brand": "EFFEXOR LP 37.5mg Gél. LP",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 788,
+        "Février": 2360,
+        "Mars": 1210,
+        "Avril": 1290,
+        "Mai": 1250,
+        "Juin": 1560,
+        "Juillet": 1120,
+        "Août": 390,
+        "Septembre": 1330,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 11298
+    },
+    {
+      "brand": "EFFEXOR LP 75mg Gél. LP",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 4334,
+        "Février": 6251,
+        "Mars": 5266,
+        "Avril": 4986,
+        "Mai": 5796,
+        "Juin": 5359,
+        "Juillet": 5352,
+        "Août": 1160,
+        "Septembre": 5772,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 44276
+    },
+    {
+      "brand": "XALATAN 50mcg/ml Collyre",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 5820,
+        "Février": 6799,
+        "Mars": 5123,
+        "Avril": 4416,
+        "Mai": 6629,
+        "Juin": 6153,
+        "Juillet": 7278,
+        "Août": 4957,
+        "Septembre": 5532,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 52707
+    },
+    {
+      "brand": "CADUET 10mg/10mg Comp.Pell.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 224,
+        "Février": 260,
+        "Mars": 347,
+        "Avril": 280,
+        "Mai": 391,
+        "Juin": 194,
+        "Juillet": 238,
+        "Août": 5471,
+        "Septembre": 299,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 7704
+    },
+    {
+      "brand": "CADUET 5mg/10mg Comp.Pell.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 670,
+        "Février": 838,
+        "Mars": 654,
+        "Avril": 620,
+        "Mai": 760,
+        "Juin": 840,
+        "Juillet": 634,
+        "Août": 301,
+        "Septembre": 950,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 6267
+    },
+    {
+      "brand": "LYRICA 75mg Gél. Bt56",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 288,
+        "Février": 372,
+        "Mars": 246,
+        "Avril": 265,
+        "Mai": 155,
+        "Juin": 266,
+        "Juillet": 630,
+        "Août": 750,
+        "Septembre": 516,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 3488
+    },
+    {
+      "brand": "LYRICA 150mg Gél.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 765,
+        "Février": 528,
+        "Mars": 564,
+        "Avril": 504,
+        "Mai": 462,
+        "Juin": 371,
+        "Juillet": 588,
+        "Août": 414,
+        "Septembre": 366,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 4562
+    },
+    {
+      "brand": "LYRICA 75mg Gél. Bt14",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 450,
+        "Février": 630,
+        "Mars": 330,
+        "Avril": 590,
+        "Mai": 484,
+        "Juin": 510,
+        "Juillet": 630,
+        "Août": 360,
+        "Septembre": 860,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 4844
+    },
+    {
+      "brand": "XALACOM 50mcg + 5mg/ml Collyre",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 5651,
+        "Février": 7077,
+        "Mars": 4609,
+        "Avril": 3942,
+        "Mai": 5136,
+        "Juin": 5820,
+        "Juillet": 6038,
+        "Août": 9620,
+        "Septembre": 12179,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 60072
+    },
+    {
+      "brand": "VIAGRA 25mg Comp.Pell.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 420,
+        "Février": 1335,
+        "Mars": 280,
+        "Avril": 600,
+        "Mai": 650,
+        "Juin": 750,
+        "Juillet": 820,
+        "Août": 750,
+        "Septembre": 940,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 6545
+    },
+    {
+      "brand": "VIAGRA 50mg Comp.Pell.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 4290,
+        "Février": 3910,
+        "Mars": 1380,
+        "Avril": 3010,
+        "Mai": 3660,
+        "Juin": 3700,
+        "Juillet": 4140,
+        "Août": 3910,
+        "Septembre": 3550,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 31550
+    },
+    {
+      "brand": "VIAGRA 100mg Comp.Pell.",
+      "lab": "Upjohn",
+      "monthly": {
+        "Janvier": 6670,
+        "Février": 5580,
+        "Mars": 2460,
+        "Avril": 5340,
+        "Mai": 6112,
+        "Juin": 5990,
+        "Juillet": 5750,
+        "Août": 5610,
+        "Septembre": 5700,
+        "Octobre": 0,
+        "Novembre": 0,
+        "Décembre": 0
+      },
+      "total": 49212
+    }
+  ],
+  "total2025": 929216,
+  "total2026": 632314
+}
