@@ -441,7 +441,7 @@ export default function DashboardPage() {
         { id: 'calendar', label: 'Calendrier', icon: <IconCalendar /> },
         { id: 'cycle', label: 'Cycle', icon: <IconCycle /> },
         { id: 'samples', label: 'Échantillons', icon: <IconSamples /> },
-        { id: 'stockpct', label: 'PCT', icon: <IconPCT /> },
+        { id: 'stockpct', label: 'Prix PCT', icon: <IconPCT /> },
         { id: 'congress', label: 'Action marketing', icon: <IconCongress /> },
         { id: 'leave', label: leavePendingCount > 0 ? `Congés (${leavePendingCount})` : 'Congés', icon: <IconLeave /> },
         { id: 'expense', label: 'Note de Frais', icon: <IconExpense /> },
