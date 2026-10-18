@@ -159,6 +159,7 @@ router.get('/export-local-sales', auth, async (req, res) => {
 
         // 2. Monthly sheets
         const monthLabels = {
+            '09': 'Septembre 2026',
             '08': 'Août 2026',
             '07': 'Juillet 2026',
             '06': 'Juin 2026',
