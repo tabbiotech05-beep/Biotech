@@ -41,8 +41,15 @@ if (fs.existsSync(biosimFile)) {
 }
 
 // 2. Parse Ventes & Stock
-const pctFile = path.join(__dirname, '../Ventes-Stock PCT 2024-2026 (courbes).xlsx');
-if (fs.existsSync(pctFile)) {
+const candidatePctFiles = [
+    path.join(__dirname, '../tenchi/Ventes-Stock PCT 2024-2026 (courbes) (1).xlsx'),
+    path.join(__dirname, '../Ventes-Stock PCT 2024-2026 (courbes) (1).xlsx'),
+    path.join(__dirname, '../Ventes-Stock PCT 2024-2026 (courbes).xlsx')
+];
+const pctFile = candidatePctFiles.find(p => fs.existsSync(p));
+
+if (pctFile) {
+    console.log(`📂 Using PCT file: ${pctFile}`);
     const doc = xlsx.readFile(pctFile);
     
     // Parse Ventes
@@ -54,16 +61,17 @@ if (fs.existsSync(pctFile)) {
             const row = data[i];
             if (!row || !row[0]) continue;
             
-            const entry = { annee: row[0], mois: row[1], brands: {} };
+            const entry = { annee: Number(row[0]), mois: String(row[1]).trim(), brands: {} };
             for(let c = 2; c < headers.length; c++) {
                 if (headers[c]) {
-                   entry.brands[headers[c]] = row[c] || 0;
+                   const val = row[c];
+                   entry.brands[headers[c].trim()] = (typeof val === 'number') ? val : (val ? Number(val) : 0);
                 }
             }
             parsedVentes.push(entry);
         }
         fs.writeFileSync(path.join(dataDir, 'biosim_ventes.json'), JSON.stringify(parsedVentes, null, 2));
-        console.log(`✅ Extracted ${parsedVentes.length} Ventes rows.`);
+        console.log(`✅ Extracted ${parsedVentes.length} Ventes rows with ${Object.keys(parsedVentes[0]?.brands || {}).length} brands.`);
     }
 
     // Parse Stock
@@ -75,17 +83,18 @@ if (fs.existsSync(pctFile)) {
             const row = data[i];
             if (!row || !row[0]) continue;
             
-            const entry = { annee: row[0], mois: row[1], brands: {} };
+            const entry = { annee: Number(row[0]), mois: String(row[1]).trim(), brands: {} };
             for(let c = 2; c < headers.length; c++) {
                 if (headers[c]) {
-                   entry.brands[headers[c]] = row[c] || 0;
+                   const val = row[c];
+                   entry.brands[headers[c].trim()] = (typeof val === 'number') ? val : (val ? Number(val) : 0);
                 }
             }
             parsedStock.push(entry);
         }
         fs.writeFileSync(path.join(dataDir, 'biosim_stock.json'), JSON.stringify(parsedStock, null, 2));
-        console.log(`✅ Extracted ${parsedStock.length} Stock rows.`);
+        console.log(`✅ Extracted ${parsedStock.length} Stock rows with ${Object.keys(parsedStock[0]?.brands || {}).length} brands.`);
     }
 } else {
-    console.error(`Missing file: ${pctFile}`);
+    console.error(`Missing PCT file in candidate locations.`);
 }
