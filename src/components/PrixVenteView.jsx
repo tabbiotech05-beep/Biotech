@@ -19,19 +19,40 @@ export default function PrixVenteView() {
 
     const availableBrands = Object.keys(ventesData[0]?.brands || {});
 
+    // Format period for chart X-axis ensuring distinct labels (e.g. Juin vs Juil)
+    const formatShortDate = (mois, annee) => {
+        const m = (mois || '').trim().toLowerCase();
+        let s = m.substring(0, 3);
+        if (m.startsWith('juin')) s = 'Juin';
+        else if (m.startsWith('juil')) s = 'Juil';
+        else if (m.startsWith('fev') || m.startsWith('fév')) s = 'Fév';
+        else if (m.startsWith('aou') || m.startsWith('aoû')) s = 'Août';
+        else if (m.startsWith('sep')) s = 'Sept';
+        else if (m.startsWith('dec') || m.startsWith('déc')) s = 'Déc';
+        else if (m.startsWith('jan')) s = 'Janv';
+        else if (m.startsWith('avr')) s = 'Avr';
+        else if (m.startsWith('mar')) s = 'Mars';
+        else if (m.startsWith('mai')) s = 'Mai';
+        else if (m.startsWith('oct')) s = 'Oct';
+        else if (m.startsWith('nov')) s = 'Nov';
+        return `${s} ${annee}`;
+    };
+
     // Prepare chart data: combine annee and mois for X axis
     const activeData = chartMode === 'ventes' ? ventesData : stockData;
     const chartData = activeData.map(item => {
         const payload = {
             ...item.brands,
-            date: `${item.mois.substring(0,3)} ${item.annee}`
+            date: formatShortDate(item.mois, item.annee),
+            periode: `${item.mois} ${item.annee}`
         };
         return payload;
     });
 
     const colors = [
         '#6366f1', '#10b981', '#f59e0b', '#ef4444', 
-        '#8b5cf6', '#ec4899', '#14b8a6', '#f97316'
+        '#8b5cf6', '#ec4899', '#14b8a6', '#f97316',
+        '#0284c7', '#84cc16', '#d946ef', '#0d9488'
     ];
 
     const formatCurrency = (val) => {
@@ -186,7 +207,7 @@ export default function PrixVenteView() {
                         <tbody className="divide-y divide-gray-100 bg-white">
                             {chartData.map((row, idx) => (
                                 <tr key={idx} className="hover:bg-gray-50 transition-colors">
-                                    <td className="px-4 py-3 font-bold text-gray-700 text-left whitespace-nowrap">{row.date}</td>
+                                    <td className="px-4 py-3 font-bold text-gray-700 text-left whitespace-nowrap">{row.periode || row.date}</td>
                                     {availableBrands.map(b => (
                                         (selectedBrand === 'All' || selectedBrand === b) && (
                                             <td key={b} className="px-4 py-3 font-medium text-gray-600">
