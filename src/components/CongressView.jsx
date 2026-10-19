@@ -24,7 +24,12 @@ export default function CongressView({ dashboardId }) {
     });
     const [isSaving, setIsSaving] = useState(false);
 
-
+    // Approval filter & rejection modal states
+    const [approvalFilter, setApprovalFilter] = useState('all'); // 'all' | 'approved' | 'pending' | 'rejected'
+    const [showRejectModal, setShowRejectModal] = useState(false);
+    const [rejectingCongress, setRejectingCongress] = useState(null);
+    const [rejectionReasonInput, setRejectionReasonInput] = useState('');
+    const [isSubmittingReject, setIsSubmittingReject] = useState(false);
 
     // Detail side-panel state
     const [selectedCongress, setSelectedCongress] = useState(null);
@@ -56,12 +61,13 @@ export default function CongressView({ dashboardId }) {
         try {
             setIsSavingPanelComment(true);
             if (isAdmin) {
-                // Admin saves via approve route (keeps current approval status)
+                // Admin saves via approve route (keeps current approval and rejection status)
                 const res = await fetch(`/api/congress/${selectedCongress._id}/approve`, {
                     method: 'PATCH',
                     headers: { 'Content-Type': 'application/json', 'x-auth-token': token },
                     body: JSON.stringify({ 
                         isApproved: selectedCongress.isApproved, 
+                        isRejected: selectedCongress.isRejected,
                         comment: panelAdminComment,
                         participant: panelParticipant,
                         amount: panelAmount
@@ -266,14 +272,86 @@ export default function CongressView({ dashboardId }) {
                     'Content-Type': 'application/json',
                     'x-auth-token': token
                 },
-                body: JSON.stringify({ isApproved, comment })
+                body: JSON.stringify({ isApproved, isRejected: false, comment })
             });
             if (res.ok) {
                 const updated = await res.json();
                 setCongresses(congresses.map(c => c._id === id ? updated : c));
+                if (selectedCongress && selectedCongress._id === id) {
+                    setSelectedCongress(updated);
+                }
             }
         } catch (err) {
             console.error('Error approving congress:', err);
+        }
+    };
+
+    const openRejectModal = (congress, e) => {
+        if (e) e.stopPropagation();
+        setRejectingCongress(congress);
+        setRejectionReasonInput(congress.rejectionReason || '');
+        setShowRejectModal(true);
+    };
+
+    const closeRejectModal = () => {
+        setShowRejectModal(false);
+        setRejectingCongress(null);
+        setRejectionReasonInput('');
+    };
+
+    const handleReject = async () => {
+        if (!rejectingCongress) return;
+        const token = localStorage.getItem('token');
+        try {
+            setIsSubmittingReject(true);
+            const res = await fetch(`/api/congress/${rejectingCongress._id}/reject`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': token
+                },
+                body: JSON.stringify({ rejectionReason: rejectionReasonInput })
+            });
+            if (res.ok) {
+                const updated = await res.json();
+                setCongresses(congresses.map(c => c._id === updated._id ? updated : c));
+                if (selectedCongress && selectedCongress._id === updated._id) {
+                    setSelectedCongress(updated);
+                }
+                closeRejectModal();
+            } else {
+                const err = await res.json();
+                alert(err.msg || 'Erreur lors du rejet de l\'action marketing.');
+            }
+        } catch (err) {
+            console.error('Error rejecting congress:', err);
+            alert('Erreur réseau.');
+        } finally {
+            setIsSubmittingReject(false);
+        }
+    };
+
+    const handleResetPending = async (id, e) => {
+        if (e) e.stopPropagation();
+        const token = localStorage.getItem('token');
+        try {
+            const res = await fetch(`/api/congress/${id}/approve`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-auth-token': token
+                },
+                body: JSON.stringify({ isApproved: false, isRejected: false })
+            });
+            if (res.ok) {
+                const updated = await res.json();
+                setCongresses(congresses.map(c => c._id === id ? updated : c));
+                if (selectedCongress && selectedCongress._id === id) {
+                    setSelectedCongress(updated);
+                }
+            }
+        } catch (err) {
+            console.error('Error resetting congress:', err);
         }
     };
 
@@ -286,6 +364,12 @@ export default function CongressView({ dashboardId }) {
             return n.toFixed(3);
         };
 
+        const getApprovalLabel = (c) => {
+            if (c.isApproved) return `Approuvé (${c.approvedBy || 'Admin'})`;
+            if (c.isRejected) return `Rejeté (${c.rejectedBy || 'Admin'})`;
+            return 'En attente';
+        };
+
         // Header
         doc.setFontSize(20);
         doc.setTextColor(40);
@@ -296,10 +380,11 @@ export default function CongressView({ dashboardId }) {
         doc.text(`Généré le: ${format(new Date(), 'dd/MM/yyyy HH:mm')}`, 14, 40);
 
         // Table
-        const tableColumn = ["Nom de l'Action", "Médecin(s) (Participant)", "Budget (TND)"];
+        const tableColumn = ["Nom de l'Action", "Médecin(s) (Participant)", "Statut Approbation", "Budget (TND)"];
         const tableRows = congresses.map(c => [
             c.name || '',
             c.participant || '',
+            getApprovalLabel(c),
             `${formatNumber(c.amount)} TND`
         ]);
 
@@ -325,6 +410,17 @@ export default function CongressView({ dashboardId }) {
     };
 
     const isAdmin = localStorage.getItem('role') === 'admin';
+
+    const approvedCount = congresses.filter(c => c.isApproved).length;
+    const rejectedCount = congresses.filter(c => c.isRejected).length;
+    const pendingCount = congresses.filter(c => !c.isApproved && !c.isRejected).length;
+
+    const filteredCongresses = congresses.filter(c => {
+        if (approvalFilter === 'approved') return c.isApproved;
+        if (approvalFilter === 'rejected') return c.isRejected;
+        if (approvalFilter === 'pending') return !c.isApproved && !c.isRejected;
+        return true;
+    });
 
     return (
         <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 min-h-[600px]">
@@ -372,14 +468,75 @@ export default function CongressView({ dashboardId }) {
                 </div>
             </div>
 
-            {congresses.length === 0 ? (
+            {/* Approval Status Filter */}
+            {congresses.length > 0 && (
+                <div className="flex flex-wrap items-center gap-2 mb-6 pb-3 border-b border-gray-100">
+                    <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mr-1">Filtrer par statut :</span>
+                    <button
+                        onClick={() => setApprovalFilter('all')}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                            approvalFilter === 'all'
+                                ? 'bg-slate-800 text-white shadow-sm'
+                                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                        }`}
+                    >
+                        <span>Toutes</span>
+                        <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-white/20 font-black">{congresses.length}</span>
+                    </button>
+                    <button
+                        onClick={() => setApprovalFilter('approved')}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                            approvalFilter === 'approved'
+                                ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-200'
+                                : 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
+                        }`}
+                    >
+                        <span>✅ Approuvées</span>
+                        <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-white/20 font-black">{approvedCount}</span>
+                    </button>
+                    <button
+                        onClick={() => setApprovalFilter('pending')}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                            approvalFilter === 'pending'
+                                ? 'bg-amber-500 text-white shadow-sm shadow-amber-200'
+                                : 'bg-amber-50 text-amber-700 hover:bg-amber-100'
+                        }`}
+                    >
+                        <span>⏳ En attente</span>
+                        <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-white/20 font-black">{pendingCount}</span>
+                    </button>
+                    <button
+                        onClick={() => setApprovalFilter('rejected')}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                            approvalFilter === 'rejected'
+                                ? 'bg-red-600 text-white shadow-sm shadow-red-200'
+                                : 'bg-red-50 text-red-700 hover:bg-red-100'
+                        }`}
+                    >
+                        <span>❌ Rejetées</span>
+                        <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-white/20 font-black">{rejectedCount}</span>
+                    </button>
+                </div>
+            )}
+
+            {filteredCongresses.length === 0 ? (
                 <div className="text-center py-20 text-gray-500">
-                    Aucune action marketing planifiée.
+                    {congresses.length === 0 ? "Aucune action marketing planifiée." : "Aucune action marketing trouvée pour ce filtre."}
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {congresses.map((congress) => (
-                        <div key={congress._id} onClick={() => openDetailPanel(congress)} className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md hover:border-blue-300 transition-all cursor-pointer group">
+                    {filteredCongresses.map((congress) => (
+                        <div 
+                            key={congress._id} 
+                            onClick={() => openDetailPanel(congress)} 
+                            className={`border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all cursor-pointer group relative ${
+                                congress.isRejected 
+                                    ? 'border-red-200 hover:border-red-400 bg-red-50/10' 
+                                    : congress.isApproved 
+                                        ? 'border-gray-200 hover:border-blue-300' 
+                                        : 'border-amber-200 hover:border-amber-400'
+                            }`}
+                        >
                             <div className="h-48 bg-gray-100 relative">
                                 {congress.image ? (
                                     <>
@@ -422,28 +579,88 @@ export default function CongressView({ dashboardId }) {
                                         </span>
                                     )}
                                     {congress.isApproved && (
-                                    <div className="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1">
-                                        <span>✅</span>
-                                        <span>Approuvé par {congress.approvedBy || 'Admin'}</span>
-                                    </div>
-                                )}
-                            </div>
-                            {!congress.isApproved && (
-                                <div className="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-[2px]">
-                                    <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg animate-pulse border-2 border-white/20">
-                                        En attente d'approbation
-                                    </span>
+                                        <div className="px-2 py-0.5 bg-green-600 text-white rounded text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1">
+                                            <span>✅</span>
+                                            <span>Approuvé par {congress.approvedBy || 'Admin'}</span>
+                                        </div>
+                                    )}
+                                    {congress.isRejected && (
+                                        <div className="px-2 py-0.5 bg-red-600 text-white rounded text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1">
+                                            <span>❌</span>
+                                            <span>Rejeté par {congress.rejectedBy || 'Admin'}</span>
+                                        </div>
+                                    )}
+                                    {!congress.isApproved && !congress.isRejected && (
+                                        <div className="px-2 py-0.5 bg-amber-500 text-white rounded text-[10px] font-bold uppercase tracking-wider shadow-sm flex items-center gap-1">
+                                            <span>⏳</span>
+                                            <span>En attente</span>
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                        </div>
+                                {congress.isRejected ? (
+                                    <div className="absolute inset-0 bg-red-950/60 flex flex-col items-center justify-center backdrop-blur-[2px] p-3 text-center">
+                                        <span className="bg-red-600 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl border-2 border-white/20">
+                                            ❌ Action Rejetée
+                                        </span>
+                                        {congress.rejectionReason && (
+                                            <span className="text-[10px] text-white font-medium mt-1.5 line-clamp-2 px-2 py-0.5 bg-black/60 rounded">
+                                                Motif : {congress.rejectionReason}
+                                            </span>
+                                        )}
+                                    </div>
+                                ) : !congress.isApproved ? (
+                                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center backdrop-blur-[2px]">
+                                        <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-lg animate-pulse border-2 border-white/20">
+                                            En attente d'approbation
+                                        </span>
+                                    </div>
+                                ) : null}
+                            </div>
                             <div className="p-4 flex flex-col h-full bg-white relative">
-                                {!congress.isApproved && isAdmin && (
-                                    <div className="absolute -top-6 right-2 z-20">
+                                {isAdmin && !congress.isApproved && !congress.isRejected && (
+                                    <div className="absolute -top-6 right-2 z-20 flex gap-1.5">
                                         <button
                                             onClick={(e) => { e.stopPropagation(); handleApprove(congress._id, true, congress.comment); }}
-                                            className="px-4 py-2 bg-emerald-600 text-white rounded-full text-xs font-black uppercase tracking-widest shadow-xl hover:bg-emerald-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-2"
+                                            className="px-3 py-1 bg-emerald-600 text-white rounded-full text-[11px] font-black uppercase tracking-wider shadow-xl hover:bg-emerald-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-1"
+                                            title="Approuver cette action"
                                         >
                                             <span>✔️</span> Approuver
+                                        </button>
+                                        <button
+                                            onClick={(e) => openRejectModal(congress, e)}
+                                            className="px-3 py-1 bg-red-600 text-white rounded-full text-[11px] font-black uppercase tracking-wider shadow-xl hover:bg-red-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-1"
+                                            title="Rejeter cette action"
+                                        >
+                                            <span>❌</span> Rejeter
+                                        </button>
+                                    </div>
+                                )}
+                                {isAdmin && congress.isRejected && (
+                                    <div className="absolute -top-6 right-2 z-20 flex gap-1.5">
+                                        <button
+                                            onClick={(e) => { e.stopPropagation(); handleApprove(congress._id, true, congress.comment); }}
+                                            className="px-3 py-1 bg-emerald-600 text-white rounded-full text-[11px] font-black uppercase tracking-wider shadow-xl hover:bg-emerald-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-1"
+                                            title="Approuver quand même"
+                                        >
+                                            <span>✔️</span> Approuver
+                                        </button>
+                                        <button
+                                            onClick={(e) => handleResetPending(congress._id, e)}
+                                            className="px-3 py-1 bg-amber-600 text-white rounded-full text-[11px] font-black uppercase tracking-wider shadow-xl hover:bg-amber-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-1"
+                                            title="Remettre en attente"
+                                        >
+                                            <span>⏳</span> En attente
+                                        </button>
+                                    </div>
+                                )}
+                                {isAdmin && congress.isApproved && (
+                                    <div className="absolute -top-6 right-2 z-20 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button
+                                            onClick={(e) => openRejectModal(congress, e)}
+                                            className="px-3 py-1 bg-red-600/90 text-white rounded-full text-[10px] font-bold uppercase tracking-wider shadow-lg hover:bg-red-700 hover:scale-105 active:scale-95 transition-all flex items-center gap-1"
+                                            title="Révoquer / Rejeter cette action"
+                                        >
+                                            <span>❌</span> Rejeter
                                         </button>
                                     </div>
                                 )}
@@ -454,6 +671,12 @@ export default function CongressView({ dashboardId }) {
                                         <span>👤</span>
                                         <span>Créé par: <span className="font-semibold text-gray-500">{congress.user?.name || congress.user?.username || 'Inconnu'}</span></span>
                                     </p>
+                                    {/* Rejection notice */}
+                                    {congress.isRejected && congress.rejectionReason && (
+                                        <div className="mt-2 p-2 bg-red-50 border-l-4 border-red-500 rounded-r text-[10px] text-red-700">
+                                            <span className="font-bold text-red-600">Motif du rejet :</span> {congress.rejectionReason}
+                                        </div>
+                                    )}
                                     {/* Admin comment */}
                                     {congress.comment && (
                                         <div className="mt-2 p-2 bg-slate-50 border-l-4 border-blue-400 rounded-r text-[10px] italic text-slate-600 flex items-start gap-2">
@@ -672,13 +895,32 @@ export default function CongressView({ dashboardId }) {
                                 {selectedCongress.isApproved && (
                                     <span className="px-2 py-1 bg-green-600 text-white rounded text-xs font-bold uppercase tracking-wider">✅ Approuvé par {selectedCongress.approvedBy || 'Admin'}</span>
                                 )}
-                                {!selectedCongress.isApproved && (
+                                {selectedCongress.isRejected && (
+                                    <span className="px-2 py-1 bg-red-600 text-white rounded text-xs font-bold uppercase tracking-wider">❌ Rejeté par {selectedCongress.rejectedBy || 'Admin'}</span>
+                                )}
+                                {!selectedCongress.isApproved && !selectedCongress.isRejected && (
                                     <span className="px-2 py-1 bg-amber-500 text-white rounded text-xs font-bold uppercase tracking-wider animate-pulse">⏳ En attente d'approbation</span>
                                 )}
                                 {selectedCongress.isAdminCreated && (
                                     <span className="px-2 py-1 bg-purple-600 text-white rounded text-xs font-bold uppercase tracking-wider">Admin</span>
                                 )}
                             </div>
+
+                            {/* Rejection Notice Banner */}
+                            {selectedCongress.isRejected && (
+                                <div className="p-4 bg-red-50 border-l-4 border-red-500 rounded-r-xl space-y-1">
+                                    <p className="text-xs font-black text-red-600 uppercase tracking-wider flex items-center gap-1.5">
+                                        <span>❌</span> Action Rejetée par {selectedCongress.rejectedBy || 'Admin'}
+                                    </p>
+                                    {selectedCongress.rejectionReason ? (
+                                        <p className="text-sm font-semibold text-red-900 mt-1">
+                                            <span className="font-bold text-red-700">Motif :</span> {selectedCongress.rejectionReason}
+                                        </p>
+                                    ) : (
+                                        <p className="text-xs text-red-600 italic">Aucun motif particulier spécifié.</p>
+                                    )}
+                                </div>
+                            )}
 
                             {/* Details */}
                             <div className="bg-gray-50 rounded-xl p-4 space-y-2.5 text-sm text-gray-700">
@@ -771,14 +1013,59 @@ export default function CongressView({ dashboardId }) {
                                 </div>
                             </div>
 
-                            {/* Admin actions */}
-                            {isAdmin && !selectedCongress.isApproved && (
-                                <button
-                                    onClick={async (e) => { e.stopPropagation(); await handleApprove(selectedCongress._id, true, selectedCongress.comment); const updated = congresses.find(c => c._id === selectedCongress._id); if (updated) setSelectedCongress({...selectedCongress, isApproved: true}); }}
-                                    className="w-full py-2.5 bg-emerald-600 text-white rounded-xl font-black uppercase tracking-widest text-sm hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2"
-                                >
-                                    ✔️ Approuver cette action
-                                </button>
+                            {/* Admin actions in panel */}
+                            {isAdmin && (
+                                <div className="space-y-2 pt-2">
+                                    {!selectedCongress.isApproved && !selectedCongress.isRejected && (
+                                        <div className="flex gap-2">
+                                            <button
+                                                onClick={async (e) => {
+                                                    e.stopPropagation();
+                                                    await handleApprove(selectedCongress._id, true, panelAdminComment);
+                                                }}
+                                                className="flex-1 py-2.5 bg-emerald-600 text-white rounded-xl font-black uppercase tracking-widest text-xs hover:bg-emerald-700 transition-colors flex items-center justify-center gap-1 shadow-md"
+                                            >
+                                                ✔️ Approuver
+                                            </button>
+                                            <button
+                                                onClick={(e) => openRejectModal(selectedCongress, e)}
+                                                className="flex-1 py-2.5 bg-red-600 text-white rounded-xl font-black uppercase tracking-widest text-xs hover:bg-red-700 transition-colors flex items-center justify-center gap-1 shadow-md"
+                                            >
+                                                ❌ Rejeter
+                                            </button>
+                                        </div>
+                                    )}
+                                    {selectedCongress.isRejected && (
+                                        <div className="flex gap-2">
+                                            <button
+                                                onClick={async (e) => {
+                                                    e.stopPropagation();
+                                                    await handleApprove(selectedCongress._id, true, panelAdminComment);
+                                                }}
+                                                className="flex-1 py-2.5 bg-emerald-600 text-white rounded-xl font-black uppercase tracking-widest text-xs hover:bg-emerald-700 transition-colors flex items-center justify-center gap-1 shadow-md"
+                                            >
+                                                ✔️ Approuver quand même
+                                            </button>
+                                            <button
+                                                onClick={async (e) => {
+                                                    e.stopPropagation();
+                                                    await handleResetPending(selectedCongress._id, e);
+                                                }}
+                                                className="flex-1 py-2.5 bg-amber-600 text-white rounded-xl font-black uppercase tracking-widest text-xs hover:bg-amber-700 transition-colors flex items-center justify-center gap-1 shadow-md"
+                                            >
+                                                ⏳ Remettre en attente
+                                            </button>
+                                        </div>
+                                    )}
+                                    {selectedCongress.isApproved && (
+                                        <button
+                                            onClick={(e) => openRejectModal(selectedCongress, e)}
+                                            className="w-full py-2.5 bg-red-600 text-white rounded-xl font-black uppercase tracking-widest text-xs hover:bg-red-700 transition-colors flex items-center justify-center gap-1 shadow-md"
+                                        >
+                                            ❌ Révoquer / Rejeter cette action
+                                        </button>
+                                    )}
+                                </div>
                             )}
                         </div>
 
@@ -809,6 +1096,58 @@ export default function CongressView({ dashboardId }) {
                                     Supprimer
                                 </button>
                             )}
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* === REJECT CONFIRMATION MODAL === */}
+            {showRejectModal && rejectingCongress && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4 w-full h-full min-h-screen top-0">
+                    <div className="bg-white p-6 rounded-2xl shadow-2xl w-[460px] max-w-full animate-scaleUp">
+                        <div className="flex items-center gap-3 mb-4 text-red-600">
+                            <div className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center text-xl">
+                                ❌
+                            </div>
+                            <div>
+                                <h3 className="text-lg font-black text-slate-800">Rejeter l'Action Marketing</h3>
+                                <p className="text-xs text-slate-500 truncate max-w-[320px]">{rejectingCongress.name}</p>
+                            </div>
+                        </div>
+
+                        <p className="text-xs text-slate-600 mb-3">
+                            Vous êtes sur le point de marquer cette action comme <strong className="text-red-600">Rejetée</strong>. Le délégué verra ce statut ainsi que le motif renseigné ci-dessous.
+                        </p>
+
+                        <div className="mb-4">
+                            <label className="block text-xs font-bold text-slate-700 mb-1">
+                                Motif du rejet (visible par le délégué)
+                            </label>
+                            <textarea
+                                value={rejectionReasonInput}
+                                onChange={(e) => setRejectionReasonInput(e.target.value)}
+                                placeholder="Ex: Budget indisponible, médecin non ciblé pour ce trimestre, non conforme à la stratégie marketing..."
+                                className="w-full border border-slate-200 rounded-xl p-3 text-sm h-24 focus:ring-2 focus:ring-red-400 focus:outline-none"
+                            />
+                        </div>
+
+                        <div className="flex justify-end gap-2">
+                            <button
+                                type="button"
+                                onClick={closeRejectModal}
+                                disabled={isSubmittingReject}
+                                className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-xl text-xs font-bold transition-all"
+                            >
+                                Annuler
+                            </button>
+                            <button
+                                type="button"
+                                onClick={handleReject}
+                                disabled={isSubmittingReject}
+                                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-black uppercase tracking-wider shadow-md shadow-red-200 transition-all flex items-center gap-1.5"
+                            >
+                                {isSubmittingReject ? 'Rejet en cours...' : 'Confirmer le Rejet'}
+                            </button>
                         </div>
                     </div>
                 </div>
