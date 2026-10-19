@@ -47,6 +47,10 @@ const congressSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    isRejected: {
+        type: Boolean,
+        default: false
+    },
     comment: {
         type: String,
         default: ''
@@ -56,6 +60,14 @@ const congressSchema = new mongoose.Schema({
         default: ''
     },
     approvedBy: {
+        type: String,
+        default: ''
+    },
+    rejectedBy: {
+        type: String,
+        default: ''
+    },
+    rejectionReason: {
         type: String,
         default: ''
     },
