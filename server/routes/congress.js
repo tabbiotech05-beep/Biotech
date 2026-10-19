@@ -177,15 +177,38 @@ router.patch('/:id/approve', auth, async (req, res) => {
             return res.status(403).json({ msg: 'Accès administrateur requis' });
         }
 
-        const { isApproved, comment, participant, amount } = req.body;
+        const { isApproved, isRejected, rejectionReason, comment, participant, amount } = req.body;
         const congress = await Congress.findById(req.params.id);
 
         if (!congress) return res.status(404).json({ msg: 'Action marketing introuvable' });
 
-        congress.isApproved = isApproved;
-        if (isApproved) {
-            congress.approvedBy = req.user.username;
+        if (isApproved !== undefined) {
+            congress.isApproved = isApproved;
+            if (isApproved) {
+                congress.approvedBy = req.user.username;
+                congress.isRejected = false;
+                congress.rejectedBy = '';
+                congress.rejectionReason = '';
+            } else if (!isRejected) {
+                congress.approvedBy = '';
+            }
         }
+
+        if (isRejected !== undefined) {
+            congress.isRejected = isRejected;
+            if (isRejected) {
+                congress.rejectedBy = req.user.username;
+                congress.isApproved = false;
+                congress.approvedBy = '';
+                if (rejectionReason !== undefined) {
+                    congress.rejectionReason = rejectionReason;
+                }
+            } else {
+                congress.rejectedBy = '';
+                congress.rejectionReason = '';
+            }
+        }
+
         if (comment !== undefined) {
             congress.comment = comment;
             congress.adminCommentAuthor = req.user.username;
@@ -195,6 +218,40 @@ router.patch('/:id/approve', auth, async (req, res) => {
         }
         if (amount !== undefined) {
             congress.amount = amount;
+        }
+
+        await congress.save();
+        res.json(congress);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// @route   PATCH api/congress/:id/reject
+// @desc    Admin rejects a marketing action with optional reason
+// @access  Admin
+router.patch('/:id/reject', auth, async (req, res) => {
+    try {
+        if (req.user.role !== 'admin') {
+            return res.status(403).json({ msg: 'Accès administrateur requis' });
+        }
+
+        const { rejectionReason, comment } = req.body;
+        const congress = await Congress.findById(req.params.id);
+
+        if (!congress) return res.status(404).json({ msg: 'Action marketing introuvable' });
+
+        congress.isRejected = true;
+        congress.isApproved = false;
+        congress.approvedBy = '';
+        congress.rejectedBy = req.user.username;
+        if (rejectionReason !== undefined) {
+            congress.rejectionReason = rejectionReason;
+        }
+        if (comment !== undefined) {
+            congress.comment = comment;
+            congress.adminCommentAuthor = req.user.username;
         }
 
         await congress.save();
